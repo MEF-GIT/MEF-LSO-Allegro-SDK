@@ -1,0 +1,51 @@
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+  /* width: 890px; */
+  margin: 1.5cm;
+  font-family: "Times New Roman", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 24px;
+  line-height: 1.5;
+  text-align:justify
+}
+
+a {
+  color: #2980b9;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: none;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #777;
+  border-left: 0.25em solid #ddd;
+  background: transparent;
+}
+
+.emoji {
+  height: 1.4em;
+}
+
+:not(pre):not(.hljs)>code {
+  color: #c0392b;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Sansation";
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2, h3, h4, h5, h6 {
+  font-size: 26px;
+}
