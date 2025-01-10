@@ -15,6 +15,7 @@ class TrackingRecord_Find {
 
     creationDate*: date-time
     description: string
+    id*: string
     relatedObjectId*: string
     user: string
 }
