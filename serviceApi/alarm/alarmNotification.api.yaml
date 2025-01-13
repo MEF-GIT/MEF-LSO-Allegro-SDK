@@ -12,7 +12,7 @@ info:
       url: "/redoc/logo.png"
       backgroundColor: "#FFFFFF"
 servers:
-- url: "https://{serverBase}/mefApi/legato/alarmNotification/v1/"
+- url: "https://{serverBase}/mefApi/allegro/alarmNotification/v1/"
   variables:
     serverBase:
       description: "The base of Buyer's URL."

@@ -12,7 +12,7 @@ info:
     \ Forum and its contributors\n"
   version: "1.0.0-RC"
 servers:
-- url: "https://{serverBase}/mefApi/legato/alarmManagement/v1/"
+- url: "https://{serverBase}/mefApi/allegro/alarmManagement/v1/"
   variables:
     serverBase:
       description: "The base of SOF's URL."
