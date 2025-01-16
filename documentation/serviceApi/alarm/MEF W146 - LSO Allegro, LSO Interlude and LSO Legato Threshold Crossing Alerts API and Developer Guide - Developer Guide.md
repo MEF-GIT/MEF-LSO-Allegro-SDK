@@ -83,64 +83,64 @@ contained herein.
 - [2. Terminology and Abbreviations](#2-terminology-and-abbreviations)
 - [3. Compliance Levels](#3-compliance-levels)
 - [4. Introduction](#4-introduction)
-   * [4.1. Description](#41-description)
-   * [4.2. Conventions in the Document](#42-conventions-in-the-document)
-   * [4.3. Relation to Other Documents](#43-relation-to-other-documents)
-   * [4.4. Approach](#44-approach)
-   * [4.5. High-Level Flow](#45-high-level-flow)
+  - [4.1. Description](#41-description)
+  - [4.2. Conventions in the Document](#42-conventions-in-the-document)
+  - [4.3. Relation to Other Documents](#43-relation-to-other-documents)
+  - [4.4. Approach](#44-approach)
+  - [4.5. High-Level Flow](#45-high-level-flow)
 - [5. API Description](#5-api-description)
-   * [5.1. High-level use cases](#51-high-level-use-cases)
-   * [5.2. API Endpoint and Operation Description](#52-api-endpoint-and-operation-description)
-      + [5.2.1. Seller/Server side API Endpoints](#521-sellerserver-side-api-endpoints)
-      + [5.2.2. Buyer/Client side API Endpoints](#522-buyerclient-side-api-endpoints)
-   * [5.3. Integration of Alarm Specification into Alarm Management API](#53-integration-of-alarm-specification-into-alarm-management-api)
-   * [5.4. Model structure and validation](#54-model-structure-and-validation)
-   * [5.5. Security Considerations](#55-security-considerations)
+  - [5.1. High-level use cases](#51-high-level-use-cases)
+  - [5.2. API Endpoint and Operation Description](#52-api-endpoint-and-operation-description)
+    - [5.2.1. Seller/Server side API Endpoints](#521-sellerserver-side-api-endpoints)
+    - [5.2.2. Buyer/Client side API Endpoints](#522-buyerclient-side-api-endpoints)
+  - [5.3. Integration of Alarm Specification into Alarm Management API](#53-integration-of-alarm-specification-into-alarm-management-api)
+  - [5.4. Model structure and validation](#54-model-structure-and-validation)
+  - [5.5. Security Considerations](#55-security-considerations)
 - [6. API Interactions and Flows](#6-api-interactions-and-flows)
-   * [6.1. Use Case 1: Retrieve List of Alarms](#61-use-case-1-retrieve-list-of-alarms)
-   * [6.2. Use Case 2: Retrieve Alarm by Alarm Identifier](#62-use-case-2-retrieve-alarm-by-alarm-identifier)
-   * [6.3. Use Case 3: Subscribe to Alarms](#63-use-case-3-subscribe-to-alarms)
-   * [6.4. Use Case 4: Create Alarm](#64-use-case-4-create-alarm)
-      + [6.4.1 Use Case 4a: Stateful TCA Alarm](#641-use-case-4a-stateful-tca-alarm)
-      + [6.4.2 Use Case 4b: Stateless TCA Alarm](#642-use-case-4b-stateless-tca-alarm)
-   * [6.5. Use Case 5: Unregister for Alarm Notifications](#65-use-case-5-unregister-for-alarm-notifications)
+  - [6.1. Use Case 1: Retrieve List of Alarms](#61-use-case-1-retrieve-list-of-alarms)
+  - [6.2. Use Case 2: Retrieve Alarm by Alarm Identifier](#62-use-case-2-retrieve-alarm-by-alarm-identifier)
+  - [6.3. Use Case 3: Subscribe to Alarms](#63-use-case-3-subscribe-to-alarms)
+  - [6.4. Use Case 4: Create Alarm](#64-use-case-4-create-alarm)
+    - [6.4.1 Use Case 4a: Stateful TCA Alarm](#641-use-case-4a-stateful-tca-alarm)
+    - [6.4.2 Use Case 4b: Stateless TCA Alarm](#642-use-case-4b-stateless-tca-alarm)
+  - [6.5. Use Case 5: Unregister for Alarm Notifications](#65-use-case-5-unregister-for-alarm-notifications)
 - [7. API Details](#7-api-details)
-   * [7.1. API patterns](#71-api-patterns)
-      + [7.1.1. Indicating errors](#711-indicating-errors)
-         - [7.1.1.1. Type Error](#7111-type-error)
-         - [7.1.1.2. Type Error400](#7112-type-error400)
-         - [7.1.1.3. `enum` Error400Code](#7113-enum-error400code)
-         - [7.1.1.4. Type Error401](#7114-type-error401)
-         - [7.1.1.5. `enum` Error401Code](#7115-enum-error401code)
-         - [7.1.1.6. Type Error403](#7116-type-error403)
-         - [7.1.1.7. `enum` Error403Code](#7117-enum-error403code)
-         - [7.1.1.8. Type Error404](#7118-type-error404)
-         - [7.1.1.9. Type Error422](#7119-type-error422)
-         - [7.1.1.10. `enum` Error422Code](#71110-enum-error422code)
-         - [7.1.1.11. Type Error500](#71111-type-error500)
-         - [7.1.1.12. Type Error501](#71112-type-error501)
-   * [7.2. API Data model](#72-api-data-model)
-      + [7.2.1 Alarm](#721-alarm)
-         - [7.2.1.1 Type Alarm](#7211-type-alarm)
-         - [7.2.1.2 Type AlarmRef](#7212-type-alarmref)
-         - [7.2.1.3 Type AlarmSpecificAttributes](#7213-type-alarmspecificattributes)
-         - [7.2.1.4 `enum` AlarmType](#7214-enum-alarmtype)
-         - [7.2.1.5 Type Alarm_Common](#7215-type-alarm_common)
-         - [7.2.1.6 Type Alarm_Find](#7216-type-alarm_find)
-         - [7.2.1.7 Type AlarmedObjectRef](#7217-type-alarmedobjectref)
-         - [7.2.1.8 Type Comment](#7218-type-comment)
-         - [7.2.1.9 `enum` PerceivedSeverity](#7219-enum-perceivedseverity)
-         - [7.2.1.10 `enum` PlannedOutageIndicator](#72110-enum-plannedoutageindicator)
-         - [7.2.1.11 `enum` ProbableCause](#72111-enum-probablecause)
-         - [7.2.1.12 Type ServiceRef](#72112-type-serviceref)
-         - [7.2.1.13 `enum` State](#72113-enum-state)
-      + [7.2.2 TCA Alarm](#722-tca-alarm)
-         - [7.2.2.1 Type TcaStatefulClearAlarm](#7221-type-tcastatefulclearalarm)
-         - [7.2.2.2 Type TcaStatefulSetAlarm](#7222-type-tcastatefulsetalarm)
-         - [7.2.2.3 Type TcaStatelessAlarm](#7223-type-tcastatelessalarm)
-      + [7.2.3. Notification registration](#723-notification-registration)
-         - [7.2.3.1. Type AlarmSubscriptionInput](#7231-type-alarmsubscriptioninput)
-         - [7.2.3.2. Type AlarmSubscription](#7232-type-alarmsubscription)
+  - [7.1. API patterns](#71-api-patterns)
+    - [7.1.1. Indicating errors](#711-indicating-errors)
+      - [7.1.1.1. Type Error](#7111-type-error)
+      - [7.1.1.2. Type Error400](#7112-type-error400)
+      - [7.1.1.3. `enum` Error400Code](#7113-enum-error400code)
+      - [7.1.1.4. Type Error401](#7114-type-error401)
+      - [7.1.1.5. `enum` Error401Code](#7115-enum-error401code)
+      - [7.1.1.6. Type Error403](#7116-type-error403)
+      - [7.1.1.7. `enum` Error403Code](#7117-enum-error403code)
+      - [7.1.1.8. Type Error404](#7118-type-error404)
+      - [7.1.1.9. Type Error422](#7119-type-error422)
+      - [7.1.1.10. `enum` Error422Code](#71110-enum-error422code)
+      - [7.1.1.11. Type Error500](#71111-type-error500)
+      - [7.1.1.12. Type Error501](#71112-type-error501)
+  - [7.2. API Data model](#72-api-data-model)
+    - [7.2.1 Alarm](#721-alarm)
+      - [7.2.1.1 Type Alarm](#7211-type-alarm)
+      - [7.2.1.2 Type AlarmRef](#7212-type-alarmref)
+      - [7.2.1.3 Type AlarmSpecificAttributes](#7213-type-alarmspecificattributes)
+      - [7.2.1.4 `enum` AlarmType](#7214-enum-alarmtype)
+      - [7.2.1.5 Type Alarm\_Common](#7215-type-alarm_common)
+      - [7.2.1.6 Type Alarm\_Find](#7216-type-alarm_find)
+      - [7.2.1.7 Type AlarmedObjectRef](#7217-type-alarmedobjectref)
+      - [7.2.1.8 Type Comment](#7218-type-comment)
+      - [7.2.1.9 `enum` PerceivedSeverity](#7219-enum-perceivedseverity)
+      - [7.2.1.10 `enum` PlannedOutageIndicator](#72110-enum-plannedoutageindicator)
+      - [7.2.1.11 `enum` ProbableCause](#72111-enum-probablecause)
+      - [7.2.1.12 Type ServiceRef](#72112-type-serviceref)
+      - [7.2.1.13 `enum` State](#72113-enum-state)
+    - [7.2.2 TCA Alarm](#722-tca-alarm)
+      - [7.2.2.1 Type TcaStatefulClearAlarm](#7221-type-tcastatefulclearalarm)
+      - [7.2.2.2 Type TcaStatefulSetAlarm](#7222-type-tcastatefulsetalarm)
+      - [7.2.2.3 Type TcaStatelessAlarm](#7223-type-tcastatelessalarm)
+    - [7.2.3. Notification registration](#723-notification-registration)
+      - [7.2.3.1. Type AlarmSubscriptionInput](#7231-type-alarmsubscriptioninput)
+      - [7.2.3.2. Type AlarmSubscription](#7232-type-alarmsubscription)
 - [8. References](#8-references)
 
 <!-- /code_chunk_output -->
@@ -420,12 +420,15 @@ the endpoint mapping. Use cases are described extensively in
 ### 5.2.1. Seller/Server side API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/alarmManagement/v1/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/alarmManagement/v1/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/alarmManagement/v1/`
 
 The following API endpoints are implemented by the Seller/Server and
@@ -457,12 +460,15 @@ API endpoints listed in Table 5 are optional and may be exposed by the Seller/Se
 ### 5.2.2. Buyer/Client side API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/alarmNotification/v1/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/alarmNotification/v1/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/alarmNotification/v1/`
 
 The following API Endpoints are used by Seller/Server to post notifications to registered
@@ -2193,8 +2199,8 @@ Inherits from:
   February 2021
 - [MEF128.1] [MEF 128.1](https://www.mef.net/wp-content/uploads/MEF-128.1.pdf), LSO
   API Security Profile, April 2024
-- [MEFW133.1] [MEF W133.1]
-  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, June 2023
+- [MEFW133.1](https://www.mef.net/wp-content/uploads/MEF-133.1.pdf)
+  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, January 2025
 - [OAS-v3] [Open API 3.0](http://spec.openapis.org/oas/v3.0.3.html), February
   2020
 - [REST]

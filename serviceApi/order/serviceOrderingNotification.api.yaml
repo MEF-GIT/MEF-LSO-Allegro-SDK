@@ -1,0 +1,515 @@
+openapi: 3.0.1
+info:
+  title: Service Ordering Notification
+  description: |
+    **This file forms part of MEF 99.1** 
+     
+    **This draft represents MEF work in progress and is subject to change.**
+
+    Supported use cases:
+    - Send Notifications
+
+    Copyright 2025 MEF Forum and its contributors.
+
+    This file includes content based on the TM Forum Service Order API (TMF641
+    v4.1.0) available at https://github.com/tmforum-apis/TMF641_ServiceOrder,
+    which is licensed by the TM Forum under the Apache License version 2.0. Such
+    content has been modified by the MEF Forum and its contributors.
+  version: 1.0.0-RC
+servers:
+  - url: "https://{serverBase}/mefApi/allegro/serviceOrderingNotification/v1/"
+    variables:
+      serverBase:
+        description: The base of BUS's URL.
+        default: mef.net
+tags:
+  - name: Notification listeners
+    description: |
+      The SOF's endpoint to send particular event types notifications to.
+paths:
+  /listener/serviceOrderCreateEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Service Order Create Notification endpoint
+      description: This endpoint is used to receive notifications on Service Order Create
+      operationId: serviceOrderCreateEvent
+      requestBody:
+        description: The ProductOrder to be created
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceOrderCreateEvent"
+        required: true
+      responses:
+        "204":
+          description: "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)"
+        "400":
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error400"
+        "401":
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error401"
+        "403":
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error403"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error500"
+  /listener/serviceOrderStateChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Service Order State Change Notification endpoint
+      description: >-
+        This endpoint is used to receive notifications on Service Order State
+        Change
+      operationId: serviceOrderStateChangeEvent
+      requestBody:
+        description: The ProductOrder to be created
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceOrderStateChangeEvent"
+        required: true
+      responses:
+        "204":
+          description: "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)"
+        "400":
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error400"
+        "401":
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error401"
+        "403":
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error403"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error500"
+  /listener/serviceOrderInformationRequiredEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Service Order Information Required Notification endpoint
+      description: >-
+        This endpoint is used to receive notifications on Service Order
+        Information Required
+      operationId: serviceOrderInformationRequiredEvent
+      requestBody:
+        description: The ProductOrder to be created
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceOrderInformationRequiredEvent"
+        required: true
+      responses:
+        "204":
+          description: "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)"
+        "400":
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error400"
+        "401":
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error401"
+        "403":
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error403"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error500"
+  /listener/serviceOrderItemStateChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Service Order Item State Change Notification endpoint
+      description: >-
+        This endpoint is used to receive notifications on Service Order Item
+        State Change
+      operationId: serviceOrderItemStateChangeEvent
+      requestBody:
+        description: The ProductOrder to be created
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: "#/components/schemas/ServiceOrderItemStateChangeEvent"
+        required: true
+      responses:
+        "204":
+          description: "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)"
+        "400":
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error400"
+        "401":
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error401"
+        "403":
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error403"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: "#/components/schemas/Error500"
+components:
+  schemas:
+    Error:
+      description: >
+        Standard Class used to describe API response error
+
+        Not intended to be use directly. The `code` in the HTTP header is used
+        as a discriminator for the type of error returned in runtime.
+      type: object
+      properties:
+        reason:
+          description: >-
+            Text that explains the reason for error. This can be shown to a
+            client user.
+          type: string
+          maxLength: 255
+        message:
+          description: >-
+            Text that provide mode details and corrective actions related to the
+            error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: url pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+        - reason
+    Error400:
+      description: "Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)"
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            code:
+              description: >-
+                One of the following error codes:
+
+                - missingQueryParameter: The URI is missing a required
+                query-string parameter
+
+                - missingQueryValue: The URI is missing a required query-string
+                parameter value
+
+                - invalidQuery: The query section of the URI is invalid.
+
+                - invalidBody: The request has an invalid body
+              $ref: "#/components/schemas/Error400Code"
+          required:
+            - code
+    Error400Code:
+      description: >-
+        One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string
+        parameter
+
+        - missingQueryValue: The URI is missing a required query-string
+        parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body
+      type: string
+      enum:
+        - missingQueryParameter
+        - missingQueryValue
+        - invalidQuery
+        - invalidBody
+    Error401:
+      description: "Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)"
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            code:
+              description: >-
+                One of the following error codes:
+
+                - missingCredentials: No credentials provided.
+
+                - invalidCredentials: Provided credentials are invalid or
+                expired
+              $ref: "#/components/schemas/Error401Code"
+          required:
+            - code
+    Error401Code:
+      description: |-
+        One of the following error codes:
+        - missingCredentials: No credentials provided.
+        - invalidCredentials: Provided credentials are invalid or expired
+      type: string
+      enum:
+        - missingCredentials
+        - invalidCredentials
+    Error403:
+      description: "Forbidden. (https://tools.ietf.org/html/rfc7231#section-6.5.3)"
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            code:
+              description: |-
+                This code indicates that the server understood
+                the request but refuses to authorize it because
+                of one of the following error codes:
+                - accessDenied: Access denied
+                - forbiddenRequester: Forbidden requester
+                - tooManyUsers: Too many users
+              $ref: "#/components/schemas/Error403Code"
+          required:
+            - code
+    Error403Code:
+      description: |-
+        This code indicates that the server understood
+        the request but refuses to authorize it because
+        of one of the following error codes:
+        - accessDenied: Access denied
+        - forbiddenRequester: Forbidden requester
+        - tooManyUsers: Too many users
+      type: string
+      enum:
+        - accessDenied
+        - forbiddenRequester
+        - tooManyUsers
+    Error500:
+      description: >-
+        Internal Server Error.
+        (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+        - $ref: "#/components/schemas/Error"
+        - type: object
+          properties:
+            code:
+              description: >-
+                One of the following error codes:
+
+                - internalError: Internal server error - the server encountered
+                an unexpected condition that prevented it from fulfilling the
+                request.
+              type: string
+              enum:
+                - internalError
+          required:
+            - code
+    Event:
+      description: >-
+        Event class is used to describe information structure used for
+        notification.
+      type: object
+      properties:
+        eventId:
+          description: Id of the event
+          type: string
+        eventTime:
+          description: Date-time when the event occurred
+          type: string
+          format: date-time
+        eventType:
+          description: The type of the notification.
+          type: string
+        event:
+          description: The event linked to the involved resource object
+          type: object
+      required:
+        - event
+        - eventId
+        - eventTime
+        - eventType
+    ServiceOrderEventPayload:
+      description: >-
+        The identifier of the Service Order and Order Item being subject of this
+        event.
+      type: object
+      properties:
+        id:
+          description: ID of the Service Order
+          type: string
+        href:
+          description: Hyperlink to access the Service Order
+          type: string
+      required:
+        - id
+    ServiceOrderCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: |
+                Indicates the type of the event.
+              type: string
+              enum:
+                - serviceOrderCreateEvent
+            event:
+              description: |
+                A reference to the object that is source of the notification.
+              $ref: '#/components/schemas/ServiceOrderEventPayload'
+          required:
+            - event
+            - eventType
+    ServiceOrderItemStateChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: |
+                Indicates the type of the event.
+              type: string
+              enum:
+                - serviceOrderItemStateChangeEvent
+            event:
+              description: |
+                A reference to the object that is source of the notification.
+              $ref: '#/components/schemas/ServiceOrderItemStateChangeEventPayload'
+          required:
+            - event
+            - eventType
+    ServiceOrderItemStateChangeEventPayload:
+      description: The identifier of the ServiceOrderItem being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the ServiceOrder
+          type: string
+        orderItemId:
+          description: >-
+            ID of the Service Order Item (within the Service Order) which state
+            change triggered the event. Mandatory for
+            `serviceOrderItemStateChangeEvent`
+          type: string
+        href:
+          description: Hyperlink to access the ServiceOrder
+          type: string
+        state:
+          description: The state of the Service Order
+          $ref: "#/components/schemas/ServiceOrderStateType"
+      required:
+        - id
+        - orderItemId
+        - state
+    ServiceOrderStateChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: |
+                Indicates the type of the event.
+              type: string
+              enum:
+                - serviceOrderStateChangeEvent
+            event:
+              description: |
+                A reference to the object that is source of the notification.
+              $ref: '#/components/schemas/ServiceOrderStateChangeEventPayload'
+          required:
+            - event
+            - eventType
+    ServiceOrderStateChangeEventPayload:
+      description: The identifier of the ServiceOrder being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the ServiceOrder
+          type: string
+        href:
+          description: Hyperlink to access the ServiceOrder
+          type: string
+        state:
+          description: The state of the Service Order
+          $ref: "#/components/schemas/ServiceOrderStateType"
+      required:
+        - id
+        - state
+    ServiceOrderInformationRequiredEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: |
+                Indicates the type of the event.
+              type: string
+              enum:
+                - serviceOrderInformationRequiredEvent
+            event:
+              description: |
+                A reference to the object that is source of the notification.
+              $ref: '#/components/schemas/ServiceOrderEventPayload'
+          required:
+            - event
+            - eventType    
+    ServiceOrderStateType:
+      description: |
+        Possible values for the state of a Service Order
+
+        | State        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+        | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | acknowledged | A `ServiceOrder` request has been received and has passed message and basic validations and a _Success Response_ has been sent.                                                                                                                                                                                                                                                                                                                                                                                                                       |
+        | rejected     | This state indicates that: <br>- Invalid information is provided through the `ServiceOrder` / `ServiceOrderItem` request <br>- The request fails to meet validation rules for `Service` delivery (processing) <br>If one `ServiceOrderItem` is rejected, then the entire `ServiceOrder` request is rejected and a _Error Response_ is sent.                                                                                                                                                                                                           |
+        | inProgress   | This state indicates that all `ServiceOrderItems` have successfully passed the validations checks and the scheduled `Service` delivery/processing has started. <br> The `ServiceOrder` will be in _`inProgress`_ state if _at least one_ `ServiceOrderItem` is in _`inProgress`_ state                                                                                                                                                                                                                                                                |
+        | pending      | This state indicates that a `ServiceOrderItem` is currently in a waiting stage for an action/activity to be completed before the order-processing can progress further, pending order amend or cancel assessment. <br> A _`pending`_ state can lead into auto cancellation of an `ServiceOrderItem`, if no action is taken within the agreed timeframe.<br>The `ServiceOrder` will be in _`pending`_ state if _at least one_ `ServiceOrderItem` is in _`pending`_ state                                                                               |
+        | held         | This state indicates that a `ServiceOrderItem` cannot be progressed due to an issue. The `Service` delivery (processing) has been temporarily delayed to resolve an infrastructure shortfall to facilitate supply of order. Upon resolution of the issue, the `ServiceOrderItem` will continue to progress.<br> A _`held`_ state can lead into auto cancellation of an `ServiceOrderItem`, if no action is taken within the agreed timeframe.<br>The `ServiceOrder` will be in _`held`_ state if at least one `ServiceOrderItem` is in _`held`_ state |
+        | failed       | This state indicates that `Service` delivery (processing) associated with a `ServiceOrderItem` has failed. This indicates an irrecoverable error as opposed to _`held`_ or _`pending`_ issues.<br>The `ServiceOrder` will be in _`failed`_ state if at _ALL_ `ServiceOrderItems` are in _`failed`_ state                                                                                                                                                                                                                                              |
+        | completed    | This state indicates that `Service` delivery (processing) associated with a `ServiceOrderItem` has completed. <br>The `ServiceOrder` will be in _`completed`_ state if at _ALL_ `ServiceOrderItems` are in _`completed`_ state                                                                                                                                                                                                                                                                                                                        |
+        | partial      | This state indicates that some `ServiceOrderItem` are in _`completed`_ state while others are in _`cancelled`_ and/or _`failed`_ states, so the entire `ServiceOrder` is in a _`partial`_ state.                                                                                                                                                                                                                                                                                                                                                      |
+      enum:
+        - acknowledged
+        - rejected
+        - pending
+        - held
+        - inProgress
+        - completed
+        - failed
+        - partial

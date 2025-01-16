@@ -1,0 +1,99 @@
+@startuml
+
+class MefServiceConfiguration {
+
+    @type*: string
+}
+
+
+
+class Service {
+
+    description: string
+    endDate: date-time
+    externalId: string
+    serviceDate: string
+    serviceType: string
+    startDate: date-time
+    startMode: string
+    state: ServiceStateType
+}
+
+Service *-->"*" Note_BusSof : note
+Service *-->"*" RelatedPlaceRefOrQuery : place
+Service *-->"*" RelatedContactInformation : relatedContactInformation
+Service *--> MefServiceConfiguration : serviceConfiguration
+Service *-->"*" ServiceOrderItemRef : serviceOrderItem
+Service *-->"*" ServiceRelationship : serviceRelationship
+
+
+class ServiceOrderItemRef {
+
+    itemId*: string
+    serviceOrderHref: string
+    serviceOrderId: string
+}
+
+
+
+class ServiceRef {
+
+    href: uri
+    id*: string
+}
+
+
+
+class ServiceRelationship {
+
+    relationshipType*: string
+}
+
+ServiceRelationship *--> "1" ServiceRef : service
+
+enum ServiceStateType {
+
+    feasibilityChecked
+    designed
+    reserved
+    active
+    inactive
+    terminated
+}
+
+class Note_BusSof {
+
+    author*: string
+    date*: date-time
+    id*: string
+    source*: BusSofType
+    text*: string
+}
+
+
+
+enum BusSofType {
+
+    bus
+    sof
+}
+
+class RelatedContactInformation {
+
+    role*: string
+    number*: string
+    emailAddress*: string
+    organization: string
+    name*: string
+    numberExtension: string
+    postalAddress: FieldedAddressRepresentation
+}
+
+
+class RelatedPlaceRefOrQuery {
+    contact: ContactInformation
+    place*: PlaceRefOrQuery
+    role*: string
+}
+
+@enduml

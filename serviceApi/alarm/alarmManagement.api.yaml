@@ -600,7 +600,7 @@ components:
             \ with the base path and notification resource path specified in that\
             \ API to construct an URL to which  notification is sent. E.g. for 'callback':\
             \  \"https://buyer.co/listenerEndpoint\", the alarm event notification\
-            \ will be  sent to: `https://buyer.co/listenerEndpoint/mefApi/legato/alarmNotification/v1/listener/`"
+            \ will be  sent to: `https://buyer.co/listenerEndpoint/mefApi/allegro/alarmNotification/v1/listener/`"
           type: "string"
         query:
           description: "This attribute is used to define which type of events to register\

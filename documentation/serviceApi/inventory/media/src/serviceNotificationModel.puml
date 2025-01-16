@@ -1,0 +1,67 @@
+@startuml
+
+
+class Event {
+
+    eventId*: string
+    eventTime*: date-time
+    eventType*: string
+    event*: object
+}
+
+
+
+class ServiceEventPayload {
+
+    id*: string
+    href: string
+}
+
+
+
+class ServiceCreateEvent {
+
+    eventType*: string
+}
+Event <|-- ServiceCreateEvent
+
+ServiceCreateEvent *-->"1" ServiceEventPayload : event
+
+
+class ServiceStateChangeEvent {
+
+    eventType*: string
+}
+Event <|-- ServiceStateChangeEvent
+
+ServiceStateChangeEvent *-->"1" ServiceStateChangeEventPayload : event
+
+
+class ServiceStateChangeEventPayload {
+
+    id*: string
+    href: string
+    state*: ServiceStateType
+}
+
+
+
+class ServiceDeleteEvent {
+
+    eventType*: string
+}
+Event <|-- ServiceDeleteEvent
+
+ServiceDeleteEvent *-->"1" ServiceEventPayload : event
+
+
+class ServiceAttributeValueChangeEvent {
+
+    eventType*: string
+}
+Event <|-- ServiceAttributeValueChangeEvent
+
+ServiceAttributeValueChangeEvent *-->"1" ServiceEventPayload : event
+
+
+@enduml

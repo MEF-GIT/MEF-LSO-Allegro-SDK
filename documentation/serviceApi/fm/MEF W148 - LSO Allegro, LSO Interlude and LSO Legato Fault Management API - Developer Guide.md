@@ -531,12 +531,15 @@ the endpoint mapping. Use cases are described extensively in
 ### 5.2.1. Seller/Server (SOF) side Fault Management API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/faultManagement/v1/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/faultManagement/v1/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/faultManagement/v1/`
 
 The following API endpoints are implemented by the Seller/Server (SOF) and
@@ -589,12 +592,15 @@ API endpoints listed in Table 5 are optional and may be exposed by the SOF.
 ### 5.2.2. Buyer/Client (CUS, BUS, SOF) side Fault Management API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/bus_cus_sof_prefix}}/mefApi/allegro/faultNotification/v1/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/bus_cus_sof_prefix}}/mefApi/interlude/faultNotification/v1/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/bus_cus_sof_prefix}}/mefApi/legato/faultNotification/v1/`
 
 The following API Endpoints are used by SOF to post notifications to registered
@@ -1118,7 +1124,7 @@ The Buyer/Client can retrieve a list of `FaultManagementJob` by using a
 - `jobPriority`
 
 ```
-https://serverRoot/mefApi/allegro/faultManagement/v1/faultManagementJob?state=suspended&limit=10&offset=0
+https://serverRoot/mefApi/legato/faultManagement/v1/faultManagementJob?state=suspended&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Fault Management Job 
@@ -1410,7 +1416,7 @@ criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/allegro/faultManagement/v1/modifyFaultManagementJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/faultManagement/v1/modifyFaultManagementJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer's/Client's request to get all Modify Fault 
@@ -1659,7 +1665,7 @@ criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/allegro/faultManagement/v1/cancelFaultManagementJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/faultManagement/v1/cancelFaultManagementJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Cancel Fault 
@@ -1945,7 +1951,7 @@ The Buyer/Client can retrieve a list of `FaultManagementReport` objects by using
 - `resultFormat`
 
 ```
-https://serverRoot/mefApi/allegro/faultManagement/v1/faultManagementReport?state=completed&limit=10&offset=0
+https://serverRoot/mefApi/legato/faultManagement/v1/faultManagementReport?state=completed&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Fault Management 
@@ -2188,7 +2194,7 @@ contain none or more of the following attributes:
 - `user`
 
 ```
-https://serverRoot/mefApi/allegro/faultManagement/v1/trackingRecord?relatedObjectId=755e55e2-72b0-4e3b-af00-693e3beac691&limit=10&offset=0
+https://serverRoot/mefApi/legato/faultManagement/v1/trackingRecord?relatedObjectId=755e55e2-72b0-4e3b-af00-693e3beac691&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Tracking Record 
@@ -2343,7 +2349,7 @@ subscription to the message that must be further used for unsubscribing.
 Example of a final address that the Notifications will be sent to (for
 `faultManagementJobStateChangeEvent`):
 
-`https://bus.com/listenerEndpoint/mefApi/allegro/faultNotification/v1/listener/faultManagementJobStateChangeEvent`
+`https://bus.com/listenerEndpoint/mefApi/legato/faultNotification/v1/listener/faultManagementJobStateChangeEvent`
 
 ## 6.19. Use Case 19: Send Notification
 
@@ -4368,7 +4374,7 @@ The below sections describe data models related to this endpoint.
         <tr>
             <td>callback*</td>
             <td>string</td>
-            <td>This callback value must be set to the *host* property from Fault  Management Notification API (faultNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct a URL to which notification is sent. E.g. for &#x27;callback&#x27;:  &quot;https://buyer.co/listenerEndpoint&quot;, the Fault Management Job state change event notification will be sent to &#x60;https://buyer.co/listenerEndpoint/mefApi/allegro/faultManagement/v1/listener/faultManagementJobStateChangeEvent&#x60;</td>
+            <td>This callback value must be set to the *host* property from Fault  Management Notification API (faultNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct a URL to which notification is sent. E.g. for &#x27;callback&#x27;:  &quot;https://buyer.co/listenerEndpoint&quot;, the Fault Management Job state change event notification will be sent to &#x60;https://buyer.co/listenerEndpoint/mefApi/legato/faultManagement/v1/listener/faultManagementJobStateChangeEvent&#x60;</td>
             <td>Notification Target Information</td>
         </tr><tr>
             <td>query</td>
@@ -4883,8 +4889,8 @@ Inherits from:
   February 2021
 - [MEF128] [MEF 128](https://www.mef.net/wp-content/uploads/MEF-128.pdf), LSO
   API Security Profile, July 2022
-- [MEF133.1] [MEF 133.1]
-  Allegro, Interlude and Legato Fault Management and Fault Management BR&UC, June 2023
+- [MEFW133.1](https://www.mef.net/wp-content/uploads/MEF-133.1.pdf)
+  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, January 2025
 - [MEF152] [MEF 152]
   Carrier Ethernet Payload Schema/Guide for SOAM
 - [MEF153] [MEF 153]

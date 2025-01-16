@@ -7,7 +7,7 @@ info:
     \ Function Testing is defined as testing that is performed either\nas a part of\
     \ service verifi-cation, service activation, or service \nmaintenance.  The requirements\
     \ and Use Cases are the same for the Allegro\nInterface Reference Point (IRP),\
-    \ the Interlude IRP, and the Legato IRP.\n\n\nList of use cases by supported the\
+    \ the Interlude IRP, and the allegro IRP.\n\n\nList of use cases by supported the\
     \ API:\n- Create, Modify, Delete, Suspend, Resume, Cancel Test Job w/Test Profile\n\
     - Create, Modify, Delete, Suspend, Resume, Cancel Test Job w/o Test Profile\n\
     - Retrieve Test Job List\n- Retrieve Test Job by ID\n- Create, Modify, Delete\
@@ -2002,7 +2002,7 @@ components:
             \ is appended with the base path and notification resource path specified\
             \ in that API to construct an URL to which  notification is sent. E.g.\
             \ for 'callback':  \"https://buyer.co/listenerEndpoint\", the SFT event\
-            \ notification will be  sent to: `https://buyer.co/listenerEndpoint/mefApi/legato/serviceFuctionTestNotification/v1/listener/`"
+            \ notification will be  sent to: `https://buyer.co/listenerEndpoint/mefApi/allegro/serviceFuctionTestNotification/v1/listener/`"
           type: "string"
         query:
           description: "This attribute is used to define to which type of events to\

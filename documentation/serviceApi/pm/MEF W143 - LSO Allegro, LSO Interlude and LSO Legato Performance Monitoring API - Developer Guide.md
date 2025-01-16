@@ -611,12 +611,15 @@ the endpoint mapping. Use cases are described extensively in
 ### 5.2.1. Seller/Server (SOF) side Performance Monitoring API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/performanceMonitoring/v3/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/performanceMonitoring/v3/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/performanceMonitoring/v3/`
 
 The following API endpoints are implemented by the Seller/Server (SOF) and
@@ -678,12 +681,15 @@ API endpoints listed in Table 5 are optional and may be exposed by the SOF.
 ### 5.2.2. Buyer/Client (CUS, BUS, SOF) side Performance Monitoring API Endpoints
 
 **Base URL for Allegro**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/performanceNotification/v3/`
 
 **Base URL for Interlude**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/performanceNotification/v3/`
 
 **Base URL for Legato**:
+
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/performanceNotification/v3/`
 
 The following API Endpoints are used by SOF to post notifications to registered
@@ -1110,7 +1116,7 @@ operation with desired filtering criteria.
 
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/performanceProfile?state=active&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/performanceProfile?state=active&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Performance Profile
@@ -1611,7 +1617,7 @@ contain zero or more of the following attributes as filter attributes:
 - `jobPriority`
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/performanceJob?state=suspended&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/performanceJob?state=suspended&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Performance Job 
@@ -1919,7 +1925,7 @@ a `GET /modifyPerformanceJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/modifyPerformanceJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/modifyPerformanceJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer's/Client's request to get all Modify Performance 
@@ -2162,7 +2168,7 @@ a `GET /cancelPerformanceJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/cancelPerformanceJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/cancelPerformanceJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Cancel Performance 
@@ -2758,7 +2764,7 @@ The Buyer/Client can retrieve a list of `PerformanceReport` objects by using a
 - `resultFormat`
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/performanceReport?state=completed&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/performanceReport?state=completed&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Performance Report 
@@ -2988,7 +2994,7 @@ contain none or more of the following attributes:
 - `user`
 
 ```
-https://serverRoot/mefApi/allegro/performanceMonitoring/v3/trackingRecord?relatedObjectId=755e55e2-72b0-4e3b-af00-693e3beac691&limit=10&offset=0
+https://serverRoot/mefApi/legato/performanceMonitoring/v3/trackingRecord?relatedObjectId=755e55e2-72b0-4e3b-af00-693e3beac691&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Tracking Record 
@@ -3155,7 +3161,7 @@ Example of a final address that the Notifications to which the Buyer/Client
 subcribed with request in previous snippets will be sent to (for
 `performanceJobStateChangeEvent`):
 
-- `https://bus.com/listenerEndpoint/mefApi/allegro/performanceNotification/v3/listener/performanceJobStateChangeEvent`
+- `https://bus.com/listenerEndpoint/mefApi/legato/performanceNotification/v3/listener/performanceJobStateChangeEvent`
 
 ## 6.25. Use Case 25: Send Notification
 
@@ -5787,7 +5793,7 @@ The below sections describe data models related to this endpoint.
         <tr>
             <td>callback*</td>
             <td>string</td>
-            <td>This callback value must be set to the *host* property from Performance Notification API (performanceNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct a URL to which notification is sent. E.g. for &#x27;callback&#x27;:  &quot;https://buyer.co/listenerEndpoint&quot;, the performance job state change event notification will be sent to &#x60;https://buyer.co/listenerEndpoint/mefApi/allegro/performanceMonitoring/v3/listener/performanceJobStateChangeEvent&#x60;</td>
+            <td>This callback value must be set to the *host* property from Performance Notification API (performanceNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct a URL to which notification is sent. E.g. for &#x27;callback&#x27;:  &quot;https://buyer.co/listenerEndpoint&quot;, the performance job state change event notification will be sent to &#x60;https://buyer.co/listenerEndpoint/mefApi/legato/performanceMonitoring/v3/listener/performanceJobStateChangeEvent&#x60;</td>
             <td>Notification Target Information</td>
         </tr><tr>
             <td>query</td>
@@ -6388,14 +6394,8 @@ Inherits from:
   February 2021
 - [MEF128] [MEF 128](https://www.mef.net/wp-content/uploads/MEF-128.pdf), LSO
   API Security Profile, July 2022
-- [MEF133.1] [MEF 133.1]
-  Allegro, Interlude and Legato Fault Management and Performance Monitoring BR&UC, June 2023
-- [MEF152] [MEF 152]
-  Carrier Ethernet Payload Schema/Guide for SOAM
-- [MEF153] [MEF 153]
-  IP/IPVPN Schema/Guide for SOAM
-- [MEF154] [MEF 154]
-  SD-WAN Schema/Guide for SOAM
+- [MEFW133.1](https://www.mef.net/wp-content/uploads/MEF-133.1.pdf)
+  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, January 2025
 - [OAS-v3] [Open API 3.0](http://spec.openapis.org/oas/v3.0.3.html), February
   2020
 - [REST]

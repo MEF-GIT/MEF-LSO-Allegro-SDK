@@ -1,35 +1,72 @@
-# MEF-LSO-Allegro-SDK Haley Release
+# MEF-LSO-Allegro-SDK Irene Release
 
 ## Download Link
 
 Download the entire repository by clicking
-[here](https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/releases/download/haley/MEF-LSO-Allegro-SDK-haley.zip)
+[here](https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/releases/download/irene/MEF-LSO-Allegro-SDK-irene.zip)
 
 ## Overview
 
-This repository contains the release of the Allegro SDK. The SDK includes APIs
-for Performance Monitoring, and Streaming Management functions of the
-Service Orchestration Functionality (SOF) at the LSO Allegro Interface
-Reference Point (IRP) as defined in the MEF LSO Reference Architecture.
+This repository contains the release of the Allegro SDK. The SDK includes
+APIs for Service Catalog, Service Order, Service Inventory, Performance
+Monitoring, and Streaming Management functions of the Service Orchestration
+Functionality (SOF) at the LSO Allegro Interface Reference Point (IRP) as
+defined in the MEF LSO Reference Architecture.
 
 Also included are Service schemas and Performance Monitoring definitions.
 
 ## High-level release notes
 
 - Updated documents:
-  - MEF 128.1 - LSO API Security Profile
+  - MEF 133.1 - Draft Release 1 Allegro, Interlude and Legato Fault Management
+    and Performance Monitoring BR&UC
+  - MEF 136.1 - Draft Release 1 Allegro, Interlude and Legato Service Function
+    Testing Business Requirements & Use Cases
+  - MEF W143 - LSO Allegro, LSO Interlude and LSO Legato Performance Monitoring
+    API - Developer Guide
+- New Documents:
+  - MEF W99.1 - LSO Service Ordering Management API - Developer Guide
+  - MEF W101 - LSO Carrier Ethernet Service Schemas and Developer Guide
+  - MEF W103 - LSO L1 Service Schemas and Developer Guide
+  - MEF W135.1 - LSO Service Inventory Management API - Developer Guide
+  - MEF W146 - LSO Allegro, LSO Interlude and LSO Legato Threshold Crossing
+    Alerts API and Developer Guide - Developer Guide
+  - MEF W148 - LSO Allegro, LSO Interlude and LSO Legato Fault Management API -
+    Developer Guide
+  - MEF W149 - LSO Allegro, LSO Interlude and LSO Legato Service Function
+    Testing API - Developer Guide
+  - MEF W153 - LSO IP Schemas and Developer Guide for SOAM
 
 ## Scope
 
 It includes API definitions for the following functional areas:
 
+- Service Ordering - This includes support for
+  - Service Order/OrderItem - Create and Retrieve operations only
+  - Not in scope
+    - Service Order/OrderItem - Amend/Modify/Cancel, Delete operations
+- Service Inventory - This includes support for
+  - Service - Retrieve operations only
+  - Not in scope
+    - Service - Create, Amend/Modify, Delete operations
+- Alarm Management
+- Fault Management
 - Performance Monitoring
+- Service Function Testing
 - Streaming Management
+
+In addition to the Service Provisioning APIs, the SDK includes the following
+MEF Service Specification schemas:
+
+- SD-WAN Services
+- Carrier Ethernet Services
+- L1 Connectivity Services
+- IP/IP-VPN Services
 
 The MEF LSO Allegro SDK is released under the Apache 2.0 license.
 
-More information about the LSO Allegro API reference point and its roadmap can
-be found here:
+More information about the LSO Allegro API reference point and its roadmap
+can be found here:
 
 https://wiki.mef.net/display/CESG/LSO+Allegro
 
@@ -46,23 +83,44 @@ The maturity per functionality is presented as follows:
 (\*) is used to mark an item that changes its maturity compared to the previous
 release.
 
+APIs and Developer Guides:
+
+- Service Catalog API - **early draft version, on hold**
+- \*MEF W99.1 - LSO Service Ordering Management API - Developer Guide - **work
+  in progress - ready for CfC#1**
+- \*MEF W135.1 - LSO Legato Service Inventory Management API - Developer
+  Guide -**work in progress - ready for CfC#1**
+
+Service Schemas:
+
+- SD-WAN (MEF W100) - **work in progress - CfC#2**
+- \*Carrier Ethernet (MEF W101) - **work in progress - CfC#3**
+- Internet Protocol (MEF W102) - **work in progress - CfC#4**
+- \*LSO Legato Service Provisioning Specification - L1 (MEF W103) - **work in
+  progress - ready for CfC#1**
+
 SOAM:
 
-- MEF 133 - Allegro, Interlude and Legato Fault Management and Performance
-  Monitoring BR&UC - **Published Standard**
-- MEF W133.1 - Allegro, Interlude and Legato Fault Management and Performance
-  Monitoring BR&UC - **early draft version, CfC#1**
-- MEF 136 - Service Function Testing Business Requirements and Use Cases -
-  **Published Standard**
+- MEF \*W133.1 - Allegro, Interlude and Legato Fault Management and Performance
+  Monitoring BR&UC - **Draft Release 1**
+- MEF \*W136.1 - Service Function Testing Business Requirements and Use Cases -
+  **Draft Release 1**
 - MEF W143 - Performance Monitoring API and Developer Guide - **work in
+  progress - CfC#3**
+- MEF \*W146 - LSO Allegro, LSO Interlude and LSO Legato Threshold Crossing
+  Alerts API and Developer Guide - Developer Guide - **work in progress - ready
+  for CfC#1**
+- MEF \*W147 - Streaming Management API and Developer Guide - **work in
   progress - CfC#2**
-- MEF W147 - Streaming Management API and Developer Guide - **work in
-  progress - CfC#2**
-- Performance Monitoring reports and statistics definitions for Carrier
-  Ethernet and IP - **early draft version, schemas only**
+- MEF \*W148 - LSO Allegro, LSO Interlude and LSO Legato Fault Management API -
+  Developer Guide - **work in progress - ready for CfC#1**
+- MEF \*W149 - LSO Allegro, LSO Interlude and LSO Legato Service Function
+  Testing API - Developer Guide - **work in progress - ready for CfC#1**
+- MEF \*W153 - LSO IP Schemas and Developer Guide for SOAM **early draft
+  version, schemas only**
 
 - Security:
-  - *MEF 128.1 - **Published Standard**
+  - MEF 128.1 - **Published Standard**
 
 ## Contents
 
@@ -95,7 +153,7 @@ numbers to which you are referring.
 
 ## Copyright
 
-© MEF Forum 2024. All Rights Reserved.
+© MEF Forum 2025. All Rights Reserved.
 
 ## Disclaimer
 
