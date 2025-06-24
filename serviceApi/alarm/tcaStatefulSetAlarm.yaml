@@ -1,9 +1,9 @@
 $schema: http://json-schema.org/draft-07/schema#
-$id: urn:mef:lso:spec:legato:tca-stateful-set-alarm:v0.0.1:all
+$id: urn:mef:lso:spec:service:tca-stateful-set-alarm:v0.0.1:all
 x-mef-target: AlarmSpecificAttributes
 description: Threshold Crossing Alert Alarm Schema.
 title:
-  MEF LSO Legato - TCA Stateful Set Alarm
+  MEF LSO Allegro - TCA Stateful Set Alarm
   # MEF Forum - Date: 20241206  Edit-level:
   # File: alarm/tcaStatefulSetAlarm.yaml
   #
