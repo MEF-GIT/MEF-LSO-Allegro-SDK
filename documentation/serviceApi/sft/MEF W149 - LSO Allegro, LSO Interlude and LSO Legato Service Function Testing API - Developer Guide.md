@@ -13,14 +13,14 @@ img
 <div style="font-weight:bold; font-size:33pt; font-family: Sansation;  text-align:center">
 Working Draft
 </br>
-MEF W149 v0.1
+MEF W149 v0.2
 </br>
 </br>
 LSO Allegro, LSO Interlude and LSO Legato Service Function Testing API - Developer Guide
 </br>
 <p style="color:red;font-weight:bold; font-size:18pt">This draft represents MEF work in progress and is subject to change.</p>
 </br>
-December 2024
+June 2025
 <p style="color:red;font-weight:bold; font-size:18pt">EXPORT CONTROL: This document contains technical data. The download, export, re-export or disclosure of the technical data contained in this document may be restricted by applicable U.S. or foreign export laws, regulations and rules and/or applicable U.S. or foreign sanctions ("Export Control Laws or Sanctions"). You agree that you are solely responsible for determining whether any Export Control Laws or Sanctions may apply to your download, export, reexport or disclosure of this document, and for obtaining (if available) any required U.S. or foreign export or reexport licenses and/or other required authorizations.</p>
 </div>
 
@@ -28,7 +28,7 @@ December 2024
 
 **Disclaimer**
 
-© MEF Forum 2024. All Rights Reserved.
+© MEF Forum 2025. All Rights Reserved.
 
 The information in this publication is freely available for reproduction and
 use by any recipient and is believed to be accurate as of its publication date.
@@ -68,7 +68,7 @@ endorse or promote any specific products or services.
 
 **Copyright**
 
-© MEF Forum 204. Any reproduction of this document, or any portion thereof,
+© MEF Forum 2025. Any reproduction of this document, or any portion thereof,
 shall contain the following statement: "Reproduced with permission of MEF
 Forum." No user of this document is authorized to modify any of the information
 contained herein.
@@ -97,136 +97,145 @@ contained herein.
   - [5.4. Model structure and validation](#54-model-structure-and-validation)
   - [5.5. Security Considerations](#55-security-considerations)
 - [6. API Interactions and Flows](#6-api-interactions-and-flows)
-  - [6.1. Use case 1: Create a Test Profile](#61-use-case-1-create-a-test-profile)
+  - [6.1. Use Case 1: Create a Test Profile](#61-use-case-1-create-a-test-profile)
     - [6.1.1. Interaction flow](#611-interaction-flow)
     - [6.1.2. Create Test Profile Request](#612-create-test-profile-request)
     - [6.1.3. Create Test Profile Response](#613-create-test-profile-response)
-    - [6.1.4. Test Profile State Machine](#614-test-profile-state-machine)
-    - [6.1.5. Test Profile Lifecycle Flow](#615-test-profile-lifecycle-flow)
+    - [6.1.4. Test Profile Lifecycle Flow](#614-test-profile-lifecycle-flow)
   - [6.2. Use Case 2: Retrieve List of Test Profiles](#62-use-case-2-retrieve-list-of-test-profiles)
+    - [6.2.1. Response pagination](#621-response-pagination)
   - [6.3. Use Case 3: Retrieve Test Profile by Profile Identifier](#63-use-case-3-retrieve-test-profile-by-profile-identifier)
   - [6.4. Use Case 4: Modify Test Profile](#64-use-case-4-modify-test-profile)
   - [6.5. Use Case 5: Delete Test Profile](#65-use-case-5-delete-test-profile)
-  - [6.6. Use Case 7: Create a Test Job](#66-use-case-7-create-a-test-job)
+  - [6.6. Use Case 6: Create a Test Job](#66-use-case-6-create-a-test-job)
     - [6.6.1. Interaction flow](#661-interaction-flow)
     - [6.6.2. Create Test Job Request with Test Profile](#662-create-test-job-request-with-test-profile)
     - [6.6.3. Create Test Job with Test Profile Response](#663-create-test-job-with-test-profile-response)
     - [6.6.4. Create Test Job without Test Profile Request](#664-create-test-job-without-test-profile-request)
-    - [6.6.. Create Test Job without Test Profile Response](#66-create-test-job-without-test-profile-response)
+    - [6.6.5. Create Test Job without Test Profile Response](#665-create-test-job-without-test-profile-response)
     - [6.6.6. Test Job State Machine](#666-test-job-state-machine)
-  - [6.8. Use Case 8: Retrieve List of Test Jobs](#68-use-case-8-retrieve-list-of-test-jobs)
-  - [6.9. Use Case 9: Retrieve Test Job by Job Identifier](#69-use-case-9-retrieve-test-job-by-job-identifier)
-  - [6.10. Use Case 10: Modify Test Job](#610-use-case-10-modify-test-job)
+  - [6.8. Use Case 7: Retrieve List of Test Jobs](#68-use-case-7-retrieve-list-of-test-jobs)
+  - [6.9. Use Case 8: Retrieve Test Job by Job Identifier](#69-use-case-8-retrieve-test-job-by-job-identifier)
+  - [6.10. Use Case 9: Modify Test Job](#610-use-case-9-modify-test-job)
     - [6.9.1. Interaction flow](#691-interaction-flow)
     - [6.9.2. Modify Test Job Request](#692-modify-test-job-request)
     - [6.9.3. Modify Test Job Response](#693-modify-test-job-response)
     - [6.9.4. Modify Test Job State Machine](#694-modify-test-job-state-machine)
-  - [6.11. Use Case 11: Retrieve Modify Test Job List](#611-use-case-11-retrieve-modify-test-job-list)
-  - [6.12. Use Case 12: Retrieve Modify Test Job by Identifier](#612-use-case-12-retrieve-modify-test-job-by-identifier)
-  - [6.13. Use Case 13: Cancel Test Job](#613-use-case-13-cancel-test-job)
+  - [6.11. Use Case 10: Retrieve Modify Test Job List](#611-use-case-10-retrieve-modify-test-job-list)
+  - [6.12. Use Case 11: Retrieve Modify Test Job by Identifier](#612-use-case-11-retrieve-modify-test-job-by-identifier)
+  - [6.13. Use Case 12: Cancel Test Job](#613-use-case-12-cancel-test-job)
     - [6.13.1. Interaction flow](#6131-interaction-flow)
     - [6.13.2. Cancel Test Job Request](#6132-cancel-test-job-request)
     - [6.13.3. Cancel Test Job Response](#6133-cancel-test-job-response)
     - [6.13.4. Cancel Test Job State Machine](#6134-cancel-test-job-state-machine)
-  - [6.14. Use Case 14: Retrieve Cancel Test Job List](#614-use-case-14-retrieve-cancel-test-job-list)
-  - [6.15. Use Case 15: Retrieve Cancel Test Job by Identifier](#615-use-case-15-retrieve-cancel-test-job-by-identifier)
-  - [6.16. Use Case 16: Suspend Test Job](#616-use-case-16-suspend-test-job)
+  - [6.14. Use Case 13: Retrieve Cancel Test Job List](#614-use-case-13-retrieve-cancel-test-job-list)
+  - [6.15. Use Case 14: Retrieve Cancel Test Job by Identifier](#615-use-case-14-retrieve-cancel-test-job-by-identifier)
+  - [6.16. Use Case 15: Suspend Test Job](#616-use-case-15-suspend-test-job)
     - [6.16.1. Interaction flow](#6161-interaction-flow)
     - [6.16.2. Suspend Test Job Request](#6162-suspend-test-job-request)
     - [6.16.3. Suspend Test Job Response](#6163-suspend-test-job-response)
     - [6.16.4. Suspend Test Job State Machine](#6164-suspend-test-job-state-machine)
-  - [6.17. Use Case 17: Retrieve Suspend Test Job List](#617-use-case-17-retrieve-suspend-test-job-list)
-  - [6.18. Use Case 18: Retrieve Suspend Test Job by Identifier](#618-use-case-18-retrieve-suspend-test-job-by-identifier)
-  - [6.19. Use Case 19: Resume Test Job](#619-use-case-19-resume-test-job)
+  - [6.17. Use Case 16: Retrieve Suspend Test Job List](#617-use-case-16-retrieve-suspend-test-job-list)
+  - [6.18. Use Case 17: Retrieve Suspend Test Job by Identifier](#618-use-case-17-retrieve-suspend-test-job-by-identifier)
+  - [6.19. Use Case 18: Resume Test Job](#619-use-case-18-resume-test-job)
     - [6.19.1. Interaction flow](#6191-interaction-flow)
     - [6.19.2. Resume Test Job Request](#6192-resume-test-job-request)
     - [6.19.3. Resume Test Job Response](#6193-resume-test-job-response)
     - [6.19.4. Resume Test Job State Machine](#6194-resume-test-job-state-machine)
-  - [6.20. Use Case 20: Retrieve Resume Test Job List](#620-use-case-20-retrieve-resume-test-job-list)
-  - [6.21. Use Case 21: Retrieve Resume Test Job by Identifier](#621-use-case-21-retrieve-resume-test-job-by-identifier)
-  - [6.22. Use Case 22: Register for Notifications](#622-use-case-22-register-for-notifications)
-  - [6.23. Use Case 23: Send Notification](#623-use-case-23-send-notification)
-  - [6.24. Use Case 24: Unregister for Notifications](#624-use-case-24-unregister-for-notifications)
+  - [6.20. Use Case 19: Retrieve Resume Test Job List](#620-use-case-19-retrieve-resume-test-job-list)
+  - [6.21. Use Case 20: Retrieve Resume Test Job by Identifier](#621-use-case-20-retrieve-resume-test-job-by-identifier)
+  - [6.22. Use Case 21: Retrieve Test Result List](#622-use-case-21-retrieve-test-result-list)
+  - [6.23. Use Case 22: Retrieve Test Result by Test Result Identifier](#623-use-case-22-retrieve-test-result-by-test-result-identifier)
+  - [6.24. Use Case 23: Register for Notifications](#624-use-case-23-register-for-notifications)
+  - [6.25. Use Case 24: Send Notification](#625-use-case-24-send-notification)
+  - [6.26. Use Case 25: Unregister for Notifications](#626-use-case-25-unregister-for-notifications)
 - [7. API Details](#7-api-details)
   - [7.1. API patterns](#71-api-patterns)
-    - [7.1.1. Indicating errors](#711-indicating-errors)
-      - [7.1.1.1. Type Error](#7111-type-error)
-      - [7.1.1.2. Type Error400](#7112-type-error400)
-      - [7.1.1.3. `enum` Error400Code](#7113-enum-error400code)
-      - [7.1.1.4. Type Error401](#7114-type-error401)
-      - [7.1.1.5. `enum` Error401Code](#7115-enum-error401code)
-      - [7.1.1.6. Type Error403](#7116-type-error403)
-      - [7.1.1.7. `enum` Error403Code](#7117-enum-error403code)
-      - [7.1.1.8. Type Error404](#7118-type-error404)
-      - [7.1.1.9. Type Error408](#7119-type-error408)
-      - [7.1.1.10. Type Error409](#71110-type-error409)
-      - [7.1.1.11. Type Error422](#71111-type-error422)
-      - [7.1.1.12. `enum` Error422Code](#71112-enum-error422code)
-      - [7.1.1.13. Type Error500](#71113-type-error500)
-      - [7.1.1.14. Type Error501](#71114-type-error501)
-    - [7.1.2. Response pagination](#712-response-pagination)
-  - [7.2. API Data model](#72-api-data-model)
-    - [7.2.1 Test Job](#721-test-job)
-      - [7.2.1.1 Type TestJob](#7211-type-testjob)
-      - [7.2.1.2 Type TestJob\_Common](#7212-type-testjob_common)
-      - [7.2.1.3 Type TestJob\_Create](#7213-type-testjob_create)
-      - [7.2.1.4 Type TestJob\_Find](#7214-type-testjob_find)
-      - [7.2.1.5 Type TestJobProcessResponse](#7215-type-testjobprocessresponse)
-      - [7.2.1.6 Type TestJobRef](#7216-type-testjobref)
-      - [7.2.1.7 `enum` TestJobStateType](#7217-enum-testjobstatetype)
-      - [7.2.1.8 `enum` TestJobProcessStateType](#7218-enum-testjobprocessstatetype)
-      - [7.2.1.9 Type TestMeasureAttributes](#7219-type-testmeasureattributes)
-      - [7.2.1.10 Type CancelTestJob](#72110-type-canceltestjob)
-      - [7.2.1.11 Type CancelTestJob\_Common](#72111-type-canceltestjob_common)
-      - [7.2.1.12 Type CancelTestJob\_Create](#72112-type-canceltestjob_create)
-      - [7.2.1.13 Type CancelTestJob\_Find](#72113-type-canceltestjob_find)
-      - [7.2.1.14 Type ModifyTestJob](#72114-type-modifytestjob)
-      - [7.2.1.15 Type ModifyTestJob\_Common](#72115-type-modifytestjob_common)
-      - [7.2.1.16 Type ModifyTestJob\_Create](#72116-type-modifytestjob_create)
-      - [7.2.1.17 Type ModifyTestJob\_Find](#72117-type-modifytestjob_find)
-      - [7.2.1.18 Type ResumeTestJob](#72118-type-resumetestjob)
-      - [7.2.1.19 Type ResumeTestJob\_Common](#72119-type-resumetestjob_common)
-      - [7.2.1.20 Type ResumeTestJob\_Create](#72120-type-resumetestjob_create)
-      - [7.2.1.21 Type ResumeTestJob\_Find](#72121-type-resumetestjob_find)
-      - [7.2.1.22 Type SuspendTestJob](#72122-type-suspendtestjob)
-      - [7.2.1.23 Type SuspendTestJob\_Common](#72123-type-suspendtestjob_common)
-      - [7.2.1.24 Type SuspendTestJob\_Create](#72124-type-suspendtestjob_create)
-      - [7.2.1.25 Type SuspendTestJob\_Find](#72125-type-suspendtestjob_find)
-      - [7.2.1.26 `enum` RecurrencePeriodType](#72126-enum-recurrenceperiodtype)
-      - [7.2.1.27 Type RelatedContact](#72127-type-relatedcontact)
-      - [7.2.1.28 Type RelatedTestProfileRef](#72128-type-relatedtestprofileref)
-      - [7.2.1.29 Type ServiceRef](#72129-type-serviceref)
-      - [7.2.1.30 Type ServiceSpecificationRef](#72130-type-servicespecificationref)
-      - [7.2.1.31 Type ServiceSpecificTestProfileAttributes](#72131-type-servicespecifictestprofileattributes)
-    - [7.2.2 Test Profile](#722-test-profile)
-      - [7.2.2.1 Type TestProfile](#7221-type-testprofile)
-      - [7.2.2.2 Type TestProfile\_Common](#7222-type-testprofile_common)
-      - [7.2.2.3 Type TestProfile\_Create](#7223-type-testprofile_create)
-      - [7.2.2.4 Type TestProfile\_Find](#7224-type-testprofile_find)
-      - [7.2.2.5 Type TestProfile\_Modify](#7225-type-testprofile_modify)
-      - [7.2.2.6 `enum` TestProfileLifecycleStatusType](#7226-enum-testprofilelifecyclestatustype)
-      - [7.2.2.7 `enum` TestProfileStateType](#7227-enum-testprofilestatetype)
-      - [7.2.2.8 Type TestProfileRef](#7228-type-testprofileref)
-      - [7.2.2.9 Type TestProfileRefOrValue](#7229-type-testprofilereforvalue)
-      - [7.2.2.10 `enum` TestProfileRelationshipRole](#72210-enum-testprofilerelationshiprole)
-      - [7.2.2.11 `enum` TestProfileRelationshipType](#72211-enum-testprofilerelationshiptype)
-      - [7.2.2.12 `enum` TestProfileRelationshipType](#72212-enum-testprofilerelationshiptype)
-      - [7.2.2.13 Type TestProfileValue](#72213-type-testprofilevalue)
-    - [7.2.3. Notification registration](#723-notification-registration)
-      - [7.2.3.1. Type EventSubscriptionInput](#7231-type-eventsubscriptioninput)
-      - [7.2.3.2. Type EventSubscription](#7232-type-eventsubscription)
-  - [7.3. Notification API Data model](#73-notification-api-data-model)
-    - [7.3.1. Type Event](#731-type-event)
-    - [7.3.2. Type TestJobEvent](#732-type-testjobevent)
-    - [7.3.3. Type TestJobEventPayload](#733-type-testjobeventpayload)
-    - [7.3.4. `enum` TestJobEventType](#734-enum-testjobeventtype)
-    - [7.3.5. Type TestJobProcessEvent](#735-type-testjobprocessevent)
-    - [7.3.6. Type TestJobProcessEventPayload](#736-type-testjobprocesseventpayload)
-    - [7.3.7. `enum` TestJobProcessEventType](#737-enum-testjobprocesseventtype)
-    - [7.3.8. Type TestProfileEvent](#738-type-testprofileevent)
-    - [7.3.9. Type TestProfileEventPayload](#739-type-testprofileeventpayload)
-    - [7.3.10. `enum` TestProfileEventType](#7310-enum-testprofileeventtype)
+    - [7.2. Indicating errors](#72-indicating-errors)
+      - [7.2.1. Type Error](#721-type-error)
+      - [7.2.2. Type Error400](#722-type-error400)
+      - [7.2.3. `enum` Error400Code](#723-enum-error400code)
+      - [7.2.4. Type Error401](#724-type-error401)
+      - [7.2.5. `enum` Error401Code](#725-enum-error401code)
+      - [7.2.6. Type Error403](#726-type-error403)
+      - [7.2.7. `enum` Error403Code](#727-enum-error403code)
+      - [7.2.8. Type Error404](#728-type-error404)
+      - [7.2.9. Type Error409](#729-type-error409)
+      - [7.2.10. Type Error422](#7210-type-error422)
+      - [7.2.11. `enum` Error422Code](#7211-enum-error422code)
+      - [7.2.12. Type Error500](#7212-type-error500)
+      - [7.2.13. Type Error501](#7213-type-error501)
+      - [7.2.14. Type TerminationError](#7214-type-terminationerror)
+  - [7.3. API Data model](#73-api-data-model)
+    - [7.3.1 Test Job](#731-test-job)
+      - [7.3.1.1 Type TestJob](#7311-type-testjob)
+      - [7.3.1.2 Type TestJob\_Common](#7312-type-testjob_common)
+      - [7.3.1.3 Type TestJob\_Find](#7313-type-testjob_find)
+      - [7.3.1.4 Type TestJobRef](#7314-type-testjobref)
+      - [7.3.1.5 `enum` TestJobStateType](#7315-enum-testjobstatetype)
+      - [7.3.1.6 Type ServiceSpecificTestJobConfiguration](#7316-type-servicespecifictestjobconfiguration)
+      - [7.3.1.7 Type RelatedContact](#7317-type-relatedcontact)
+      - [7.3.1.8 Type ServiceRef](#7318-type-serviceref)
+      - [7.3.1.9 Type ServiceSpecificationRef](#7319-type-servicespecificationref)
+      - [7.3.1.10 Type Duration](#73110-type-duration)
+      - [7.3.1.11 `enum` TimeUnit](#73111-enum-timeunit)
+    - [7.3.2 Test Job Process](#732-test-job-process)
+      - [7.3.2.1 `enum` TestJobProcessStateType](#7321-enum-testjobprocessstatetype)
+      - [7.3.2.2 Type CancelTestJob](#7322-type-canceltestjob)
+      - [7.3.2.3 Type CancelTestJob\_Common](#7323-type-canceltestjob_common)
+      - [7.3.2.4 Type ModifyTestJob](#7324-type-modifytestjob)
+      - [7.3.2.5 Type ModifyTestJob\_Common](#7325-type-modifytestjob_common)
+      - [7.3.2.6 Type ResumeTestJob](#7326-type-resumetestjob)
+      - [7.3.2.7 Type ResumeTestJob\_Common](#7327-type-resumetestjob_common)
+      - [7.3.2.8 Type SuspendTestJob](#7328-type-suspendtestjob)
+      - [7.3.2.9 Type SuspendTestJob\_Common](#7329-type-suspendtestjob_common)
+    - [7.3.3 Test Profile](#733-test-profile)
+      - [7.3.3.1 Type TestProfile](#7331-type-testprofile)
+      - [7.3.3.2 Type TestProfile\_Common](#7332-type-testprofile_common)
+      - [7.3.3.3 Type TestProfile\_Create](#7333-type-testprofile_create)
+      - [7.3.3.4 Type TestProfile\_Modify](#7334-type-testprofile_modify)
+      - [7.3.3.5 `enum` TestProfileLifecycleStatusType](#7335-enum-testprofilelifecyclestatustype)
+      - [7.3.3.6 Type TestProfileRef](#7336-type-testprofileref)
+      - [7.3.3.7 Type TestProfileRefOrValue](#7337-type-testprofilereforvalue)
+      - [7.3.3.8 `enum` TestProfileRelationshipRole](#7338-enum-testprofilerelationshiprole)
+      - [7.3.3.9 Type TestProfileRelationship](#7339-type-testprofilerelationship)
+      - [7.3.3.10 `enum` TestProfileLifecycleStateType](#73310-enum-testprofilelifecyclestatetype)
+      - [7.3.3.11 Type TestProfileValue](#73311-type-testprofilevalue)
+      - [7.3.3.12 Type ServiceSpecificTestProfileConfiguration](#73312-type-servicespecifictestprofileconfiguration)
+    - [7.3.4 Test Result](#734-test-result)
+      - [7.3.4.1 Type TestResult](#7341-type-testresult)
+      - [7.3.4.2 Type TestResult\_Common](#7342-type-testresult_common)
+      - [7.3.4.3 Type ServiceSpecificTestResultConfguration](#7343-type-servicespecifictestresultconfguration)
+    - [7.3.5. Notification registration](#735-notification-registration)
+      - [7.3.5.1. Type EventSubscriptionInput](#7351-type-eventsubscriptioninput)
+      - [7.3.5.2. Type EventSubscription](#7352-type-eventsubscription)
+  - [7.4 Notification API Data model](#74-notification-api-data-model)
+  - [7.4.1 Test Job Notification API Data model](#741-test-job-notification-api-data-model)
+    - [7.4.1.1 Type Event](#7411-type-event)
+    - [7.4.1.2 Type CancelTestJobProcessStateChangeEvent](#7412-type-canceltestjobprocessstatechangeevent)
+    - [7.4.1.3 Type ModifyTestJobProcessStateChangeEvent](#7413-type-modifytestjobprocessstatechangeevent)
+    - [7.4.1.. Type ResumeTestJobProcessStateChangeEvent](#741-type-resumetestjobprocessstatechangeevent)
+    - [7.4.1.. Type SuspendTestJobProcessStateChangeEvent](#741-type-suspendtestjobprocessstatechangeevent)
+    - [7.4.1.6 Type TestJobAttributeValueChangeEvent](#7416-type-testjobattributevaluechangeevent)
+    - [7.4.1.7 Type TestJobCreateEvent](#7417-type-testjobcreateevent)
+    - [7.4.1.8 Type TestJobEventPayload](#7418-type-testjobeventpayload)
+    - [7.4.1.9 `enum` TestJobProcessStateType](#7419-enum-testjobprocessstatetype)
+    - [7.4.1.10 Type TestJobStateChangeEvent](#74110-type-testjobstatechangeevent)
+    - [7.4.1.11 Type TestJobStateChangeEventPayload](#74111-type-testjobstatechangeeventpayload)
+    - [7.4.1.12 Type TestJobProcessEventPayload](#74112-type-testjobprocesseventpayload)
+  - [7.4.2 Test Profile Notification API Data model](#742-test-profile-notification-api-data-model)
+    - [7.4.2.1 Type TestProfileAttributeValueChangeEvent](#7421-type-testprofileattributevaluechangeevent)
+    - [7.4.2.2 Type TestProfileCreateEvent](#7422-type-testprofilecreateevent)
+    - [7.4.2.3 Type TestProfileDeleteEvent](#7423-type-testprofiledeleteevent)
+    - [7.4.2.4 Type TestProfileEventPayload](#7424-type-testprofileeventpayload)
+    - [7.4.2.5 Type TestProfileLifecycleStateChangeEvent](#7425-type-testprofilelifecyclestatechangeevent)
+    - [7.4.2.6 Type TestProfileLifecycleStateChangeEventPayload](#7426-type-testprofilelifecyclestatechangeeventpayload)
+  - [7.4.3 Test Result Notification API Data model](#743-test-result-notification-api-data-model)
+    - [7.4.3.1 Type TestResultCreateEvent](#7431-type-testresultcreateevent)
+    - [7.4.3.2 Type TestResultEventPayload](#7432-type-testresulteventpayload)
 - [8. References](#8-references)
+  - [reserved.](#reserved)
+
 <!-- /code_chunk_output -->
 
 <div style="page-break-after: always;"></div>
@@ -252,7 +261,7 @@ the Service Orchestration Function at the LSO Allegro, LSO Interlude and LSO
 Legato Interface Reference Points (IRPs), for which requirements and use cases
 are defined in MEF W136.1 [[MEF W136.1](#8-references)]. The requirements and use 
 cases are the same for all IRPs. This standard consists of this document and 
-complementary API definitions for Service Funtion Testing Management and Service
+complementary API definitions for Service Function Testing Management and Service
 Function Testing Notifications.
 
 This standard normatively incorporates the following files by reference as if
@@ -260,18 +269,18 @@ they were part of this document from the GitHub repository:
 
 [MEF-LSO-Allegro-SDK](https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK)
 
-- `serviceApi/sft/serviceFunctionTesting.api.yaml`
-- `serviceApi/sft/serviceFunctionTestingNotification.api.yaml`
+- `serviceApi/sft/serviceFunctionTest.api.yaml`
+- `serviceApi/sft/serviceFunctionTestNotification.api.yaml`
 
 [MEF-LSO-Interlude-SDK](https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK)
 
-- `serviceApi/sft/serviceFunctionTesting.api.yaml`
-- `serviceApi/sft/serviceFunctionTestingNotification.api.yaml`
+- `serviceApi/sft/serviceFunctionTest.api.yaml`
+- `serviceApi/sft/serviceFunctionTestNotification.api.yaml`
 
 [MEF-LSO-Legato-SDK](https://github.com/MEF-GIT/MEF-LSO-Legato-SDK)
 
-- `serviceApi/sft/serviceFunctionTesting.api.yaml`
-- `serviceApi/sft/serviceFunctionTestingNotification.api.yaml`
+- `serviceApi/sft/serviceFunctionTest.api.yaml`
+- `serviceApi/sft/serviceFunctionTestNotification.api.yaml`
 
 The Service Function Testing API is defined using OpenAPI 3.0 
 [[OAS-V3](#8-references)]
@@ -297,16 +306,16 @@ this document by reference and are not repeated in the table below:
 |-----------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | API Endpoint                | The endpoint of a communication channel (the complete URL of an API Resource) to which the HTTP-REST requests are addressed to operate on the _API Resource_.           																																								        | [rapidapi.com](https://rapidapi.com/blog/api-glossary/endpoint/)<br>This document  |
 | API Resource                | A REST Resource. In REST, the primary data representation is called Resource. In this document, _API Resource_ is defined as an OAS _SchemaObject_ with specified _API Endpoints_.																																								| [restfulapi.net](https://restfulapi.net/resource-naming/)<br>This document         |
-| Bundled             				    | Two or more Test Profiles are related together in a bun-dle and are given an order in which they are run.	                                                                                                                                                                                                                                    | MEF W136.1                                                                         |
+| Bundled             				    | Two or more Test Profiles are related together in a bundle and are given an order in which they are run.	                                                                                                                                                                                                                                    | MEF W136.1                                                                         |
 | Dependency          				    | The related Test Profile is dependent on the success or failure of another Test Profile.  As an example if test 1 passes, then test 2 is performed.  If test 1 fails, then test 2 is not performed.	                                                                                                                                            | MEF W136.1                                                                         |
 | Notification                | A notification is a representation of an event that is exchanged between interested parties. An event is a significant occurrence or change in system state that is important from the perspective of system administration.  																													| MEF W136.1 																		 |
 | OpenAPI                     | The OpenAPI 3.0 Specification, formerly known as the Swagger specification is an API description format for REST APIs.                                                           																																								| [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3)                           |
 | Operation                   | An interaction between the Server and Client, potentially involving multiple back-and-forth transactions.                                                                              																																							| This document                                                                      |
 | REST API							             | Representational State Transfer. REST provides a set of architectural constraints that, when applied as a whole, emphasizes scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.	| [REST API](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) |
 | SchemaObject                | The construct that allows the definition of input and output data types. These types can represent object classes, as well as primitives and array specifications.              																																								| [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3#schema-object)             |
-| Service Function Testing		  | The verification of the operation or definition of the Service Under Test.  Includes Service Activation and testing performed on in-service Services for mainte-nance purposes.	                                                                                                                                                                | MEF W136.1                                                                         |
+| Service Function Testing		  | The verification of the operation or definition of the Service Under Test.  Includes Service Activation and testing performed on in-service Services for maintenance purposes.	                                                                                                                                                                | MEF W136.1                                                                         |
 | Service Identifier				      | The unique identifier for a specific Service.	                                                                                                                                                                                                                                                                                                | MEF W136.1                                                                         |
-| Service Specification				   | The specification of a set of attributes that define a Ser-vice type.  These are defined in MEF 100, MEF 101, and MEF 102.	                                                                                                                                                                                                                    | MEF W136.1                                                                         |
+| Service Specification				   | The specification of a set of attributes that define a Service type.	                                                                                                                                                                                                                    | MEF W136.1                                                                         |
 | Test Job          				      | A definition of SFT for a specific Service Identifier.	                                                                                                                                                                                                                                                                                        | MEF W136.1                                                                         |
 | Test Profile         				   | Detailed specification that includes the Test Job attributes and Service Specifications that are specified to be tested by this Test Profile.	                                                                                                                                                                                                | MEF W136.1                                                                         |
 
@@ -317,10 +326,10 @@ this document by reference and are not repeated in the table below:
 |----------|----------------------------------------------------------------------------------------------|----------------------------------------------------------|
 | API      | Application Programming Interface. In this document, API is used synonymously with REST API. | This document                                            |
 | BUS      | Business Applications                                                                        | MEF 55.1                                                 |
-| CUS      | Customer Application Coordinator															                                              | MEF 55.1                                                 |
+| CUS      | Customer Application Coordinator															  | MEF 55.1                                                 |
 | IRP      | Interface Reference Point                                                                    | This document                                            |
 | OAS      | OpenAPI Specification                                                                        | [openapis.org](https://www.openapis.org/faq/style-guide) |
-| SFT	     | Service Function Testing																		                                                   | MEF W136.1												                                   |
+| SFT	   | Service Function Testing																	  | MEF W136.                                                |
 | SOF      | Service Orchestration Functionality                                                          | MEF 55.1                                                 |
 
 **Table 3. Abbreviations**
@@ -372,18 +381,6 @@ highlighted.
 
 **Figure 1. The LSO Reference Architecture**
 
-**_Note_**: The use cases and business requirements in this document assume a
-two-actor relationship based on the set of actors in the LSO architecture. The
-names of the relationships are specific to the Interface Reference Point. For 
-both Allegro and Interlude there is a Buyer and Seller. For Allegro the Buyer 
-is the Customer and the Seller is the Service Provider. In Interlude the Buyer
-is the Service Provider and the Seller is the Partner. In the case of the 
-Legato IRP, given this is within a single Service Provider or Partner, the
-relationship is between Client and Server, where the Business Application (BA) 
-is the Client, and the Service Orchestration Functionality (SOF) is the Server.
-Considering this duality, actors in the document are referred to as Buyer/Client 
-and Seller/Server. 
-
 ## 4.1. Description
 The scope of this API and Developer Guide covers
 - Service Function Testing
@@ -415,7 +412,7 @@ This standard is based on TMF Open API (v4.1.0) for Service Test Management
 - Code samples are formatted using code blocks. When notation `<< some text >>`
   is used in the payload sample it indicates that a comment is provided instead
   of an example value, and it might not comply with the OpenAPI definition.
-- Model definitions are formatted as in-line code (e.g. `PerformanceJob`).
+- Model definitions are formatted as in-line code (e.g. `TestJob`).
 - In UML diagrams the default cardinality of associations is `0..1`. Other
   cardinality markers are compliant with the UML standard.
 - In the API details tables and UML diagrams required attributes are marked
@@ -461,10 +458,11 @@ or compliant with MEF.
 
 Figure 3 presents the relationship between the Service Function Testing API 
 entities and the SFT Specification model. 
-The `serviceSpecificTestProfileAttributes` serves as an extension point for 
+The `serviceSpecificTestProfileConfiguration` serves as an extension point for 
 configuring service-specific parameters. On the other hand, the 
-`testMeasureAttributes` acts as an extension point for capturing and representing
- the outcome of Service Function Testing.
+`serviceSpecificTestJobConfiguration` acts as an extension point for configuring Test Measures. 
+Finally, `serviceSpecificTestJobResultConfiguration` provides an extension point
+for capturing and representing the outcome of Service Function Testing.
 
 ![Figure 3: Service specification for Allegro, Interlude, Legato](serviceTest/media/serviceSpecSchema.png)
 
@@ -495,7 +493,7 @@ and do not impact end-to-end flow
 - The BUS system initiates new Test Job by sending a request containing `TestJob` entity to the SOF system.
 - The BUS system can start Test Job with or without `TestProfile` which is a template containing 
 common configuration shared by multiple `TestJob` entities.
-- During creation of new Test Job, the SOF internally uses the
+- During creation of new Test Job, the BUS uses the
   _Service Function Testing API_ to instantiate the `TestJob`
   - The SOF starts Test Job by creating a `TestJob` entity
     which may or may not contain a reference to the `TestProfile`.
@@ -504,7 +502,7 @@ common configuration shared by multiple `TestJob` entities.
   - (optional) The SOF reports the `TestJob` state changes.
   - On a scheduled date according to schedule definition, Test Job is started.
   - (optional) The SOF reports the `TestJob` state change.
-  - The BUS system retrieves `TestJob` containing `TestMeasureAttributes` through _Service 
+  - The BUS system retrieves `TestJob` containing `ServiceSpecificTestJobConfiguration` through _Service 
   Function Testing API_
 
 The same _Service Function Testing API_ is used by the BUS to create **new**
@@ -545,43 +543,45 @@ the endpoint mapping. Use cases are described extensively in
 
 **Base URL for Allegro**:
 
-`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/serviceFunctionTesting/v1/`
+`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/allegro/serviceFunctionTesting/v2/`
 
 **Base URL for Interlude**:
 
-`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/serviceFunctionTesting/v1/`
+`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/interlude/serviceFunctionTesting/v2/`
 
 **Base URL for Legato**:
 
-`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/serviceFunctionTesting/v1/`
+`https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/serviceFunctionTesting/v2/`
 
 The following API endpoints are implemented by the Seller/Server (SOF) and
 allow the Buyer/Client (SOF/CUS/BUS) to create, retrieve and modify
-`TestJob`and `TestProfile` instances. The endpoints and corresponding data model are defined in
-`serviceApi/sft/serviceFunctionTesting.api.yaml`.
+`TestJob` and `TestProfile` instances. The endpoints and corresponding data model are defined in
+`serviceApi/sft/serviceFunctionTest.api.yaml`.
 
 | API Endpoint                        | Description                                                                                              | MEF W136.1 Use Case Mapping |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------|
+| POST /testProfile                   | A request initiated by the Buyer/Client to create a Test Profile in the Seller/Server system.            | 1                           |
+| PATCH /testProfile/{{id}}           | A request initiated by the Buyer/Client to partially modify a Test Profile in the Seller/Server system.  | 2                           |
+| DELETE /testProfile/{{id}}          | A request initiated by the Buyer/Client to delte a Test Profile in the Seller/Server system.             | 3                           |
+| GET /testProfile                    | The Buyer/Client requests a list of Test Profiles based on a set of filter criteria.                     | 4                           |
+| GET /testProfile/{{id}}             | The Buyer/Client requests detailed information about a single Test Profile.                              | 5                           |
 | POST /testJob                       | A request initiated by the Buyer/Client to create a Test Job in the Seller/Server system.                | 6,7                         |
-| GET /testJob                        | The Buyer/Client requests a list of Test Jobs based on a set of filter criteria.                         | 13                          |
-| GET /testJob/{{id}}                 | The Buyer/Client requests detailed information about a single Test Job.                                  | 14                          |
-| POST /modifyTestJob                 | A request initiated by the Buyer/Client to Modify a Test Job in the Seller/Server system.                | 11,12                       |
-| GET /modifyTestJob                  | The Buyer/Client requests a list of Modify Test Jobs based on a set of filter criteria.                  | 11,12                       |
-| GET /modifyTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Modify Test Job.                           | 11,12                       |
-| POST /cancelTestJob                 | A request initiated by the Buyer/Client to create a Cancel Test Job in the Seller/Server system.         | 10                          |
-| GET /cancelTestJob                  | The Buyer/Client requests a list of Cancel Test Jobs based on a set of filter criteria.                  | 10                          |
-| GET /cancelTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Cancel Test Job.                           | 10                          |
-| POST /suspendTestJob                | A request initiated by the Buyer/Client to create a Suspend Test Job in the Seller/Server system.        | 8                           |
-| GET /suspendTestJob                 | The Buyer/Client requests a list of Suspend Test Jobs based on a set of filter criteria.                 | 8                           |
-| GET /suspendTestJob/{{id}}          | The Buyer/Client requests detailed information about a single Suspend Test Job.                          | 8                           |
-| POST /resumeTestJob                 | A request initiated by the Buyer/Client to create a Resume Test Job in the Seller/Server system.         | 9                           |
-| GET /resumeTestJob                  | The Buyer/Client requests a list of Resume Test Jobs based on a set of filter criteria.                  | 9                           |
-| GET /resumeTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Resume Test Job.                           | 9                           |
-| POST /testProfile                   | A request initiated by the Administrator to create a Test Profile in the Seller/Server system.           | 1                           |
-| GET /testProfile                    | The Administrator or Buyer/Client requests a list of Test Profiles based on a set of filter criteria.    | 4                           |
-| GET /testProfile/{{id}}             | The Administrator or Buyer/Client requests detailed information about a single Test Profile.             | 5                           |
-| PATCH /testProfile/{{id}}           | A request initiated by the Administrator to partially modify a Test Profile in the Seller/Server system. | 2                           |
-| DELETE /testProfile/{{id}}          | A request initiated by the Administrator to delte a Test Profile in the Seller/Server system.            | 3                           |
+| GET /testResult                     | The Buyer/Client requests a list of Test Results based on a set of filter criteria.                      | 8                           |
+| GET /testResult/{{id}}              | The Buyer/Client requests detailed information about a single Test Result.                               | 9                           |
+| POST /suspendTestJob                | A request initiated by the Buyer/Client to create a Suspend Test Job in the Seller/Server system.        | 10                          |
+| POST /resumeTestJob                 | A request initiated by the Buyer/Client to create a Resume Test Job in the Seller/Server system.         | 11                          |
+| POST /cancelTestJob                 | A request initiated by the Buyer/Client to create a Cancel Test Job in the Seller/Server system.         | 12                          |
+| POST /modifyTestJob                 | A request initiated by the Buyer/Client to Modify a Test Job in the Seller/Server system.                | 13,14                       |
+| GET /testJob                        | The Buyer/Client requests a list of Test Jobs based on a set of filter criteria.                         | 15                          |
+| GET /testJob/{{id}}                 | The Buyer/Client requests detailed information about a single Test Job.                                  | 16                          |
+| GET /suspendTestJob                 | The Buyer/Client requests a list of Suspend Test Jobs based on a set of filter criteria.                 | 20                          |
+| GET /suspendTestJob/{{id}}          | The Buyer/Client requests detailed information about a single Suspend Test Job.                          | 21                          |
+| GET /resumeTestJob                  | The Buyer/Client requests a list of Resume Test Jobs based on a set of filter criteria.                  | 22                          |
+| GET /resumeTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Resume Test Job.                           | 23                          |
+| GET /cancelTestJob                  | The Buyer/Client requests a list of Cancel Test Jobs based on a set of filter criteria.                  | 24                          |
+| GET /cancelTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Cancel Test Job.                           | 25                          |
+| GET /modifyTestJob                  | The Buyer/Client requests a list of Modify Test Jobs based on a set of filter criteria.                  | 26                          |
+| GET /modifyTestJob/{{id}}           | The Buyer/Client requests detailed information about a single Modify Test Job.                           | 27                          |
 
 **Table 4. Seller/Server (SOF) Service Function Testing mandatory API endpoints**
 
@@ -590,11 +590,11 @@ Table 4.
 
 API endpoints listed in Table 5 are optional and may be exposed by the SOF.
 
-| API Endpoint                      | Description                                                                                                                                                 | MEF W136.1 Use Case Mapping |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| POST /hub                         | The Buyer/Client or Administrator requests to subscribe to the Test Job and/or Test Profile Notifications.                                                  | 15                          |
-| GET /hub/{{id}}                   | The Buyer/Client or Administrator retrieves a specific `EventSubscription` from the SOF, that matches the _`id`_ value provided as _`path`_ parameter.      |                             |
-| DELETE /hub/{{id}}                | The Buyer/Client or Administrator requests to unsubscribe from the Test Job and/or Test Profile Notifications.                                              | 16                          |
+| API Endpoint                      | Description                                                                                                                           | MEF W136.1 Use Case Mapping |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| POST /hub                         | The Buyer/Client requests to subscribe to the Test Job and/or Test Profile Notifications.                                             | 17                          |
+| GET /hub/{{id}}                   | The Buyer/Client retrieves a specific `EventSubscription` from the SOF, that matches the _`id`_ value provided as _`path`_ parameter. |                             |
+| DELETE /hub/{{id}}                | The Buyer/Client requests to unsubscribe from the Test Job and/or Test Profile Notifications.                                         | 19                          |
 
 **Table 5. Seller/Server (SOF) Service Function Testing optional API endpoints**
 
@@ -616,17 +616,22 @@ API endpoints listed in Table 5 are optional and may be exposed by the SOF.
 
 The following API Endpoints are used by SOF to post notifications to registered
 CUS, BUS, or SOF listeners. The endpoints and corresponding data model are 
-defined in `serviceApi/sft/serviceFunctionTestingNotification.api.yaml`
+defined in `serviceApi/sft/serviceFunctionTestNotification.api.yaml`
 
 | API Endpoint                                               | Description                                                                                                       | MEF W136.1 Use Case Mapping |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------| --------------------------- |
-| POST /listener/testJobCreateEvent                   | A request initiated by the Seller/Server to notify Buyer/Client on `TestJob` instance creation.                          | 17                          |
-| POST /listener/testJobAttributeValueChangeEvent     | A request initiated by the Seller/Server to notify Buyer/Client on the `TestJob` instance attribute value change.        | 17                          |
-| POST /listener/testJobStateChangeEvent              | A request initiated by the Seller/Server to notify Buyer/Client on the `TestJob` instance state change.                  | 17                          |
-| POST /listener/testProfileCreateEvent               | A request initiated by the Seller/Server to notify Buyer/Client on `TestProfile` instance creation.                      | 17                          |
-| POST /listener/testProfileStateChangeEvent          | A request initiated by the Seller/Server to notify Buyer/Client on the `TestProfile` instance state change.              | 17                          |
-| POST /listener/testProfileAttributeValueChangeEvent | A request initiated by the Seller/Server to notify Buyer/Client on the `TestProfile` instance attribute value change.    | 17                          |
-| POST /listener/testProfileDeleteEvent               | A request initiated by the Seller/Server to notify Buyer/Client on `TestProfile` instance deletion.                      | 17                          |
+| POST /listener/testJobCreateEvent                   | A request initiated by the Seller/Server to notify Buyer/Client on `TestJob` instance creation.                          | 18                          |
+| POST /listener/testJobAttributeValueChangeEvent     | A request initiated by the Seller/Server to notify Buyer/Client on the `TestJob` instance attribute value change.        | 18                          |
+| POST /listener/testJobStateChangeEvent              | A request initiated by the Seller/Server to notify Buyer/Client on the `TestJob` instance state change.                  | 18                          |
+| POST /listener/cancelTestJobStateChangeEvent        | A request initiated by the Seller/Server to notify Buyer/Client on the `CancelTestJob` instance state change.            | 18                          |
+| POST /listener/modifyTestJobStateChangeEvent        | A request initiated by the Seller/Server to notify Buyer/Client on the `ModifyTestJob` instance state change.            | 18                          |
+| POST /listener/suspendTestJobStateChangeEvent       | A request initiated by the Seller/Server to notify Buyer/Client on the `SuspendTestJob` instance state change.           | 18                          |
+| POST /listener/resumeTestJobStateChangeEvent        | A request initiated by the Seller/Server to notify Buyer/Client on the `ResumeTestJob` instance state change.            | 18                          |
+| POST /listener/testProfileCreateEvent               | A request initiated by the Seller/Server to notify Buyer/Client on `TestProfile` instance creation.                      | 18                          |
+| POST /listener/testProfileAttributeValueChangeEvent | A request initiated by the Seller/Server to notify Buyer/Client on the `TestProfile` instance attribute value change.    | 18                          |
+| POST /listener/testProfileLifecycleStateChangeEvent          | A request initiated by the Seller/Server to notify Buyer/Client on the `TestProfile` instance state change.              | 18                          |
+| POST /listener/testProfileDeleteEvent               | A request initiated by the Seller/Server to notify Buyer/Client on `TestProfile` instance deletion.                      | 18                          |
+| POST /listener/testResultCreateEvent                | A request initiated by the Seller/Server to notify Buyer/Client on the `TestResult` instance creation.                   | 18                          |
 
 **Table 6. Buyer/Client (CUS, BUS, SOF) Service Function Testing API endpoints**
 
@@ -650,124 +655,179 @@ testing objectives and results. This allows for customization and adaptation
 to various testing requirements and desired data formats. This testing 
 configuration and result schemas are defined using JsonSchema (draft 7) format 
 [JSON Schema draft 7](#8-references) and can be integrated into the 
-`TestJob` using the TMF extension pattern.
+`TestJob`, `TestProfile` and `TestResult` using the TMF extension pattern.
 
 The extension hosting types in the API data model are:
 
-- `ServiceSpecificTestProfileAttributes` - this type is extended with Service
-   Specific attributes that define how a Test is performed for a given Test Specification.  
-- `TestMeasureAttribute` - this type is extended with specific Test Measure attributes schema
-  
+- `ServiceSpecificTestProfileConfiguration` - this type is extended with Service
+Specific Test Profile attributes that define how a test is performed for a given Test Specification.
+- `ServiceSpecificTestJobConfiguration` - this type is extended with Test Measure attributes schema
+- `ServiceSpecificTestResultConfguration` - this type is extended with Test Result attributes schema
+
 The `@type` attribute of those extension hosting types must be set to a value 
 that uniquely identifies the service testing configuration. A unique 
 identifier for MEF standard service schemas is in URN format and is assigned 
 by MEF. This identifier is provided as root schema `$id`.
-Use of non-MEF standard service testing configuration is allowed. In such 
+Use of Non-MEF standard service testing configuration is allowed. In such 
 a case the schema identifier must be agreed upon between the Buyer/Client and
 the Seller/Server.
 
-The example below shows a header of a schema, which describes the IP Ping
-Service Function Testing configuration, where `"$id": 
-urn:mef:lso:spec:legato:ip-ping-configuration:v0.0.1:all` is 
-the above-mentioned URN:
+The example below shows a header of a schema, which describes IP Service Function
+Testing Ping Configuration Schema, where
+`"$id": urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all` is the above-mentioned URN:
 
 ```yaml
-'$schema': http://json-schema.org/draft-07/schema#
-'$id': urn:mef:lso:spec:legato:ip-ping-configuration:v0.0.1:all
-title: MEF LSO Legato - IP Ping Service Function Testing Configuration
+$schema: http://json-schema.org/draft-07/schema#
+$id: urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all
+x-mef-target: ServiceSpecificTestJobConfiguration
+description: IP Service Function Testing Ping Configuration Schema
 ```
 
-Service Testing configuration payload is introduced in multiple SFT API entities through
-a `serviceSpecificTestProfileAttributes` attribute of type 
-`ServiceSpecificTestProfileAttributes` which is used as an extension point for 
+Service Testing configuration payload is introduced in SFT API entities through
+a `serviceSpecificTestProfileConfiguration` attribute of type 
+`ServiceSpecificTestProfileConfiguration`, which is used as an extension point for 
 configuration attributes.
 
-In terms of test job results, the appropriate payload is introduced via 
-`TestMeasureAttribute`. This entity is used as an extension point for Test Job specific
-output content.
+In terms of test measures and test results, the appropriate payloas are introduced via 
+`ServiceSpecificTestJobConfiguration` and `ServiceSpecificTestResultConfguration`
+respectivly.
 
 Implementations might choose to integrate selected Service Function Testing
 specifications to data model during development. In such a case an integrated 
-data model is built, and monitoring specifications are in an inheritance 
-relationship accordingly with either `ServicePayloadSpecificAttributes` or 
-`ResultPayload` as described in the OAS specification.
-This pattern is called **Static Binding**. The snippets below present an 
-example of a static binding of the envelope API with exemplary MEF monitoring 
-specifications, for both extension points.
+data model is built, and specifications are placed in an inheritance 
+relationship with either `ServiceSpecificTestProfileConfiguration`,
+`ServiceSpecificTestJobConfiguration` or 
+`ServiceSpecificTestResultConfguration` as described in the OAS specification.
+This pattern is reffered to as **Static Binding**. The snippets below present an 
+example of a static binding of the envelope API with exemplary MEF SFT 
+specifications, for each extension point.
 
 ```yaml
-ServiceSpecificTestProfileAttributes:
-    type: object
-    description: >-
-        ServiceSpecificTestProfileAttributes is used as an extension point for MEF
-        service specific test profile configuration. It includes
-        definition of service/entity and applicable test job
-        objectives. The `@type` attribute is used as a discriminator.
-    discriminator:
+    ServiceSpecificTestProfileConfiguration:
+      description: ServiceSpecificTestProfileConfiguration is used as an extension
+        point for  for schema that define how a test is performed for a given Test
+        Specification. The `@type` attribute is used as a discriminator.
+      discriminator:
         mapping:
-        urn:mef:lso:spec:legato:ip-ping-configuration:v0.0.1:all: '#/components/schemas/IpPingConfiguration'
-    propertyName: '@type'
-    properties:
-    '@type':
-        description: >-
-        The named type must be a subclass of ServiceSpecificTestProfileAttributes.
-        type: string
-    required:
-    - '@type'
+          urn:mef:lso:spec:legato:ip-ping-test-profile:v0.0.1:all: '#/components/schemas/IpPingTestProfile'
+        propertyName: '@type'
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestProfileConfiguration.
+          enum:
+          - urn:mef:lso:spec:legato:ip-ping-test-profile:v0.0.1:all
+          type: string
+      required:
+      - '@type'
+      type: object
 ```
 
 ```yaml
-IpPingConfiguration:
-  allOf:
-    - $ref: '#/components/schemas/ServiceSpecificTestProfileAttributes'
-    - type: object
-      description: IP Ping Service Function Testing Configuration Schema.
+    IpPingTestProfile:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestProfileConfiguration'
+      - description: IP Ping Test Profile Schema
+
 ```
 
 ```yaml
-TestMeasureAttributes:
-    type: object
-    description: >-
-        TestMeasureAttributes is used as an extension point for schema to be used that de-fines the 
-        Test Result attributes. The `@type` attribute is used as a discriminator.
-    discriminator:
+    ServiceSpecificTestJobConfiguration:
+      description: ServiceSpecificTestJobConfiguration is used as an extension point
+        for schema to be used that defines the Test Measure attributes. The `@type`
+        attribute is used as a discriminator.
+      discriminator:
         mapping:
-        urn:mef:lso:spec:legato:ip-ping-monitoring-results:v0.0.1:all: '#/components/schemas/IpPingResults'
-    propertyName: '@type'
-    properties:
-    '@type':
-        description: >-
-        The named type must be a subclass of TestMeasureAttributes.
-        type: string
-    required:
-    - '@type'
+          urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all: '#/components/schemas/PingConfiguration'
+          urn:mef:lso:spec:service:bfd-configuration:v0.0.1:all: '#/components/schemas/BfdConfiguration'
+          urn:mef:lso:spec:service:twamp-configuration:v0.0.1:all: '#/components/schemas/TwampConfiguration'
+        propertyName: '@type'
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestJobConfiguration.
+          enum:
+          - urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all
+          - urn:mef:lso:spec:service:bfd-configuration:v0.0.1:all
+          - urn:mef:lso:spec:service:twamp-configuration:v0.0.1:all
+          type: string
+      required:
+      - '@type'
+      type: object
 ```
 
 ```yaml
-IpPingResults:
-  allOf:
-    - $ref: '#/components/schemas/TestMeasureAttributes'
-    - type: object
-      description: IP Ping Service Function Testing Results Schema.
+    PingConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
+      - description: IP Service Function Testing Ping Configuration Schema
+    BfdConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
+      - description: IP Service Function Testing BFD Configuration Schema.
+    TwampConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
+      - description: IP Service Function Testing TWAMP Configuration Schema
+```
+
+```yaml
+    ServiceSpecificTestResultConfguration:
+      description: ServiceSpecificTestResultConfguration is used as an extension point
+        for schema to be used that defines the Test Result attributes. The `@type`
+        attribute is used as a discriminator.
+      discriminator:
+        mapping:
+          urn:mef:lso:spec:legato:ping-report:v0.0.1:all: '#/components/schemas/PingReport'
+          urn:mef:lso:spec:legato:bfd-report:v0.0.1:all: '#/components/schemas/BfdReport'
+          urn:mef:lso:spec:service:twamp-report:v0.0.1:all: '#/components/schemas/TwampReport'
+        propertyName: '@type'
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestJobResult.
+          enum:
+          - urn:mef:lso:spec:legato:ping-report:v0.0.1:all
+          - urn:mef:lso:spec:legato:bfd-report:v0.0.1:all
+          - urn:mef:lso:spec:service:twamp-report:v0.0.1:all
+          type: string
+      required:
+      - '@type'
+      type: object
+
+```
+
+```yaml
+    PingReport:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestResultConfguration'
+      - description: IP Service Function Testing Ping Results Schema.
+    BfdReport:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestResultConfguration'
+      - description: IP Service Function Testing BFD Report Schema.
+    TwampReport:
+      allOf:
+      - $ref: '#/components/schemas/ServiceSpecificTestResultConfguration'
+      - description: IP Service Function Testing TWAMP Results Schema
+
 ```
 
 Alternatively, implementations might choose not to build an integrated model
 and choose a different mechanism allowing runtime validation of
 service-specific fragments of the payload. The system can validate a given
-monitoring configuration against a new schema without redeployment. This 
+configuration against a new schema without redeployment. This 
 pattern is called **Dynamic Binding.**
 
-Regardless of the chosen implementation pattern, the HTTP payload is  
+Regardless of the chosen implementation pattern, the HTTP payload is 
 the same. Both implementation approaches must conform to the requirements 
 specified below.
 
-**[R3]** `ServiceSpecificTestProfileAttributes` and `ServiceSpecificTestProfileAttributes` types are
-extension points that **MUST** be used to integrate service test 
-properties into a request/response payload.
+**[R3]** `ServiceSpecificTestProfileConfiguration`, `ServiceSpecificTestJobConfiguration`
+and `ServiceSpecificTestResultConfguration` types are extension points that **MUST** 
+be used to integrate service specific test profile, job and result properties into a 
+request/response payload.
 
-**[R4]** The `@type` property of `ServiceSpecificTestProfileAttributes` and 
-`ServiceSpecificTestProfileAttributes` **MUST** be used to specify the type 
-of the extending entity.
+**[R4]** The `@type` property of `ServiceSpecificTestProfileConfiguration`,
+`ServiceSpecificTestJobConfiguration` and `ServiceSpecificTestResultConfguration` 
+**MUST** be used to specify the type of the extending entity.
 
 **[R5]** Attributes specified in the payload must conform to the test
 definition specified in the `@type` property.
@@ -776,15 +836,17 @@ definition specified in the `@type` property.
 
 **Figure 7. The Extension Pattern with Sample Service-Specific Extension**
 
-Figure 7 presents two MEF Service Function Testing schemas that represent 
-configuration and result classes for IP services. When these schemas are used, 
-the `@type` of `ServicePayloadSpecificAttributes` takes
-`"urn:mef:lso:spec:legato:ip-ping-monitoring-configuration:v0.0.1:all"` 
-value to indicate which test specification should be used to interpret a
- set of service-specific attributes included in the payload.
-Similarly, for `ResultPayload`, the `@type` attribute takes
-`"urn:mef:lso:spec:legato:ip-ping-monitoring-results:v0.0.1:all"` value 
-which indicates how the resulting test job collection should be interpreted.
+Figure 7 presents MEF Service Function Testing schemas that represent 
+test profile, job and result classes for IP services. When these schemas are used, 
+the `@type` of `ServiceSpecificTestProfileConfiguration` takes
+`"urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all"` 
+value to indicate which service specific attributes that define how a 
+test is performed for a given test specification should be included in the payload.
+Similarly, for `ServiceSpecificTestJobConfiguration`, the `@type` attribute takes
+`"urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all"` value.
+Finaly, for `ServiceSpecificTestResultConfguration`, the `@type` attribute takes
+`"urn:mef:lso:spec:legato:ping-report:v0.0.1:all"` value
+which indicates how the test result collection should be interpreted.
 
 ## 5.4. Model structure and validation
 
@@ -819,54 +881,50 @@ all business use cases then present the variants of end-to-end interaction
 flows, and in the following subchapters describe the API usage flow and
 examples for each of the use cases.
 
-| Use Case # | Use Case Name                                                  | Use Case Description                                                                                                                                     |
-| ---------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1          | Create Test Profile                                            | A request initiated by the Buyer/Client to create a Test Profile in the Seller/Server system.                                                            |
-| 2          | Retrieve List of Test Profiles                                 | The Buyer/Client requests a list of Test Profiles based on a set of filter criteria. The Seller/Server returns a summarized list of Test Profiles.       |
-| 3          | Retrieve Test Profile by Profile Identifier                    | The Buyer/Client requests detailed information about a single Test Profile based on the Test Profile Identifier.                                         |
-| 4          | Modify Test Profile                                            | A request initiated by the Buyer/Client to modify a Test Profile in the Seller/Server system based on a Test Profile Identifier.                         |
-| 5          | Delete Test Profile                                            | The Buyer/Client requests deletion of the Test Profile by specifying the Test Profile Identifier.                                                        |
-| 6          | Test Profile Dependency                                        | A request initiated by the Buyer/Client to make a Test Profile in the Seller/Server system dependent on another Test Profile.                            |
-| 7          | Create Test Job                                                | A request initiated by the Buyer/Client to create a Test Job in the Seller/Server system                        |
-| 8          | Retrieve List of Test Jobs                                     | The Buyer/Client requests a list of Test Jobs based on a set of filter criteria. The Seller/Server returns a summarized list of Test Jobs.               |
-| 9          | Retrieve Test Job by Job Identifier                            | The Buyer/Client requests detailed information about a single Test Job based on the Test Job Identifier.                                                 |
-| 10         | Modify Test Job                                                | A request initiated by the Buyer/Client to Modify a Test Job in the Seller/Server system.                                                                |
-| 11         | Retrieve List of Modify Test Jobs                              | The Buyer/Client requests a list of Modify Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Modify Test Jobs.  |
-| 12         | Retrieve Modify Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Modify Test Job based on the Modify Test Job Identifier.                                   |
-| 13         | Cancel Test Job                                                | A request initiated by the Buyer/Client to Cancel a Test Job in the Seller/Server system.                                                                |
-| 14         | Retrieve List of Cancel Test Jobs                              | The Buyer/Client requests a list of Cancel Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Cancel Test Jobs.  |
-| 15         | Retrieve Cancel Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Cancel Test Job based on the Cancel Test Job Identifier.                                   |
-| 16         | Suspend Test Job                                               | A request initiated by the Buyer/Client to Suspend a Test Job in the Seller/Server system.                                                               |
-| 17         | Retrieve List of Suspend Test Jobs                             | The Buyer/Client requests a list of Suspend Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Suspend Test Jobs.|
-| 18         | Retrieve Suspend Test Job by Job Identifier                    | The Buyer/Client requests detailed information about a single Suspend Test Job based on the Suspend Test Job Identifier.                                 |
-| 19         | Resume Test Job                                                | A request initiated by the Buyer/Client to Resume a Test Job in the Seller/Server system.                                                                |
-| 20         | Retrieve List of Resume Test Jobs                              | The Buyer/Client requests a list of Resume Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Resume Test Jobs.  |
-| 21         | Retrieve Resume Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Resume Test Job based on the Resume Test Job Identifier.                                   |
-| 22         | Register for Event Notifications                               | The Buyer/Client requests to subscribe to Test Profile and/or Test Job Notifictions.                                                                     |
-| 23         | Send Event Notification                                        | A request initiated by the Seller/Server to notify the Buyer/Client.                                                                                     |
-| 24         | Unregister for Event Notifications                             | The Buyer/Client requests to unsubscribe to Test Profile and/or Test Job Notifications.                                                                  |
+| Use Case # | Use Case Name                                                  | Use Case Description                                                                                                                                     | MEF W136.1 Use Case Mapping |
+| ---------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |-----------------------------|
+| 1          | Create Test Profile                                            | A request initiated by the Buyer/Client to create a Test Profile in the Seller/Server system.                                                            | 1                           | 
+| 2          | Retrieve List of Test Profiles                                 | The Buyer/Client requests a list of Test Profiles based on a set of filter criteria. The Seller/Server returns a summarized list of Test Profiles.       | 4                           |
+| 3          | Retrieve Test Profile by Profile Identifier                    | The Buyer/Client requests detailed information about a single Test Profile based on the Test Profile Identifier.                                         | 5                           |
+| 4          | Modify Test Profile                                            | A request initiated by the Buyer/Client to modify a Test Profile in the Seller/Server system based on a Test Profile Identifier.                         | 2                           |
+| 5          | Delete Test Profile                                            | The Buyer/Client requests deletion of the Test Profile by specifying the Test Profile Identifier.                                                        | 3                           |
+| 6          | Create Test Job                                                | A request initiated by the Buyer/Client to create a Test Job in the Seller/Server system                                                                 | 6,7                         |
+| 7          | Retrieve List of Test Jobs                                     | The Buyer/Client requests a list of Test Jobs based on a set of filter criteria. The Seller/Server returns a summarized list of Test Jobs.               | 15                          |
+| 8          | Retrieve Test Job by Job Identifier                            | The Buyer/Client requests detailed information about a single Test Job based on the Test Job Identifier.                                                 | 16                          |
+| 9          | Modify Test Job                                                | A request initiated by the Buyer/Client to Modify a Test Job in the Seller/Server system.                                                                | 13                          |
+| 10         | Retrieve List of Modify Test Jobs                              | The Buyer/Client requests a list of Modify Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Modify Test Jobs.  | 26                          |
+| 11         | Retrieve Modify Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Modify Test Job based on the Modify Test Job Identifier.                                   | 27                          |
+| 12         | Cancel Test Job                                                | A request initiated by the Buyer/Client to Cancel a Test Job in the Seller/Server system.                                                                | 12                          |
+| 13         | Retrieve List of Cancel Test Jobs                              | The Buyer/Client requests a list of Cancel Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Cancel Test Jobs.  | 24                          |
+| 14         | Retrieve Cancel Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Cancel Test Job based on the Cancel Test Job Identifier.                                   | 25                          |
+| 15         | Suspend Test Job                                               | A request initiated by the Buyer/Client to Suspend a Test Job in the Seller/Server system.                                                               | 10                          |
+| 16         | Retrieve List of Suspend Test Jobs                             | The Buyer/Client requests a list of Suspend Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Suspend Test Jobs.| 20                          |
+| 17         | Retrieve Suspend Test Job by Job Identifier                    | The Buyer/Client requests detailed information about a single Suspend Test Job based on the Suspend Test Job Identifier.                                 | 21                          |
+| 18         | Resume Test Job                                                | A request initiated by the Buyer/Client to Resume a Test Job in the Seller/Server system.                                                                | 11                          |
+| 19         | Retrieve List of Resume Test Jobs                              | The Buyer/Client requests a list of Resume Test Job based on a set of filter criteria. The Seller/Server returns a summarized list of Resume Test Jobs.  | 22                          |
+| 20         | Retrieve Resume Test Job by Job Identifier                     | The Buyer/Client requests detailed information about a single Resume Test Job based on the Resume Test Job Identifier.                                   | 23                          |
+| 21         | Retrieve List of Test Results                                  | The Buyer/Client requests a list of Test Jobs based on a set of filter criteria. The Seller/Server returns a summarized list of Test Jobs.               | 8                           |
+| 22         | Retrieve Test Result by Result Identifier                      | The Buyer/Client requests detailed information about a single Test Job based on the Test Job Identifier.                                                 | 9                           |
+| 23         | Register for Event Notifications                               | The Buyer/Client requests to subscribe to Test Profile and/or Test Job Notifictions.                                                                     | 17                          |
+| 24         | Send Event Notification                                        | A request initiated by the Seller/Server to notify the Buyer/Client.                                                                                     | 19                          |
+| 25         | Unregister for Event Notifications                             | The Buyer/Client requests to unsubscribe to Test Profile and/or Test Job Notifications.                                                                  | 18                          |
 
 
 **Table 7. Use cases description**
 
-## 6.1. Use case 1: Create a Test Profile
+##  6.1. Use Case 1: Create a Test Profile
 
 Test Profile is a template that is used to simplify the 
 Test Job provisioning. Common attributes can be defined in 
 the Test Profile which can be centralized and leveraged 
 across multiple Test Jobs.
 
-### 6.1.1. Interaction flow
+###  6.1.1. Interaction flow
 
 The flow of this use case is described in Figure 8.
 ![Figure 8: Use Case 1](serviceTest/media/useCase1.png)
 
 **Figure 8. Use Case 1 - Test Profile create request flow**
-
-Buyer/Client is the actor allowed to execute the Test Profile create 
-request.
-
-**[R7]** - Buyer/Client **MUST** have access rights to create Test Profile.
 
 The Buyer/Client sends a request with a `TestProfile_Create` type in
 the body. The SOF performs request validation, assigns an `id`, and returns
@@ -916,40 +974,77 @@ the API specification which is an integral part of this standard.
 
 **Figure 11. Test Profile Key Entities**
 
-To send a request the Buyer/Client uses the `createPerformanceProfile` 
+To send a request the Buyer/Client uses the `createTestProfile` 
 operation from the API. The snippet below presents an example of a Create 
 Test Profile request:
 
-**`Test Profile` Create Request**
+**Test Profile Create Request**
 
 ```json
 {
-    "description": "Exemplary Create Test Profile request",
-    "isBundled": false,
-    "lifecycleStatus": "approved",
-    "name": "test profile",
-    "validFor": "2024-08-12T23:20:50.52Z",
-    "relatedServiceSpecificationId": "6e4e338a-8105-481e-8bf6-b3ca124a4b89",
-    "serviceSpecificTestProfileAttributes": {
-        "@type": "IP-PING",
-        "targetAddress": "192.168.5.10",
-        "packetCount" : "4",
-        ...
-    },
-    "relatedContact": {
-        "name": "Contact 1",
-        "phoneNumber": "003531541274"
+  "name": "Basic IP Ping Test Profile",
+  "description": "Test profile to perform IP ping operations on a cloud-connected endpoint.",
+  "isBundled": false,
+  "lifecycleStatus": "approved",
+  "validFor": "2025-12-31T23:59:59Z",
+  "relatedServiceSpecification": {
+    "id": "svc-spec-001",
+    "href": "https://example.com/services/svc-spec-001"
+  },
+  "relatedContact": [
+    {
+      "name": "John Doe",
+      "organization": "NetworkOps Inc.",
+      "emailAddress": "john.doe@example.com",
+      "phoneNumber": "+1-555-123456",
+      "postalAddress": "1234 Test Lane, Test City, TC 12345"
     }
+  ],
+  "serviceSpecificTestProfileConfiguration": {
+    "@type": "urn:mef:lso:spec:legato:ip-ping-test-profile:v0.0.1:all",
+    "interface": {
+      "name": "Cloud Location A",
+      "description": "Primary test location",
+      "cloudService": true,
+      "ipvcEndpoint": ["endpoint-1"]
+    },
+    "vlan": 200,
+    "sourceIpAddress": {
+      "ipv4": ["192.168.1.1"]
+    },
+    "destinationIpAddress": {
+      "ipv4": ["192.168.1.100"]
+    },
+    "transmissionInterval": {
+      "amount": 5,
+      "units": "seconds"
+    },
+    "protocol": "IPV4",
+    "count": 50,
+    "sweepmaxsize": 1500,
+    "sweepminsize": 100,
+    "sweepincrement": 100,
+    "wait": 1,
+    "preload": 5,
+    "mask": "255.255.255.0",
+    "timeToLive": 64,
+    "pattern": "0xAA",
+    "packetSize": 512,
+    "timeout": 2,
+    "waitTime": 3,
+    "typeOfService": 0
+  }
 }
+
 ```
 
-**[R8]** The Buyer/Seller Create Test Profile **MUST** support the  
+**[R7]** The Buyer/Client Create Test Profile request **MUST** provide the
 following attributes: [MEF136.1 R1]
 - `name`
 - `lifecycleStatus`
 - `validFor`
 
-**[O4]** The Administrator's Create Test Profile **MAY** contain 
+**[O4]** The Buyer/Client Create Test Profile request **MAY** contain 
 any other attributes.
 
 ### 6.1.3. Create Test Profile Response
@@ -961,115 +1056,128 @@ are presented in Figure 11. The Seller/Server responds with a
 
 **_Note_**: The term "Response Code" used in the Business Requirements
 maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+indicate _Failure_. This applies also to all further use cases with response.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
 
-**`Test Profile` Create Response**
+**Test Profile Create Response**
 
 ```json
 {
-    "description": "Exemplary Create Test Profile request",
-    "isBundled": false,
-    "lifecycleStatus": "experimental",
-    "name": "test profile",
-    "validFor": "2024-08-12T23:20:50.52Z",
-    "relatedServiceSpecificationId": "6e4e338a-8105-481e-8bf6-b3ca124a4b89",
-    "serviceSpecificTestProfileAttributes": {
-        "@type": "IP-PING",
-        "targetAddress": "192.168.5.10",
-        "packetCount" : "4",
-        ...
+  "id": "tp-001",
+  "href": "https://example.com/testProfiles/tp-001",
+  "name": "Basic IP Ping Test Profile",
+  "description": "Test profile to perform IP ping operations on a cloud-connected endpoint.",
+  "isBundled": false,
+  "lifecycleStatus": "approved",
+  "lifecycleState": "available",
+  "creationDate": "2025-06-10T10:00:00Z",
+  "lastUpdate": "2025-06-12T14:30:00Z",
+  "validFor": "2025-12-31T23:59:59Z",
+  "relatedServiceSpecification": {
+    "id": "svc-spec-001",
+    "href": "https://example.com/services/svc-spec-001"
+  },
+  "relatedContact": [
+    {
+      "name": "John Doe",
+      "organization": "NetworkOps Inc.",
+      "emailAddress": "john.doe@example.com",
+      "phoneNumber": "+1-555-123456",
+      "postalAddress": "1234 Test Lane, Test City, TC 12345"
+    }
+  ],
+  "serviceSpecificTestProfileConfiguration": {
+    "@type": "urn:mef:lso:spec:legato:ip-ping-test-profile:v0.0.1:all",
+    "interface": {
+      "name": "Cloud Location A",
+      "description": "Primary test location",
+      "cloudService": true,
+      "ipvcEndpoint": ["endpoint-1"]
     },
-    "relatedContact": {
-        "name": "Contact 1",
-        "phoneNumber": "003531541274"
-    },    
-    "creationDate": "204-06-12T17:47:50.399Z", << added by SOF >>
-    "id": "8df0981a-0949-11ee-be56-0242ac120002", << added by SOF >>
-    "lastModifiedDate": "204-06-12T17:47:50.399Z", << added by SOF >>
-    "state": "acknowledged", << added by SOF >>
-    "isAssigned": false << added by SOF >>
+    "vlan": 200,
+    "sourceIpAddress": {
+      "ipv4": ["192.168.1.1"]
+    },
+    "destinationIpAddress": {
+      "ipv4": ["192.168.1.100"]
+    },
+    "transmissionInterval": {
+      "amount": 5,
+      "units": "seconds"
+    },
+    "protocol": "IPV4",
+    "count": 50,
+    "sweepmaxsize": 1500,
+    "sweepminsize": 100,
+    "sweepincrement": 100,
+    "wait": 1,
+    "preload": 5,
+    "mask": "255.255.255.0",
+    "timeToLive": 64,
+    "pattern": "0xAA",
+    "packetSize": 512,
+    "timeout": 2,
+    "waitTime": 3,
+    "typeOfService": 0
+  }
 }
+
 ```
 
 Attributes that are set by the Seller/Server in the response are marked with 
 the `<< added by SOF >>` tag.
 
-**[R9]** The Seller/Server's response **MUST** include all and unchanged 
+**[R8]** The Seller/Server's response **MUST** include all and unchanged 
 attributes' values as provided by the Buyer/Client in the request.
 
-**[R10]** The Seller/Server **MUST** specify the following attributes in a 
+**[R9]** The Seller/Server **MUST** specify the following attributes in a 
 response: 
 
 - `creationDate`
 - `id`
 
-**[R11]** The `id` **MUST** remain the same value for the life of the 
+**[R10]** The `id` **MUST** remain the same value for the life of the 
 Test Profile.
 
-### 6.1.4. Test Profile State Machine
+### 6.1.4. Test Profile Lifecycle Flow
 
-Figure 12 presents the Test Profile state machine:
+Figure 12 presents the Test Profile Lifecycle Flow
 
-![Figure 12: Test Profile State Machine](serviceTest/media/testProfileStates.png)
+![Figure 12: Test Profile Lifecycle Status Flow](serviceTest/media/testProfileLifecycleStatus.png)
 
-**Figure 12. Test Profile State Machine**
+**Figure 12. Test Profile Lifecycle Status Flow**
 
-After receiving the request, the Seller/Server (SOF) performs basic checks of 
-the message. If any problem is found an Error response is provided. If the
-validation passes a response is provided with `TestProfile` in
-`acknowledged` status. Before moving to the `completed` state, the Seller/Server
-performs all the remaining business and time-consuming validations. At this
-point, an Error response cannot be provided anymore, so the profile moves to a
-`rejected` state if some issues are found. 
+A Test Profile begins in the `available` state once it has been created or modified and is ready to be referenced in a Test Job. When the profile is selected for use in a Test Job, its lifecycle state transitions to `assigned`. While in the `assigned` state, the Test Profile is considered active and can no longer be modifed.
 
-Table 8 presents the mapping between the API `state` names and the MEF W136.1
-naming, together with the states description.
-
-| state          | MEF W136.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `acknowledged` | ACKNOWLEDGED   | A Create Testing Profile request has been received by the Server and has passed basic validation. Test Profile Identifier is assigned in the `Acknowledged` state. The profile remains in the `Acknowledged` state until all validations as applicable are completed. If the attributes are validated the Test Profile moves to the `COMPLETED` state. If not all attributes are validated, the request moves to the `REJECTED` state. |
-| `completed`       | COMPLETED       | A Create Test Profile request passes validation and can be used as a template for Test Jobs. creation.                                                                                                                                                                                                                                                                                                                                                              |
-| `rejected`     | REJECTED       | A Create Test Profile request fails validation and is rejected                                                                                                                                                                                                                                                                      |
-
-**Table 8. Test Profile states**
-
-**[R12]** The Seller/Server **MUST** support all Test Profile states 
-and their associated transitions as described in Figure 12 and Table 8. 
-
-### 6.1.5. Test Profile Lifecycle Flow
-
-Figure 13 presents the Test Profile Lifecycle Flow
-
-![Figure 13: Test Profile Lifecycle Status Flow](serviceTest/media/testProfileLifecycleStatus.png)
-
-**Figure 13. Test Profile Lifecycle Status Flow**
+Table 9 presents the mapping between the `TestProfile` API `lifecycleState` names and the MEF W136.1 naming, together with the state description.
 
 
-Test Profiles contain the Lifecycle Status attribute that specifies where in the development process the Test Profile is located.  This can range from Experimental whose use may be limited to a small number of users, to Deprecated where the Test Profile has been replaced by another Test Profile and is not intended for use.  Lifecycle Status also includes Pending where the Test Profile is waiting to be approved and Approved, where the Test Profile has been approved for general use.  The Lifecycle Status is often used to indicate what type of user can use the Test Profile.  
+| State       | MEF W136.1 name |Description                                                                                       |
+| ----------- | --------------- | ------------------------------------------------------------------------------------------------ |
+| `assigned`  | ASSIGNED        | The Test Profile has been assigned to a Test Job.                                                |
+| `available` | AVAILABLE       | The Test Profile has been created or modified and is ready for users to specify in a Test Job.   |
+
+**Table 9. Test Profile Lifecycle states**
+
+Test Profiles include a Lifecycle Status attribute that indicates the stage of the profile within the development and approval process. The status can range from `experimental`, where usage may be limited to a small group of users, to `deprecated`, indicating the profile has been replaced and is no longer intended for use. Other possible statuses include `pending`, meaning the profile is awaiting approval, and `approved`, where the profile has been reviewed and is available for general use. The Lifecycle Status also helps determine which types of users are permitted to use the Test Profile.
 
 Table 9 presents the mapping between the API `lifecycleStatus` names and the MEF W136.1
 naming, together with the states description.
 
-| state          | MEF W136.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `experimental` | EXPERIMENTAL   | A Create Testing Profile request has been received by the Server and has passed basic validation. Test Profile Identifier is assigned in the `Acknowledged` state. The profile remains in the `Acknowledged` state until all validations as applicable are completed. If the attributes are validated the Test Profile moves to the `COMPLETED` state. If not all attributes are validated, the request moves to the `REJECTED` state. |
-| `pending`       | PENDING       | A Create Test Profile request passes validation and can be used as a template for Test Jobs. creation.                                                                                                                                                                                                                                                                                                                                                              |
-| `approved`     | APPROVED       | A Create Test Profile request fails validation and is rejected                                                                                                                                                                                                                                                                      |
-| `deprecated`   | DEPRECATED     | A Create Test Profile request fails validation and is rejected                                                                                                                                                                                                                                                                      |
+| Status         | MEF W136.1 name |Description                                                  |
+| -------------- | --------------- | ----------------------------------------------------------- |
+| `experimental` | EXPERIMENTAL    | Test Profile use may be limited to a small number of users. |
+| `pending`      | PENDING         | Test Profile is waiting to be Approved.                     |
+| `approved`     | APPROVED        | Test Profile has been Approved for general use.             |
+| `deprecated`   | DEPRECATED      | Test Profile has been replaced by another Test Profile.     |
 
 **Table 9. Test Profile Lifecycle statuses**
 
-**[R13]** The Seller/Server **MUST** support all Test Profile Lifecycle Statuses 
-and their associated transitions as described in Figure 13 and Table 9. 
-
-
-
 ## 6.2. Use Case 2: Retrieve List of Test Profiles
 
-The Buyer/Client can retrieve a list of `TestProfile_Find` by using a 
+The Buyer/Client can retrieve a list of `TestProfile` by using a 
 `GET /testProfile`
 operation with desired filtering criteria.
 
@@ -1085,87 +1193,82 @@ operation with desired filtering criteria.
 
 
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/testProfile?creationDate.gt="2024-08-12T23:20:50.52Z"&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testProfile?creationDate.gt="2024-08-12T23:20:50.52Z"&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Test Profile
 objects created after `2024-08-12T23:20:50.52Z`. Additionally, the Buyer/Client asks 
 only for a first (`offset=0`) pack of 10 results (`limit=10`) to be returned. 
 The correct response (HTTP code `200`) in the response body contains a list of 
-`TestProfile_Find` objects matching the criteria. To get all the details, 
+`TestProfile` objects matching the criteria. To get all the details, 
 the Buyer/Client has to query a specific `TestProfile` by its `id`. 
-Details related to pagination are described in [section 7.1.2](#712-response-pagination)
+Details related to pagination are described in [section 6.2.1](#621-response-pagination)
 
-If the quantity of the records requested to be returned exceeds a Seller/Server 
-policy, the Seller/Server must choose to respond with either:
-- An empty list and message that indicates the result set is too large or
-- A response that indicates the result is too large and includes a subset of the
-matching Test Profiles.
+**[R11]** If the request is successful, the Seller/Server MUST reply with list of `TestProfile` 
+objects that match filter criteria to the Buyer/Client. [MEF136.1 R16]
 
-**[R14]** The Seller **MUST** include following attributes (if set) in the
-`TestProfile_Find` object in the response: [MEF136.1 R17]
-- `id`
-- `name`
-- `description`
-- `lifecycleStatus`
-- `creationDate`
-- `lastUpdate`
-- `state`
+**[R12]** If the request is successful but the Seller/Server finds no entries that match
+the filter criteria, they **MUST** return an empty list. [MEF136.1 R17]
 
-**[R15]** If the request is successful, the Seller/Server MUST reply with all attributes 
-to the Buyer/Client. [MEF136.1 R18]
+**[R13]** If the request is unsuccessful, the Seller/Server **MUST** return an error with explanation 
+to the Buyer/Client. [MEF136.1 R19]
 
-**[R16]** In case no items matching the criteria are found, the Seller/Server 
-**MUST** return a valid response with an empty list. [MEF136.1 R19]
+### 6.2.1. Response pagination
 
-**[R17]** If the request is unsuccessful, the Seller/Server MUST NOT echo back the criteria 
-provided by the Buyer/Client. [MEF136.1 R20]
+A response to retrieve a list of results (e.g. `GET /testJob`) can
+be paginated. The Buyer/Client can specify the following query attributes
+related to pagination:
 
-**[R18]** If the request is unsuccessful, the Seller/Server MUST return an error with explanation 
-to the Buyer/Client. [MEF136.1 R21]
+- `limit` - number of expected list items
+- `offset` - offset of the first element in the result list
 
-![Figure 14: Use Case 2](serviceTest/media/useCase2Model.png)
+The filtering and pagination attributes must be specified in URI query format
+[RFC3986](#8-references).The Seller/Server returns a list of elements that 
+comply with the requested `limit`. If the requested `limit` is higher than the 
+supported list size the smaller list result is returned. In that case, the size 
+of the result is returned in the header attribute `X-Result-Count`. The Seller 
+can indicate that there are additional results available using:
 
-**Figure 14. Use Case 2: Retrieve Test Profile List - Model**
+- `X-Total-Count` header attribute with the total number of available results
+- `X-Pagination-Throttled` header set to `true`
+
+**[R14]** Seller **MUST** use either `X-Total-Count` or
+`X-Pagination-Throttled` to indicate that the page was truncated and additional
+results are available.
 
 ## 6.3. Use Case 3: Retrieve Test Profile by Profile Identifier
 
-The Buyer/Client can get detailed information about the Test Profile 
+The Buyer/Client can retrieve single `TestProfile` instance
 from the Seller/Server by using a `GET /testProfile/{{id}}` operation. 
 The payload returned in the response is a full representation of the Test 
 Profile and includes all attributes the Buyer/Client has provided while sending
 a Test Profile create request, together with additional attributes set 
 by Seller/Server. 
+A response to a Get by Id for a `TestProfile` with `id=8df0981a-0949-11ee-be56-0242ac120002`
+would return exactly the same response as presented in [section 6.1.3](#613-create-test-profile-response).
 
-Get List and Get by Identifier operations return different representations of 
-Test Profile. Get List returns `TestProfile_Find` object which is
-a subset of `TestProfile` returned by the Get by Identifier operation. A 
-response to a Get by Identifier for a `TesteProfile` with
-`id=8df0981a-0949-11ee-be56-0242ac120002` would return the same response as
-presented in [section 6.1.3](#613-create-test-profile-response).
 
-**[R19]** The Buyer’s Retrieve Test Profile by Test Profile Identifier **MUST** 
-include the Test Profile Identifier. [MEF136.1 R22]
+**[R15]** If the request is successful, the Seller/Server response to a 
+"Retrieve Test Profile by Test Profile Identifier" request **MUST** 
+include a `TestProfile`. [MEF136.1 R24]
 
-**[R20]** The Buyer’s Retrieve Test Profile by Test Profile Identifier **MUST NOT** 
-include other attributes. [MEF136.1 R23]
-
-**[R21]** If the request is successful, the Seller’s response to a Retrieve Test Profile
-by Test Profile Identifier request MUST  include all attributes [MEF136.1 R24]
-
-**[R22]** If the request is unsuccessful, the Seller/Server MUST return an error with
+**[R16]** If the request is unsuccessful, the Seller/Server **MUST** return an error with
 explanation to the Buyer/Client. [MEF136.1 R25]
 
-**[R23]** In case `id` does not allow finding a `PerformanceProfile` in 
+**[R17]** In case `id` does not allow finding a `TestProfile` in 
 Seller/Server's system, an error response `Error404` **MUST** be returned. 
+
+![Figure 13: Use Case 3](serviceTest/media/useCase2Model.png)
+
+**Figure 13. Use Case 3: Retrieve Test Profile by Profile Identifier - Model**
 
 ## 6.4. Use Case 4: Modify Test Profile
 
-The update operation is realized with the use of the REST PATCH operation 
-(`PATCH /testProfile`). For that purpose, a specialized type 
-`TestProfile_Update` is provided. It consists of attributes limited to a
-subset that includes only the updateable attributes. The Test Profile cannot 
-be used by a Test Job (isAssigned=false), otherwise Test Profile cannot be modified. 
+The update operation is performed using the REST PATCH method at the endpoint
+`PATCH /testProfile/{{id}}`. A specialized type, `TestProfile_Modify`, is provided
+for this purpose. It includes only the attributes that are updateable and can be 
+set by the Buyer/Client. A Test Profile cannot be modified if it is used by a 
+Test Job in which case its `lifecycleState` is set to `assigned`.
 
 The PATCH usage recommendation follows RFC 7386 json/merge
 (https://tools.ietf.org/html/rfc7386).
@@ -1174,45 +1277,40 @@ Figure 15 presents the model used in the PATCH request. The Seller/Server
 responds with a `TestProfile` type which is a full representation of 
 Test Profile instance.
 
-![Figure 15: Patch request Model](serviceTest/media/useCase4PatchModel.png)
+![Figure 14: Patch request Model](serviceTest/media/useCase4PatchModel.png)
 
-**Figure 15. Patch request Model**
+**Figure 14. Patch request Model**
 
-**[R24]** The Buyer’s Modify Test Profile request **MUST** include Test Profile Identifier
+**[R18]** The Buyer’s Modify Test Profile request **MUST** include Test Profile Identifier
 and at least one other attribute from `TestProfile_Modify` object. [MEF136.1 R8]
 - `description`
 - `isBundled`
 - `lifecycleStatus`
 - `name`
-- `relatedTestProfile`
-- `serviceSpecificTestProfileAttributes`
+- `testProfileRelationship`
+- `serviceSpecificTestProfileConfiguration`
 - `relatedServiceSpecification`
 - `relatedContact`
 
-**[O6]** The Buyer’s Modify Test Profile request MAY include any other attributes 
+**[O6]** The Buyer’s Modify Test Profile request **MAY** include any other attributes 
 from `TestProfile_Modify` object. [MEF136.1 O2]
 
-**[R25]** The Seller/Server response to a Modify Test Profile request **MUST** 
-echo back all attributes. [MEF136.1 R9]
 
-**[R26]** The Seller/Server response to a Modify Test Profile request **MUST** 
-include the following attributes: [MEF136.1 R10]
-- `id`
-- `creationDate`
-- `lastUpdate`
-- `isAssigned`
+**[R19]** If the request is successful, the Seller/Server response to a 
+"Retrieve Test Profile by Test Profile Identifier" request **MUST** 
+include a `TestProfile` with requested attriutes updated. [MEF136.1 R9]
 
-**[R27]** The Seller/Server **MUST** set `lastUpdate` to current date and time. [MEF136.1 R11]
+**[R20]** The Seller/Server **MUST** set `lastUpdate` to current date and time. [MEF136.1 R11]
 
-**[R28]** If the Seller/Server encounters errors, they **MUST** return an error 
+**[R21]** If the Seller/Server encounters errors, they **MUST** return an error 
 with explanation to the Buyer/Client. [MEF136.1 R12]
 
-**[R29]** In case `id` does not allow to find a `TesteProfile` that is to
+**[R22]** In case `id` does not allow to find a `TestProfile` that is to
 be updated in Seller/Server's system, an error response `Error404` **MUST** be 
 returned. 
 
-**[R30]** The Seller/Server **MUST** return an error (`Error422`) if the 
-`TesteProfile`, `isAssigned` attribute is set to `true`.
+**[R23]** The Seller/Server **MUST** return an **Error422** if the Test Profile
+`TestProfileLifecycleState` is set to `assigned`
 
 The example below shows a request to patch a `TestProfile` that was 
 created in section [6.1.2](#612-create-test-profile-request). 
@@ -1225,8 +1323,8 @@ The request below aims to:
 
 ```json
 {
-  "description": "Approved IP Ping Test Profile",
-  "validFor": "2025-01-12T00:00:00.000Z",
+  "description": "Approved Basic IP Ping Test Profile",
+  "validFor": "2026-01-31T23:59:59Z",
   "lifecycleStatus": "approved"
 }
 ```
@@ -1237,45 +1335,50 @@ The Buyer/Client may request to delete a Test Profile by using
 `DELETE /testProfile/{{id}}` endpoint. This operation only requires
 providing the `id` in the path and has an empty `204` confirmation response.
 
-**[R31]**	The Buyer’s Delete Test Profile request **MUST** contain the Test Profile 
-Identifier. [MEF136.1 R13]
-
-**[R32]**	The Buyer’s Delete Test Profile request **MUST NOT** contain any 
-other attributes. [MEF136.1 R14]
-
-**[R33]** If the Seller/Server encounters errors, they **MUST** return an error 
+**[R24]** If the Seller/Server encounters errors, they **MUST** return an error 
 with explanation to the Buyer/Client. [MEF136.1 R15]
 
-**[R34]** In case `id` does not allow to find a `TesteProfile` that is to
+**[R25]** In case `id` does not allow to find a `TestProfile` that is to
 be deleted in Seller/Server's system, an error response `Error404` **MUST** be 
 returned. 
 
-**[R35]** The Seller/Server **MUST** return an error (`Error422`) if the 
-`TesteProfile`, `isAssigned` attribute is set to `true`.
+**[R26]** The Seller/Server **MUST** return an error response `Error422` if the 
+`TestProfile`, `lifecycleState` attribute is `assigned`.
 
 The sequence diagram below presents this use case in detail.
 
-![Figure 16: Delete Test Profile Flow](serviceTest/media/useCase5DeleteFlow.png)
+![Figure 15: Delete Test Profile Flow](serviceTest/media/useCase5DeleteFlow.png)
 
-**Figure 16. Delete Test Profile Flow**
+**Figure 15. Delete Test Profile Flow**
 
 The Seller/Server verifies the request, then searches for a Test Profile
-to be deleted by the given `id`. If found, the  
+to be deleted by the given `id`. If found, the
 Seller/Server checks also if there are any Test Job objects that 
-refer to the Test Profile (meaning `isAssigned` attribute is set to 
-`true`). If everything is verified correctly, the Seller deletes 
+refer to the Test Profile (meaning `lifecycleState` is
+`assigned`). If everything is verified correctly, the Seller deletes 
 the Test Profile , sends a successful response to a request followed by 
 `testProfileDeleteEvent` in case the Buyer/Client subscribed for relevant 
 notifications.
 
-## 6.6. Use Case 7: Create a Test Job
+## 6.6. Use Case 6: Create a Test Job
 
-A Test Job is a service-specific entity that defines the service under test, the test profile to be used, and the service-specific test attributes. The Test Job performs the actual test and makes the results available. As the Test Job runs, it follows the instructions in the test profile to execute the specified test. Once the Test Job is completed, it stores the test results in the `testMeasureAttributes` of the `TestJob` object.
+A Test Job is a service-specific entity that defines both the service under test 
+and the test profile to be used. It is responsible for performing the actual test
+and making the results available. As the Test Job runs, it follows the instructions 
+in the referenced test profile to execute the specified test. Each Test Job is expected
+to produce a Test Result, which provides the Buyer/Client with the outcome of the test.
 
-For example, a Test Job can be created to execute a test on an IP service. The Test Profile, which defines how to run an ICMP ping test, is referenced in the Test Job. When the Test Job runs, it follows the steps outlined in the Test Profile to test the service. Once the test is complete, the results are made available and can be retrieved by the user.
+For example, a Test Job can be created to execute a test on an IP service. The Test 
+Profile such as one defining how to perform an ICMP ping test is referenced within the
+Test Job. When the Test Job runs, it follows the steps defined in the Test Profile to
+test the service. Once the test is complete, the results are made available and can be
+retrieved by the user.
 
-Test Jobs can also be created without referencing a Test Profile, known as "Test Jobs without a Test Profile." These are typically used for one-off testing rather than repeatable, standardized tests. In such cases, the Test Job itself defines the attributes that would normally be outlined in the Test Profile, including the steps required to execute the test.
-
+Test Jobs may also be created without referencing a Test Profile; these are known as
+Test Jobs without a Test Profile. This approach is typically used for ad hoc or one-off
+testing rather than for repeatable, standardized scenarios. In such cases, the Test Job
+itself defines the configuration and execution steps that would otherwise be specified 
+in the Test Profile.
 
 **[O7]** Test Job **MAY** use Test Profile as a template.
 
@@ -1284,11 +1387,11 @@ Test Jobs can also be created without referencing a Test Profile, known as "Test
 
 The flow of this use case is shown in Figure 17.
 
-![Figure 17: Use Case 7](serviceTest/media/useCase7.png)
+![Figure 16: Use Case 6](serviceTest/media/useCase7.png)
 
-**Figure 17. Use Case 7 - Test Job create request flow**
+**Figure 16. Use Case 6 - Test Job create request flow**
 
-The Buyer/Client sends a request with a `TestJob_Create` type in the 
+The Buyer/Client sends a request with a `TestJob_Common` type in the 
 body. The Seller/Server performs request validation, assigns an `id`, and 
 returns the `TestJob` type in the response body, with a `state` set to 
 `acknowledged`. From this point, the Test Job is ready for further 
@@ -1296,35 +1399,23 @@ processing. The Buyer/Client can track the progress of the process either by
 subscribing for notifications or by periodically polling the `TestJob`.
 The two patterns are presented in the following diagrams.
 
-![Figure 18: Test Job Notification](serviceTest/media/useCase7Notification.png)
+![Figure 17: Test Job Notification](serviceTest/media/useCase7Notification.png)
 
-**Figure 18. Test Job progress tracking - Notifications**
+**Figure 17. Test Job progress tracking - Notifications**
 
-![Figure 19: Test Job Polling](serviceTest/media/useCase7Polling.png)
+![Figure 18: Test Job Polling](serviceTest/media/useCase7Polling.png)
 
-**Figure 19. Test Job progress tracking - Polling**
-
-**_Note_**: The context of notifications is not a part of the considered use
-case itself. It is presented to show the big picture of end-to-end flow. This
-applies also to all further use case flow diagrams with notifications.
+**Figure 18. Test Job progress tracking - Polling**
 
 ### 6.6.2. Create Test Job Request with Test Profile
 
 Figure 20 presents the most important part of the data model used during
 the Create Test Job request (`POST /testJob`) and response. The 
-model of the request message - `TestJob_Create` is a subset of the 
-`TestJob_Common` model and contains only attributes that can (or must) be set 
-by the Buyer/Client. The Seller/Server (SOF) then enriches the entity in the
-response with additional information.
+model of the request message - `TestJob_Common` contains only attributes that
+can (or must) be set by the Buyer/Client. The Seller/Server (SOF) then enriches
+the entity in the response with additional information.
 
-**_Note:_** `TestJob_Create` is an entity
-used by the Buyer/Client to make a request. `TestJob` is an entity
-used by the Seller/Server to provide a response. The request entity has a
-subset of attributes of the response entity. Thus for visibility of these
-shared attributes `TestJob_Common` has been
-introduced (this class is not supposed to be used directly in the exchange).
-
-A `TestJob_Create` defines service test configuration parameters that are
+A `TestJob_Common` defines service test configuration parameters that are
 to be applied at execution time. It also refers to the existing `TestProfile` by its `id` or 
 directly provides values of attributes defined by the `TestProfile` 
 type. See chapter [section 6.6.5](#665-relationship-to-test-profile) 
@@ -1334,271 +1425,311 @@ The full list of attributes is available in [Section 7](#7-api-details) and in
 the API specification which is an integral part of this standard.
 
 
-![Figure 20: Test Job with Test Profile Key Entities](serviceTest/media/testJobModel.png)
+![Figure 19: Test Job with Test Profile Key Entities](serviceTest/media/testJobModel.png)
 
-**Figure 20. Test Job with Test Profile Key Entities**
+**Figure 19. Test Job with Test Profile Key Entities**
 
 To send a create Test Job request the Buyer/Client uses the 
-`createtestJob` operation from the API: `POST /testJob`. For
+`createTestJob` operation from the API: `POST /testJob`. For
 clarity, some of the create Test Job payload's attributes might be 
 omitted to improve examples' readability.
 
-**`Test Job` Create Request**
+**Test Job Create Request**
 
 ```json
 {
-    "name": "TestJob12345",
-    "description": "Exemplary Create Test Job request",
-    "startDateTime": "2024-09-08T06:36:58.354Z",
-    "endDateTime": "2024-09-08T16:36:58.354Z",
-    "recurrencePeriod": "hourly",
-    "testProfile": {
-        "@type": "testProfileRef",
-        "id": "8df0981a-0949-11ee-be56-0242ac120002"
+  "name": "PingTestJob-001",
+  "description": "Ping test from ServiceA to ServiceB",
+  "relatedServiceFrom": {
+    "id": "svc-001"
+  },
+  "relatedServiceTo": {
+    "id": "svc-002"
+  },
+  "testProfile": {
+    "@type": "TestProfileRef",
+    "id": "tp-001"
+  },
+  "validFor": "2025-07-01T00:00:00Z",
+  "endDateTime": "2025-06-30T23:59:59Z",
+  "serviceSpecificTestJobConfiguration": {
+    "@type": "urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all",
+    "interface": {
+      "name": "location-1",
+      "description": "Primary test location",
+      "ipvcEndpoint": ["ep-01"]
     },
-    "validFor": "2024-09-08T16:36:58.354Z",
-    "relatedService": {
-      "id": "6e4e338a-8105-481e-8bf6-b3ca768a4b89",
-      "name": "TestService12345"
+    "vlan": 100,
+    "sourceIpAddress": {
+      "ipv4": ["192.0.2.1"]
     },
-    "testMeasureAttributes": {
-      "@type": "urn:mef:lso:spec:legato:icmp-ping:v0.0.1:all"
-    }
+    "destinationIpAddress": {
+      "ipv4": ["192.0.2.2"]
+    },
+    "transmissionInterval": {
+      "amount": 1,
+      "units": "seconds"
+    },
+    "protocol": "ICMP",
+    "count": 5,
+    "packetSize": 64,
+    "timeout": 3
   }
-
+}
 ```
 
-**[R36]** The Buyer’s/Client’s Create Test Job **MUST** support the 
+**[R27]** The Buyer’s/Client’s Create Test Job **MUST** provide the 
 following attributes: [MEF136.1 R26]
 
-- Test Job Name
-- Start Date Time
-- End Date Time
-- Valid For
-- Test Profile Identifier
-- Related Service Identifier
-- Test Specific At-tributes 
+- `name`
+- `startDateTime`
+- `endDateTime`
+- `validFor`
+- `testProfile`
+- `relatedServiceFrom`
+- `relatedServiceTo`
+- `serviceSpecificTestJobConfiguration`
 
-**[R37]** 	If the Valid For Date/Time is reached while a Test Job that refers to the Test Profile is active, the Seller/Server MUST complete the Test Job [MEF136.1 R27]
+**[R28]** If the Test Job’s `validFor` date/time is reached while it is in the `inProgress`, `suspended`, or `assessingModification` state, the Seller/Server **MUST** complete the currently running Test Job. [MEF136.1 R25]
 
-**[R38]** 	If the Valid For Date/Time is reached while a Test Job that refers to the Test Profile is scheduled, the Seller/Server MUST cancel the Test Job.  [MEF136.1 R28]
-
-**[O8]** The Buyer’s/Client’s Create Test Job **MAY** contain the 
-following attributes
-- Test Job Description
-- Recurrence Period
+**[R29]** If the Test Job’s `validFor` date/time is reached while a Test Job is scheduled, the Seller/Server **MUST** cancel the Test Job.  [MEF136.1 R26]
 
 ### 6.6.3. Create Test Job with Test Profile Response
 
 Entities used for providing a response to Create Test Job requests are
 presented in Figure 20. The Seller/Server responds with a `TestJob` 
 type, which adds some attributes (like `id` or `state`) to the 
-`TestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+`TestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
 
-**`Test Job` Create Response**
+**Test Job Create Response**
 
 ```json
-  {
-    "name": "TestJob12345",
-    "description": "Exemplary Create Test Job request",
-    "startDateTime": "2024-09-08T06:36:58.354Z",
-    "endDateTime": "2024-09-08T16:36:58.354Z",
-    "recurrencePeriod": "hourly",
-    "testProfile": {
-        "@type": "testProfileRef",
-        "id": "8df0981a-0949-11ee-be56-0242ac120002"
+{
+  "id": "job-12345",
+  "href": "/testJobs/job-12345",
+  "name": "PingTestJob-001",
+  "description": "Ping test from ServiceA to ServiceB",
+  "relatedServiceFrom": {
+    "id": "svc-001"
+  },
+  "relatedServiceTo": {
+    "id": "svc-002"
+  },
+  "testProfile": {
+    "@type": "TestProfileRef",
+    "id": "tp-001"
+  },
+  "validFor": "2025-07-01T00:00:00Z",
+  "endDateTime": "2025-06-30T23:59:59Z",
+  "serviceSpecificTestJobConfiguration": {
+    "@type": "urn:mef:lso:spec:legato:ping-configuration:v0.0.1:all",
+    "interface": {
+      "name": "location-1",
+      "description": "Primary test location",
+      "ipvcEndpoint": ["ep-01"]
     },
-    "validFor": "2024-09-08T16:36:58.354Z",
-    "relatedService": {
-      "id": "6e4e338a-8105-481e-8bf6-b3ca768a4b89",
-      "name": "TestService12345"
+    "vlan": 100,
+    "sourceIpAddress": {
+      "ipv4": ["192.0.2.1"]
     },
-    "testMeasureAttributes": {
-      "@type": "urn:mef:lso:spec:legato:icmp-ping:v0.0.1:all"
+    "destinationIpAddress": {
+      "ipv4": ["192.0.2.2"]
     },
-    "id": "7cf0981a-0949-11ee-be56-0242ac121234", << added by SOF >>
-    "state": "acknowledged", << added by SOF >>
-    "actualStartDateTime": "2024-09-08T06:37:01.354Z" << added by SOF >>
-  }
+    "transmissionInterval": {
+      "amount": 1,
+      "units": "seconds"
+    },
+    "protocol": "ICMP",
+    "count": 5,
+    "packetSize": 64,
+    "timeout": 3
+  },
+  "creationDate": "2025-06-13T10:00:00Z",
+  "lastModifiedDate": "2025-06-13T10:00:00Z",
+  "state": "acknowledged"
+}
+
 ```
 
 Attributes that are set by the Seller/Server in the response are marked with 
 the `<< added by SOF >>` tag.
 
-**[R39]** If the request is successful, the Seller’s response to a Create Test Job request **MUST** echo back all Buyer/Client provided attributes. [MEF136.1 R29]
+**[R30]** If the request is successful, the Seller’s response to a Create Test Job request **MUST** echo back all Buyer/Client provided attributes. [MEF136.1 R29]
 
-**[R40]** If the request is successful, the Seller MUST return the following attributes:
+**[R31]** If the request is successful, the Seller MUST return the following attributes:
 - `id`
 - `state`
 [MEF136.1 R30]
 
-**[R41]** If the request is not successful, the Seller/Server **MUST NOT** echo back all Buyer/Client provided attributes. [MEF136.1 R31]
+**[R32]** If the request is unsuccessful, the Seller/Server **MUST** return an error with explanation to the Buyer/Client.. [MEF136.1 R31, R32]
 
-**[R42]** If the request is not successful, the Seller/Server **MUST NOT** return a Test Job Identifier or Test Job State. [MEF136.1 R32]
-
-**[R43]** If the Seller/Server encounters errors, they **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R33]
+**[R33]** If the Seller/Server encounters errors, they **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R33]
 
 ### 6.6.4. Create Test Job without Test Profile Request
 
 A Test Job can be created without referencing an existing Test Profile in the request by directly providing the required attributes typically defined by the `TestProfile`.
 
-The `TestJob_Create` class, used as a payload for the `createTestJob` operation includes the `testProfile` attribute, which is of type `TestProfileRefOrValue`.
+The `TestJob_Common` class, used as a payload for the `createTestJob` operation includes the `testProfile` attribute, which is of type `TestProfileRefOrValue`.
 By specifying the value of the `@type` attribute (discriminator) to `@type=TestProfileValue` it is possible to directly provide TestProfile attributes within the Test Job request.
 
 
-**_Note_**: Defining attributes related to `TestProfile` in Test 
-Job create request does not create a new `TestProfile` object. 
-
-**_Note:_** The model of the request message - `TestJob_Create` is a subset of the 
-`TestJob_Common` model and contains only attributes that can (or must) be set 
-by the Buyer/Client. The Seller/Server (SOF) then enriches the entity in the
-response with additional information.
-
-Figure 21 illustrates the key part of the data model that can be used during 
+Figure 20 illustrates the key part of the data model that can be used during 
 the creation of a Test Job to directly provide the required attributes typically
 defined by the `TestProfile` type in the request (`POST /testJob`).
 
-![Figure 21: Test Job without Test Profile Key Entities](serviceTest/media/testJobWithoutTestProfileModel.png)
+![Figure 20: Test Job without Test Profile Key Entities](serviceTest/media/testJobWithoutTestProfileModel.png)
 
-**Figure 21. Test Job without Test Profile Key Entities**
+**Figure 20. Test Job without Test Profile Key Entities**
 
 To send a create Test Job without Test Profile request the Buyer/Client uses the 
-`createtestJob` operation from the API: `POST /testJob`. For
+`createTestJob` operation from the API: `POST /testJob`. For
 clarity, some of the create Test Job payload's attributes might be 
 omitted to improve examples' readability.
 
-**`Test Job` Create Request**
+**Test Job Create Request**
 
 ```json
 {
-    "name": "TestJob12345",
-    "description": "Exemplary Create Test Job request",
-    "startDateTime": "2024-09-08T06:36:58.354Z",
-    "endDateTime": "2024-09-08T16:36:58.354Z",
-    "recurrencePeriod": "hourly",
-    "testProfile": {
-        "@type": "testProfileValue",
-        "description": "directly provided test profile attributes ",
-        "relatedServiceSpecificationId": "6e4e338a-8105-481e-8bf6-b3ca124a4b89",
-        "serviceSpecificTestProfileAttributes": {
-            "@type": "IP-PING",
-            "targetAddress": "192.168.5.10",
-            "packetCount" : "2",
-            ...
-        },
-        "relatedContact": {
-            "name": "Contact 1",
-            "phoneNumber": "003531541274"
-        }
+  "id": "job-6789",
+  "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-6789",
+  "testProfile": {
+    "@type": "TestProfileValue",
+    "relatedServiceSpecification": {
+      "id": "svc-spec-001",
+      "href": "https://serverRoot/mefApi/legato/serviceSpecifications/svc-spec-001"
     },
-    "validFor": "2024-09-08T16:36:58.354Z",
-    "relatedService": {
-      "id": "6e4e338a-8105-481e-8bf6-b3ca768a4b89",
-      "name": "TestService12345"
-    },
-    "testMeasureAttributes": {
-      "@type": "urn:mef:lso:spec:legato:icmp-ping:v0.0.1:all"
+    "relatedContact": [
+      {
+        "name": "Alice Johnson",
+        "organization": "ExampleCorp",
+        "emailAddress": "alice.j@example.com",
+        "phoneNumber": "+1-555-0100",
+        "postalAddress": "123 Network Lane, NetCity, NC 12345"
+      }
+    ],
+    "serviceSpecificTestProfileConfiguration": {
+      "@type": "urn:mef:lso:spec:legato:ping-report:v0.0.1:all",
+      "vlan": 100,
+      "protocol": "IPV4",
+      "interface": {
+        "name": "Site-A",
+        "description": "Test endpoint at Site-A",
+        "cloudService": false,
+        "ipvcEndpoint": ["ep-001"]
+      }
     }
-  }
+  },
+  "relatedServiceFrom": {
+    "id": "service-from-001",
+    "href": "https://serverRoot/mefApi/legato/services/service-from-001"
+  },
+  "relatedServiceTo": {
+    "id": "service-to-002",
+    "href": "https://serverRoot/mefApi/legato/services/service-to-002"
+  },
+  "scheduleTime": "2025-06-12T07:55:00Z"
+}
+
 
 ```
 
-**[R44]** The Buyer’s/Client’s Create Test Job request **MUST** support the 
-following attributes: [MEF136.1 R34]
+**[R34]** The Buyer’s/Client’s Create Test Job request **MUST** support the 
+following attributes: 
+- `name`
+- `startDateTime`
+- `endDateTime`
+- `validFor`
+- `relatedServiceIdentifierFrom`
+- `relatedServiceIdentifierTo`
+- `serviceSpecificTestJobConfiguration`
+- `serviceSpecificTestProfileConfiguration`
+- `relatedServiceSpecification` 
+- `relatedContact`
 
-- Test Job Name
-- Start Date Time
-- End Date Time
-- Valid For
-- Related Service Identifier
-- Test Specific Attributes 
-- Service Specific Test Profile Attributes
-- Related Service Specification 
-- Related Contact Information 
+where `serviceSpecificTestProfileConfiguration`,  `relatedServiceSpecification`
+and `relatedContact` are Test Profile related attributes. [MEF136.1 R34]
 
-
-### 6.6.. Create Test Job without Test Profile Response
+### 6.6.5. Create Test Job without Test Profile Response
 
 Entities used for providing a response to Create Test Job requests are
-presented in Figure 21. The Seller/Server responds with a `TestJob` 
+presented in Figure 20. The Seller/Server responds with a `TestJob` 
 type, which adds some attributes (like `id` or `state`) to the 
-`TestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+`TestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
 
-**`Test Job` Create Response**
+**Test Job Create Response**
 
 ```json
-  {
-    "name": "TestJob12345",
-    "description": "Exemplary Create Test Job request",
-    "startDateTime": "2024-09-08T06:36:58.354Z",
-    "endDateTime": "2024-09-08T16:36:58.354Z",
-    "recurrencePeriod": "hourly",
-    "testProfile": {
-        "@type": "testProfileValue",
-        "description": "directly provided test profile attributes ",
-        "relatedServiceSpecificationId": "6e4e338a-8105-481e-8bf6-b3ca124a4b89",
-        "serviceSpecificTestProfileAttributes": {
-            "@type": "IP-PING",
-            "targetAddress": "192.168.5.10",
-            "packetCount" : "2",
-            ...
-        },
-        "relatedContact": {
-            "name": "Contact 1",
-            "phoneNumber": "003531541274"
-        }
+{
+  "id": "job-6789",
+  "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-6789",
+  "testProfile": {
+    "@type": "TestProfileValue",
+    "relatedServiceSpecification": {
+      "id": "svc-spec-001",
+      "href": "https://serverRoot/mefApi/legato/serviceSpecifications/svc-spec-001"
     },
-    "validFor": "2024-09-08T16:36:58.354Z",
-    "relatedService": {
-      "id": "6e4e338a-8105-481e-8bf6-b3ca768a4b89",
-      "name": "TestService12345"
-    },
-    "testMeasureAttributes": {
-      "@type": "urn:mef:lso:spec:legato:icmp-ping:v0.0.1:all"
-    },
-    "id": "7cf0981a-0949-11ee-be56-0242ac121234", << added by SOF >>
-    "state": "acknowledged", << added by SOF >>
-    "actualStartDateTime": "2024-09-08T06:37:01.354Z" << added by SOF >>
-  }
+    "relatedContact": [
+      {
+        "name": "Alice Johnson",
+        "organization": "ExampleCorp",
+        "emailAddress": "alice.j@example.com",
+        "phoneNumber": "+1-555-0100",
+        "postalAddress": "123 Network Lane, NetCity, NC 12345"
+      }
+    ],
+    "serviceSpecificTestProfileConfiguration": {
+      "@type": "urn:mef:lso:spec:legato:ping-report:v0.0.1:all",
+      "vlan": 100,
+      "protocol": "IPV4",
+      "interface": {
+        "name": "Site-A",
+        "description": "Test endpoint at Site-A",
+        "cloudService": false,
+        "ipvcEndpoint": ["ep-001"]
+      }
+    }
+  },
+  "relatedServiceFrom": {
+    "id": "service-from-001",
+    "href": "https://serverRoot/mefApi/legato/services/service-from-001"
+  },
+  "relatedServiceTo": {
+    "id": "service-to-002",
+    "href": "https://serverRoot/mefApi/legato/services/service-to-002"
+  },
+  "scheduleTime": "2025-06-12T07:55:00Z",
+  "status": "scheduled"
+}
+
 ```
 
 Attributes that are set by the Seller/Server in the response are marked with 
 the `<< added by SOF >>` tag.
 
-**[R45]** If the request is successful, the Seller’s response to a Create Test Job request **MUST** echo back all Buyer/Client provided attributes. [MEF136.1 R35]
+**[R35]** If the request is successful, the Seller’s response to a Create Test Job request
+**MUST** echo back all Buyer/Client provided attributes. [MEF136.1 R33]
 
-**[R46]** If the request is successful, the Seller MUST return the following attributes:
+**[R36]** If the request is successful, the Seller MUST return the following attributes:
 - `id`
 - `state`
-[MEF136.1 R36]
+[MEF136.1 R34]
 
-**[R47]** If the request is not successful, the Seller/Server **MUST NOT** echo back all Buyer/Client provided attributes. [MEF136.1 R37]
-
-**[R48]** If the request is not successful, the Seller/Server **MUST NOT** return a Test Job Identifier or Test Job State. [MEF136.1 R38]
-
-**[R47]** If the Seller/Server encounters errors, they **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R39]
+**[R37]** If the Seller/Server encounters errors, they **MUST** return an error with explanation 
+to the Buyer/Client. [MEF136.1 R37]
 
 ### 6.6.6. Test Job State Machine
 
-Figure 22 presents the Test Job state machine:
+Figure 23 presents the Test Job state machine:
 
-![Figure 22: Test Job State Machine](serviceTest/media/testJobStates.png)
+![Figure 23: Test Job State Machine](serviceTest/media/testJobStates.png)
 
-**Figure 22. Test Job State Machine**
+**Figure 23. Test Job State Machine**
 
 After receiving the request, the Seller/Server (SOF) performs basic checks of 
 the message. If any problem is found an Error response is provided. If the
@@ -1612,7 +1743,7 @@ either the `scheduled` or `inProgress` state depending on the assigned schedule.
 After completion, the Seller/Server verifies if `TestJob` is recurring. 
 If yes, `TestJob` moves to either `scheduled` or `inProgress` state depending on 
 the schedule definition. Otherwise, it moves to a `completed` state. 
-`TestJob` can be cancelled when in `scheduled` or `inProgress`. When cancellation 
+`TestJob` can be cancelled when in `scheduled`, `suspended` or `inProgress`. When cancellation 
 is successful, `TestJob` moves to `cancelled` state. `TestJob` can be modified 
 only in the `scheduled` or `suspended` state.
 
@@ -1621,27 +1752,29 @@ naming, together with the states' description.
 
 | state                  | MEF W136.1 name      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `acknowledged`         | ACKNOWLEDGED            | The Create Test Job request has been received from the Buyer/Client and the Seller/Server has assigned a Test Job Identifier to it.  If the request attributes fail validation, the Create Test Job moves to the REJECTED state.  If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time.  If the Test Job is to be scheduled the Test Job moves to the SCHEDULED state and awaits the scheduled date and time.  If the Test Job is to be performed immediately, the Test Job moves to the IN_PROGRESS state and Test Results begin.  |
-| `assesingModification` | ASSESSING_MODIFICATION | A Modify Test Job request while the Test Job is in the SUSPEND or SCHEDULED state.  If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the SUSPEND or SCHEDULED state. |
-| `cancelled`            | CANCELLED               | A Cancel Test Job request is received from the Buyer/Client.  If the request is accepted, the Test Job moves to the CANCELLED state.  The Test Job must be in the IN_PROGRESS, SCHEDULED, or SUSPEND, state.|
+| `acknowledged`         | ACKNOWLEDGED            | The Create Test Job request has been received from the Buyer/Client and the Seller/Server has assigned a Test Job Identifier to it. If the request attributes fail validation, the Create Test Job moves to the `rejected` state.  If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time.  If the Test Job is to be scheduled the Test Job moves to the `scheduled` state and awaits the scheduled date and time. If the Test Job is to be performed immediately, the Test Job moves to the `inProgress` state and Test Results begin.  |
+| `assessingCancelation` | ASSESSING_CANCELLATION | A Cancel Test Job request is received while the Test Job is in the `inProgress`, `suspend` or `scheduled` state. If the Cancel Test Job request is approved, the Test Job moves to the `cancelled` state. If not, the Test Job returns to the `inProgress`, `suspend` or `scheduled` state. |
+| `assesing_modification` | ASSESSING_MODIFICATION | A Modify Test Job request while the Test Job is in the `suspend` or `scheduled` state. If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the `suspend` or `scheduled` state. |
+| `cancelled`            | CANCELLED               | A Cancel Test Job request is received from the Buyer/Client. If the request is accepted, the Test Job moves to the `cancelled` state. The Test Job must be in the `inProgress`, `scheduled`, or `suspend`, state.|
 | `completed`            | COMPLETED               | The Test Job has reached the End Date Time or has completed all Test Measurements and provided Test Results.|
-| `inProgress`           | IN_PROGRESS             | Whether an immediate request or a scheduled request, the Test Job moves to the IN_PROGRESS state when it begins performing Test Results.  If a Cancel Test Job request is received and accepted, the Test Job moves to the CANCELLED state.  If the Cancel Test Job request is declined, the Test Job returns to the IN_PROGRESS state and continues Test Results until they are completed.  If a Suspend Test Job request is received, the Test Job moves to the SUSPEND state.|
+| `inProgress`           | IN_PROGRESS             | Whether an immediate request or a scheduled request, the Test Job moves to the `inProgress` state when it begins performing Test Results. If a Cancel Test Job request is received and accepted, the Test Job moves to the `cancelled` state. If the Cancel Test Job request is declined, the Test Job returns to the `inProgress` state and continues Test Results until they are completed. If a Suspend Test Job request is received, the Test Job moves to the `suspend` state.|
 | `rejected`             | REJECTED                | The Create Test Job request fails validation and is rejected.|
-| `scheduled`            | SCHEDULED               | The Test Job is scheduled to start at a later time.  The Test Job stays in the SCHEDULED state until the Start Date and Time is reached.  The Test Job moves to IN_PROGRESS when the Start Date and Time is reached.  A Test Job with the state SCHEDULED can be moved to the SUSPEND or CANCELLED state.|
-| `suspend`              | SUSPEND                 | A Test Job in the IN_PROGRESS or SCHEDULED state receives a Suspend Test Job request.  The Test Job moves to the SUSPEND state. A Test Job cannot be modified unless it is in the SUSPEND state.|
+| `scheduled`            | SCHEDULED               | The Test Job is scheduled to start at a later time. The Test Job stays in the `scheduled` state until the Start Date and Time is reached. The Test Job moves to `inProgress` when the Start Date and Time is reached.  A Test Job with the state `scheduled` can be moved to the `suspend` or `cancelled` state.|
+| `suspend`              | SUSPEND                 | A Test Job in the `inProgress` or `scheduled` state receives a Suspend Test Job request. The Test Job moves to the `suspend` state.|
 
 **Table 10. Test Job State Machine states**
 
-**[R50]** The Seller/Server **MUST** support all Test Job states and their associated transitions as described in Figure 21 and Table 10.
+**[R38]** The Seller/Server **MUST** support all Test Job states and their associated transitions as described in Figure 20 and Table 10.
 
-## 6.8. Use Case 8: Retrieve List of Test Jobs
+## 6.8. Use Case 7: Retrieve List of Test Jobs
 
 The Buyer/Client can retrieve a list of `TestJob_Find` by using a 
 `GET /testJob` operation with desired filtering criteria.
 
-**[R51]** The Buyer/Client’s Retrieve Test Job List request **MUST** contain none or more of the following filter criteria: 
+**[R39]** The Buyer/Client’s Retrieve Test Job List request **MUST** contain none or more of the following filter criteria: 
 
-- `relatedServiceId`
+- `relatedServiceIdFrom`
+- `relatedServiceIdTo`
 - `testProfileId`
 - `name`
 - `startDateTime.gt`
@@ -1649,44 +1782,31 @@ The Buyer/Client can retrieve a list of `TestJob_Find` by using a
 - `endDateTime.gt`
 - `endDateTime.lt`
 
-[MEF136.1 R73]
+[MEF136.1 R738]
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/testJob?relatedServiceId=6e4e338a-8105-481e-8bf6-b3ca768a4b89&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob?relatedServiceIdFrom=service-from-001&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Test Job 
-objects that have `relatedServiceId` equal 6e4e338a-8105-481e-8bf6-b3ca768a4b89. 
-Additionally, the Buyer/Client asks 
-only for a first (`offset=0`) pack of 10 results (`limit=10`) to be returned. 
+objects that have `relatedServiceIdFrom` equal `service-from-001`. 
 The correct response (HTTP code `200`) in the response body contains a list of 
 `TestJob_Find` objects matching the criteria. To get all the details, the 
 Buyer/Client has to query a specific `TestJob` by its `id`. Details 
-related to pagination are described in [section 7.1.2](#712-response-pagination)
+related to pagination are described in [section 6.2.1](#621-response-pagination)
 
-If the quantity of the records requested to be returned exceeds a Seller/Server 
-policy, the Seller/Server must choose to respond with either:
-- An empty list and message that indicates the result set is too large or
-- A response that indicates the result is too large and includes a subset of the
-matching Test Jobs.
+**[R40]** If successful, the Seller/Server **MUST** return a list `TestJob_Find` objects that match the selected filter criteria. [MEF136.1 R79]
 
+**[R41]** If successful but no matches to the filter criteria are found, the Seller/Server **MUST** return an empty list [MEF136.1 R80]
 
-**[R52]** If successful, the Seller/Server **MUST** return a list of Test Job Identifiers that match the filter criteria along with the filter criteria [MEF136.1 R74]
+**[R42]** If errors are encountered, the Seller/Server **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R81, R82]
 
-**[R53]** If successful but no matches to the filter criteria are found, the Seller/Server **MUST** return an empty list [MEF136.1 R75]
+Figure 24 presents entities related to the use case. 
 
-**[R54]**	If unsuccessful, the Seller/Server **MUST NOT** return a list of Test Job Identi-fiers or an empty list. [MEF136.1 R76]
+![Figure 24: Use Case 7](serviceTest/media/useCase8Model.png)
 
-**[R55]**	If errors are encountered, the Seller/Server **MUST** return an indication of the errors. [MEF136.1 R77]
+**Figure 24. Use Case 7: Retrieve Test Job List - Model**
 
-
-
-Figure 23 presents entities related to the use case. 
-
-![Figure 23: Use Case 8](serviceTest/media/useCase8Model.png)
-
-**Figure 23. Use Case 8: Retrieve Test Job List - Model**
-
-## 6.9. Use Case 9: Retrieve Test Job by Job Identifier
+## 6.9. Use Case 8: Retrieve Test Job by Job Identifier
 
 The Buyer/Client can get detailed information about the Test Job from 
 the Seller/Server by using a `GET /testJob/{{id}}` operation. The 
@@ -1701,33 +1821,29 @@ to a Get by ID for a `TestJob` with
 `id=7cf0981a-0949-11ee-be56-0242ac121234` would return exactly the same response as
 presented in [section 6.6.3](#663-create-test-job-response).
 
-**[R56]** The Buyer/Client’s Retrieve Test Job by Identifier request **MUST** include the Test Job Identifier and only the Test Job Identifier. [MEF136.1 R78]
+**[R43]** The Buyer/Client’s Retrieve Test Job by Identifier request **MUST** include the Test Job Identifier and only the Test Job Identifier. [MEF136.1 R83]
 
-**[R57]** If successful, the Seller/Server **MUST** include all `TestJob` attributes in their response. [MEF136.1 R79]
+**[R44]** If successful, the Seller/Server **MUST** include all `TestJob` attributes in their response. [MEF136.1 R84]
 
-**[R58]** If unsuccessful, the Seller/Server **MUST NOT** return any attributes in their response. [MEF136.1 R80]
+**[R45]** If errors are encountered, the Seller/Server **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R85, R86]
 
-**[R59]** If errors are encountered, the Seller/Server **MUST** return an indication of the errors encountered. [MEF136.1 R80]
+**[R46]** In case `id` does not allow finding a `TestJob` in Seller/Server's system, an error response `Error404` **MUST** be returned. 
 
-**[R60]** In case `id` does not allow finding a `TestJob` in 
-Seller/Server's system, an error response `Error404` **MUST** be returned. 
+## 6.10. Use Case 9: Modify Test Job
 
-## 6.10. Use Case 10: Modify Test Job
-
-Due to the need for provisioning and resource reservation on the SOF side, the 
-modification operation associated with Test Job may exhibit 
-prolonged duration. Consequently, this operation is implemented through a 
-separate lifecycle process.
+Due to the need for provisioning and resource reservation on the Seller/Server side, the 
+modification operation associated with Test Job may exhibit prolonged duration. Consequently,
+this operation is implemented through a separate lifecycle process.
 
 ### 6.9.1. Interaction flow
 
-The flow of this use case is shown in Figure 24.
+The flow of this use case is shown in Figure 25.
 
-![Figure 24. Use Case 10 Modify Test Job](serviceTest/media/useCase10.png)
+![Figure 25. Use Case 9 Modify Test Job](serviceTest/media/useCase10.png)
 
-**Figure 24. Use Case 10 - Modify Test Job create request flow**
+**Figure 25. Use Case 9 - Modify Test Job create request flow**
 
-The Buyer/Client sends a request with a `ModifyTestJob_Create` type in
+The Buyer/Client sends a request with a `ModifyTestJob_Common` type in
 the body. The Seller/Server performs request validation, assigns an `id`, and 
 returns `ModifyTestJob` type in the response body, with a `state` set to
 `acknowledged`. Further processing is performed by Seller/Server which will in
@@ -1736,64 +1852,33 @@ the progress of the process either by subscribing for notifications or by
 periodically polling the `ModifyTestJob`. The two patterns are presented
 in the following diagrams.
 
-![Figure 25. Modify Test Job Notification](serviceTest/media/useCase10Notification.png)
+![Figure 26. Modify Test Job Notification](serviceTest/media/useCase10Notification.png)
 
-**Figure 25. Modify Test Job progress tracking - Notifications**
+**Figure 26. Modify Test Job progress tracking - Notifications**
 
-![Figure 26. Modify Test Job Polling](serviceTest/media/useCase10Polling.png)
+![Figure 27. Modify Test Job Polling](serviceTest/media/useCase10Polling.png)
 
-**Figure 26. Modify Test Job progress tracking - Polling**
-
-**_Note_**: The context of notifications is not a part of the considered use
-case itself. It is presented to show the big picture of end-to-end flow. This
-applies also to all further use case flow diagrams with notifications.
+**Figure 27. Modify Test Job progress tracking - Polling**
 
 ### 6.9.2. Modify Test Job Request
 
-Figure 27 presents the most important part of the data model used during 
-the Modify Test Job request (`POST /modifyTestJob`) and response. 
-The model of the request message - `ModifyTestJob_Create` is a subset of
-the `ModifyTestJob` model and contains only attributes that can (or must)
-be set by the Buyer/Client. The Seller/Server (SOF) then enriches the entity in
+Figure 28 presents the most important part of the data model used during 
+the Modify Test Job request `POST /modifyTestJob` and response. 
+The model of the request message `ModifyTestJob_Common` contains only attributes
+that can (or must) be set by the Buyer/Client. The Seller/Server then enriches the entity in
 the response with additional information.
 
-**_Note:_** `ModifyTestJob_Create` is an entity
-used by the Buyer/Client to make a request. `ModifyTestJob` is an entity
-used by the Seller/Server to provide a response. The request entity has a
-subset of attributes of the response entity. Thus for visibility of these
-shared attributes `ModifyTestJob_Common` has been
-introduced (this class is not supposed to be used directly in the exchange).
-
-A `ModifyTestJob_Create` is a subset that
-includes only the updateable attributes. It is important to notice that 
-updating the reference to Test Profile must not be possible. In order 
-to change this assignment, existing Test Job must be cancelled and 
-replaced by a new Job that relates to the relevant Profile. 
-Modification of Test Job allows for changing attributes defined directly
-by `TestJob` type or Test Profile attributes that are defined by 
-value. These attributes are contained in `testProfile` group.
-The `TestJobRef` section of `ModifyTestJob_Create` is used to 
+Buyer/Client is only allowed to modify Test Jobs that are in `suspended` or 
+`scheduled` state. The `testJob` section of `ModifyTestJob_Common` is used to 
 specify which Test Job object is a subject of the modification process 
 (relationship by reference using `id` of the Job).
-
-**_Note:_** Modifying attributes defined by the Test Profile type, when
-a Job uses a reference to a Test Profile object, cannot modify the 
-Test Profile itself.
-
-**_Note:_** Only attributes that should be modified on the Test Job,
-should be included in the Modify Test Job Request. 
-
-**_TBD:_** Section `servicePayloadSpecificAttributes` of the Test Profile 
-request allows for the introduction of service-specific properties of 
-service function test as the API payload. The extension mechanism is described 
-in detail in [Section 5.3](#53-integration-of-service-testing-specification-into-service-function-testing-api).
 
 The full list of attributes is available in [Section 7](#7-api-details) and in
 the API specification which is an integral part of this standard.
 
-![Figure 27. Modify Test Job Key Entities](serviceTest/media/modifyTestJobModel.png)
+![Figure 28. Modify Test Job Key Entities](serviceTest/media/modifyTestJobModel.png)
 
-**Figure 27. Modify Test Job Key Entities**
+**Figure 28. Modify Test Job Key Entities**
 
 To send a Modify Test Job request the Buyer/Client uses the 
 `modifyTestJob` operation from the API: `POST /modifyTestJob`. 
@@ -1801,7 +1886,7 @@ Some of the payload's attributes might be omitted to improve examples'
 readability.
 
 The example below shows a request to create a modification process for 
-`TestJob` that was created in section [6.6.2](#662-create-test-job-request). 
+`TestJob` that was created in section [6.6.2](#662-create-test-job-request-with-test-profile). 
 
 The request below aims to:
 
@@ -1811,103 +1896,113 @@ The request below aims to:
 
 ```json
 {
-  "name": "ModifyTestJob12345",
-  "description": "Exemplary Modified Test Job request",
-  "endDateTime": "2024-11-08T16:36:58.354Z",
-  "testProfile": {
-    "@type": "testProfileRef",
-    "id": "8df0981a-0949-11ee-be56-0242ac120066"
-  },
-  "modificationReason": "Modifying Test Job Profile and Test Job end date",
   "testJob": {
-    "@type": "TestJobRef",
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "id": "job-12345",
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345"
+  },
+  "modificationReason": "Change test start time and update test profile.",
+  "name": "Updated Ping Test Job",
+  "description": "Updated schedule and profile for site-to-site ping test",
+  "startDateTime": "2025-06-14T09:00:00Z",
+  "endDateTime": "2025-06-14T10:00:00Z",
+  "testProfile": {
+    "@type": "TestProfileRef",
+    "id": "tp-002"
+  },
+  "relatedServiceFrom": {
+    "id": "service-from-001",
+    "href": "https://serverRoot/mefApi/legato/services/service-from-001"
+  },
+  "relatedServiceTo": {
+    "id": "service-to-002",
+    "href": "https://serverRoot/mefApi/legato/services/service-to-002"
   }
 }
+
 ```
 
-**[R61]** The Buyer’s Modify Test Job request **MUST** include the Test Job Identifier. [MEF136.1 R58]
+**[R47]** The Buyer’s Modify Test Job request **MUST** include the Test Job Identifier. [MEF136.1 R58]
 
-**[R62]** The Buyer's Modify Test Job request **MUST** at least one of the
+**[R48]** The Buyer's Modify Test Job request **MUST** at least one of the
 following attributes: [MEF136.1 R59]
 - `description`
 - `endDateTime`
 - `name`
 - `startDateTime`
-- `relatedService`
+- `relatedServiceFrom`
+- `relatedServiceTo`
 - `testProfile`
-- `testMeasureAttributes`
+- `serviceSpecificTestJobConfiguration`
 
-**[R63]** The Test Job **MUST** be in the SUSPENDED or SCHEDULED state for a Buyer/Client to modify it. [MEF136.1 R60]
-
-**_Note_**: In case Test Job is running e.g., once a day for a short period
-of time, it may be difficult to change its state. If action arrives when 
-Test Job is running, it is recommended to run until the end and only 
-afterwards action should be applied.
+**[R49]** The Test Job **MUST** be in the `suspended` or `scheduled` state for a Buyer/Client to modify it. [MEF136.1 R60]
 
 ### 6.9.3. Modify Test Job Response
 
 Entities used for providing a response to Modify Test Job request are
 presented in Figure 27. The Seller/Server responds with a 
 `ModifyTestJob` type, which adds some attributes (like `id` or `state`) 
-to the `ModifyTestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+to the `ModifyTestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
 
 ```json
 {
-  "name": "ModifyTestJob12345",
-  "description": "Exemplary Modified Test Job request",
-  "endDateTime": "2024-11-08T16:36:58.354Z",
-  "testProfile": {
-    "@type": "testProfileRef",
-    "id": "8df0981a-0949-11ee-be56-0242ac120066"
-  },
-  "modificationReason": "Modifying Test Job Profile and Test Job end date",
+
+{
+  "id": "mod-job-12345",
+  "href": "https://example.com/api/modifyTestJobs/mod-job-12345",
+  "state": "acknowledged",
+  "creationDate": "2025-06-13T12:30:00Z",
+  "modificationReason": "Change test start time and update test profile.",
   "testJob": {
-    "@type": "TestJobRef",
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "id": "job-12345",
+    "href": "https://example.com/api/testJobs/job-12345"
   },
-  "creationDate": "204-06-19T12:58:17.088Z", << added by SOF >>
-  "href": "{{baseUrl}}/serviceFunctionTesting/v1/modifyTestJob/9c51d971-185d-403e-952f-2110f33a9628", << added by SOF >>
-  "id": "9c51d971-185d-403e-952f-2110f33a9628", << added by SOF >>
-  "state": "acknowledged" << added by SOF >>
+  "name": "Updated Ping Test Job",
+  "description": "Updated schedule and profile for site-to-site ping test",
+  "startDateTime": "2025-06-14T09:00:00Z",
+  "endDateTime": "2025-06-14T10:00:00Z",
+  "testProfile": {
+    "@type": "TestProfileRef",
+    "id": "tp-002"
+  },
+  "relatedServiceFrom": {
+    "id": "service-from-001",
+    "href": "https://example.com/api/services/service-from-001"
+  },
+  "relatedServiceTo": {
+    "id": "service-to-002",
+    "href": "https://example.com/api/services/service-to-002"
+  }
 }
+
 ```
 
 Attributes that are set by the Seller/Server in the response are marked with 
 the `<< added by SOF >>` tag. 
 
-**[R64]** The Seller/Server's response **MUST** include all and unchanged 
+**[R50]** The Seller/Server's response **MUST** include all and unchanged 
 attributes' values as provided by Buyer/Client in the request. [MEF136.1 R61]
 
-**[R65]** If the request is not successful, the Seller/Server **MUST NOT** echo 
-back all Buyer/Client provided attributes. [MEF136.1 R62]
+**[R51]** If the request is unsuccessful, the Seller/Server **MUST** return an
+error with explanation to the Buyer/Client. [MEF136.1 R62]
 
-**[R66]** The Seller/Server **MUST** specify the following attributes in a 
+**[R52]** The Seller/Server **MUST** specify the following attributes in a 
 response: 
-- `id`
-- `state`
 - `creationDate`
+- `id`
+- `href`
+- `state`
 
-**[R67]** The `id` **MUST** remain the same value for the life of the Modify 
+**[R53]** The `id` **MUST** remain the same value for the life of the Modify 
 Test Job.
 
-**[R68]** If the request is not successful, the Seller/Server **MUST NOT** return
-a Test Job Identifier or Test Job State. [MEF136.1 R63]
-
-**[R69]** If the Seller/Server encounters errors, they **MUST** return an error 
+**[R54]** If the Seller/Server encounters errors, they **MUST** return an error 
 with explanation to the Buyer/Client. [MEF136.1 R64]
 
 In case Seller/Server cannot successfully validate the request, Modify 
-Test Job process fails, which results in setting state to `declined` 
+Test Job process fails, which results in setting state to `rejected` 
 with a proper explanation in `modificationDeniedReason`. This includes 
 situation when:
 - `id` does not allow to find a `TestJob` that is to be updated in 
@@ -1917,27 +2012,24 @@ Seller/Server's system
 
 ### 6.9.4. Modify Test Job State Machine
 
-Figure 28 presents the Modify Test Job state machine:
+Figure 29 presents the Modify Test Job state machine:
 
-![Figure 28 Modify Test Job State Machine](serviceTest/media/modifyTestJobStates.png)
+![Figure 29 Modify Test Job State Machine](serviceTest/media/modifyTestJobStates.png)
 
-**Figure 28. Modify Test Job State Machine**
+**Figure 29. Modify Test Job State Machine**
 
 After receiving the request, the Seller/Server (SOF) performs basic checks of 
 the message. If any problem is found an Error response is provided. If the
 validation passes a response is provided with `ModifyTestJob` in
-`acknowledged` state. Next, the Seller/Server
-performs all the remaining business and time-consuming validations. At this
-point, an Error response cannot be provided anymore, so the profile moves to a
-`declined` state if some issues are found. The
+`acknowledged` state and related `TestJob` moves to `assessingModification`
+state. Next, the Seller/Server performs all the remaining business and 
+time-consuming validations. At this point, an Error response cannot be provided
+anymore, so `ModifyTestJob`  moves to a `rejected` state if some issues are found. The
 `modifyTestJob.modificationDeniedReason` acts as a placeholder to 
-provide a detailed description of what caused the problem. If validation is 
-successful, `ModifyTestJob` moves to `accepted` state. At this point, 
-related `TestJob` moves to pending state and Seller/Server starts all 
-necessary arrangements to provision modification request. `TestJob` 
-remains in `pending` state until Modify Test Job process is finished and 
-moved to `completed` state. This causes `TestJob` state to change to 
-`scheduled` or `in-progress` depending on the `ScheduleDefinition`.
+provide a detailed description of what caused the problem. If Modify Test Job
+request has been validated and accepted by the Seller/Server, `ModifyTestJob`
+moves to `accepted` state and `TestJob` gets updated. After `TestJob` is updated
+its state to changes back to `scheduled` or `inProgress`.
 
 Table 11 presents the mapping between the API `state` names and the MEF W136.1
 naming, together with states description. The list of states is the same 
@@ -1947,21 +2039,19 @@ for all processes related to Test Job (cancel/modify/resume/suspend).
 | -------------- |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `accepted`     | ACCEPTED        | The Cancel/Modify/Resume/Suspend Test Job request has been validated and accepted by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                   |
 | `acknowledged` | ACKNOWLEDGED    | The Cancel/Modify/Resume/Suspend Test Job request has been received by the Seller/Server and has passed basic validation. Test Job Process Identifier is assigned in the Acknowledged state. The request remains in the Acknowledged state until all validations as applicable are completed. If the attributes are validated, the request moves to the Accepted state. If not all attributes are validated, the request moves to the Declined state.     |
-| `completed`    | COMPLETED       | The Cancel/Modify/Resume/Suspend Test Job request has been completed by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                                |
-| `declined`     | DECLINED        | The Cancel/Modify/Resume/Suspend Test Job request has failed validation and been declined by the Seller/Server.                                                                                                                                                                                                                                                                                                                                           |
 | `rejected`     | REJECTED        | The Cancel/Modify/Resume/Suspend Test Job request has been rejected by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                                 |
 
 **Table 11. Test Job Process State Machine states**
 
-**[R70]** The Seller/Server **MUST** support all Modify Test Job states 
-and their associated transitions as described in Figure 28 and Table 11. 
+**[R55]** The Seller/Server **MUST** support all Modify Test Job states 
+and their associated transitions as described in Figure 29 and Table 11. 
 
-## 6.11. Use Case 11: Retrieve Modify Test Job List
+## 6.11. Use Case 10: Retrieve Modify Test Job List
 
 The Buyer/Client can retrieve a list of Modify Test Job objects by using 
-a `GET /modifyTestJob` operation with desired filtering criteria.
+a `GET /modifyTestJob` operation with the desired filtering criteria.
 
-**[O9]** The Buyer/Client Retrieve List of Modify Test Jobs request 
+**[O8]** The Buyer/Client Retrieve List of Modify Test Jobs request 
 **MAY** contain none or more of the following attributes: 
 
 - `testJobId`
@@ -1970,33 +2060,32 @@ a `GET /modifyTestJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/modifyTestJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/modifyTestJob?state=acknowledged&limit=10&offset=0
 ```
 
-The example above shows a Buyer/Client's request to get all Modify Test 
-Job objects that are in the `acknowledged` state. Additionally, the Buyer/Client
-asks only for a first (`offset=0`) pack of 10 results (`limit=10`) to be 
-returned. The correct response (HTTP code `200`) in the response body contains a
-list of `ModifyTestJob_Find` objects matching the criteria. Details 
-related to pagination are described in [section 7.1.2](#712-response-pagination).
+The correct response (HTTP code `200`) in the response body contains a
+list of `ModifyTestJob` objects matching the criteria. Details 
+related to pagination are described in [section 6.2.1](#621-response-pagination).
 
-**[R71]** The Seller **MUST** include following attributes in the
-`ModifyTestJob_Find` object in the response: 
+**[R56]** The Seller **MUST** include the following attributes in the
+`ModifyTestJob` object in the response: 
 
+- `creationDate`
 - `id`
-- `testJobId`
+- `href`
+- `testJob`
 - `state`
 
-**[R72]** In case no items matching the criteria are found, the Seller/Server 
+**[R57]** In case no items matching the criteria are found, the Seller/Server 
 **MUST** return a valid response with an empty list. 
 
-Figure 29 presents entities related to the use case. 
+Figure 30 presents entities related to the use case. 
 
-![Figure 29: Use Case 11](serviceTest/media/useCase11Model.png)
+![Figure 30: Use Case 10](serviceTest/media/useCase11Model.png)
 
-**Figure 29. Use Case 11: Retrieve Modify Test Job List - Model**
+**Figure 30. Use Case 10: Retrieve Modify Test Job List - Model**
 
-## 6.12. Use Case 12: Retrieve Modify Test Job by Identifier
+## 6.12. Use Case 11: Retrieve Modify Test Job by Identifier
 
 The Buyer/Client can get detailed information about the Modify Test Job 
 from the Seller/Server by using a `GET /modifyTestJob/{{id}}` operation. 
@@ -2005,30 +2094,29 @@ Test Job and includes all attributes the Buyer/Client has provided while
 sending a Modify Test Job create request, together with additional 
 attributes set by Seller/Server. 
 
-Get List and Get by Identifier operations return different representations of 
-Modify Test Job. Get List returns the `ModifyTestJob_Find` object 
-which is a subset of the `ModifyTestJob` returned by the Get by Identifier 
-operation. A response to a Get by Id for a `ModifyTestJob` with
-`id=755e55e2-72b0-4e3b-af00-693e3beac691` would return exactly the same response as
-presented in [section 6.12.3](#6123-modify-test-monitoring-job-response).
+Get List and Get by Identifier operations returns the `ModifyTestJob` object. 
+A response to a Get by Id for a `ModifyTestJob` with `id=mod-job-12345`
+would return exactly the same response as presented in [section 6.9.3](#693-modify-test-job-response).
 
-**[R73]** In case `id` does not allow finding a `ModifyTestJob` in 
+**[R58]** In case `id` does not allow finding a `ModifyTestJob` in 
 Seller/Server's system, an error response `Error404` **MUST** be returned. 
 
-**[R74]** The Seller/Server **MUST** include following attributes in the
+**[R59]** The Seller/Server **MUST** include following attributes in the
 `ModifyTestJob` object in the response: 
 
+- `creationDate`
 - `id`
+- `href`
 - `testJob`
 - `state`
 
-**[R75]** The Seller **MUST** provide all remaining optional attributes if they
+**[R60]** The Seller **MUST** provide all remaining optional attributes if they
 were previously set by the Buyer or the Seller. 
 
 
 
 
-## 6.13. Use Case 13: Cancel Test Job
+## 6.13. Use Case 12: Cancel Test Job
 
 Due to the need for deprovisioning of the Test Job on the SOF 
 side, the cancel operation associated with the Test Job may 
@@ -2037,99 +2125,78 @@ a separate lifecycle process.
 
 ### 6.13.1. Interaction flow
 
-The flow of this use case is shown in Figure 30.
+The flow of this use case is shown in Figure 31.
 
-![Figure 30: Use Case 13](serviceTest/media/useCase13.png)
+![Figure 31: Use Case 12](serviceTest/media/useCase13.png)
 
-**Figure 30. Use Case 13 - Cancel Test Job create request flow**
+**Figure 31. Use Case 12 - Cancel Test Job create request flow**
 
-The Buyer/Client sends a request with a `CancelTestJob_Create` type in 
+The Buyer/Client sends a request with a `CancelTestJob_Common` type in 
 the body. The Seller/Server performs request validation, assigns an `id`, and 
 returns the `CancelTestJob` type in the response body, with a `state` set to 
 `acknowledged`. Further processing is performed by Seller/Server which will in 
-case of success update the Test Job. The Buyer/Client can track 
+case of success cancel the Test Job. The Buyer/Client can track 
 the progress of the process either by subscribing for notifications or by
 periodically polling the `CancelTestJob`. The two patterns are presented 
 in the following diagrams.
 
-![Figure 31: Cancel Test Job Notification](serviceTest/media/useCase13Notification.png)
+![Figure 32: Cancel Test Job Notification](serviceTest/media/useCase13Notification.png)
 
-**Figure 31. Cancel Test Job progress tracking - Notifications**
+**Figure 32. Cancel Test Job progress tracking - Notifications**
 
-![Figure 32: Cancel Test Job Polling](serviceTest/media/useCase13Polling.png)
+![Figure 33: Cancel Test Job Polling](serviceTest/media/useCase13Polling.png)
 
-**Figure 32. Cancel Test Job progress tracking - Polling**
-
-**_Note_**: The Cancel Test Job process is altering the state of the job 
-itself. It is important to note that notifications resulting from changes in the 
-state of the Test Job are not represented in Figures 31 and 32. 
-
-**_Note_**: The context of notifications is not a part of the considered use
-case itself. It is presented to show the big picture of end-to-end flow. This
-applies also to all further use case flow diagrams with notifications.
-
+**Figure 33. Cancel Test Job progress tracking - Polling**
 
 ### 6.13.2. Cancel Test Job Request
 
-Figure 33 presents the most important part of the data model used during 
-the Cancel Test Job request (`POST /cancelTestJob`) and response. 
-The model of the request message - `CancelTestJob_Create` is a subset of 
-the `CancelTestJob` model and contains only attributes that can (or must) 
+Figure 34 presents the most important part of the data model used during 
+the Cancel Test Job request `POST /cancelTestJob` and response. 
+The model of the request message - `CancelTestJob_Common` 
+contains only attributes that can (or must) 
 be set by the Buyer/Client. The Seller/Server (SOF) then enriches the entity in 
 the response with additional information.
 
-**_Note:_** `CancelTestJob_Create` is an entity
-used by the Buyer/Client to make a request. `CancelTestJob` is an entity
-used by the Seller/Server to provide a response. The request entity has a
-subset of attributes of the response entity. Thus for visibility of these
-shared attributes `CancelTestJob_Common` has been
-introduced (this class is not supposed to be used directly in the exchange).
-
-The `testJob` section of `CancelTestJob_Create` is used to 
+The `testJob` section of `CancelTestJob_Common` is used to 
 specify which Test Job object is a subject of the cancellation process 
 (relationship by reference using `id` of the Job).
 
 The full list of attributes is available in [Section 7](#7-api-details) and in
 the API specification which is an integral part of this standard.
 
-![Figure 33: Cancel Test Job Key Entities](serviceTest/media/cancelTestJobModel.png)
+![Figure 34: Cancel Test Job Key Entities](serviceTest/media/cancelTestJobModel.png)
 
-**Figure 33. Cancel Test Job Key Entities** 
+**Figure 34. Cancel Test Job Key Entities** 
 
 To send a Cancel Test Job request the Buyer/Client uses the 
 `cancelTestJob` operation from the API: `POST /cancelTestJob`. 
 
 The example below shows a request to create a cancellation process for
-`TestJob` that was created in section [6.6.2](#662-create-test-monitoring-job-request). 
+`TestJob` that was created in section [6.6.2](#662-create-test-job-request-with-test-profile). 
 
 ```json
 {
   "cancellationReason": "Cancel Test Job sample",
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   }
 }
 ```
 
-**[R76]** The Buyer’s/Client’s Cancel Test Job request **MUST** include 
+**[R61]** The Buyer’s/Client’s Cancel Test Job request **MUST** include 
 the following attributes: [MEF133.1 R57]
 - `testJob`
 
-**_Note_**: If action arrives when Test Job is running, it is 
-recommended to run until the end and only afterward action should be applied.
-[MEF133.1 O16, O26]
+**_Note_** If action arrives when Test Job is running, it is recommended to
+run until the end and only afterward action should be applied. [MEF133.1 O16, O26]
 
 ### 6.13.3. Cancel Test Job Response
 
 Entities used for providing a response to Cancel Test Job requests are
-presented in Figure 33. The Seller/Server responds with a `CancelTestJob` 
+presented in Figure 34. The Seller/Server responds with a `CancelTestJob` 
 type, which adds some attributes (like `id` or `state`) to the 
-`CancelTestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+`CancelTestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
@@ -2138,12 +2205,12 @@ structure as in the retrieve by identifier operation.
 {
   "cancellationReason": "Cancel Test Job sample",
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   },
   "creationDate": "204-06-19T12:58:17.088Z", << added by SOF >>
-  "href": "{{baseUrl}}/serviceFunctionTesting/v1/CancelTestJob/aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
-  "id": "aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
+  "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/CancelTestJob/cancel-job-12345", << added by SOF >>
+  "id": "cancel-job-12345", << added by SOF >>
   "state": "acknowledged" << added by SOF >>
 }
 ```
@@ -2151,16 +2218,18 @@ structure as in the retrieve by identifier operation.
 Attributes that are set by the Seller/Server in the response are marked with the
 `<< added by SOF >>` tag. 
 
-**[R77]** The Seller/Server's response **MUST** include all and unchanged 
+**[R62]** The Seller/Server's response **MUST** include all and unchanged 
 attributes' values as provided by the Buyer/Client in the request.
 
-**[R78]** The Seller/Server **MUST** specify the following attributes in a 
+**[R63]** The Seller/Server **MUST** specify the following attributes in a 
 response: 
-- `id`
-- `state`
 - `creationDate`
+- `id`
+- `href`
+- `state`
+- `testJob`
 
-**[R79]** The `id` **MUST** remain the same value for the life of the Cancel 
+**[R64]** The `id` **MUST** remain the same value for the life of the Cancel 
 Test Job.
 
 In case Seller/Server cannot successfully validate the request, Cancel 
@@ -2173,32 +2242,34 @@ Seller/Server's system
 
 ### 6.13.4. Cancel Test Job State Machine
 
-Figure 34 presents the Cancel Test Job state machine:
+Figure 35 presents the Cancel Test Job state machine:
 
-![Figure 34: Cancel Test Job State Machine](serviceTest/media/cancelTestJobStates.png)
+![Figure 35: Cancel Test Job State Machine](serviceTest/media/cancelTestJobStates.png)
 
-**Figure 34. Cancel Test Job State Machine**
+**Figure 35. Cancel Test Job State Machine**
 
-After receiving the request, the Seller/Server (SOF) has assigned a `CancelTestJob` 
-Identifier to it.  If the request attributes fail validation, the `CancelTestJob` 
-request moves to the `rejected` state. Next, the Seller/Server performs all the remaining 
-business and time-consuming validations. At this point, an Error response cannot
-be provided anymore, so the job moves to a `declined` state if some issues 
-are found. The `cancelTestJob.cancellationDeniedReason` acts as a 
-placeholder to provide a detailed description of what caused the problem. If 
-validation is successful, `CancelTestJob` moves to the `accepted` state.
-When the Cancel Test Job process is finished, it moves to the `completed` state. 
-This causes the `TestJob` state to change to `cancelled`.
+
+After receiving the request, the Seller/Server (SOF) performs basic checks of 
+the message. If any problem is found an Error response is provided. If the
+validation passes a response is provided with `CancelTestJob` in
+`acknowledged` state and related `TestJob` moves to `assessingCancelation`
+state. Next, the Seller/Server performs all the remaining business and 
+time-consuming validations. At this point, an Error response cannot be provided
+anymore, so the Cancel Test Job moves to a `rejected` state if some issues are found.
+The `cancelTestJob.cancelationDeniedReason` acts as a placeholder to 
+provide a detailed description of what caused the problem. If the Cancel Test Job
+request has been validated and accepted by the Seller/Server, `CancelTestJob`
+moves to `accepted` state and `TestJob` state is `cancelled`.
 
 Description and mapping of the Cancel Test Job States are the same as in 
 table 10.
 
-## 6.14. Use Case 14: Retrieve Cancel Test Job List
+## 6.14. Use Case 13: Retrieve Cancel Test Job List
 
 The Buyer/Client can retrieve a list of Cancel Test Job objects by using 
 a `GET /cancelTestJob` operation with desired filtering criteria.
 
-**[O10]** The Buyer/Client Retrieve List of Cancel Test Jobs request 
+**[O9]** The Buyer/Client Retrieve List of Cancel Test Jobs request 
 **MAY** contain none or more of the following attributes: 
 
 - `testJobId`
@@ -2207,33 +2278,35 @@ a `GET /cancelTestJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/cancelTestJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/cancelTestJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Cancel Test 
-Job objects that are in the `acknowledged` state. Additionally, the Buyer/Client
-asks only for a first (`offset=0`) pack of 10 results (`limit=10`) to be 
-returned. The correct response (HTTP code `200`) in the response body contains a
-list of `CancelTestJob_Find` objects matching the criteria. Details 
-related to pagination are described in [section 7.1.2](#712-response-pagination).
+Job objects that are in the `acknowledged` state.The correct response 
+(HTTP code `200`) in the response body contains a
+list of `CancelTestJob` objects matching the criteria. Details 
+related to pagination are described in [section 6.2.1](#621-response-pagination).
 
-**[R80]** The Seller **MUST** include following attributes in the
-`CancelTestJob_Find` object in the response: 
+**[R65]** The Seller **MUST** include following attributes in the
+`CancelTestJob` object in the response: 
 
+- `creationDate`
 - `id`
-- `testJobId`
+- `href`
+- `testJob`
 - `state`
 
-**[R81]** In case no items matching the criteria are found, the Seller/Server 
+
+**[R66]** In case no items matching the criteria are found, the Seller/Server 
 **MUST** return a valid response with an empty list. 
 
-Figure 35 presents entities related to the use case. 
+Figure 36 presents entities related to the use case. 
 
-![Figure 35: Use Case 14](serviceTest/media/useCase14Model.png)
+![Figure 36: Use Case 13](serviceTest/media/useCase14Model.png)
 
-**Figure 35. Use Case 14: Retrieve Cancel Test Job List - Model**
+**Figure 36. Use Case 13: Retrieve Cancel Test Job List - Model**
 
-## 6.15. Use Case 15: Retrieve Cancel Test Job by Identifier
+## 6.15. Use Case 14: Retrieve Cancel Test Job by Identifier
 
 The Buyer/Client can get detailed information about the Cancel Test Job 
 from the Seller/Server by using a `GET /cancelTestJob/{{id}}` operation. 
@@ -2242,119 +2315,107 @@ Test Job and includes all attributes the Buyer/Client has provided while
 sending a Cancel Test Job create request, together with additional 
 attributes set by Seller/Server. 
 
-Get List and Get by Identifier operations return different representations of 
-Cancel Test Job. Get List returns the `CancelTestJob_Find` object 
-which is a subset of the `CancelTestJob` returned by the Get by Identifier 
-operation. A response to a Get by Id for a `CancelTestJob` with
-`id=755e55e2-72b0-4e3b-af00-693e3beac691` would return exactly the same response as
-presented in [section 6.12.3](#6123-cancel-test-monitoring-job-response).
+Get List and Get by Identifier operations returns the `CancelTestJob` object.
+A response to a Get by Id for a `CancelTestJob` with
+`id=cancel-job-12345` would return exactly the same response as
+presented in [section 6.13.3](#6133-cancel-test-job-response).
 
-**[R82]** In case `id` does not allow finding a `CancelTestJob` in 
+**[R67]** In case `id` does not allow finding a `CancelTestJob` in 
 Seller/Server's system, an error response `Error404` **MUST** be returned. 
 
-**[R83]** The Seller/Server **MUST** include following attributes in the
+**[R68]** The Seller/Server **MUST** include following attributes in the
 `CancelTestJob` object in the response: 
 
+- `creationDate`
 - `id`
+- `href`
 - `testJob`
 - `state`
 
-**[R84]** The Seller **MUST** provide all remaining optional attributes if they
+**[R69]** The Seller **MUST** provide all remaining optional attributes if they
 were previously set by the Buyer or the Seller. 
 
-## 6.16. Use Case 16: Suspend Test Job
+## 6.16. Use Case 15: Suspend Test Job
 
 Due to the need to release resources on the SOF side, the suspend operation 
 associated with the Test Job may exhibit a prolonged duration. 
 Consequently, this operation is implemented through a separate lifecycle 
 process.
 
-When the Test Job is suspended, it does not perform any tests nor collects test measures.
+When the Test Job is suspended, it does not perform any tests nor collects test results.
 
 ### 6.16.1. Interaction flow
 
-The flow of this use case is shown in Figure 36.
+The flow of this use case is shown in Figure 37.
 
-![Figure 36: Use Case 16](serviceTest/media/useCase16.png)
+![Figure 37: Use Case 15](serviceTest/media/useCase16.png)
 
-**Figure 36. Use Case 16 - Suspend Test Job create request flow**
+**Figure 37. Use Case 15 - Suspend Test Job create request flow**
 
-The Buyer/Client sends a request with a `SuspendTestJob_Create` type in 
+The Buyer/Client sends a request with a `SuspendTestJob_Common` type in 
 the body. The Seller/Server performs request validation, assigns an `id`, and 
 returns the `SuspendTestJob` type in the response body, with a `state` set 
 to `acknowledged`. Further processing is performed by Seller/Server which will 
-in case of success update the Test Job. The Buyer/Client can 
+in case of success suspends the Test Job. The Buyer/Client can 
 track the progress of the process either by subscribing for notifications or by 
 periodically polling the `SuspendTestJob`. The two patterns are presented 
 in the following diagrams.
 
-![Figure 37: Suspend Test Job Notification](serviceTest/media/useCase16Notification.png)
+![Figure 38: Suspend Test Job Notification](serviceTest/media/useCase16Notification.png)
 
-**Figure 37. Suspend Test Job progress tracking - Notifications**
+**Figure 38. Suspend Test Job progress tracking - Notifications**
 
-![Figure 38: Suspend Test Job Polling](serviceTest/media/useCase16Polling.png)
+![Figure 39: Suspend Test Job Polling](serviceTest/media/useCase16Polling.png)
 
-**Figure 38. Suspend Test Job progress tracking - Polling**
+**Figure 39. Suspend Test Job progress tracking - Polling**
 
 **_Note_**: The Suspend Test Job process is altering the state of the job 
 itself. It is important to note that notifications resulting from changes in the 
 state of the Test Job are not represented in Figures 37 and 38.
 
-**_Note_**: The context of notifications is not a part of the considered use
-case itself. It is presented to show the big picture of end-to-end flow. This
-applies also to all further use case flow diagrams with notifications.
-
 ### 6.16.2. Suspend Test Job Request
 
-Figure 39 presents the most important part of the data model used during 
+Figure 40 presents the most important part of the data model used during 
 the Suspend Test Job request (`POST /suspendTestJob`) and 
-response. The model of the request message - `SuspendTestJob_Create` is a
-subset of the `SuspendTestJob` model and contains only attributes that 
+response. The model of the request message - `SuspendTestJob_Common` contains only attributes that 
 can (or must) be set by the Buyer/Client. The Seller/Server (SOF) then enriches 
 the entity in the response with additional information.
 
-**_Note:_** `SuspendTestJob_Create` is an entity
-used by the Buyer/Client to make a request. `SuspendTestJob` is an entity
-used by the Seller/Server to provide a response. The request entity has a
-subset of attributes of the response entity. Thus for visibility of these
-shared attributes `SuspendTestJob_Common` has been
-introduced (this class is not supposed to be used directly in the exchange).
-
-The `testJob` section of `SuspendTestJob_Create` is used to 
+The `testJob` section of `SuspendTestJob_Common` is used to 
 specify which Test Job object is a subject of the suspension process 
 (relationship by reference using `id` of the Job).
 
 The full list of attributes is available in [Section 7](#7-api-details) and in
 the API specification which is an integral part of this standard.
 
-![Figure 39: Suspend Test Job Key Entities](serviceTest/media/suspendTestJobModel.png)
+![Figure 40: Suspend Test Job Key Entities](serviceTest/media/suspendTestJobModel.png)
 
-**Figure 39. Suspend Test Job Key Entities** 
+**Figure 40. Suspend Test Job Key Entities** 
 
 To send a Suspend Test Job request the Buyer/Client uses the 
 `suspendTestJob` operation from the API: `POST /suspendTestJob`. 
 
 The example below shows a request to create a suspension process for
-`TestJob` that was created in section [6.6.2](#662-create-test-job-request). 
+`TestJob` that was created in section [6.6.2](#662-create-test-job-request-with-test-profile). 
 
 ```json
 {
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   },
   "suspensionReason": "Suspend Test Job sample"
 }
 ```
 
-**[R85]** The Buyer/Client Suspend Test Job request **MUST** include the 
+**[R70]** The Buyer/Client Suspend Test Job request **MUST** include the 
 following attributes: [MEF136.1 R40]
-- `testJob.id`
+- `testJob`
 
-**[R86]** The Test Job **MUST** be in the In-Progress state to be 
+**[R71]** The Test Job **MUST** be in the `inProgress` state to be 
 suspended. [MEF136.1 R41]
 
-**[O11]** In case the Test Job is running e.g., once a day for a short period
+**[O10]** In case the Test Job is running e.g., once a day for a short period
 of time, it may be difficult to change its state. If action arrives when 
 Test Job is running, it is recommended to run until the end and only 
 afterwards action should be applied.
@@ -2362,13 +2423,9 @@ afterwards action should be applied.
 ### 6.16.3. Suspend Test Job Response
 
 Entities used for providing a response to Suspend Test Job requests are
-presented in Figure 39. The Seller/Server responds with a 
+presented in Figure 40. The Seller/Server responds with a 
 `SuspendTestJob` type, which adds some attributes (like `id` or `state`) 
-to the `SuspendTestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+to the `SuspendTestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
@@ -2376,13 +2433,13 @@ structure as in the retrieve by identifier operation.
 ```json
 {
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   },
   "suspensionReason": "Suspend Test Job sample",
   "creationDate": "204-06-19T12:58:17.088Z", << added by SOF >>
-  "href": "{{baseUrl}}/serviceFunctionTesting/v1/suspendTestJob/aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
-  "id": "aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
+  "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/suspendTestJob/suspend-job-12345", << added by SOF >>
+  "id": "suspend-job-12345", << added by SOF >>
   "state": "acknowledged" << added by SOF >>
 }
 ```
@@ -2391,35 +2448,37 @@ Attributes that are set by the Seller/Server in the response are marked with the
 `<< added by SOF >>` tag. 
 
 
-**[R87]** If the request is successful, the Seller/Server **MUST** suspend 
+**[R72]** If the request is successful, the Seller/Server **MUST** suspend 
 all testing and measurements being performed on the Test Job and place the 
-Test Job in the SUSPENDED state when they receive a Suspend Test Job request
+Test Job in the `suspended` state when they receive a Suspend Test Job request
  from the Buyer/Client [MEF136.1 R42]
 
-**[R88]** While in the SUSPENDED state, the Test Job **MUST NOT** perform any 
+**[R73]** While in the `suspended` state, the Test Job **MUST NOT** perform any 
 testing or measurements. [MEF136.1 R43]
 
-**[R89]** If the request is not successful, the Seller/Server **MUST NOT** suspend 
+**[R74]** If the request is not successful, the Seller/Server **MUST NOT** suspend 
 the Test Job [MEF136.1 R44]
 
-**[R90]** If the Seller/Server encounters errors, they **MUST** return an error 
+**[R75]** If the Seller/Server encounters errors, they **MUST** return an error 
 with explanation to the Buyer/Client [MEF136.1 R45]
 
-**[R91]** The Seller/Server's response **MUST** include all and unchanged 
+**[R76]** The Seller/Server's response **MUST** include all and unchanged 
 attributes' values as provided by the Buyer/Client in the request.
 
-**[R92]** The Seller/Server **MUST** specify the following attributes in a 
+**[R77]** The Seller/Server **MUST** specify the following attributes in a 
 response: 
-- `id`
-- `state`
 - `creationDate`
+- `id`
+- `href`
+- `state`
+- `testJob`
 
-**[R93]** The `id` **MUST** remain the same value for the life of the 
+**[R78]** The `id` **MUST** remain the same value for the life of the 
 Suspend Test Job.
 
 In case Seller/Server cannot successfully validate the request, Suspend 
 Test Job process fails, which results in setting the state to `rejected` 
-or `declined` with a proper explanation in `suspensionDeniedReason`. This 
+with a proper explanation in `suspensionDeniedReason`. This 
 includes situations when:
 - `id` does not allow to find a `TestJob` that is to be suspended in 
 Seller/Server's system
@@ -2427,32 +2486,32 @@ Seller/Server's system
 
 ### 6.16.4. Suspend Test Job State Machine
 
-Figure 40 presents the Suspend Test Job state machine:
+Figure 41 presents the Suspend Test Job state machine:
 
-![Figure 40: Suspend Test Job State Machine](serviceTest/media/suspendTestJobStates.png)
+![Figure 41: Suspend Test Job State Machine](serviceTest/media/suspendTestJobStates.png)
 
-**Figure 40. Suspend Test Job State Machine**
+**Figure 41. Suspend Test Job State Machine**
 
-After receiving the request, the Seller/Server (SOF) has assigned a `SuspendTestJob` 
-Identifier to it.  If the request attributes fail validation, the `SuspendTestJob` 
-request moves to the `rejected` state. Next, the Seller/Server performs all the remaining 
-business and time-consuming validations. At this point, an Error response cannot
-be provided anymore, so the job moves to a `declined` state if some issues 
-are found. The `suspendTestJob.suspendlationDeniedReason` acts as a 
-placeholder to provide a detailed description of what caused the problem. If 
-validation is successful, `SuspendTestJob` moves to the `accepted` state.
-When the Suspend Test Job process is finished, it moves to the `completed` state. 
-This causes the `TestJob` state to change to `suspended`.
+After receiving the request, the Seller/Server (SOF) performs basic checks of 
+the message. If any problem is found an Error response is provided. If the
+validation passes a response is provided with `SuspendTestJob` in
+`acknowledged` state. Next, the Seller/Server performs all the remaining business and 
+time-consuming validations. At this point, an Error response cannot be provided
+anymore, so the Suspend Test Job moves to a `rejected` state if some issues are found.
+The `suspendTestJob.suspensionDeniedReason` acts as a placeholder to 
+provide a detailed description of what caused the problem. If the Suspend Test Job
+request has been validated and accepted by the Seller/Server, `SuspendTestJob`
+moves to `accepted` state and `TestJob` state is `suspended`.
 
 Description and mapping of the Suspend Test Job States are the same as in 
 table 10.
 
-## 6.17. Use Case 17: Retrieve Suspend Test Job List
+## 6.17. Use Case 16: Retrieve Suspend Test Job List
 
 The Buyer/Client can retrieve a list of Suspend Test Job objects by using
 a `GET /suspendTestJob` operation with desired filtering criteria.
 
-**[O12]** The Buyer/Client Retrieve List of Suspend Test Jobs request 
+**[O11]** The Buyer/Client Retrieve List of Suspend Test Jobs request 
 **MAY** contain none or more of the following attributes: 
 
 - `testJobId`
@@ -2461,33 +2520,34 @@ a `GET /suspendTestJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/suspendTestJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/suspendTestJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Suspend Test 
-Job objects that are in the `acknowledged` state. Additionally, the Buyer/Client
-asks only for a first (`offset=0`) pack of 10 results (`limit=10`) to be 
-returned. The correct response (HTTP code `200`) in the response body contains a
-list of `SuspendTestJob_Find` objects matching the criteria. Details 
-related to pagination are described in [section 7.1.2](#712-response-pagination).
+Job objects that are in the `acknowledged` state. The correct response 
+(HTTP code `200`) in the response body contains a
+list of `SuspendTestJob` objects matching the criteria. Details 
+related to pagination are described in [section 6.2.1](#621-response-pagination).
 
-**[R94]** The Seller **MUST** include following attributes in the
-`SuspendTestJob_Find` object in the response: 
+**[R79]** The Seller **MUST** include following attributes in the
+`SuspendTestJob` object in the response: 
 
+- `creationDate`
 - `id`
-- `testJobId`
+- `href`
 - `state`
+- `testJob`
 
-**[R95]** In case no items matching the criteria are found, the Seller/Server 
+**[R80]** In case no items matching the criteria are found, the Seller/Server 
 **MUST** return a valid response with an empty list. 
 
-Figure 41 presents entities related to the use case. 
+Figure 42 presents entities related to the use case. 
 
-![Figure 41: Use Case 17](serviceTest/media/useCase17Model.png)
+![Figure 42: Use Case 16](serviceTest/media/useCase17Model.png)
 
-**Figure 41. Use Case 17: Retrieve Suspend Test Job List - Model**
+**Figure 42. Use Case 16: Retrieve Suspend Test Job List - Model**
 
-## 6.18. Use Case 18: Retrieve Suspend Test Job by Identifier
+## 6.18. Use Case 17: Retrieve Suspend Test Job by Identifier
 
 The Buyer/Client can get detailed information about the Suspend Test Job 
 from the Seller/Server by using a `GET /suspendTestJob/{{id}}` operation. 
@@ -2496,27 +2556,27 @@ Test Job and includes all attributes the Buyer/Client has provided while
 sending a Suspend Test Job create request, together with additional 
 attributes set by Seller/Server. 
 
-Get List and Get by Identifier operations return different representations
-of Suspend Test Job. Get List returns the `SuspendTestJob_Find` object
-which is a subset of the `SuspendTestJob` returned by the Get by Identifier 
-operation. A response to a Get by Identifier for a `SuspendTestJob` with
-`id=aea2769a-23f3-4ddc-b095-542a63b12481` would return exactly the same response as
-presented in [section 6.15.3](#6153-suspend-test-monitoring-job-response).
+Get List and Get by Identifier operations returns the `SuspendTestJob` object.
+A response to a Get by Identifier for a `SuspendTestJob` with
+`id=suspend-job-12345` would return exactly the same response as
+presented in [section 6.16.3](#6163-suspend-test-job-response).
 
-**[R96]** In case `id` does not allow finding a `SuspendTestJob` in 
+**[R81]** In case `id` does not allow finding a `SuspendTestJob` in 
 Seller/Server's system, an error response `Error404` **MUST** be returned. 
 
-**[R97]** The Seller/Server **MUST** include following attributes in the
+**[R82]** The Seller/Server **MUST** include following attributes in the
 `SuspendTestJob` object in the response:
 
+- `creationDate`
 - `id`
-- `testJob`
+- `href`
 - `state`
+- `testJob`
 
-**[R98]** The Seller **MUST** provide all remaining optional attributes if they
+**[R83]** The Seller **MUST** provide all remaining optional attributes if they
 were previously set by the Buyer or the Seller. 
 
-## 6.19. Use Case 19: Resume Test Job
+## 6.19. Use Case 18: Resume Test Job
 
 Due to the need for reserving resources on the SOF side, the resume operation 
 associated with Test Job may exhibit prolonged duration. 
@@ -2525,13 +2585,13 @@ process.
 
 ### 6.19.1. Interaction flow
 
-The flow of this use case is shown in Figure 42.
+The flow of this use case is shown in Figure 43.
 
-![Figure 42: Use Case 19](serviceTest/media/useCase19.png)
+![Figure 43: Use Case 18](serviceTest/media/useCase19.png)
 
-**Figure 42. Use Case 19 - Resume Test Job create request flow**
+**Figure 43. Use Case 18 - Resume Test Job create request flow**
 
-The Buyer/Client sends a request with a `ResumeTestJob_Create` type in 
+The Buyer/Client sends a request with a `ResumeTestJob_Common` type in 
 the body. The Seller/Server performs request validation, assigns an `id`, and 
 returns the `ResumeTestJob` type in the response body, with a `state` set to 
 `acknowledged`. Further processing is performed by Seller/Server which will in 
@@ -2540,37 +2600,21 @@ the progress of the process either by subscribing for notifications or by
 periodically polling the `ResumeTestJob`. The two patterns are presented 
 in the following diagrams.
 
-![Figure 43: Resume Test Job Notification](serviceTest/media/useCase19Notification.png)
+![Figure 44: Resume Test Job Notification](serviceTest/media/useCase19Notification.png)
 
-**Figure 43. Resume Test Job progress tracking - Notifications**
+**Figure 44. Resume Test Job progress tracking - Notifications**
 
-![Figure 44: Resume Test Job Polling](serviceTest/media/useCase19Polling.png)
+![Figure 45: Resume Test Job Polling](serviceTest/media/useCase19Polling.png)
 
-**Figure 44. Resume Test Job progress tracking - Polling**
-
-**_Note_**: The Resume Test Job process is altering the state of the job 
-itself. It is important to note that notifications resulting from changes in the 
-state of the Test Job are not represented in Figures 43 and 44.
-
-**_Note_**: The context of notifications is not a part of the considered use
-case itself. It is presented to show the big picture of end-to-end flow. This
-applies also to all further use case flow diagrams with notifications.
+**Figure 45. Resume Test Job progress tracking - Polling**
 
 ### 6.19.2. Resume Test Job Request
 
-Figure 45 presents the most important part of the data model used during 
+Figure 46 presents the most important part of the data model used during 
 the Resume Test Job request (`POST /resumeTestJob`) and response. 
-The model of the request message - `ResumeTestJob_Create` is a subset of 
-the `ResumeTestJob` model and contains only attributes that can (or must) 
-be set by the Buyer/Client. The Seller/Server (SOF) then enriches the entity in 
-the response with additional information.
-
-**_Note:_** `ResumeTestJob_Create` is an entity
-used by the Buyer/Client to make a request. `ResumeTestJob` is an entity
-used by the Seller/Server to provide a response. The request entity has a
-subset of attributes of the response entity. Thus for visibility of these
-shared attributes `ResumeTestJob_Common` has been
-introduced (this class is not supposed to be used directly in the exchange).
+The model of the request message - `ResumeTestJob_Common` contains only attributes
+that can (or must) be set by the Buyer/Client. The Seller/Server 
+then enriches the entity in the response with additional information.
 
 The `testJob` section of `ResumeTestJob_Common` is used to specify
 which Test Job object is a subject of the resume process (relationship by
@@ -2579,43 +2623,39 @@ reference using the `id` of the Job).
 The full list of attributes is available in [Section 7](#7-api-details) and in
 the API specification which is an integral part of this standard.
 
-![Figure 45: Resume Test Job Key Entities](serviceTest/media/resumeTestJobModel.png)
+![Figure 46: Resume Test Job Key Entities](serviceTest/media/resumeTestJobModel.png)
 
-**Figure 45. Resume Test Job Key Entities** 
+**Figure 46. Resume Test Job Key Entities** 
 
 To send a Resume Test Job request the Buyer/Client uses the 
 `resumeTestJob` operation from the API: `POST /resumeTestJob`. 
 
 The example below shows a request to create a resumption process for
-`TestJob` that was created in section [6.6.2](#662-create-test-monitoring-job-request). 
+`TestJob` that was created in section [6.6.2](#662-create-test-job-request-with-test-profile). 
 
 ```json
 {
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   },
   "resumptionReason": "Resume Test Job sample"
 }
 ```
 
-**[R99]** The Buyer/Client Resume Test Job request **MUST** include the 
+**[R84]** The Buyer/Client Resume Test Job request **MUST** include the 
 following attributes: [MEF136.1 R46]
-- `testJob.id`
+- `testJob`
 
-**[R100]** The Test Job **MUST** be in the Suspended state in order to be 
+**[R85]** The Test Job **MUST** be in the `suspended` state in order to be 
 resumed. [MEF136.1 R47]
 
 ### 6.19.3. Resume Test Job Response
 
 Entities used for providing a response to Resume Test Job requests are
-presented in Figure 45. The Seller/Server responds with a `ResumeTestJob` 
+presented in Figure 46. The Seller/Server responds with a `ResumeTestJob` 
 type, which adds some attributes (like `id` or `state`) to the 
-`ResumeTestJob_Create` that was used in the Buyer/Client request.
-
-**_Note_**: The term "Response Code" used in the Business Requirements
-maps to HTTP response code, where `2xx` indicates _Success_ and `4xx` or `5xx`
-indicate _Failure_.
+`ResumeTestJob_Common` that was used in the Buyer/Client request.
 
 The following snippet presents the Seller/Server response. It has the same 
 structure as in the retrieve by identifier operation.
@@ -2623,13 +2663,13 @@ structure as in the retrieve by identifier operation.
 ```json
 {
   "testJob": {
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/testJob/755e55e2-72b0-4e3b-af00-693e3beac691",
-    "id": "755e55e2-72b0-4e3b-af00-693e3beac691"
+    "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testJob/job-12345",
+    "id": "job-12345"
   },
   "resumptionReason": "Resume Test Job sample",
   "creationDate": "204-06-19T12:58:17.088Z", << added by SOF >>
-  "href": "{{baseUrl}}/serviceFunctionTesting/v1/resumeTestJob/aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
-  "id": "aea2769a-23f3-4ddc-b095-542a63b12481", << added by SOF >>
+  "href": "https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/resumeTestJob/resume-job-12345", << added by SOF >>
+  "id": "resume-job-12345", << added by SOF >>
   "state": "acknowledged" << added by SOF >>
 }
 ```
@@ -2637,30 +2677,32 @@ structure as in the retrieve by identifier operation.
 Attributes that are set by the Seller/Server in the response are marked with the
 `<< added by SOF >>` tag. 
 
-**[R101]** If the request is successful, the Seller/Server **MUST** resume all testing 
+**[R86]** If the request is successful, the Seller/Server **MUST** resume all testing 
 and measurement being performed on the Test Job and place the Test Job in the `inProgress`
 state when they receive a Resume Test Job request from the Buyer/Client [MEF136.1 R48]
 
-**[R102]** If the request is not successful, the Seller/Server **MUST NOT** resume the
+**[R87]** If the request is not successful, the Seller/Server **MUST NOT** resume the
 Test Job, and the Test Job remains in the `suspended` state. [MEF136.1 R49]
 
-**[R103]** If the Seller/Server encounters errors, they **MUST** return an error with
+**[R88]** If the Seller/Server encounters errors, they **MUST** return an error with
  explanation to the Buyer/Client. [MEF136.1 R50]
 
-**[R104]** The Seller/Server's response **MUST** include all and unchanged 
+**[R89]** The Seller/Server's response **MUST** include all and unchanged 
 attributes' values as provided by the Buyer/Client in the request.
 
-**[R105]** The Seller/Server **MUST** specify the following attributes in a 
+**[R90]** The Seller/Server **MUST** specify the following attributes in a 
 response: 
-- `id`
-- `state`
 - `creationDate`
+- `id`
+- `href`
+- `state`
+- `testJob`
 
-**[100]** The `id` **MUST** remain the same value for the life of the 
+**[R91]** The `id` **MUST** remain the same value for the life of the 
 Test Job.
 
 In case the Seller/Server cannot successfully validate the request, the Resume 
-Test Job process fails, which results in setting the state to `declined` with 
+Test Job process fails, which results in setting the state to `rejected` with 
 a proper explanation in `resumptionDeniedReason`. This includes situations when:
 - `id` does not allow to find a `TestJob` that is to be resumed in 
 Seller/Server's system
@@ -2669,33 +2711,33 @@ Seller/Server's system
 
 ### 6.19.4. Resume Test Job State Machine
 
-Figure 46 presents the Resume Test Job state machine:
+Figure 47 presents the Resume Test Job state machine:
 
-![Figure 46: Resume Test Job State Machine](serviceTest/media/resumeTestJobStates.png)
+![Figure 47: Resume Test Job State Machine](serviceTest/media/resumeTestJobStates.png)
 
-**Figure 46. Resume Test Job State Machine**
+**Figure 47. Resume Test Job State Machine**
 
 
-After receiving the request, the Seller/Server (SOF) has assigned a `ResumeTestJob` 
-Identifier to it.  If the request attributes fail validation, the `ResumeTestJob` 
-request moves to the `rejected` state. Next, the Seller/Server performs all the remaining 
-business and time-consuming validations. At this point, an Error response cannot
-be provided anymore, so the job moves to a `declined` state if some issues 
-are found. The `resumeTestJob.resumptionDeniedReason` acts as a 
-placeholder to provide a detailed description of what caused the problem. If 
-validation is successful, `ResumeTestJob` moves to the `accepted` state.
-When the Resume Test Job process is finished, it moves to the `completed` state. 
-This causes the `TestJob` state to change to `inProgress`.
+After receiving the request, the Seller/Server (SOF) performs basic checks of 
+the message. If any problem is found an Error response is provided. If the
+validation passes a response is provided with `ResumeTestJob` in
+`acknowledged` state. Next, the Seller/Server performs all the remaining business and 
+time-consuming validations. At this point, an Error response cannot be provided
+anymore, so the Resume Test Job moves to a `rejected` state if some issues are found.
+The `resumeTestJob.resumptionDeniedReason` acts as a placeholder to 
+provide a detailed description of what caused the problem. If the Resume Test Job
+request has been validated and accepted by the Seller/Server, `ResumeTestJob`
+moves to `accepted` state and `TestJob` state is `inProgress`.
 
 Description and mapping of the Resume Test Job States are the same as in 
 table 10.
 
-## 6.20. Use Case 20: Retrieve Resume Test Job List
+## 6.20. Use Case 19: Retrieve Resume Test Job List
 
 The Buyer/Client can retrieve a list of Resume Test Job objects by using 
 a `GET /resumeTestJob` operation with desired filtering criteria.
 
-**[O13]** The Buyer/Client Retrieve List of Resume Test Jobs request 
+**[O12]** The Buyer/Client Retrieve List of Resume Test Jobs request 
 **MAY** contain none or more of the following attributes: 
 
 - `testJobId`
@@ -2704,33 +2746,34 @@ a `GET /resumeTestJob` operation with desired filtering criteria.
 - `creationDate.lt`
 
 ```
-https://serverRoot/mefApi/legato/serviceFunctionTesting/v1/resumeTestJob?state=acknowledged&limit=10&offset=0
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/resumeTestJob?state=acknowledged&limit=10&offset=0
 ```
 
 The example above shows a Buyer/Client's request to get all Resume Test 
-Job objects that are in the `acknowledged` state. Additionally, the Buyer/Client
-asks only for a first (`offset=0`) pack of 10 results (`limit=10`) to be 
-returned. The correct response (HTTP code `200`) in the response body contains a
-list of `ResumeTestJob_Find` objects matching the criteria. Details 
-related to pagination are described in [section 7.1.2](#712-response-pagination).
+Job objects that are in the `acknowledged` state. 
+The correct response (HTTP code `200`) in the response body contains a
+list of `ResumeTestJob` objects matching the criteria. Details 
+related to pagination are described in [section 6.2.1](#621-response-pagination).
 
-**[R106]** The Seller **MUST** include following attributes in the
-`ResumeTestJob_Find` object in the response: 
+**[R92]** The Seller **MUST** include following attributes in the
+`ResumeTestJob` object in the response: 
 
+- `creationDate`
 - `id`
-- `testJobId`
+- `href`
+- `testJob`
 - `state`
 
-**[R107]** In case no items matching the criteria are found, the Seller/Server 
+**[R93]** In case no items matching the criteria are found, the Seller/Server 
 **MUST** return a valid response with an empty list. 
 
-Figure 47 presents entities related to the use case. 
+Figure 48 presents entities related to the use case. 
 
-![Figure 47: Use Case 20](serviceTest/media/useCase20Model.png)
+![Figure 48: Use Case 19](serviceTest/media/useCase20Model.png)
 
-**Figure 47. Use Case 20: Retrieve Resume Test Job List - Model**
+**Figure 48. Use Case 19: Retrieve Resume Test Job List - Model**
 
-## 6.21. Use Case 21: Retrieve Resume Test Job by Identifier
+## 6.21. Use Case 20: Retrieve Resume Test Job by Identifier
 
 The Buyer/Client can get detailed information about the Resume Test Job 
 from the Seller/Server by using a `GET /resumeTestJob/{{id}}` operation. 
@@ -2739,35 +2782,151 @@ Test Job and includes all attributes the Buyer/Client has provided while
 sending a Resume Test Job create request, together with additional 
 attributes set by Seller/Server. 
 
-Get List and Get by Identifier operations return different representations
-of Resume Test Job. Get List returns the `ResumeTestJob_Find` object 
-which is a subset of the `ResumeTestJob` returned by the Get by Identifier 
-operation. A response to a Get by Identifier for a `ResumeTestJob` with
-`id=aea2769a-23f3-4ddc-b095-542a63b12481` would return exactly the same response as
-presented in [section 6.18.3](#6183-resume-test-monitoring-job-response).
+Get List and Get by Identifier operations returns the `ResumeTestJob` object.
+A response to a Get by Identifier for a `ResumeTestJob` with
+`id=resume-job-12345` would return exactly the same response as
+presented in [section 6.19.3](#6193-resume-test-job-response).
 
-**[R108]** In case `id` does not allow finding a `ResumeTestJob` 
+**[R94]** In case `id` does not allow finding a `ResumeTestJob` 
 in Seller/Server's system, an error response `Error404` **MUST** be returned.
 
-**[R109]** The Seller/Server **MUST** include following attributes in the
+**[R95]** The Seller/Server **MUST** include following attributes in the
 `ResumeTestJob` object in the response: 
 
+- `creationDate`
 - `id`
+- `href`
 - `testJob`
 - `state`
 
-**[R110]** The Seller **MUST** provide all remaining optional attributes if they
+**[R96]** The Seller **MUST** provide all remaining optional attributes if they
 were previously set by the Buyer or the Seller. 
 
-## 6.22. Use Case 22: Register for Notifications
+## 6.22. Use Case 21: Retrieve Test Result List 
 
-The Buyer/Client can track the lifecycle of the Test
+The BuyeResultlient can retrieve a list of `TestResult_Common` by using a 
+`GET /testResult` operation with desired filtering criteria.
+
+**[O13]** The Buyer/ClientResultRetrieve Test Result List request **MAY** contain none or more of the following filter criteria: 
+
+- `testJobId`
+- `relatedServiceIdFrom`
+- `relatedServiceIdTo`
+- `relatedServiceSpecificationId`
+- `relatedContactInformationName`
+- `startDateTime.gt`
+- `startDateTime.lt`
+- `endDateTime.gt`
+- `endDateTime.lt`
+
+[MEF136.1 O5]
+```
+https://serverRoot/mefApi/legato/serviceFunctionTesting/v2/testResult?relatedServiceIdFrom=service-from-001&limit=10&offset=0
+```
+
+The example above shows a Buyer/Client's request to get all Test Result 
+objects that have `relatedServiceIdFrom` equal `service-from-001`. 
+The correct response (HTTP code `200`) in the response body contains a list of 
+`TestResult_Common` objects matching the criteria. To get all the details, the 
+Buyer/Client has to query a specific `TestJob` by its `id`. Details 
+related to pagination are described in [section 6.2.1](#621-response-pagination)
+
+**[R97]** If successful, the Seller/Server **MUST** return a list `TestResult_Common` objects that match the selected filter criteria. [MEF136.1 R38]
+
+**[R98]** If successful but no matches to the filter criteria are found, the Seller/Server **MUST** return an empty list
+
+**[R99]** If errors are encountered, the Seller/Server **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R39]
+
+Figure 49 presents entities related to the use case. 
+
+![Figure 49: Use Case 21](serviceTest/media/useCase21Model.png)
+
+**Figure 49. Use Case 21: Retrieve Test Result List - Model**
+
+
+## 6.23. Use Case 22: Retrieve Test Result by Test Result Identifier 
+
+The Buyer/Client can get detailed information about the Test Result from 
+the Seller/Server by using a `GET /testResult/{{id}}` operation. The 
+payload returned in the response is a full representation of the Test Result 
+and includes all attributes, together with Test Result attributes set by 
+Seller/Server. 
+
+Get List and Get by Identifier operations return different representations
+of Test Job. Get List returns the `TestResult_Common` object. 
+
+The following snippet presents the Seller/Server `TestResult` response. 
+
+**Test Result Response**
+
+```json
+{
+  "id": "testresult-001",
+  "href": "https://serverRoot/mefApi/legato/testResults/testresult-001",
+  "actualStartDateTime": "2025-06-12T08:00:00Z",
+  "actualEndDateTime": "2025-06-12T08:05:00Z",
+  "relatedServiceFrom": {
+    "id": "service-from-001",
+    "href": "https://serverRoot/mefApi/legato/services/service-from-001"
+  },
+  "relatedServiceTo": {
+    "id": "service-to-002",
+    "href": "https://serverRoot/mefApi/legato/services/service-to-002"
+  },
+  "testJob": {
+    "id": "job-12345",
+    "href": "serverRoot/serviceFunctionTesting/v2/testJob/job-12345"
+  },
+  "serviceSpecificTestResultConfguration": {
+    "@type": "urn:mef:lso:spec:legato:ping-report:v0.0.1:all",
+    "interface": {
+      "name": "SiteA-Port1",
+      "description": "Test port at Site A",
+      "cloudService": false,
+      "ipvcEndpoint": ["endpoint-001"]
+    },
+    "vlan": 100,
+    "startTime": "2025-06-12T08:00:00Z",
+    "endTime": "2025-06-12T08:05:00Z",
+    "protocol": "IPV4",
+    "numberOfTxPackets": 100,
+    "numberOfRxPackets": 98,
+    "minimumRoundTripDelay": {
+      "amount": 2,
+      "units": "ms"
+    },
+    "averageRoundTripDelay": {
+      "amount": 4,
+      "units": "ms"
+    },
+    "maximumRoundTripDelay": {
+      "amount": 10,
+      "units": "ms"
+    },
+    "countOfLostPackets": 2,
+    "percentageOfLostPackets": 2.0
+  }
+}
+```
+
+**[R100]** The Buyer/Client’s Retrieve Test Result by Identifier request **MUST** include the Test Result Identifier and only the Test Result Identifier. [MEF136.1 R40]
+
+**[R101]** If successful, the Seller/Server **MUST** include all `TestResult` attributes in their response. [MEF136.1 R41]
+
+**[R102]** If errors are encountered, the Seller/Server **MUST** return an error with explanation to the Buyer/Client. [MEF136.1 R42]
+
+**[R103]** In case `id` does not allow finding a `TestResult` in Seller/Server's system, an error response `Error404` **MUST** be returned. 
+
+
+## 6.24. Use Case 23: Register for Notifications
+
+The Buyer/Client can track the lifecycle of the SFT
 objects by subscribing to notifications. An exemplary use case for exchanging
-notifications is presented in Figure 48. 
+notifications is presented in Figure 50. 
 
-![Figure 48: Testing Notification Example](serviceTest/media/useCase1Notification.png)
+![Figure 50: Testing Notification Example](serviceTest/media/useCase1Notification.png)
 
-**Figure 48. Testing Notification Example**
+**Figure 50. Testing Notification Example**
 
 The Seller/Server communicates with the Buyer/Client with Notifications provided 
 that:
@@ -2779,29 +2938,34 @@ To register for notifications the Buyer/Client uses the `registerListener`
 operation from the API: `POST /hub`. The request contains only 2 attributes:
 
 - `callback` - mandatory, to provide the callback address the events will be
-  notified to,
+notified to,
 - `query` - optional, to provide the required types of event.
 
-Figure 49 shows all entities involved in the Notification use cases.
+Figure 51 shows all entities involved in the Notification use cases.
 
-![Figure 49: Service Function Testing Notification Data Model](serviceTest/media/serviceFunctionTestNotificationModel.png)
+![Figure 51: Service Function Testing Notification Data Model](serviceTest/media/sftNotificationDataModel.png)
 
-**Figure 49. Service Function Testing Notification Data Model**
+**Figure 51. Service Function Testing Notification Data Model**
 
 By using a request in the following snippet, the Buyer/Client subscribes for 
 notification of all types of events. Those are:
 
 - `testJobCreateEvent`
-- `testJobStateChangeEvent`
 - `testJobAttributeValueChangeEvent`
+- `testJobStateChangeEvent`
+- `cancelTestJobStateChangeEvent`
+- `modifyTestJobStateChangeEvent`
+- `suspendTestJobStateChangeEvent`
+- `resumeTestJobStateChangeEvent`
 - `testProfileCreateEvent`
-- `testProfileStateChangeEvent`
 - `testProfileAttributeValueChangeEvent`
+- `testProfileLifecycleStateChangeEvent`
 - `testProfileDeleteEvent`
+- `testResultCreateEvent`
 
 ```json
 {
-  "callback": "https://bus.com/listenerEndpoint"
+  "callback": "https://client.mef.com/listenerEndpoint"
 }
 ```
 
@@ -2811,10 +2975,7 @@ Notifications Use Case.
 **[O15]** The Buyer/Client **MAY** support subscription to Test Profile 
 Notifications Use Case.
 
-**[O16]** The Seller/Server **MAY** support unsubscribing from Test 
-Job Notifications Use Case.
-
-**[O17]** The Buyer/Client **MAY** support unsubscribing from Test Profile
+**[O16]** The Buyer/Client **MAY** support subscription to Test Result 
 Notifications Use Case.
 
 If the Buyer/Client wishes to receive only notifications of a certain type, a 
@@ -2822,12 +2983,12 @@ If the Buyer/Client wishes to receive only notifications of a certain type, a
 
 ```json
 {
-  "callback": "https://bus.com/listenerEndpoint",
+  "callback": "https://client.mef.com/listenerEndpoint",
   "query": "eventType=testJobStateChangeEvent"
 }
 ```
 
-**[R111]** The Buyer/Client’s Subscribe to Test Job Notifications request 
+**[R104]** The Buyer/Client’s Subscribe to Test Job Notifications request 
 **MUST** include: [MEF136.1 R82]
 - Callback address
 - Zero or more notification types
@@ -2855,8 +3016,8 @@ subscription to the message that must be further used for unsubscribing.
 
 ```json
 {
-  "id": "00000000-0000-0000-0000-000000000678",
-  "callback": "https://bus.com/listenerEndpoint",
+  "id": "sub-001",
+  "callback": "https://client.mef.com/listenerEndpoint",
   "query": "eventType=testJobStateChangeEvent"
 }
 ```
@@ -2864,54 +3025,67 @@ subscription to the message that must be further used for unsubscribing.
 Example of a final address that the Notifications will be sent to (for
 `testJobStateChangeEvent`):
 
-- `https://bus.com/listenerEndpoint/mefApi/legato/serviceFunctionTestingNotification/v1/listener/testJobStateChangeEvent`
+- `https://client.mef.com/listenerEndpoint/mefApi/legato/serviceFunctionTestingNotification/v2/listener/testJobStateChangeEvent`
 
-**[R112]** If successful, the Seller/Server response **MUST** indicate success and include the 
+**[R105]** If successful, the Seller/Server response **MUST** indicate success and include the 
 Register Notification Identifier and echo back all Buyer/Client provided attributes [MEF136.1 R83]
 
-**[R113]** If successful, the Seller/Server **MUST** begin sending the appropriate notifications 
+**[R106]** If successful, the Seller/Server **MUST** begin sending the appropriate notifications 
 to the Buyer/Client. [MEF136.1 R84]
 
-**[R114]** The Seller/Server **MUST NOT** send notifications if the Buyer/Client has not registered for them. [MEF136.1 R85]
+**[R107]** The Seller/Server **MUST NOT** send notifications if the Buyer/Client has not registered for them. [MEF136.1 R85]
 
-**[R115]**	If unsuccessful, the Seller/Server **MUST NOT** return a Register Notification Identifier. [MEF136.1 R86]
+**[R108]**	If unsuccessful, the Seller/Server **MUST NOT** return a Register Notification Identifier. [MEF136.1 R86]
 
-**[R116]**	If the Seller/Server experiences any errors, they **MUST** return an error indication to the Buyer/Client. [MEF136.1 R87]
+**[R109]**	If the Seller/Server experiences any errors, they **MUST** return an error indication to the Buyer/Client. [MEF136.1 R87]
 
-## 6.23. Use Case 23: Send Notification
+## 6.25. Use Case 24: Send Notification
 
 Notifications are used to asynchronously inform the Buyer/Client about the 
 respective objects and attributes changes.
 
-Figure 50 presents notifications produced by Seller/Server for the whole lifecycle
+Figure 52 presents notifications produced by Seller/Server for the whole lifecycle
 of `TestJob` assuming that Buyer/Client subscribed to all event types.
 
-![Figure 50: Test Job lifecycle](serviceTest/media/notificationsForTestJob.png)
+![Figure 52: Test Job lifecycle](serviceTest/media/notificationsForTestJob.png)
 
-**Figure 50. Test Job lifecycle with all Notifications**
+**Figure 52. Test Job lifecycle with all Notifications**
 
-After a successful Notification subscription, the Seller/Server sends a 
-`TestJob` create request. The SOF responds with `TestJob` in 
-an `acknowledged` state. Creation of `TestJob` is notified with a
-`testJobCreateEvent`. When the validation is successful and the Test 
-Job is not immediate, it moves to `scheduled` and a 
-`testJobStateChangeEvent` is sent. 
-When the scheduled start time is reached, `TestJob` moves to `inProgress`
-state and the `testJobStateChangeEvent` is sent. 
-Additional actions, like suspension or modification trigger `testJobStateChangeEvent`. 
-In addition, in the case of `TestJob` modification, Seller/Server produces 
-`testJobAttributeValueChangeEvent` notification. 
+
+
+After a successful notification subscription, the Seller/Server sends a `TestJob` create request. 
+The SOF performs basic validation of the request, and if it passes, responds with the `TestJob` in 
+the `acknowledged` state. The creation of the `TestJob` is then notified via a `testJobCreateEvent`.
+
+Subsequently, the Seller/Server carries out additional business and time-consuming validations. 
+If these validations are successful, the `TestJob` transitions to the `inProgress` state, and 
+a corresponding `testJobStateChangeEvent` is triggered.
+
+During the lifecycle of the Test Job, the following actions and corresponding notifications may occur:
+
+- Suspension: When a suspend request is accepted, a `suspendTestJobStateChangeEvent` is sent, followed by a `testJobStateChangeEvent`
+indicating the `suspended` state.
+
+- Modification: When a modify request is accepted, a `modifyTestJobStateChangeEvent` is sent, followed by a `testJobStateChangeEvent`
+indicating the `assesing_modification` state. If attribute values are updated as a result, a `testJobAttributeValueChangeEvent` is 
+issued. Once the modification is complete, the `TestJob` typically returns to the `suspended` state with a `testJobStateChangeEvent`.
+
+- Resumption: When a resume request is accepted, a `resumeTestJobStateChangeEvent` is sent. The `TestJob` then moves back to 
+`inProgress`, and a `testJobStateChangeEvent` is sent.
+
+These notifications provide the Buyer/Client with real-time visibility into the state transitions and modifications of a `TestJob`.
 
 The following snippets present an example of `testJobCreateEvent` and 
 `testJobStateChangeEvent`.
 
 ```json
 {
-  "eventId": "event-001",
-  "eventTime": "2021-06-03T15:56:08.559Z",
+  "eventId": "evt-001",
+  "eventTime": "2025-06-13T14:45:00Z",
   "eventType": "testJobCreateEvent",
   "event": {
-    "id": "00000000-4444-5555-6666-000000000987"
+    "id": "job-12345",
+    "href": "serverRoot/serviceFunctionTesting/v2/testJob/job-12345"
   }
 }
 ```
@@ -2922,8 +3096,8 @@ The following snippets present an example of `testJobCreateEvent` and
   "eventType": "testJobStateChangeEvent",
   "eventTime": "204-01-15T20:45:24.796Z",
   "event": {
-    "id": "00000000-3333-4444-5555-000000004567",
-    "href": "{{baseUrl}}/serviceFunctionTesting/v1/00000000-3333-4444-5555-000000004567"
+    "id": "job-12345",
+    "href": "serverRoot/serviceFunctionTesting/v2/testJob/job-12345"
   }
 }
 ```
@@ -2932,36 +3106,35 @@ The following snippets present an example of `testJobCreateEvent` and
 Buyer/Client needs to query it later by `id` to get details. 
 
 **_Note:_** The state change notification is sent only when the state
-attribute changes its value. There are no state change notifications
-sent upon Test Job creation.
+attribute changes its value.
 
-**[R117]** The Seller/Server **MUST** include the following attributes in the 
+**[R110]** The Seller/Server **MUST** include the following attributes in the 
 Notification: [MEF136.1 R93]
 - Event indentifier
 - Notification type
 - Event time
 
-**[R118]** The Seller/Server **MUST** send Notifications to the Buyer/Client that 
+**[R111]** The Seller/Server **MUST** send Notifications to the Buyer/Client that 
 have registered for them.
 
-**[R119]** The Seller/Server **MUST NOT** send Notifications to Buyer/Client 
+**[R112]** The Seller/Server **MUST NOT** send Notifications to Buyer/Client 
 that have not registered for them.
 
-## 6.24. Use Case 24: Unregister for Notifications
+## 6.26. Use Case 25: Unregister for Notifications
 
 To stop receiving events, the Buyer/Client has to use the `unregisterListener`
 operation from the `DELETE /hub/{id}` endpoint. The `id` is the identifier
 received from the Seller/Server during the listener registration.
 
-**[R120]** If successful, the Seller/Server response **MUST** indicate success [MEF136.1 R89]
+**[R113]** If successful, the Seller/Server response **MUST** indicate success [MEF136.1 R89]
 
-**[R121]** If successful, the Seller/Server **MUST** stop sending the appropriate notifications 
+**[R114]** If successful, the Seller/Server **MUST** stop sending the appropriate notifications 
 to the Buyer/Client. [MEF136.1 R90]
 
-**[R122]**	If unsuccessful, the Seller/Server **MUST NOT** stop sending the appropriate
+**[R115]**	If unsuccessful, the Seller/Server **MUST NOT** stop sending the appropriate
 notifications to the Buyer/Client. [MEF136.1 R91]
 
-**[R123]**	If the Seller/Server experiences any errors, they **MUST** return an error indication
+**[R116]**	If the Seller/Server experiences any errors, they **MUST** return an error indication
 to the Buyer/Client. [MEF136.1 R92]
 
 <div class="page"/>
@@ -2970,24 +3143,25 @@ to the Buyer/Client. [MEF136.1 R92]
 
 ## 7.1. API patterns
 
-### 7.1.1. Indicating errors
+### 7.2. Indicating errors
 
 Erroneous situations are indicated by appropriate HTTP responses. An error
 response is indicated by HTTP status 4xx (for client errors) or 5xx (for server
-errors) and the appropriate response payload. The Service Function Testing API 
-uses the error responses as depicted and described below.
+errors) and appropriate response payload. The Address Validation API uses the
+error responses depicted and described below.
 
-Implementations can use HTTP error codes not specified in this standard in
-compliance with rules defined in RFC 7231 [[RFC7231](#8-references)]. In such a
-case, the error message body structure might be aligned with the `Error`.
+Implementations can use http error codes not specified in this standard in
+compliance with rules defined in RFC 7231 [[RFC7231](#8-references)]. In such
+case the error message body structure might be aligned with the `Error`.
 
-![Figure 51: Error response data model](serviceTest/media/errorEntities.png)
+![Figure 53: Error response data model](serviceTest/media/errorEntities.png)
 
-**Figure 51. Data model types to represent an erroneous response**
+**Figure 53. Data model types to represent an erroneous response**
 
-#### 7.1.1.1. Type Error
+#### 7.2.1. Type Error
 
 **Description:** Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
 <table id="T_Error">
     <thead style="font-weight:bold;">
         <tr>
@@ -3003,19 +3177,19 @@ case, the error message body structure might be aligned with the `Error`.
             <td>Text that provides mode details and corrective actions related to the error. This can be shown to a client user.</td>
         </tr><tr>
             <td>reason*</td>
-            <td>string</td>
+            <td>string<br/><span style="font-size:10px;font-style:italic">maxLength = 255</span></td>
             <td>Text that explains the reason for the error. This can be shown to a client user.</td>
         </tr><tr>
             <td>referenceError</td>
-            <td>uri</td>
-            <td>URL pointing to documentation describing the error.</td>
+            <td>uri<br/><span style="font-size:10px;font-style:italic">format = uri</span></td>
+            <td>URL pointing to documentation describing the error</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.2. Type Error400
+#### 7.2.2. Type Error400
 
-**Description:** 'Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)'
+**Description:** Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
 
 Inherits from:
 - <a href="#T_Error">Error</a>
@@ -3032,24 +3206,57 @@ Inherits from:
         <tr>
             <td>code*</td>
             <td><a href="#T_Error400Code">Error400Code</a></td>
-            <td></td>
+            <td>One of the following error codes:
+- missingQueryParameter: The URI is missing a required
+query-string parameter
+- missingQueryValue: The URI is missing a required query-string
+parameter value
+- invalidQuery: The query section of the URI is invalid.
+- invalidBody: The request has an invalid body
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.3. `enum` Error400Code
+#### 7.2.3. `enum` Error400Code
 
 **Description:** One of the following error codes:
-- missingQueryParameter: The URI is missing a required query-string 
-  parameter
-- missingQueryValue: The URI is missing a required query-string 
-  parameter value
-- invalidQuery: The query section of the URI is invalid
-- invalidBody: The request has an invalid body.
+- missingQueryParameter: The URI is missing a required query-string
+parameter
+- missingQueryValue: The URI is missing a required query-string
+parameter value
+- invalidQuery: The query section of the URI is invalid.
+- invalidBody: The request has an invalid body
 
-#### 7.1.1.4. Type Error401
 
-**Description:** 'Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)'
+
+<table id="T_Error400Code">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>missingQueryParameter</td>
+            <td>MISSING_QUERY_PARAMETER</td>
+        </tr><tr>
+            <td>missingQueryValue</td>
+            <td>MISSING_QUERY_VALUE</td>
+        </tr><tr>
+            <td>invalidQuery</td>
+            <td>INVALID_QUERY</td>
+        </tr><tr>
+            <td>invalidBody</td>
+            <td>INVALID_BODY</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.2.4. Type Error401
+
+**Description:** Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
 
 Inherits from:
 - <a href="#T_Error">Error</a>
@@ -3066,22 +3273,44 @@ Inherits from:
         <tr>
             <td>code*</td>
             <td><a href="#T_Error401Code">Error401Code</a></td>
-            <td></td>
+            <td>One of the following error codes:
+- missingCredentials: No credentials provided.
+- invalidCredentials: Provided credentials are invalid or
+expired
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.5. `enum` Error401Code
+#### 7.2.5. `enum` Error401Code
 
 **Description:** One of the following error codes:
-- missingCredentials: No credentials provided
-- invalidCredentials: Provided credentials are invalid or expired.
+- missingCredentials: No credentials provided.
+- invalidCredentials: Provided credentials are invalid or expired
 
 
 
-#### 7.1.1.6. Type Error403
+<table id="T_Error401Code">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>missingCredentials</td>
+            <td>MISSING_CREDENTIALS</td>
+        </tr><tr>
+            <td>invalidCredentials</td>
+            <td>INVALID_CREDENTIALS</td>
+        </tr>
+    </tbody>
+</table>
 
-**Description:** Forbidden. This code indicates that the server understood the request but refused to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+#### 7.2.6. Type Error403
+
+**Description:** Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
 
 Inherits from:
 - <a href="#T_Error">Error</a>
@@ -3098,20 +3327,48 @@ Inherits from:
         <tr>
             <td>code*</td>
             <td><a href="#T_Error403Code">Error403Code</a></td>
-            <td></td>
+            <td>This code indicates that the server understood
+the request but refuses to authorize it because
+of one of the following error codes:
+- accessDenied: Access denied
+- forbiddenRequester: Forbidden requester
+- tooManyUsers: Too many users</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.7. `enum` Error403Code
+#### 7.2.7. `enum` Error403Code
 
-**Description:** This code indicates that the server understood the request but refuses to authorize it because of one of the following error codes:
+**Description:** This code indicates that the server understood
+the request but refuses to authorize it because
+of one of the following error codes:
 - accessDenied: Access denied
 - forbiddenRequester: Forbidden requester
-- tooManyUsers: Too many users.
+- tooManyUsers: Too many users
 
 
-#### 7.1.1.8. Type Error404
+<table id="T_Error403Code">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>accessDenied</td>
+            <td>ACCESS_DENIED</td>
+        </tr><tr>
+            <td>forbiddenRequester</td>
+            <td>FORBIDDEN_REQUESTER</td>
+        </tr><tr>
+            <td>tooManyUsers</td>
+            <td>TOO_MANY_USERS</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.2.8. Type Error404
 
 **Description:** Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
 
@@ -3131,38 +3388,14 @@ Inherits from:
             <td>code*</td>
             <td>string</td>
             <td>The following error code:
-- notFound: A current representation of the target resource 
-  not found.</td>
+- notFound: A current representation for the target resource
+not found
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.9. Type Error408
-
-**Description:** Request Time-out (https://tools.ietf.org/html/rfc7231#section-6.5.7)
-
-Inherits from:
-- <a href="#T_Error">Error</a>
-
-<table id="T_Error408">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Name</td>
-            <td>Type</td>
-            <td>Description</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>code*</td>
-            <td>string</td>
-            <td>List of supported error codes:
-- timeOut: Request Time-out - indicates that the server did not receive a complete request message within the time that it was prepared to wait.</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.1.1.10. Type Error409
+#### 7.2.9. Type Error409
 
 **Description:** Conflict (https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8)
 
@@ -3182,14 +3415,23 @@ Inherits from:
             <td>code*</td>
             <td>string</td>
             <td>The following error code:
-- conflict: The client has provided a value whose semantics are not appropriate for the property.</td>
+- conflict: The client has provided a value whose semantics are
+not appropriate for the property.
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.11. Type Error422
+#### 7.2.10. Type Error422
 
-**Description:** Unprocessable entity due to a business validation problem. (https://datatracker.ietf.org/doc/html/rfc4918#section-11.2)
+The response for HTTP status `422` is a list of elements that are structured
+using the `Error422` data type. Each list item describes a business validation
+problem. This type introduces the `propertyPath` attribute which points to the
+erroneous property of the request, so that the Buyer may fix it easier. It is
+highly recommended that this property should be used, yet remains optional
+because it might be hard to implement.
+
+**Description:** Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
 
 Inherits from:
 - <a href="#T_Error">Error</a>
@@ -3206,35 +3448,72 @@ Inherits from:
         <tr>
             <td>code*</td>
             <td><a href="#T_Error422Code">Error422Code</a></td>
-            <td></td>
+            <td>One of the following error codes:
+  - missingProperty: The property the Seller has expected is not present in the payload
+  - invalidValue: The property has an incorrect value
+  - invalidFormat: The property value does not comply with the expected value format
+  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system
+  - unexpectedProperty: Additional property, not expected by the Seller has been provided
+  - tooManyRecords: the number of records to be provided in the response exceeds the Seller&#x27;s threshold.
+  - otherIssue: Other problem was identified (detailed information provided in a reason)
+</td>
         </tr><tr>
             <td>propertyPath</td>
             <td>string</td>
             <td>A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).</td>
+Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.12. `enum` Error422Code
+#### 7.2.11. `enum` Error422Code
 
 **Description:** One of the following error codes:
-- missingProperty: The property that was expected is not present in the
-  payload
-- invalidValue: The property has an incorrect value
-- invalidFormat: The property value does not comply with the expected 
-  value format
-- referenceNotFound: The object referenced by the property cannot be 
-  identified in the target system
-- unexpectedProperty: Additional, not expected property has been 
-  provided
-- tooManyRecords: The number of records to be provided in the response
-  exceeds the threshold
-- otherIssue: Other problem was identified (detailed information
-  provided in a reason).
+  - missingProperty: The property the Seller has expected is not present in the payload
+  - invalidValue: The property has an incorrect value
+  - invalidFormat: The property value does not comply with the expected value format
+  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system
+  - unexpectedProperty: Additional property, not expected by the Seller has been provided
+  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.
+  - otherIssue: Other problem was identified (detailed information provided in a reason)
 
 
-#### 7.1.1.13. Type Error500
+
+<table id="T_Error422Code">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>missingProperty</td>
+            <td>MISSING_PROPERTY</td>
+        </tr><tr>
+            <td>invalidValue</td>
+            <td>INVALID_VALUE</td>
+        </tr><tr>
+            <td>invalidFormat</td>
+            <td>INVALID_FORMAT</td>
+        </tr><tr>
+            <td>referenceNotFound</td>
+            <td>REFERENCE_NOT_FOUND</td>
+        </tr><tr>
+            <td>unexpectedProperty</td>
+            <td>UNEXPECTED_PROPERTY</td>
+        </tr><tr>
+            <td>tooManyRecords</td>
+            <td>TOO_MANY_RECORDS</td>
+        </tr><tr>
+            <td>otherIssue</td>
+            <td>OTHER_ISSUE</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.2.12. Type Error500
 
 **Description:** Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
 
@@ -3254,12 +3533,15 @@ Inherits from:
             <td>code*</td>
             <td>string</td>
             <td>The following error code:
-- internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.</td>
+- internalError: Internal server error - the server encountered
+an unexpected condition that prevented it from fulfilling the
+request.
+</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.1.1.14. Type Error501
+#### 7.2.13. Type Error501
 
 **Description:** Not Implemented. Used in case Seller is not supporting an optional operation (https://tools.ietf.org/html/rfc7231#section-6.6.2)
 
@@ -3279,48 +3561,62 @@ Inherits from:
             <td>code*</td>
             <td>string</td>
             <td>The following error code:
-- notImplemented: Method not supported by the server.</td>
+- notImplemented: Method not supported by the server</td>
         </tr>
     </tbody>
 </table>
 
-### 7.1.2. Response pagination
+#### 7.2.14. Type TerminationError
 
-A response to retrieve a list of results (e.g. `GET /testJob`) can
-be paginated. The Buyer/Client can specify the following query attributes
-related to pagination:
+**Description:** This indicates an error that caused an Item to be terminated. The code and propertyPath should be used like in Error422.
+<table id="T_TerminationError">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Description</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>code</td>
+            <td><a href="#T_Error422Code">Error422Code</a></td>
+            <td>One of the following error codes:
+  - missingProperty: The property the SOF has expected is not present in the payload
+  - invalidValue: The property has an incorrect value
+  - invalidFormat: The property value does not comply with the expected value format
+  - referenceNotFound: The object referenced by the property cannot be identified in the SOF system
+  - unexpectedProperty: Additional property, not expected by the SOF has been provided
+  - tooManyRecords: the number of records to be provided in the response exceeds the SOF&#x27;s threshold.
+  - otherIssue: Other problem was identified (detailed information provided in a reason)
+</td>
+        </tr><tr>
+            <td>propertyPath</td>
+            <td>string</td>
+            <td>A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+</td>
+        </tr><tr>
+            <td>value</td>
+            <td>string</td>
+            <td>Text to describe the reason of the termination.</td>
+        </tr>
+    </tbody>
+</table>
 
-- `limit` - number of expected list items
-- `offset` - offset of the first element in the result list
+## 7.3. API Data model
 
-The filtering and pagination attributes must be specified in URI query format
-[RFC3986](#8-references).The Seller/Server returns a list of elements that 
-comply with the requested `limit`. If the requested `limit` is higher than the 
-supported list size the smaller list result is returned. In that case, the size 
-of the result is returned in the header attribute `X-Result-Count`. The Seller 
-can indicate that there are additional results available using:
+### 7.3.1 Test Job
 
-- `X-Total-Count` header attribute with the total number of available results
-- `X-Pagination-Throttled` header set to `true`
+Figure 54 presents the Test Job data model. The data types, requirements 
+related to them, and mapping to MEF W136.1 specification are discussed later in this section.
 
-**[R124]** Seller **MUST** use either `X-Total-Count` or
-`X-Pagination-Throttled` to indicate that the page was truncated and additional
-results are available.
+![Figure 54: Test Job Data Model](serviceTest/media/testJobDataModel.png)
 
-## 7.2. API Data model
-
-Figure 52 presents the whole Service Function Testing data model. The data
-types, requirements related to them, and mapping to MEF W136.1 specification are
-discussed later in this section.
-
-![Figure 52: Service Function Testing Data Model](serviceTest/media/sftDataModel.png)
-
-**Figure 52. Service Function Testing Data Model**
+**Figure 54. Test Job Data Model**
 
 
-### 7.2.1 Test Job
-
-#### 7.2.1.1 Type TestJob
+#### 7.3.1.1 Type TestJob
 
 **Description:** A definition of Test Job for a specific Service Identifier.
 
@@ -3335,16 +3631,46 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
+        <td>actualStartDateTime</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>O</td>
+            <td>The actual start date and time that a Test Job started.</td>
+            <td>Actual Start Date Time</td>
+        </tr><tr>
+        <td>actualEndDateTime</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>O</td>
+            <td>The actual end date and time of the Test Job.</td>
+            <td>Actual End Date Time</td>
+        </tr><tr>
+        <td>creationDate</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>M</td>
+            <td>Date when the Test Job was created.</td>
+            <td>Creation Date Time</td>
+        </tr><tr>
+        <td>href</td>
+            <td>uri<br/><span style="font-size:10px;font-style:italic">format = uri</span></td>
+            <td>M</td>
+            <td>Hyperlink reference</td>
+            <td></td>
+        </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>M</td>
             <td>The identifier of the Test Job.</td>
             <td>Test Job Identifier</td>
+        </tr><tr>
+        <td>lastModifiedDate</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>M</td>
+            <td>Date when the job was last modified.</td>
+            <td></td>
         </tr><tr>
         <td>state</td>
             <td><a href="#T_TestJobStateType">TestJobStateType</a></td>
@@ -3352,22 +3678,16 @@ Inherits from:
             <td></td>
             <td>Test Job State</td>
         </tr><tr>
-        <td>actualStartDateTime</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+        <td>terminationError</td>
+            <td><a href="#T_TerminationError">TerminationError</a>[]</td>
             <td>O</td>
-            <td>The actual start date and time that a test job started.</td>
-            <td>Actual Start Date Time</td>
-        </tr><tr>
-        <td>actualEndDateTime</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>The actual end date and time of the test job.</td>
-            <td>Actual End Date Time</td>
+            <td>When the Seller/Server cannot process the request, the Seller/Server returns a text-based list of reasons here.</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.2 Type TestJob_Common
+#### 7.3.1.2 Type TestJob_Common
 
 **Description:** A definition of Test Job for a specific Service Identifier.
 
@@ -3378,14 +3698,14 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
         <td>name</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>The name of the Test Job.</td>
             <td>Test Job Name</td>
         </tr><tr>
@@ -3393,63 +3713,60 @@ Inherits from:
             <td>string</td>
             <td>O</td>
             <td>A description of the Test Job.</td>
-            <td>Test Job Descrip-tion</td>
+            <td>Test Job Description</td>
         </tr><tr>
         <td>startDateTime</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
             <td>O</td>
-            <td>The start date and time of the test job. If the attribute is empty the test jobs starts immediately.</td>
+            <td>The start date and time of the Test Job. If the Buyer desiresto schedule a test, this is a future date/time. If the Buyer desires an immediate test, this is empty.</td>
             <td>Start Date Time</td>
         </tr><tr>
         <td>endDateTime</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>The end date and time of the Test Job. If the attribute is empty the test job runs forever.</td>
+            <td>M</td>
+            <td>The end date and time of the Test Job.</td>
             <td>End Date Time</td>
         </tr><tr>
         <td>recurrencePeriod</td>
-            <td><a href="#T_RecurrencePeriodType">RecurrencePeriodType</a></td>
+            <td><a href="#T_Duration">Duration</a></td>
             <td>O</td>
             <td></td>
-            <td>Recurrence Period</td>
+            <td>>Recurrence Period</td>
         </tr><tr>
         <td>testProfile</td>
             <td><a href="#T_TestProfileRefOrValue">TestProfileRefOrValue</a></td>
-            <td>O</td>
+            <td>M</td>
             <td></td>
-            <td>Test Profile Identifier</td>
+            <td></td>
         </tr><tr>
         <td>validFor</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
+            <td>M</td>
             <td>The last date that the Test Job is valid.</td>
             <td>Valid For</td>
         </tr><tr>
-        <td>relatedService</td>
+        <td>relatedServiceFrom</td>
             <td><a href="#T_ServiceRef">ServiceRef</a></td>
-            <td>O</td>
+            <td>M</td>
             <td></td>
-            <td>Related Service</td>
+            <td>Service ID From</td>
         </tr><tr>
-        <td>testMeasureAttributes</td>
-            <td><a href="#T_TestMeasureAttributes">TestMeasureAttributes</a></td>
-            <td>O</td>
+        <td>relatedServiceTo</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
+            <td>M</td>
             <td></td>
-            <td>Test Specific Attributes </td>
+            <td>Service ID To</td>
+        </tr><tr>
+        <td>serviceSpecificTestJobConfiguration</td>
+            <td><a href="#T_ServiceSpecificTestJobConfiguration">ServiceSpecificTestJobConfiguration</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Service Specific Test Job Configuration</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.3 Type TestJob_Create
-
-**Description:** A definition of Test Job for a specific Service Identifier.
-
-Inherits from:
-- <a href="#T_TestJob_Common">TestJob_Common</a>
-
-
-
-#### 7.2.1.4 Type TestJob_Find
+#### 7.3.1.3 Type TestJob_Find
 
 **Description:** This class represents a single list item for the response of  `listTestJob`
 
@@ -3460,11 +3777,17 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
+        <td>endDateTime</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The end date and time of the Test Job.</td>
+            <td>End Date Time</td>
+        </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>O</td>
@@ -3473,75 +3796,38 @@ Inherits from:
         </tr><tr>
         <td>name</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>The name of the Test Job..</td>
             <td>Test Job Name</td>
         </tr><tr>
-        <td>testProfileId</td>
-            <td>string</td>
-            <td>O</td>
-            <td>A unique identifier of the referenced Test Profile.</td>
-            <td>Test Profile Identifier</td>
+        <td>relatedServiceFrom</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Service ID From</td>
         </tr><tr>
-        <td>relatedServiceId</td>
-            <td>string</td>
-            <td>O</td>
-            <td>A unique identifier of the service to be tested</td>
-            <td>Related Service</td>
+        <td>relatedServiceTo</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Service ID To</td>
         </tr><tr>
         <td>startDateTime</td>
             <td>string</td>
-            <td>O</td>
-            <td>The start date and time of the test job.</td>
+            <td>M</td>
+            <td>The start date and time of the Test Job.</td>
             <td>Start Date Time</td>
         </tr><tr>
-        <td>endDateTime</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The end date and time of the test job.</td>
-            <td>End Date Time</td>
+        <td>testProfile</td>
+            <td><a href="#T_TestProfileRefOrValue">TestProfileRefOrValue</a></td>
+            <td>M</td>
+            <td></td>
+            <td>r</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.5 Type TestJobProcessResponse
-
-**Description:** 
-
-<table id="T_TestJobProcessResponse" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>testJobId</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The identifier of the Test Job.</td>
-            <td>Test Job Identifier</td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
-            <td>O</td>
-            <td></td>
-            <td>Test Job State</td>
-        </tr><tr>
-        <td>deniedReason</td>
-            <td>string</td>
-            <td>O</td>
-            <td>If the request is denied by the Seller/Server, the Seller/Server provides  a reason to the Buyer/Client using this attribute.</td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.6 Type TestJobRef
+#### 7.3.1.4 Type TestJobRef
 
 **Description:** A reference to a Test Job resource
 
@@ -3552,7 +3838,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3572,27 +3858,28 @@ Inherits from:
     </tbody>
 </table>
 
-#### 7.2.1.7 `enum` TestJobStateType
+#### 7.3.1.5 `enum` TestJobStateType
 
 **Description:** The state of the Test Job.
 
-| State                    | MEF W136.1 name           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| -------------------------| -----------------------| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `acknowledged`           | ACKNOWLEDGED           | The Create Test Job request has been received from the Buyer/Client and the Sell-er/Server has assigned a Test Job Identifier to it.  If the request attributes fail validation, the Create Test Job moves to the REJECTED state.  If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time.  If the Test Job is to be scheduled the Test Job moves to the SCHEDULED state and awaits the scheduled date and time.  If the Test Job is to be performed immediately, the Test Job moves to the IN_PROGRESS state and Test Results begin. |
-| `assessing_modification` | ASSESSING_MODIFICATION | A Modify Test Job request while the Test Job is in the SUSPEND or SCHEDULED state.  If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the SUSPEND or SCHEDULED state. |
-| `cancelled`              | CANCELLED              | A Cancel Test Job request is received from the Buyer/Client.  If the request is accepted, the Test Job moves to the CANCELLED state.  The Test Job must be in the IN_PROGRESS, SCHEDULED, or SUSPEND, state.|
+| State                    | MEF W136.1 name           | Description               |
+| -------------------------| -----------------------| --------------------------|
+| `acknowledged`           | ACKNOWLEDGED           | The Create Test Job request has been received from the Buyer/Client and the Sell-er/Server has assigned a Test Job Identifier to it. If the request attributes fail validation, the Create Test Job moves to the REJECTED state. If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time. If the Test Job is to be scheduled the Test Job moves to the SCHEDULED state and awaits the scheduled date and time. If the Test Job is to be performed immediately, the Test Job moves to the IN_PROGRESS state and Test Results begin. |
+| `assessingCancelation` | ASSESSING_CANCELLATION | A Cancel Test Job  request is received while the Test Job is in the IN_PROGRESS, SUSPENDED or SCHEDULED state. If the Cancel Test Job request is approved, the Test Job moves to the CANCELLED state. If not, the Test Job returns to the IN_PROGRESS, SUSPENDED or SCHEDULED state. |
+| `assessingModification` | ASSESSING_MODIFICATION | A Modify Test Job request was received while the Test Job is in the SUSPENDED or SCHEDULED state. If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the SUSPENDED or SCHEDULED state. |
+| `cancelled`              | CANCELLED              | A Cancel Test Job request is received from the Buyer/Client.  If the request is accepted, the Test Job moves to the CANCELLED state.  The Test Job must be in the IN_PROGRESS, SCHEDULED, or SUSPENDED, state.|
 | `completed`              | COMPLETED              | The Test Job has reached the End Date Time or has completed all Test Measurements and provided Test Results.|
-| `inProgress`             | IN-PROGRESS            | Whether an immediate request or a scheduled request, the Test Job moves to the IN_PROGRESS state when it begins performing Test Results.  If a Cancel Test Job request is received and accepted, the Test Job moves to the CANCELLED state.  If the Cancel Test Job request is declined, the Test Job returns to the IN_PROGRESS state and continues Test Results until they are completed.  If a Suspend Test Job request is received, the Test Job moves to the SUSPEND state.|
+| `inProgress`             | IN_PROGRESS            | Whether an immediate request or a scheduled request, the Test Job moves to the IN_PROGRESS state when it begins performing Test Results. If a Cancel Test Job request is received and accepted, the Test Job moves to the CANCELLED state. If the Cancel Test Job request is declined, the Test Job returns to the IN_PROGRESS state and continues Test Results until they are completed. If a Suspend Test Job request is received, the Test Job moves to the SUSPENDED state.|
 | `rejected`               | REJECTED               | The Create Test Job request fails validation and is rejected.|
-| `scheduled`              | SCHEDULED              | The Test Job is scheduled to start at a later time.  The Test Job stays in the SCHEDULED state until the Start Date and Time is reached.  The Test Job moves to IN_PROGRESS when the Start Date and Time is reached.  A Test Job with the state SCHEDULED can be moved to the SUSPEND or CANCELLED state.|
-| `suspended`              | SUSPENDED              | A Test Job in the IN_PROGRESS or SCHEDULED state receives a Suspend Test Job request.  The Test Job moves to the SUSPEND state. A Test Job cannot be modified unless it is in the SUSPEND state.|
+| `scheduled`              | SCHEDULED              | The Test Job is scheduled to start at a later time. The Test Job stays in the SCHEDULED state until the Start Date and Time is reached. The Test Job moves to IN_PROGRESS when the Start Date and Time is reached. A Test Job with the state SCHEDULED can be moved to the SUSPENDED or CANCELLED state.|
+| `suspended`              | SUSPENDED              | A Test Job in the IN_PROGRESS or SCHEDULED state receives a Suspend Test Job request. The Test Job moves to the SUSPENDED state.|
 
 
 <table id="T_TestJobStateType">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3600,7 +3887,10 @@ Inherits from:
             <td>acknowledged</td>
             <td>ACKNOWLEDGED</td>
         </tr><tr>
-            <td>assessing_modification</td>
+            <td>assessingCancelation</td>
+            <td>ASSESSING_CANCELATION</td>
+        </tr><tr>
+            <td>assessingModification</td>
             <td>ASSESSING_MODIFICATION</td>
         </tr><tr>
             <td>cancelled</td>
@@ -3624,24 +3914,247 @@ Inherits from:
     </tbody>
 </table>
 
-#### 7.2.1.8 `enum` TestJobProcessStateType
+#### 7.3.1.6 Type ServiceSpecificTestJobConfiguration
+
+**Description:** ServiceSpecificTestJobConfiguration is used as an extension point for schema to be used that defines the Test Measure attributes. The `@type` attribute is used as a discriminator.
+
+<table id="T_ServiceSpecificTestJobConfiguration" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>@type</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The named type must be a subclass of ServiceSpecificTestJobConfiguration.</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.1.7 Type RelatedContact
+
+**Description:** 
+
+<table id="T_RelatedContact" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>emailAddress</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The email address for this contact.</td>
+            <td>Contact Email Address</td>
+        </tr><tr>
+        <td>name</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The name of person or organization to be contacted.</td>
+            <td>Contact Name</td>
+        </tr><tr>
+        <td>organization</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The organization of this contact.</td>
+            <td>Contact Organization</td>
+        </tr><tr>
+        <td>phoneNumber</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The telephone number for this contact.</td>
+            <td>Contact Phone Number</td>
+        </tr><tr>
+        <td>phoneNumberExtension</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The telephone number extension for this contact.</td>
+            <td>Contact Phone Number Extension</td>
+        </tr><tr>
+        <td>postalAddress</td>
+            <td>string</td>
+            <td>O</td>
+            <td>The postal address for this contact.</td>
+            <td>Contact Postal Address</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.1.8 Type ServiceRef
+
+**Description:** Reference to a Service instance.
+
+<table id="T_ServiceRef" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>href</td>
+            <td>string</td>
+            <td>O</td>
+            <td>Hyperlink reference to Service</td>
+            <td></td>
+        </tr><tr>
+        <td>id</td>
+            <td>string</td>
+            <td>M</td>
+            <td>unique identifier of Service</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.1.9 Type ServiceSpecificationRef
+
+**Description:** 
+
+<table id="T_ServiceSpecificationRef" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>href</td>
+            <td>uri<br/><span style="font-size:10px;font-style:italic">format = uri</span></td>
+            <td>O</td>
+            <td>Hyperlink reference to the Service Specification</td>
+            <td></td>
+        </tr><tr>
+        <td>id</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The unique identifier of the related Service Specification that this Test Profile can be used to test</td>
+            <td>Related Service Specification Identifier</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.1.10 Type Duration
+
+**Description:** A Duration in a given unit of time e.g. 3 hours, or 5 days.
+
+<table id="T_Duration" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>amount</td>
+            <td>integer<br/><span style="font-size:10px;font-style:italic">minimum = 0</span></td>
+            <td>M</td>
+            <td>Duration (number of seconds, minutes, hours, etc.)</td>
+            <td></td>
+        </tr><tr>
+        <td>units</td>
+            <td><a href="#T_TimeUnit">TimeUnit</a></td>
+            <td>M</td>
+            <td>Time unit enumerated</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.1.11 `enum` TimeUnit
+
+**Description:** Represents a unit of time.
+
+
+
+<table id="T_TimeUnit">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>seconds</td>
+            <td>SECONDS</td>
+        </tr><tr>
+            <td>minutes</td>
+            <td>MINUTES</td>
+        </tr><tr>
+            <td>businessHours</td>
+            <td>BUSINESS_HOURS</td>
+        </tr><tr>
+            <td>calendarHours</td>
+            <td>CALENDAR_HOURS</td>
+        </tr><tr>
+            <td>businessDays</td>
+            <td>BUSINESS_DAYS</td>
+        </tr><tr>
+            <td>calendarDays</td>
+            <td>CALENDAR_DAYS</td>
+        </tr><tr>
+            <td>months</td>
+            <td>MONTHS</td>
+        </tr><tr>
+            <td>years</td>
+            <td>YEARS</td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.3.2 Test Job Process
+
+Figure 54 presents the Test Job Process data model. The data types, requirements 
+related to them, and mapping to MEF W136.1 specification are discussed later in this section.
+
+![Figure 55: Test Job Process Data Model](serviceTest/media/testJobProcessDataModel.png)
+
+**Figure 55. Test Job Process Data Model**
+
+
+#### 7.3.2.1 `enum` TestJobProcessStateType
 
 **Description:** The state of process related to Test Job
 
-| state          | MEF W136.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| state          | MEF W136.1 name | Description         |
+| -------------- | ------------ | ---------------------- |
 | `accepted`     | ACCEPTED     | The Modify/Cancel/Resume/Suspend Test Job request has been accepted and processed by the Seller/Server.                                                                                                                                                                                                                                                                                                                                               |
-| `acknowledged` | ACKNOWLEDGED | The Modify/Cancel/Resume/Suspend Test Job request has been received by the Seller/Server and has passed basic validation. Test Job Process Identifier is assigned in the Acknowledged state. The request remains in the Acknowledged state until all validations as applicable are completed. If the attributes are validated, the request moves to the Accepted state. If not all attributes are validated, the request moves to the Declined state. |
-| `completed`    | COMPLETED    | The Modify/Cancel/Resume/Suspend Test Job request has been completed by the Seller/Server                                                                                                                                                                                                                                                                                                                                            |
-| `declined`     | DECLINED     | The Modify/Cancel/Resume/Suspend Test Job request has been declined by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                            |
-| `rejected`     | REJECTED     | The Modify/Cancel/Resume/Suspend Test Job request has been rejected by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                            |
+| `acknowledged` | ACKNOWLEDGED | The Modify/Cancel/Resume/Suspend Test Job request has been received by the Seller/Server and has passed basic validation. Test Job Process Identifier is assigned in the Acknowledged state. The request remains in the Acknowledged state until all validations as applicable are completed. If the attributes are validated, the request moves to the Accepted state. If not all attributes are validated, the request moves to the Rejected state. |required
+|`rejected`     | REJECTED     | The Modify/Cancel/Resume/Suspend Test Job request has been rejected by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                            |
 
 
 <table id="T_TestJobProcessStateType">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3652,41 +4165,13 @@ Inherits from:
             <td>acknowledged</td>
             <td>ACKNOWLEDGED</td>
         </tr><tr>
-            <td>declined</td>
-            <td>DECLINED</td>
-        </tr><tr>
             <td>rejected</td>
             <td>REJECTED</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.9 Type TestMeasureAttributes
-
-**Description:** TestMeasureAttributes is used as an extension point for schema to be used that de-fines the  Test Result attributes. The `@type` attribute is used as a discriminator.
-
-<table id="T_TestMeasureAttributes" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>@type</td>
-            <td>string</td>
-            <td>M</td>
-            <td>The named type must be a subclass of TestMeasureAttributes.</td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.10 Type CancelTestJob
+#### 7.3.2.2 Type CancelTestJob
 
 **Description:** Request for cancellation of an existing Test job
 
@@ -3701,7 +4186,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3709,37 +4194,37 @@ Inherits from:
         <td>cancellationDeniedReason</td>
             <td>string</td>
             <td>O</td>
-            <td>If the Cancel Test Job request is denied by the  Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
+            <td>If the Cancel Test Job request is denied by the Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
             <td></td>
         </tr><tr>
         <td>creationDate</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
+            <td>M</td>
             <td>Date when Cancel Test Job was created.</td>
             <td></td>
         </tr><tr>
         <td>href</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>Hyperlink to the Cancel Test Job entity</td>
             <td></td>
         </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>M</td>
-            <td>Unique identifier for the Cancel Test Job that is generated by the Seller/Server when the Cancel Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
-        </tr>Test Job Identifier<tr>
+            <td>Unique identifier for the Cancel Test Job that is generated by the Seller/Server when the Cancel Test Job request &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
+            <td>Cancel Test Job Identifier</td>
+        </tr><tr>
         <td>state</td>
             <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
             <td>M</td>
             <td></td>
-            <td>Test Job State</td>
+            <td>Cancel Test Job State</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.11 Type CancelTestJob_Common
+#### 7.3.2.3 Type CancelTestJob_Common
 
 **Description:** Request for cancellation of an existing Test Job
 
@@ -3750,7 +4235,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3763,66 +4248,14 @@ Inherits from:
         </tr><tr>
         <td>testJob</td>
             <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
+            <td>M</td>
             <td></td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.12 Type CancelTestJob_Create
-
-**Description:** Request for cancellation of an existing Test Job
-
-Inherits from:
-- <a href="#T_CancelTestJob_Common">CancelTestJob_Common</a>
-
-
-
-#### 7.2.1.13 Type CancelTestJob_Find
-
-**Description:** This class represents a single list item for the response of  `listCancelTestJob`
-
-<table id="T_CancelTestJob_Find" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date when Cancel Test Job was created.</td>
-            <td></td>
-        </tr><tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>Unique identifier for the Cancel Test Job that is generated by the Seller/Server when the Cancel Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
-        </tr><tr>
-        <td>testJob</td>
-            <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
-            <td>M</td>
-            <td></td>
-            <td>Test Job State</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.14 Type ModifyTestJob
+#### 7.3.2.4 Type ModifyTestJob
 
 **Description:** Request for modification of an existing Test job
 
@@ -3837,7 +4270,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3845,37 +4278,37 @@ Inherits from:
         <td>modificationDeniedReason</td>
             <td>string</td>
             <td>O</td>
-            <td>If the Modify Test Job request is denied by the  Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
+            <td>If the Modify Test Job request is denied by the Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
             <td></td>
         </tr><tr>
         <td>creationDate</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
+            <td>M</td>
             <td>Date when Modify Test Job was created.</td>
             <td></td>
         </tr><tr>
         <td>href</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>Hyperlink to the Modify Test Job entity</td>
             <td></td>
         </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>M</td>
-            <td>Unique identifier for the Modify Test Job that is generated by the Seller/Server when the Modify Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
+            <td>Unique identifier for the Modify Test Job that is generated by the Seller/Server when the Modify Test Job request &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
+            <td>Modify Test Job Identifier</td>
         </tr><tr>
         <td>state</td>
             <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
             <td>M</td>
             <td></td>
-            <td>Test Job State</td>
+            <td>Modify Test Job State</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.15 Type ModifyTestJob_Common
+#### 7.3.2.5 Type ModifyTestJob_Common
 
 **Description:** Request for modification of an existing Test Job
 
@@ -3886,7 +4319,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -3899,7 +4332,7 @@ Inherits from:
         </tr><tr>
         <td>testJob</td>
             <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
+            <td>M</td>
             <td></td>
             <td></td>
         </tr><tr>
@@ -3907,25 +4340,25 @@ Inherits from:
             <td>string</td>
             <td>O</td>
             <td>The name of the Test Job.</td>
-            <td></td>
+            <td>Test Job Name</td>
         </tr><tr>
         <td>description</td>
             <td>string</td>
             <td>O</td>
             <td>A description of the Test Job.</td>
-            <td></td>
+            <td>Test Job Description</td>
         </tr><tr>
         <td>startDateTime</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
             <td>O</td>
-            <td>The start date and time of the test job. If the attribute is empty the test jobs starts immediately.</td>
-            <td></td>
+            <td>The start date and time of the Test Job. If the attribute is empty the Test Jobs starts immediately.</td>
+            <td>Start Date Time</td>
         </tr><tr>
         <td>endDateTime</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
             <td>O</td>
-            <td>The end date and time of the Test Job. If the attribute is empty the test job runs forever.</td>
-            <td></td>
+            <td>The end date and time of the Test Job. If the attribute is empty the Test Job runs forever.</td>
+            <td>End Date Time</td>
         </tr><tr>
         <td>testProfile</td>
             <td><a href="#T_TestProfileRefOrValue">TestProfileRefOrValue</a></td>
@@ -3933,74 +4366,28 @@ Inherits from:
             <td></td>
             <td></td>
         </tr><tr>
-        <td>relatedService</td>
+        <td>relatedServiceFrom</td>
             <td><a href="#T_ServiceRef">ServiceRef</a></td>
             <td>O</td>
             <td></td>
-            <td></td>
+            <td>Service ID From</td>
         </tr><tr>
-        <td>testMeasureAttributes</td>
-            <td><a href="#T_TestMeasureAttributes">TestMeasureAttributes</a></td>
+        <td>relatedServiceTo</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
             <td>O</td>
             <td></td>
+            <td>Service ID To</td>
+        </tr><tr>
+        <td>serviceSpecificTestJobConfiguration</td>
+            <td><a href="#T_ServiceSpecificTestJobConfiguration">ServiceSpecificTestJobConfiguration</a></td>
+            <td>O</td>
             <td></td>
+            <td>Test Specific Configuration</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.16 Type ModifyTestJob_Create
-
-**Description:** Request for modification of an existing Test Job
-
-Inherits from:
-- <a href="#T_ModifyTestJob_Common">ModifyTestJob_Common</a>
-
-
-
-#### 7.2.1.17 Type ModifyTestJob_Find
-
-**Description:** This class represents a single list item for the response of  `listModifyTestJob`
-
-<table id="T_ModifyTestJob_Find" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date when Modify Test Job was created.</td>
-            <td></td>
-        </tr><tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>Unique identifier for the Modify Test Job that is generated by the Seller/Server when the Modify Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
-        </tr><tr>
-        <td>testJob</td>
-            <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
-            <td>M</td>
-            <td></td>
-            <td>Test Job State</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.18 Type ResumeTestJob
+#### 7.3.2.6 Type ResumeTestJob
 
 **Description:** Request for resumption of an existing Test job
 
@@ -4015,7 +4402,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4023,37 +4410,37 @@ Inherits from:
         <td>resumptionDeniedReason</td>
             <td>string</td>
             <td>O</td>
-            <td>If the Resume Test Job request is denied by the  Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
+            <td>If the Resume Test Job request is denied by the Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
             <td></td>
         </tr><tr>
         <td>creationDate</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
+            <td>M</td>
             <td>Date when Resume Test Job was created.</td>
             <td></td>
         </tr><tr>
         <td>href</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>Hyperlink to the Resume Test Job entity</td>
             <td></td>
         </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>M</td>
-            <td>Unique identifier for the Resume Test Job that is generated by the Seller/Server when the Resume Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
+            <td>Unique identifier for the Resume Test Job that is generated by the Seller/Server when the Resume Test Job request &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
+            <td>Resume Test Job Identifier</td>
         </tr><tr>
         <td>state</td>
             <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
             <td>M</td>
             <td></td>
-            <td>Test Job State</td>
+            <td>Resume Test Job State</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.19 Type ResumeTestJob_Common
+#### 7.3.2.7 Type ResumeTestJob_Common
 
 **Description:** Request for resumption of an existing Test Job
 
@@ -4064,7 +4451,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4077,66 +4464,14 @@ Inherits from:
         </tr><tr>
         <td>testJob</td>
             <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
+            <td>M</td>
             <td></td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.20 Type ResumeTestJob_Create
-
-**Description:** Request for resumption of an existing Test Job
-
-Inherits from:
-- <a href="#T_ResumeTestJob_Common">ResumeTestJob_Common</a>
-
-
-
-#### 7.2.1.21 Type ResumeTestJob_Find
-
-**Description:** This class represents a single list item for the response of  `listResumeTestJob`
-
-<table id="T_ResumeTestJob_Find" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date when Resume Test Job was created.</td>
-            <td></td>
-        </tr><tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>Unique identifier for the Resume Test Job that is generated by the Seller/Server when the Resume Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
-        </tr><tr>
-        <td>testJob</td>
-            <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
-            <td>M</td>
-            <td></td>
-            <td>Test Job State</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.22 Type SuspendTestJob
+#### 7.3.2.8 Type SuspendTestJob
 
 **Description:** Request for suspension of an existing Test job
 
@@ -4151,7 +4486,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4159,37 +4494,37 @@ Inherits from:
         <td>suspensionDeniedReason</td>
             <td>string</td>
             <td>O</td>
-            <td>If the Suspend Test Job request is denied by the  Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
+            <td>If the Suspend Test Job request is denied by the Seller/Server, the Seller/Server provides a reason to the Buyer/Client using this attribute.</td>
             <td></td>
         </tr><tr>
         <td>creationDate</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
+            <td>M</td>
             <td>Date when Suspend Test Job was created.</td>
             <td></td>
         </tr><tr>
         <td>href</td>
             <td>string</td>
-            <td>O</td>
+            <td>M</td>
             <td>Hyperlink to the Suspend Test Job entity</td>
             <td></td>
         </tr><tr>
         <td>id</td>
             <td>string</td>
             <td>M</td>
-            <td>Unique identifier for the Suspend Test Job that is generated by the Seller/Server when the Suspend Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
+            <td>Unique identifier for the Suspend Test Job that is generated by the Seller/Server when the Suspend Test Job request &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
+            <td>Suspend Test Job Identifier</td>
         </tr><tr>
         <td>state</td>
             <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
             <td>M</td>
             <td></td>
-            <td>Test Job State</td>
+            <td>Suspend Test Job State</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.1.23 Type SuspendTestJob_Common
+#### 7.3.2.9 Type SuspendTestJob_Common
 
 **Description:** Request for suspension of an existing Test Job
 
@@ -4200,7 +4535,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4213,361 +4548,36 @@ Inherits from:
         </tr><tr>
         <td>testJob</td>
             <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.24 Type SuspendTestJob_Create
-
-**Description:** Request for suspension of an existing Test Job
-
-Inherits from:
-- <a href="#T_SuspendTestJob_Common">SuspendTestJob_Common</a>
-
-
-
-#### 7.2.1.25 Type SuspendTestJob_Find
-
-**Description:** This class represents a single list item for the response of  `listSuspendTestJob`
-
-<table id="T_SuspendTestJob_Find" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date when Suspend Test Job was created.</td>
-            <td></td>
-        </tr><tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>Unique identifier for the Suspend Test Job that is generated by the Seller/Server when the Suspend Test Job request  &#x60;state&#x60; is set to &#x60;acknowledged&#x60;.</td>
-            <td></td>
-        </tr><tr>
-        <td>testJob</td>
-            <td><a href="#T_TestJobRef">TestJobRef</a></td>
-            <td>O</td>
-            <td></td>
-            <td></td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
             <td>M</td>
             <td></td>
-            <td>Test Job State</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.26 `enum` RecurrencePeriodType
-
-**Description:** The date/time that the Test Job is repeated
-
-| state          | MEF W136.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| -------------- | ------------ | --------------------------------------------------------|
-| `none`         | NONE         | Test Job is not repeted after it's been executed.       |
-| `hourly`       | HOURLY       | Test Job is repted once every hour.                     |
-| `daily`        | DAILY        | Test Job is repted once every 24 hours.                 |
-| `weekly`       | WEEKLY       | Test Job is repted once every 7 days.                   |
-| `monthly`      | MONTHLY      | Test Job is repted once every 30 days.                  |
-
-
-<table id="T_RecurrencePeriodType">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Value</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>none</td>
-            <td>NONE</td>
-        </tr><tr>
-            <td>hourly</td>
-            <td>HOURLY</td>
-        </tr><tr>
-            <td>daily</td>
-            <td>DAILY</td>
-        </tr><tr>
-            <td>weekly</td>
-            <td>WEEKLY</td>
-        </tr><tr>
-            <td>monthly</td>
-            <td>MONTHLY</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.27 Type RelatedContact
-
-**Description:** 
-
-<table id="T_RelatedContact" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>name</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The name of person or organization to be contacted.</td>
-            <td>Contact Name</td>
-        </tr><tr>
-        <td>phoneNumber</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The telephone number for this contact.</td>
-            <td>Contact Phone Number</td>
-        </tr><tr>
-        <td>phoneNumberExtension</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The telephone number extension for this contact.</td>
-            <td>Contact Phone Number Extension</td>
-        </tr><tr>
-        <td>emailAddress</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The email address for this contact.</td>
-            <td>Contact Email Address</td>
-        </tr><tr>
-        <td>postalAddress</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The postal address for this contact.</td>
-            <td>Contact Postal Address</td>
-        </tr><tr>
-        <td>organization</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The organization of this contact.</td>
-            <td>Contact Organization</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.28 Type RelatedTestProfileRef
-
-**Description:** 
-
-<table id="T_RelatedTestProfileRef" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>serviceSpecificationId</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The unique identifier of the related Service Specification that this Test Profile can be used to test</td>
-            <td></td>
-        </tr>Related Service Specification Identifier<tr>
-        <td>id</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The unique identifier for a related Test Profile</td>
-            <td>Test Profile Relationship Identifier</td>
-        </tr><tr>
-        <td>name</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The unique name for a related Test Profile</td>
-            <td></td>
-        </tr>Test Profile Relationship Name<tr>
-        <td>type</td>
-            <td><a href="#T_TestProfileRelationshipType">TestProfileRelationshipType</a></td>
-            <td>O</td>
-            <td></td>
-            <td>Test Profile Relationship Type</td>
-        </tr><tr>
-        <td>role</td>
-            <td><a href="#T_TestProfileRelationshipRole">TestProfileRelationshipRole</a></td>
-            <td>O</td>
-            <td></td>
-            <td>Related Test Profile Role</td>
-        </tr><tr>
-        <td>order</td>
-            <td>integer</td>
-            <td>O</td>
-            <td>The order which the related Test Jobs are run during a Test Job</td>
-            <td>Test Profile Relationship Order</td>
-        </tr><tr>
-        <td>validFor</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>The last date that the Test Profile is valid.</td>
-            <td>Test Profile Relationship Valid For</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.29 Type ServiceRef
-
-**Description:** 
-
-<table id="T_ServiceRef" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>unique identifier of the service to be tested</td>
-            <td></td>
-        </tr><tr>
-        <td>name</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The name of the test job to be tested</td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.30 Type ServiceSpecificationRef
-
-**Description:** 
-
-<table id="T_ServiceSpecificationRef" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>relatedServiceSpecificationId</td>
-            <td>string</td>
-            <td>O</td>
-            <td>The unique identifier of the related Service Specification that this Test Profile can be used to test</td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.1.31 Type ServiceSpecificTestProfileAttributes
-
-**Description:** ServiceSpecificTestProfileAttributes is used as an extension point for MEF service specific test profile configuration. It includes definition of service/entity and applicable test job objectives. The `@type` attribute is used as a discriminator.
-
-<table id="T_ServiceSpecificTestProfileAttributes" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>@type</td>
-            <td>string</td>
-            <td>M</td>
-            <td>The named type must be a subclass of ServiceSpecificTestProfileAttributes.</td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
 
-### 7.2.2 Test Profile
+### 7.3.3 Test Profile
 
-#### 7.2.2.1 Type TestProfile
+Figure 55 presents the whole Test Profile data model. The data types, requirements 
+related to them, and mapping to MEF W136.1 specification are discussed later in this section.
 
-**Description:** The test profile describes the test job in terms of parameters to be configured and measures to be taken.
+![Figure 56: Test Profile Data Model](serviceTest/media/tpDataModel.png)
+
+**Figure 56. Test Profile Data Model**
+
+
+#### 7.3.3.1 Type TestProfile
+
+**Description:** Detailed specification that includes the Test Job attributes and Service  Specifications that are specified to be tested by this Test Profile.
 
 Inherits from:
 - <a href="#T_TestProfile_Common">TestProfile_Common</a>
 
 
-<table id="T_TestProfile" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>id</td>
-            <td>string</td>
-            <td>O</td>
-            <td>A unique identifier for the Test Profile assigned by the Seller/Server.</td>
-            <td>Test Profile Identifier</td>
-        </tr><tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date when test profile was created.</td>
-            <td>Creation Date</td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestProfileStateType">TestProfileStateType</a></td>
-            <td>O</td>
-            <td></td>
-            <td>Test Profile State</td>
-        </tr><tr>
-        <td>isAssigned</td>
-            <td>boolean</td>
-            <td>O</td>
-            <td>Indicates if Test Profile is assigned to a Test Job.</td>
-            <td>Test Profile Assigned</td>
-        </tr><tr>
-        <td>lastUpdate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>O</td>
-            <td>Date and time of the last update of the test profile</td>
-            <td>Last Update</td>
-        </tr>
-    </tbody>
-</table>
 
-#### 7.2.2.2 Type TestProfile_Common
+#### 7.3.3.2 Type TestProfile_Common
 
-**Description:** The common test profile specifies the common parameters  that can be re-used by multiple test profiles.
+**Description:** Detailed specification that includes the Test Job attributes and Service  Specifications that are specified to be tested by this Test Profile.
 
 <table id="T_TestProfile_Common" style="width:100%">
     <thead style="font-weight:bold">
@@ -4576,7 +4586,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4590,7 +4600,7 @@ Inherits from:
         <td>isBundled</td>
             <td>boolean</td>
             <td>O</td>
-            <td>Determines whether test profile represents a single test profile (false), or a bundle of test profiles (true).</td>
+            <td>Determines whether specification represents a single Test Profile (false),  or a bundle of Test Profiles (true). For atomic Test Profiles this is always set to false.</td>
             <td>Is Bundled</td>
         </tr><tr>
         <td>lifecycleStatus</td>
@@ -4602,127 +4612,66 @@ Inherits from:
         <td>name</td>
             <td>string</td>
             <td>O</td>
-            <td>The name of the test profile</td>
+            <td>The name of the Test Profile</td>
             <td>Test Profile Name</td>
         </tr><tr>
         <td>validFor</td>
             <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
             <td>O</td>
-            <td>Last date that the test profile is valid</td>
+            <td>Last date that the Test Profile is valid</td>
             <td>Valid For</td>
         </tr><tr>
-        <td>relatedTestProfile</td>
-            <td><a href="#T_RelatedTestProfileRef">RelatedTestProfileRef</a>[]</td>
+        <td>testProfileRelationship</td>
+            <td><a href="#T_TestProfileRelationship">TestProfileRelationship</a>[]</td>
             <td>O</td>
-            <td>Test profile may relate to more than one sub test profiles.</td>
+            <td>Test profile may relate to more than one sub Test Profiles.</td>
             <td>Test Profile Relationship</td>
         </tr><tr>
-        <td>serviceSpecificTestProfileAttributes</td>
-            <td><a href="#T_ServiceSpecificTestProfileAttributes">ServiceSpecificTestProfileAttributes</a></td>
+        <td>serviceSpecificTestProfileConfiguration</td>
+            <td><a href="#T_ServiceSpecificTestProfileConfiguration">ServiceSpecificTestProfileConfiguration</a></td>
             <td>O</td>
             <td></td>
-            <td>Service Specific Test Profile Attributes</td>
+            <td>Service Specific Test Profile Configuration</td>
         </tr><tr>
-        <td>relatedServiceSpecificationId</td>
-            <td>string</td>
+        <td>relatedServiceSpecification</td>
+            <td><a href="#T_ServiceSpecificationRef">ServiceSpecificationRef</a></td>
             <td>O</td>
-            <td>The unique identifier of the related Service Specification that this Test Profile can be used to test</td>
-            <td>Related Service Offering</td>
+            <td></td>
+            <td></td>
         </tr><tr>
         <td>relatedContact</td>
             <td><a href="#T_RelatedContact">RelatedContact</a>[]</td>
             <td>O</td>
-            <td>Contacts who manage or otherwise have an interest in this test profile</td>
+            <td>Contacts who manage or otherwise have an interest in this Test Profile</td>
             <td>Related Contact Information</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.2.3 Type TestProfile_Create
+#### 7.3.3.3 Type TestProfile_Create
 
-**Description:** The test profile describes the test job in terms of parameters to be configured and measures to be taken.
-
-Inherits from:
-- <a href="#T_TestProfile_Common">TestProfile_Common</a>
-
-
-
-#### 7.2.2.4 Type TestProfile_Find
-
-**Description:** This class represents a single list item for the response of  `listTestProfile`
-
-<table id="T_TestProfile_Find" style="width:100%">
-    <thead style="font-weight:bold">
-        <tr>
-            <td>Name</td>
-            <td style="width:15%">Type</td>
-            <td>M/O</td>
-            <td>Description</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td>id</td>
-            <td>string</td>
-            <td>M</td>
-            <td>A unique identifier for the Test Profile assigned by the Seller/Server.</td>
-            <td>Test Profile Identifier</td>
-        </tr><tr>
-        <td>name</td>
-            <td>string</td>
-            <td>M</td>
-            <td>The name of the test profile</td>
-            <td>Test Profile Name</td>
-        </tr><tr>
-        <td>description</td>
-            <td>string</td>
-            <td>M</td>
-            <td>A free-text description of the Test Profile</td>
-            <td>Description</td>
-        </tr><tr>
-        <td>lifecycleStatus</td>
-            <td><a href="#T_TestProfileLifecycleStatusType">TestProfileLifecycleStatusType</a></td>
-            <td>M</td>
-            <td></td>
-            <td>Lifecycle Status</td>
-        </tr><tr>
-        <td>creationDate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>M</td>
-            <td>Date when test profile was created.</td>
-            <td>Creation Date</td>
-        </tr><tr>
-        <td>lastUpdate</td>
-            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
-            <td>M</td>
-            <td>Date and time of the last update of the test profile</td>
-            <td>Last Update</td>
-        </tr><tr>
-        <td>state</td>
-            <td><a href="#T_TestProfileStateType">TestProfileStateType</a></td>
-            <td>M</td>
-            <td></td>
-            <td>Test Profile State</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.2.5 Type TestProfile_Modify
-
-**Description:** The test profile describes the test job in terms of parameters to be configured and measures to be taken.
+**Description:** Detailed specification that includes the Test Job attributes and Service  Specifications that are specified to be tested by this Test Profile. This type is used in the request.
 
 Inherits from:
 - <a href="#T_TestProfile_Common">TestProfile_Common</a>
 
 
 
-#### 7.2.2.6 `enum` TestProfileLifecycleStatusType
+#### 7.3.3.4 Type TestProfile_Modify
 
-**Description:** Current lifecycle status of the test profile.
+**Description:** Detailed specification that includes the Test Job attributes and Service  Specifications that are specified to be tested by this Test Profile. This type is used in the request.
 
-| State          | MEF W136.1 name     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | --------------   | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+Inherits from:
+- <a href="#T_TestProfile_Common">TestProfile_Common</a>
+
+
+
+#### 7.3.3.5 `enum` TestProfileLifecycleStatusType
+
+**Description:** Current lifecycle status of the Test Profile.
+
+| Status          | MEF W136.1 name     | Description        |
+| -------------- | ------------------- | ------------------ |
 | `experimental` | EXPERIMENTAL     | Test Profile use may be limited to a small number of users. |
 | `pending`      | PENDING          | Test Profile is waiting to be Approved |
 | `approved`     | APPROVED         | Test Profile has been Approved for general use. |
@@ -4733,7 +4682,7 @@ Inherits from:
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4753,39 +4702,7 @@ Inherits from:
     </tbody>
 </table>
 
-#### 7.2.2.7 `enum` TestProfileStateType
-
-**Description:** Current lifecycle status of the test profile.
-
-| State          | MEF W136.1 name   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `acknowledged` | ACKNOWLEDGED   | The Create Test Profile request has been received from the Buyer/Client and the Sell-er/Server has assigned a Test Profile Identifier to it. |
-| `completed`    | COMPLETED      | The Test Profile has been created and is ready for use by the Buyer/Client. |
-| `rejected`     | REJECTED       | The Create Test Profile does not pass attribute validation and the Create Test Profile is rejected. |
-
-
-<table id="T_TestProfileStateType">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Value</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>acknowledged</td>
-            <td>ACKNOWLEDGED</td>
-        </tr><tr>
-            <td>completed</td>
-            <td>COMPLETED</td>
-        </tr><tr>
-            <td>rejected</td>
-            <td>REJECTED</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.2.8 Type TestProfileRef
+#### 7.3.3.6 Type TestProfileRef
 
 **Description:** A reference to a Test Profile resource
 
@@ -4800,7 +4717,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4815,12 +4732,12 @@ Inherits from:
             <td>string</td>
             <td>M</td>
             <td>Identifier of the referenced Test Profile</td>
-            <td>Test Profile Relationship Identifier</td>
+            <td>Test Profile Identifier</td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.2.9 Type TestProfileRefOrValue
+#### 7.3.3.7 Type TestProfileRefOrValue
 
 **Description:** Defines the reference to Test Profile or defines values from TestProfile type.
 
@@ -4831,7 +4748,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4845,12 +4762,12 @@ Inherits from:
     </tbody>
 </table>
 
-#### 7.2.2.10 `enum` TestProfileRelationshipRole
+#### 7.3.3.8 `enum` TestProfileRelationshipRole
 
 **Description:** Role of the relationship.
 
-| role          | MEF W136.1 name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| role          | MEF W136.1 name    | Description        |
+| ------------- | ------------------ | ------------------ |
 | `primary`      | PRIMARY        | Test Profile to be started first. |
 | `secondary`    | SECONDARY      | Test Profile to be started after Primary Test Profile is completed. |
 
@@ -4859,7 +4776,7 @@ Inherits from:
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4873,70 +4790,288 @@ Inherits from:
     </tbody>
 </table>
 
-#### 7.2.2.11 `enum` TestProfileRelationshipType
-
-**Description:** Type of relationship.
-
-| state          | MEF W136.1 name   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `bundled`      | BUNDLED        | Two or more Test Profiles are related together in a bundle. |
-
-
-<table id="T_TestProfileRelationshipType">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Value</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>bundled</td>
-            <td>BUNDLED</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.2.12 `enum` TestProfileRelationshipType
-
-**Description:** Type of relationship.
-
-| state          | MEF W136.1 name   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `bundled`      | BUNDLED        | Two or more Test Profiles are related together in a bundle. |
-
-
-<table id="T_TestProfileRelationshipType">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Value</td>
-            <td>MEF W136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>bundled</td>
-            <td>BUNDLED</td>
-        </tr>
-    </tbody>
-</table>
-
-#### 7.2.2.13 Type TestProfileValue
+#### 7.3.3.9 Type TestProfileRelationship
 
 **Description:** 
+
+<table id="T_TestProfileRelationship" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>id</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The unique identifier for a related Test Profile</td>
+            <td>Test Profile Relationship Identifier</td>
+        </tr><tr>
+        <td>name</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The unique name for a related Test Profile</td>
+            <td>Test Profile Relationship Name</td>
+        </tr><tr>
+        <td>order</td>
+            <td>integer</td>
+            <td>O</td>
+            <td>The order which the related Test Jobs are run during a Test Job</td>
+            <td>Test Profile Relationship Order</td>
+        </tr><tr>
+        <td>relatedServiceSpecification</td>
+            <td><a href="#T_ServiceSpecificationRef">ServiceSpecificationRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+        <td>role</td>
+            <td><a href="#T_TestProfileRelationshipRole">TestProfileRelationshipRole</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Related Test Profile Role</td>
+        </tr><tr>
+        <td>validFor</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>O</td>
+            <td>The last date that the Test Profile is valid.</td>
+            <td>Test Profile Relationship Valid For</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.3.10 `enum` TestProfileLifecycleStateType
+
+**Description:** Current lifecycle status of the Test Profile.
+
+| State          | MEF W136.1 name     | Description        |
+| -------------- | ------------------- | ------------------ |
+| `assigned`     | ASSIGNED            | The Test Profile has been  assigned to a Test Job. |
+| `available`    | AVAILABLE           | The Test Profile has been  created or modified and is ready for users to specify in a Test Job. |
+
+
+<table id="T_TestProfileLifecycleStateType">
+    <thead style="font-weight:bold;">
+        <tr>
+            <td>Value</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>assigned</td>
+            <td>ASSIGNED</td>
+        </tr><tr>
+            <td>available</td>
+            <td>AVAILABLE</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.3.11 Type TestProfileValue
+
+**Description:** Direct assignment of values defined by TestProfile type to TestJob object.  Necessary when TestJob is created without reference to TestProfile.
 
 Inherits from:
 - <a href="#T_TestProfileRefOrValue">TestProfileRefOrValue</a>
 
 
+<table id="T_TestProfileValue" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>serviceSpecificTestProfileConfiguration</td>
+            <td><a href="#T_ServiceSpecificTestProfileConfiguration">ServiceSpecificTestProfileConfiguration</a></td>
+            <td>O</td>
+            <td></td>
+            <td>Service Specific Test Profile Configuration</td>
+        </tr><tr>
+        <td>relatedServiceSpecification</td>
+            <td><a href="#T_ServiceSpecificationRef">ServiceSpecificationRef</a></td>
+            <td>O</td>
+            <td></td>
+            <td>Related Service Specification Identifier</td>
+        </tr><tr>
+        <td>relatedContact</td>
+            <td><a href="#T_RelatedContact">RelatedContact</a>[]</td>
+            <td>O</td>
+            <td>Contacts who manage or otherwise have an interest in this Test Profile</td>
+            <td>Related Contact Information</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.3.12 Type ServiceSpecificTestProfileConfiguration
+
+**Description:** ServiceSpecificTestProfileConfiguration is used as an extension point for  for schema that define how a test is performed for a given Test Specification. The `@type` attribute is used as a discriminator.
+
+<table id="T_ServiceSpecificTestProfileConfiguration" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>@type</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The named type must be a subclass of ServiceSpecificTestProfileConfiguration.</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
 
-### 7.2.3. Notification registration
+### 7.3.4 Test Result
+
+Figure 56 presents the whole Test Result data model. The data types, requirements 
+related to them, and mapping to MEF W136.1 specification are discussed later in this section.
+
+![Figure 57: Test Result Data Model](serviceTest/media/trDataModel.png)
+
+**Figure 57. Test Result Data Model**
+
+
+#### 7.3.4.1 Type TestResult
+
+**Description:** The execution of a Test Job creates Test Result that provide Buyer/Client with the results of the Job.
+
+Inherits from:
+- <a href="#T_TestResult_Common">TestResult_Common</a>
+
+
+<table id="T_TestResult" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>serviceSpecificTestResultConfguration</td>
+            <td><a href="#T_ServiceSpecificTestResultConfguration">ServiceSpecificTestResultConfguration</a></td>
+            <td>M</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.4.2 Type TestResult_Common
+
+**Description:** The execution of a Test Job creates Test Result that provide Buyer/Client with the results of the Job.
+
+<table id="T_TestResult_Common" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>actualStartDateTime</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>M</td>
+            <td>The actual start date and time of the Test Result for a given Test Job.</td>
+            <td>Actual Start Date Time</td>
+        </tr><tr>
+        <td>actualEndDateTime</td>
+            <td>date-time<br/><span style="font-size:10px;font-style:italic">format = date-time</span></td>
+            <td>M</td>
+            <td>The actual end date and time of the Test Result for a given Test Job.</td>
+            <td>Actual End Date Time</td>
+        </tr><tr>
+        <td>href</td>
+            <td>uri<br/><span style="font-size:10px;font-style:italic">format = uri</span></td>
+            <td>M</td>
+            <td>Hyperlink reference</td>
+            <td></td>
+        </tr><tr>
+        <td>id</td>
+            <td>string</td>
+            <td>M</td>
+            <td>A unique identifier for the Test Result assigned by the Seller/Server.</td>
+            <td>Test Result Identifier</td>
+        </tr><tr>
+        <td>relatedServiceFrom</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Service ID From</td>
+        </tr><tr>
+        <td>relatedServiceTo</td>
+            <td><a href="#T_ServiceRef">ServiceRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Service ID To</td>
+        </tr><tr>
+        <td>testJob</td>
+            <td><a href="#T_TestJobRef">TestJobRef</a></td>
+            <td>M</td>
+            <td></td>
+            <td>Test Job Identifier</td>
+        </tr>
+    </tbody>
+</table>
+
+#### 7.3.4.3 Type ServiceSpecificTestResultConfguration
+
+**Description:** ServiceSpecificTestResultConfguration is used as an extension point for schema to be used that defines the Test Result attributes. The `@type` attribute is used as a discriminator.
+
+<table id="T_ServiceSpecificTestResultConfguration" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>@type</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The named type must be a subclass of ServiceSpecificTestJobResult.</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+### 7.3.5. Notification registration
 
 Notification registration and management are done through `/hub` API endpoint.
 The below sections describe data models related to this endpoint.
 
-#### 7.2.3.1. Type EventSubscriptionInput
+#### 7.3.5.1. Type EventSubscriptionInput
 
 **Description:** This class is used to register for Notifications.
 
@@ -4947,7 +5082,7 @@ The below sections describe data models related to this endpoint.
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4955,19 +5090,19 @@ The below sections describe data models related to this endpoint.
         <td>callback</td>
             <td>string</td>
             <td>M</td>
-            <td>This callback value must be set to *host* property from SFT Notification API (serviceFunctionTestNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct an URL to which  notification is sent. E.g. for &#x27;callback&#x27;:  &quot;https://buyer.co/listenerEndpoint&quot;, the SFT event notification will be  sent to: &#x60;https://buyer.co/listenerEndpoint/mefApi/legato/serviceFuctionTestNotification/v1/listener/&#x60;</td>
+            <td>This callback value must be set to *host* property from SFT Notification API (serviceFunctionTestNotification.api.yaml). This property is appended with the base path and notification resource path specified in that API to construct an URL to which notification is sent. E.g. for &#x27;callback&#x27;: &quot;https://buyer.mef.com/listenerEndpoint&quot;, the SFT event notification will be sent to: &#x60;https://buyer.mef.com/listenerEndpoint/mefApi/legato/serviceFuctionTestNotification/v1/&#x60;</td>
             <td></td>
         </tr><tr>
         <td>query</td>
             <td>string</td>
             <td>O</td>
-            <td>This attribute is used to define to which type of events to  register to. Example: &#x27;query&#x27;:&#x27;eventType &#x3D;  testJobCreateEvent&#x27;. To subscribe for more than one event type, put the values separated by comma: &#x60;eventType&#x3D;testJobCreateEvent,testProfileAttributeValueChangeEvent&#x60;. The possible values are enumerated by &#x27;TestProfileEventType&#x27; and TestJobEventType in serviceFunctionTestNotification.api.yaml. An empty query is treated as specifying no filters - ending in subscription for all event types.</td>
+            <td>This attribute is used to define to which type of events to register to. Example: &#x27;query&#x27;:&#x27;eventType &#x3D; testJobCreateEvent&#x27;. To subscribe for more than one event type, put the values separated by comma: &#x60;eventType&#x3D;testJobCreateEvent,testProfileAttributeValueChangeEvent&#x60;. The possible values are enumerated by &#x27;TestProfileEventType&#x27; and TestJobEventType in serviceFunctionTestNotification.api.yaml. An empty query is treated as specifying no filters - ending in subscription for all event types.</td>
             <td></td>
         </tr>
     </tbody>
 </table>
 
-#### 7.2.3.2. Type EventSubscription
+#### 7.3.5.2. Type EventSubscription
 
 **Description:** This resource is used to respond to notification subscriptions.
 
@@ -4982,7 +5117,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -4996,16 +5131,20 @@ Inherits from:
     </tbody>
 </table>
 
-## 7.3. Notification API Data model
-Figure 53 presents the Service Function Testing Notification data model.
-
-![Service Function Testing Notification Data Model](serviceTest/media/sftNotificationDataModel.png)
-
-**Figure 53. Service Function Testing Notification Data Model**
+## 7.4 Notification API Data model
 
 This data model is used to construct requests and responses of the API
 endpoints described in [5.2.2. Buyer/Client (CUS, BUS, SOF) side Service Function Testing API Endpoints](#522-buyerclient-cus-bus-sof-side-service-function-testing-api-endpoints)
-### 7.3.1. Type Event
+
+## 7.4.1 Test Job Notification API Data model
+
+Figure 58. presents the Test Job Notification data model.
+
+![Test Job Data Model](serviceTest/media/testJobNotificationDataModel.png)
+
+**Figure 58. Test Job Data Model**
+
+### 7.4.1.1 Type Event
 
 **Description:** Event class is used to describe information structure used for notification.
 
@@ -5016,7 +5155,7 @@ endpoints described in [5.2.2. Buyer/Client (CUS, BUS, SOF) side Service Functio
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -5032,11 +5171,23 @@ endpoints described in [5.2.2. Buyer/Client (CUS, BUS, SOF) side Service Functio
             <td>M</td>
             <td>Date-time when the event occurred</td>
             <td></td>
+        </tr><tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>The type of the notification.</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td>object</td>
+            <td>M</td>
+            <td>The event linked to the involved resource object</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
-### 7.3.2. Type TestJobEvent
+### 7.4.1.2 Type CancelTestJobProcessStateChangeEvent
 
 **Description:** 
 
@@ -5044,20 +5195,168 @@ Inherits from:
 - <a href="#T_Event">Event</a>
 
 
-<table id="T_TestJobEvent" style="width:100%">
+<table id="T_CancelTestJobProcessStateChangeEvent" style="width:100%">
     <thead style="font-weight:bold">
         <tr>
             <td>Name</td>
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
         <td>eventType</td>
-            <td><a href="#T_TestJobEventType">TestJobEventType</a></td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestJobProcessEventPayload">TestJobProcessEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.1.3 Type ModifyTestJobProcessStateChangeEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_ModifyTestJobProcessStateChangeEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestJobProcessEventPayload">TestJobProcessEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.1.. Type ResumeTestJobProcessStateChangeEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_ResumeTestJobProcessStateChangeEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestJobProcessEventPayload">TestJobProcessEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.1.. Type SuspendTestJobProcessStateChangeEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_SuspendTestJobProcessStateChangeEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestJobProcessEventPayload">TestJobProcessEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.1.6 Type TestJobAttributeValueChangeEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_TestJobAttributeValueChangeEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
             <td>M</td>
             <td>Indicates the type of the event.
 </td>
@@ -5073,7 +5372,44 @@ Inherits from:
     </tbody>
 </table>
 
-### 7.3.3. Type TestJobEventPayload
+### 7.4.1.7 Type TestJobCreateEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_TestJobCreateEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestJobEventPayload">TestJobEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.1.8 Type TestJobEventPayload
 
 **Description:** The identifier of the Test Job being subject of this event.
 
@@ -5084,7 +5420,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -5104,33 +5440,39 @@ Inherits from:
     </tbody>
 </table>
 
-### 7.3.4. `enum` TestJobEventType
+### 7.4.1.9 `enum` TestJobProcessStateType
 
-**Description:** Indicates the type of Test Job event.
+**Description:** The state of process related to Test Job
+
+| state          | MEF W136.1 name | Description         |
+| -------------- | ------------ | ---------------------- |
+| `accepted`     | ACCEPTED     | The Modify/Cancel/Resume/Suspend Test Job request has been accepted and processed by the Seller/Server.                                                                                                                                                                                                                                                                                                                                               |
+| `acknowledged` | ACKNOWLEDGED | The Modify/Cancel/Resume/Suspend Test Job request has been received by the Seller/Server and has passed basic validation. Test Job Process Identifier is assigned in the Acknowledged state. The request remains in the Acknowledged state until all validations as applicable are completed. If the attributes are validated, the request moves to the Accepted state. If not all attributes are validated, the request moves to the Rejected state. |required
+|`rejected`     | REJECTED     | The Modify/Cancel/Resume/Suspend Test Job request has been rejected by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                            |
 
 
-<table id="T_TestJobEventType">
+<table id="T_TestJobProcessStateType">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>testJobCreateEvent</td>
-            <td>TEST_JOB_CREATE_EVENT</td>
+            <td>accepted</td>
+            <td>ACCEPTED</td>
         </tr><tr>
-            <td>testJobAttributeValueChangeEvent</td>
-            <td>TEST_JOB_ATTRIBUTE_VALUE_CHANGE_EVENT</td>
+            <td>acknowledged</td>
+            <td>ACKNOWLEDGED</td>
         </tr><tr>
-            <td>testJobStateChangeEvent</td>
-            <td>TEST_JOB_STATE_CHANGE_EVENT</td>
+            <td>rejected</td>
+            <td>REJECTED</td>
         </tr>
     </tbody>
 </table>
 
-### 7.3.5. Type TestJobProcessEvent
+### 7.4.1.10 Type TestJobStateChangeEvent
 
 **Description:** 
 
@@ -5138,7 +5480,7 @@ Inherits from:
 - <a href="#T_Event">Event</a>
 
 
-<table id="T_TestJobProcessEvent" style="width:100%">
+<table id="T_TestJobStateChangeEvent" style="width:100%">
     <thead style="font-weight:bold">
         <tr>
             <td>Name</td>
@@ -5151,14 +5493,14 @@ Inherits from:
     <tbody>
         <tr>
         <td>eventType</td>
-            <td><a href="#T_TestJobProcessEventType">TestJobProcessEventType</a></td>
+            <td>string</td>
             <td>M</td>
             <td>Indicates the type of the event.
 </td>
             <td></td>
         </tr><tr>
         <td>event</td>
-            <td><a href="#T_TestJobProcessEventPayload">TestJobProcessEventPayload</a></td>
+            <td><a href="#T_TestJobStateChangeEventPayload">TestJobStateChangeEventPayload</a></td>
             <td>M</td>
             <td>A reference to the object that is source of the notification.
 </td>
@@ -5167,7 +5509,16 @@ Inherits from:
     </tbody>
 </table>
 
-### 7.3.6. Type TestJobProcessEventPayload
+### 7.4.1.11 Type TestJobStateChangeEventPayload
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_TestJobEventPayload">TestJobEventPayload</a>
+
+
+
+### 7.4.1.12 Type TestJobProcessEventPayload
 
 **Description:** The identifier of the Test Job Process being subject of this event.
 
@@ -5194,41 +5545,25 @@ Inherits from:
             <td>O</td>
             <td>Hyperlink to access the Test Job Process</td>
             <td></td>
+        </tr><tr>
+        <td>state</td>
+            <td><a href="#T_TestJobProcessStateType">TestJobProcessStateType</a></td>
+            <td>M</td>
+            <td>The current state of the Test Job Process</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
-### 7.3.7. `enum` TestJobProcessEventType
+## 7.4.2 Test Profile Notification API Data model
 
-**Description:** Indicates the type of Test Job Process Event.
+Figure 59. presents the Test Profile Notification data model.
 
+![Test Profile Notification Data Model](serviceTest/media/testProfileNotificationDataModel.png)
 
-<table id="T_TestJobProcessEventType">
-    <thead style="font-weight:bold;">
-        <tr>
-            <td>Value</td>
-            <td>MEF 136.1</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>cancelTestJobStateChangeEvent</td>
-            <td>CANCEL_TEST_JOB_STATE_CHANGE_EVENT</td>
-        </tr><tr>
-            <td>modifyTestJobStateChangeEvent</td>
-            <td>MODIFY_TEST_JOB_STATE_CHANGE_EVENT</td>
-        </tr><tr>
-            <td>suspendTestJobStateChangeEvent</td>
-            <td>SUSPEND_TEST_JOB_STATE_CHANGE_EVENT</td>
-        </tr><tr>
-            <td>resumeTestJobStateChangeEvent</td>
-            <td>RESUME_TEST_JOB_STATE_CHANGE_EVENT</td>
-        </tr>
-    </tbody>
-</table>
+**Figure 59. Test Profile Notification Data Model**
 
-
-### 7.3.8. Type TestProfileEvent
+### 7.4.2.1 Type TestProfileAttributeValueChangeEvent
 
 **Description:** 
 
@@ -5236,20 +5571,20 @@ Inherits from:
 - <a href="#T_Event">Event</a>
 
 
-<table id="T_TestProfileEvent" style="width:100%">
+<table id="T_TestProfileAttributeValueChangeEvent" style="width:100%">
     <thead style="font-weight:bold">
         <tr>
             <td>Name</td>
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
         <td>eventType</td>
-            <td><a href="#T_TestProfileEventType">TestProfileEventType</a></td>
+            <td>string</td>
             <td>M</td>
             <td>Indicates the type of the event.
 </td>
@@ -5265,8 +5600,81 @@ Inherits from:
     </tbody>
 </table>
 
+### 7.4.2.2 Type TestProfileCreateEvent
 
-### 7.3.9. Type TestProfileEventPayload
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_TestProfileCreateEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestProfileEventPayload">TestProfileEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.2.3 Type TestProfileDeleteEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_TestProfileDeleteEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
+        </tr><tr>
+        <td>event</td>
+            <td><a href="#T_TestProfileEventPayload">TestProfileEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.2.4 Type TestProfileEventPayload
 
 **Description:** The identifier of the Test Profile being subject of this event.
 
@@ -5277,7 +5685,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF W136.1</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
@@ -5297,31 +5705,124 @@ Inherits from:
     </tbody>
 </table>
 
-### 7.3.10. `enum` TestProfileEventType
+### 7.4.2.5 Type TestProfileLifecycleStateChangeEvent
 
-**Description:** Indicates the type of Test Profile event.
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
 
 
-<table id="T_TestProfileEventType">
-    <thead style="font-weight:bold;">
+<table id="T_TestProfileLifecycleStateChangeEvent" style="width:100%">
+    <thead style="font-weight:bold">
         <tr>
-            <td>Value</td>
-            <td>MEF W136.1</td>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>testProfileCreateEvent</td>
-            <td>TEST_PROFILE_CREATE_EVENT</td>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
         </tr><tr>
-            <td>testProfileAttributeValueChangeEvent</td>
-            <td>TEST_PROFILE_ATTRIBUTE_VALUE_CHANGE_EVENT</td>
+        <td>event</td>
+            <td><a href="#T_TestProfileLifecycleStateChangeEventPayload">TestProfileLifecycleStateChangeEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.2.6 Type TestProfileLifecycleStateChangeEventPayload
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_TestProfileEventPayload">TestProfileEventPayload</a>
+
+
+
+## 7.4.3 Test Result Notification API Data model
+
+Figure 60. presents the Test Result Notification data model.
+
+![Test Result Notification Data Model](serviceTest/media/testResultNotificationDataModel.png)
+
+**Figure 60. Test Result Notification Data Model**
+
+### 7.4.3.1 Type TestResultCreateEvent
+
+**Description:** 
+
+Inherits from:
+- <a href="#T_Event">Event</a>
+
+
+<table id="T_TestResultCreateEvent" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>eventType</td>
+            <td>string</td>
+            <td>M</td>
+            <td>Indicates the type of the event.
+</td>
+            <td></td>
         </tr><tr>
-            <td>testProfileDeleteEvent</td>
-            <td>TEST_PROFILE_DELETE_EVENT</td>
+        <td>event</td>
+            <td><a href="#T_TestResultEventPayload">TestResultEventPayload</a></td>
+            <td>M</td>
+            <td>A reference to the object that is source of the notification.
+</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+### 7.4.3.2 Type TestResultEventPayload
+
+**Description:** The identifier of the Test Result being subject of this event.
+
+<table id="T_TestResultEventPayload" style="width:100%">
+    <thead style="font-weight:bold">
+        <tr>
+            <td>Name</td>
+            <td style="width:15%">Type</td>
+            <td>M/O</td>
+            <td>Description</td>
+            <td>MEF 136.1</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>id</td>
+            <td>string</td>
+            <td>M</td>
+            <td>ID of the Test Result</td>
+            <td></td>
         </tr><tr>
-            <td>testProfileStateChangeEvent</td>
-            <td>TEST_PROFILE_STATE_CHANGE_EVENT</td>
+        <td>href</td>
+            <td>string</td>
+            <td>O</td>
+            <td>Hyperlink to access the Test Result</td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -5334,38 +5835,29 @@ Inherits from:
   documents, by Austin Wright and Henry Andrews, March 2018. Copyright © 2018
   IETF Trust and the persons identified as the document authors. All rights
   reserved.
-- [MEF55.1]
+- 
   [MEF 55.1](https://www.mef.net/wp-content/uploads/2021/02/MEF-55.1.pdf),
   Lifecycle Service Orchestration (LSO): Reference Architecture and Framework,
   February 2021
-- [MEF128.1] [MEF 128.1](https://www.mef.net/wp-content/uploads/MEF-128.1.pdf), LSO
+- [MEF 128.1](https://www.mef.net/wp-content/uploads/MEF-128.1.pdf), LSO
   API Security Profile, April 2024
 - [MEFW136.1](https://www.mef.net/wp-content/uploads/MEF-136.1.pdf)
   Allegro, Interlude and Legato Fault Management and Service Function Testing BR&UC, January 2023
-- [MEF152] [MEF 152]
-  Carrier Ethernet Payload Schema/Guide for SOAM
-- [MEF153] [MEF 153]
-  IP/IPVPN Schema/Guide for SOAM
-- [MEF154] [MEF 154]
-  SD-WAN Schema/Guide for SOAM
-- [OAS-v3] [Open API 3.0](http://spec.openapis.org/oas/v3.0.3.html), February
+- [Open API 3.0](http://spec.openapis.org/oas/v3.0.3.html), February
   2020
-- [REST]
-  [Chapter 5: Representational State Transfer (REST)](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
+- [Chapter 5: Representational State Transfer (REST)](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
   Fielding, Roy Thomas, Architectural Styles and the Design of Network-based
   Software Architectures (Ph.D.).
-- [RFC2119] [RFC 2119](https://tools.ietf.org/html/rfc2119), Key words for use
+- [RFC 2119](https://tools.ietf.org/html/rfc2119), Key words for use
   in RFCs to Indicate Requirement Levels, by S. Bradner, March 1997
-- [RFC3986] [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) Uniform
+- [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) Uniform
   Resource Identifier (URI): Generic Syntax, January 2005
-- [RFC8174] [RFC 8174](https://tools.ietf.org/html/rfc8174), Ambiguity of
+- [RFC 8174](https://tools.ietf.org/html/rfc8174), Ambiguity of
   Uppercase vs Lowercase in RFC 2119 Key Words, by B. Leiba, May 2017,
   Copyright © 2017 IETF Trust and the persons identified as the document
   authors. All rights reserved.
-- [TMF630]
-  [TMF 630](https://www.tmforum.org/resources/specification/tmf630-rest-api-design-guidelines-4-2-0/)
+- [TMF 630](https://www.tmforum.org/resources/specification/tmf630-rest-api-design-guidelines-4-2-0/)
   TMF630 API Design Guidelines 4.2.0
-- [TMF653]
-  [TMF 653](https://www.tmforum.org/resources/specification/tmf653-service-test-management-api-user-guide-v4-1-0/),
+- [TMF 653](https://www.tmforum.org/resources/specification/tmf653-service-test-management-api-user-guide-v4-1-0/),
  TMF653 Service Test Management API User Guide v4.1.0, July 2021
 
