@@ -8,17 +8,18 @@ img
 }
 </style>
 
-![MEF_LOGO](media/mefLogo.png)
+![Mplify_LOGO](media/mplifyLogo.png)
 
-<div style="font-weight:bold; font-size:33pt; font-family: Sansation;  text-align:center">
-Working Draft
+<div style="font-weight:bold; font-size:33pt; font-family: Sansation; text-align:center">
+Letter Ballot
 </br>
-MEF W146 v0.2
+</br>
+Mplify W146 v0.2
 </br>
 </br>
 LSO Allegro, LSO Interlude and LSO Legato Alarms and Threshold Crossing Alerts (Alarms) API - Developer Guide
 </br>
-<p style="color:red;font-weight:bold; font-size:18pt">This draft represents MEF work in progress and is subject to change.</p>
+<p style="color:red;font-weight:bold; font-size:18pt">This draft represents Mplify work in progress and is subject to change.</p>
 </br>
 June 2025
 <p style="color:red;font-weight:bold; font-size:18pt">EXPORT CONTROL: This document contains technical data. The download, export, re-export or disclosure of the technical data contained in this document may be restricted by applicable U.S. or foreign export laws, regulations and rules and/or applicable U.S. or foreign sanctions ("Export Control Laws or Sanctions"). You agree that you are solely responsible for determining whether any Export Control Laws or Sanctions may apply to your download, export, reexport or disclosure of this document, and for obtaining (if available) any required U.S. or foreign export or reexport licenses and/or other required authorizations.</p>
@@ -28,56 +29,58 @@ June 2025
 
 **Disclaimer**
 
-© MEF Forum 2025. All Rights Reserved.
+© Mplify Alliance 2025. All Rights Reserved.
 
 The information in this publication is freely available for reproduction and
 use by any recipient and is believed to be accurate as of its publication date.
-Such information is subject to change without notice and MEF Forum (MEF) is not
-responsible for any errors. MEF does not assume responsibility to update or
-correct any information in this publication. No representation or warranty,
-expressed or implied, is made by MEF concerning the completeness, accuracy, or
-applicability of any information contained herein and no liability of any kind
-shall be assumed by MEF as a result of reliance upon such information.
+Such information is subject to change without notice and Mplify Alliance
+(Mplify) is not responsible for any errors. Mplify does not assume
+responsibility to update or correct any information in this publication. No
+representation or warranty, expressed or implied, is made by Mplify concerning
+the completeness, accuracy, or applicability of any information contained
+herein and no liability of any kind shall be assumed by Mplift as a result of
+reliance upon such information.
 
 The information contained herein is intended to be used without modification by
-the recipient or user of this document. MEF is not responsible or liable for
+the recipient or user of this document. Mplify is not responsible or liable for
 any modifications to this document made by any other party.
 
 The receipt or any use of this document or its contents does not in any way
 create, by implication or otherwise:
 
 - (a) any express or implied license or right to or under any patent,
-  copyright, trademark or trade secret rights held or claimed by any MEF member
-  which are or may be associated with the ideas, techniques, concepts or
+  copyright, trademark or trade secret rights held or claimed by any Mplify
+  member which are or may be associated with the ideas, techniques, concepts or
   expressions contained herein; nor
 
-- (b) any warranty or representation that any MEF member will announce any
+- (b) any warranty or representation that any Mplify member will announce any
   product(s) and/or service(s) related thereto, or if such announcements are
   made, that such announced product(s) and/or service(s) embody any or all of
   the ideas, technologies, or concepts contained herein; nor
 
-- (c) any form of relationship between any MEF member and the recipient or user
-  of this document.
+- (c) any form of relationship between any Mplify member and the recipient or
+  user of this document.
 
-Implementation or use of specific MEF standards, specifications or
+Implementation or use of specific Mplify standards, specifications or
 recommendations will be voluntary, and no Member shall be obliged to implement
-them by virtue of participation in MEF Forum. MEF is a non-profit international
-organization to enable the development and worldwide adoption of agile, assured
-and orchestrated network services. MEF does not, expressly or otherwise,
-endorse or promote any specific products or services.
+them by virtue of participation in Mplify Alliance. Mplify is a non-profit
+international organization to enable the development and worldwide adoption of
+agile, assured and orchestrated network services. Mplify does not, expressly or
+otherwise, endorse or promote any specific products or services.
 
 **Copyright**
 
-© MEF Forum 2025. Any reproduction of this document, or any portion thereof,
-shall contain the following statement: "Reproduced with permission of MEF
-Forum." No user of this document is authorized to modify any of the information
-contained herein.
+© Mplify Alliance 2025. Any reproduction of this document, or any portion
+thereof, shall contain the following statement: "Reproduced with permission of
+Mplify Alliance." No user of this document is authorized to modify any of the
+information contained herein.
 
 <div class="page"/>
 
 **Table of Contents**
 
 <!-- code_chunk_output -->
+
 - [List of Contributing Members](#list-of-contributing-members)
 - [1. Abstract](#1-abstract)
 - [2. Terminology and Abbreviations](#2-terminology-and-abbreviations)
@@ -157,7 +160,7 @@ contained herein.
 
 # List of Contributing Members
 
-The following members of the MEF participated in the development of this
+The following members of the Mplify participated in the development of this
 document and have requested to be included in this list.
 
 | Member |
@@ -171,11 +174,11 @@ document and have requested to be included in this list.
 # 1. Abstract
 
 This standard is intended to assist the implementation of the Application
-Programming Interfaces (APIs) for the Alarm ManagementAPI functionality of 
-the Service Orchestration Function at the LSO Allegro, LSO Interlude and LSO 
-Legato Interface Reference Points (IRPs), for which requirements and use cases
-are defined in MEF W133.1 [[MEF W133.1](#8-references)]. The requirements and use 
-cases are the same for all IRPs. This standard consists of this document and 
+Programming Interfaces (APIs) for the Alarm ManagementAPI functionality of the
+Service Orchestration Function at the LSO Allegro, LSO Interlude and LSO Legato
+Interface Reference Points (IRPs), for which requirements and use cases are
+defined in Mplify 133.1 [[Mplify133.1](#8-references)]. The requirements and use
+cases are the same for all IRPs. This standard consists of this document and
 complementary API definitions for Alarms and Threshold Crossing Alerts.
 
 This standard normatively incorporates the following files by reference as if
@@ -196,49 +199,50 @@ they were part of this document from the GitHub repository:
 - `serviceApi/alarm/alarmManagement.api.yaml`
 - `serviceApi/alarm/alarmNotification.api.yaml`
 
-The Threshold Crossing Alerts (Alarms) API is defined using OpenAPI 3.0 
+The Threshold Crossing Alerts (Alarms) API is defined using OpenAPI 3.0
 [[OAS-V3](#8-references)]
 
 <div class="page"/>
 
 # 2. Terminology and Abbreviations
 
-This section aims to clarify the terminology used throughout this document. 
-In many cases, the authoritative definitions of terms can be found in separate 
-documents. To ensure accuracy and consistency, the third column of this document
-serves to provide the appropriate references from MEF or external sources that 
-govern these definitions.
+This section aims to clarify the terminology used throughout this document. In
+many cases, the authoritative definitions of terms can be found in separate
+documents. To ensure accuracy and consistency, the third column of this
+document serves to provide the appropriate references from Mplify or external
+sources that govern these definitions.
 
 In addition, terms defined in the standards referenced below are included in
 this document by reference and are not repeated in the table below:
 
-- MEF W133.1 _Allegro, Interlude and Legato Fault Management and Performance Monitoring BR&UC_ [[MEF W133.1](#8-references)]
+- Mplify 133.1 _Allegro, Interlude and Legato Fault Management and Performance
+  Monitoring BR&UC_ [[Mplify133.1](#8-references)]
 - MEF 55.1 _Lifecycle Service Orchestration (LSO): Reference Architecture and
   Framework_ [[MEF 55.1](#8-references)]
 
-| **Term**                            | **Definition**                                                                                                                                                                   																																								| **Source**                                                                         |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Alarm                               | A specific type of notification concerning detected faults or abnormal conditions.           																																								                                                                                    | MEF W133.1                                                                         |
-| API Endpoint                        | The endpoint of a communication channel (the complete URL of an API Resource) to which the HTTP-REST requests are addressed to operate on the _API Resource_.           																																								        | [rapidapi.com](https://rapidapi.com/blog/api-glossary/endpoint/)<br>This document  |
-| API Resource                        | A REST Resource. In REST, the primary data representation is called Resource. In this document, _API Resource_ is defined as an OAS _SchemaObject_ with specified _API Endpoints_.																																								| [restfulapi.net](https://restfulapi.net/resource-naming/)<br>This document         |
-| Notification                        | In general, a mechanism used to inform the recipient about certain event in the system. In context of this document notification is a synchronous communication from the observed system towards recipient                                                                                                                                      | MEF W133.1                                                                         |
-| OpenAPI                             | The OpenAPI 3.0 Specification, formerly known as the Swagger specification is an API description format for REST APIs.                                                           																																								| [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3)                           |
-| Operation                           | An interaction between the Server and Client, potentially involving multiple back-and-forth transactions.                                                                              																																							| This document                                                                      |
-| REST API							  | Representational State Transfer. REST provides a set of architectural constraints that, when applied as a whole, emphasizes scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems.	| [REST API](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) |
-| SchemaObject                        | The construct that allows the definition of input and output data types. These types can represent object classes, as well as primitives and array specifications.              																																								| [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3#schema-object)             |
-| Threshold Crossing Alert            | Mechanism used to monitor and notify when specific thresholds or performance limits are exceeded or crossed.    																																			                                                                                    | MEF W133.1                                                                         |
+| **Term**                 | **Definition**                                                                                                                                                                                                                                                                                                                                  | **Source**                                                                         |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Alarm                    | A specific type of notification concerning detected faults or abnormal conditions.                                                                                                                                                                                                                                                              | Mplify 133.1                                                                         |
+| API Endpoint             | The endpoint of a communication channel (the complete URL of an API Resource) to which the HTTP-REST requests are addressed to operate on the _API Resource_.                                                                                                                                                                                   | [rapidapi.com](https://rapidapi.com/blog/api-glossary/endpoint/)<br>This document  |
+| API Resource             | A REST Resource. In REST, the primary data representation is called Resource. In this document, _API Resource_ is defined as an OAS _SchemaObject_ with specified _API Endpoints_.                                                                                                                                                              | [restfulapi.net](https://restfulapi.net/resource-naming/)<br>This document         |
+| Notification             | In general, a mechanism used to inform the recipient about certain event in the system. In context of this document notification is a synchronous communication from the observed system towards recipient                                                                                                                                      | Mplify 133.1                                                                         |
+| OpenAPI                  | The OpenAPI 3.0 Specification, formerly known as the Swagger specification is an API description format for REST APIs.                                                                                                                                                                                                                          | [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3)                           |
+| Operation                | An interaction between the Server and Client, potentially involving multiple back-and-forth transactions.                                                                                                                                                                                                                                       | This document                                                                      |
+| REST API                 | Representational State Transfer. REST provides a set of architectural constraints that, when applied as a whole, emphasizes scalability of component interactions, generality of interfaces, independent deployment of components, and intermediary components to reduce interaction latency, enforce security, and encapsulate legacy systems. | [REST API](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) |
+| SchemaObject             | The construct that allows the definition of input and output data types. These types can represent object classes, as well as primitives and array specifications.                                                                                                                                                                              | [spec.openapis.org](http://spec.openapis.org/oas/v3.0.3#schema-object)             |
+| Threshold Crossing Alert | Mechanism used to monitor and notify when specific thresholds or performance limits are exceeded or crossed.                                                                                                                                                                                                                                    | Mplify 133.1                                                                         |
 
 **Table 2. Terminology**
 
-| **Term** | **Definition**                                                                               | **Source**                                               |
-|----------|----------------------------------------------------------------------------------------------|----------------------------------------------------------|
-| API      | Application Programming Interface. In this document, API is used synonymously with REST API. | This document                                            |
-| Buyer/Client      | Business Applications                                                                        | MEF 55.1                                                 |
-| CUS      | Customer Application Coordinator															  | MEF 55.1                                                 |
-| IRP      | Interface Reference Point                                                                    | This document                                            |
-| OAS      | OpenAPI Specification                                                                        | [openapis.org](https://www.openapis.org/faq/style-guide) |
-| TCA	   | Threshold Crossing Alert																	  | MEF W133.1				                                 |
-| Seller/Server      | Service Orchestration Functionality                                                | MEF 55.1                                                 |
+| **Term**      | **Definition**                                                                               | **Source**                                               |
+| ------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| API           | Application Programming Interface. In this document, API is used synonymously with REST API. | This document                                            |
+| Buyer/Client  | Business Applications                                                                        | MEF 55.1                                                 |
+| CUS           | Customer Application Coordinator                                                             | MEF 55.1                                                 |
+| IRP           | Interface Reference Point                                                                    | This document                                            |
+| OAS           | OpenAPI Specification                                                                        | [openapis.org](https://www.openapis.org/faq/style-guide) |
+| TCA           | Threshold Crossing Alert                                                                     | Mplify 133.1                                               |
+| Seller/Server | Service Orchestration Functionality                                                          | MEF 55.1                                                 |
 
 **Table 3. Abbreviations**
 
@@ -271,48 +275,47 @@ Optional Requirement that **MAY** be followed if the condition(s) following the
 
 # 4. Introduction
 
-
-The Threshold Crossing Alerts (Alarms) API allows the Buyer to retrieve alarms as 
-well as receive notifications.
-An alarm is a signal or notification designed to alert listening client of condition 
-or event that requires attention or intervention. The alarm can indicate that a 
-Threshold Crossing Alert (TCA) has been crossed, which is independent of the state 
-of the service.
+The Threshold Crossing Alerts (Alarms) API allows the Buyer to retrieve alarms
+as well as receive notifications. An alarm is a signal or notification designed
+to alert listening client of condition or event that requires attention or
+intervention. The alarm can indicate that a Threshold Crossing Alert (TCA) has
+been crossed, which is independent of the state of the service.
 
 This standard specification document describes the Application Programming
-Interface (API) for Alarm Managment functionality of the LSO Allegro
-Interface Reference Point (IRP), LSO Interlude Interface Reference Point (IRP)
-and LSO Sonata IRP as defined in the _MEF 55.1 Lifecycle Service Orchestration
-(LSO): Reference Architecture and Framework_ [[MEF55.1](#8-references)]. The 
-LSO Reference Architecture is shown in Figure 1 with the three IRPs 
-highlighted.
+Interface (API) for Alarm Managment functionality of the LSO Allegro Interface
+Reference Point (IRP), LSO Interlude Interface Reference Point (IRP) and LSO
+Sonata IRP as defined in the _MEF 55.1 Lifecycle Service Orchestration (LSO):
+Reference Architecture and Framework_ [[MEF 55.1](#8-references)]. The LSO
+Reference Architecture is shown in Figure 1 with the three IRPs highlighted.
 
 ![Figure 1: The LSO Reference Architecture](media/lsoArchitecture.png)
 
 **Figure 1. The LSO Reference Architecture**
 
 ## 4.1. Description
+
 The scope of this API and Developer Guide covers
+
 - Alarm Managment
   - Includes retrieval of Alarms
 - Alarm Notification
   - Includes Event Subscription/Hub and Listener notification functions
 
-The business requirements and use cases for Threshold Crossing Alerts (Alarms) API are defined 
-in MEF W133.1 Allegro, Interlude and Legato Fault Management and Performance
-Monitoring BR&UC [MEFW133.1](#8-references).
+The business requirements and use cases for Threshold Crossing Alerts (Alarms)
+API are defined in Mplify 133.1 Allegro, Interlude and Legato Fault Management
+and Performance Monitoring BR&UC [Mplify133.1](#8-references).
 
 This document supports interactions over the Legato interface within a single
-operator as well as interaction with Partner Domain and Customer Domain
-through Interlude and Allegro interfaces respectively.
+operator as well as interaction with Partner Domain and Customer Domain through
+Interlude and Allegro interfaces respectively.
 
-Business Applications (Buyer/Client), Customer Application Coordinator (CUS) and
-Service Orchestration Functionality systems use the information contained
+Business Applications (Buyer/Client), Customer Application Coordinator (CUS)
+and Service Orchestration Functionality systems use the information contained
 within this document.
 
 This standard is intended to support the design of API implementations that
-enable interoperable Seller/Server operations (in the scope of this standard) across the
-Allegro IRP, Interlude IRP, and Legato IRP.
+enable interoperable Seller/Server operations (in the scope of this standard)
+across the Allegro IRP, Interlude IRP, and Legato IRP.
 
 ## 4.2. Conventions in the Document
 
@@ -329,9 +332,9 @@ Allegro IRP, Interlude IRP, and Legato IRP.
 
 ## 4.3. Relation to Other Documents
 
-This API implements the Threshold Crossing Alerts (Alarms) related requirements and use
-cases that are defined in MEF W133.1 [[MEFW133.1](#8-references)]. The API 
-definition builds on TMF Open API (v5.0.0) for Alarm Management API
+This API implements the Threshold Crossing Alerts (Alarms) related requirements
+and use cases that are defined in Mplify 133.1 [[Mplify133.1](#8-references)]. The
+API definition builds on TMF Open API (v5.0.0) for Alarm Management API
 [TMF 642](#8-references).
 
 ## 4.4. Approach
@@ -342,7 +345,7 @@ consist of three structural components:
 - Generic API framework
 - Service-independent information (Function-specific information and
   Function-specific operations)
-- Service-specific information (MEF service specification data model)
+- Service-specific information (Mplify service specification data model)
 
 ![Figure 2: Allegro, Interlude and Legato API Structure](media/lsoApiStructure.png)
 
@@ -351,22 +354,20 @@ consist of three structural components:
 The essential concept behind the framework is to decouple the common structure,
 information, and operations from the specific alarm information content.
 Firstly, the Generic API Framework defines a set of design rules and patterns
-that are applied across all Allegro, Interlude, and Legato APIs.
-Secondly, the alarm-independent information of the framework focuses on a
-model of a particular Allegro, Interlude, or Legato functionality and is
-agnostic to any of the alarm specifications. For example, this standard 
-describes the Alarm Model and operations that enable the management of 
-alarms aligned with either MEF or custom alarm specifications.
+that are applied across all Allegro, Interlude, and Legato APIs. Secondly, the
+alarm-independent information of the framework focuses on a model of a
+particular Allegro, Interlude, or Legato functionality and is agnostic to any
+of the alarm specifications. For example, this standard describes the Alarm
+Model and operations that enable the management of alarms aligned with either
+Mplify or custom alarm specifications.
 
+This Developer Guide does not define Mplify alarm specifications, but it can be
+used in conjunction with any alarm specifications defined by or compliant with
+Mplify.
 
-This Developer Guide does not define MEF alarm specifications, but it can be 
-used in conjunction with any alarm specifications defined by or compliant 
-with MEF.
-
-Figure 3 presents the relationship between the Alarm Managemnt API 
-entities and the alarm specification model.
-The `alarmSpecificAttributes` serves as an extension point for 
-configuring alarm-specific parameters.
+Figure 3 presents the relationship between the Alarm Managemnt API entities and
+the alarm specification model. The `alarmSpecificAttributes` serves as an
+extension point for configuring alarm-specific parameters.
 
 ![Figure 3: Alarm specification for Allegro, Interlude, Legato](media/alarmSpecSchema.png)
 
@@ -374,11 +375,10 @@ configuring alarm-specific parameters.
 
 ## 4.5. High-Level Flow
 
-The Threshold Crossing Alerts (Alarms) API allows the Buyer to retrieve alarms and receive
-notifications when an alarm is created, deleted, acknowledged, unacknowledged, commented or
-cleared. This enables timely detection and resolution of faults related to alarms provided 
-by the Seller.
-
+The Threshold Crossing Alerts (Alarms) API allows the Buyer to retrieve alarms
+and receive notifications when an alarm is created, deleted, acknowledged,
+unacknowledged, commented or cleared. This enables timely detection and
+resolution of faults related to alarms provided by the Seller.
 
 ![Figure 4: High Level Flow](media/alarmProvisioning.png)
 
@@ -386,11 +386,11 @@ by the Seller.
 
 The following steps describe the high-level flow:
 
-- The Buyer/Client registers listeners for notifications related to alarms
-via the Hub. <br>**_Note1_**: Alarm Notifications are optional 
-and do not impact end-to-end flow
-- When fault or abnormal codition is identified the SOF creates an `Alarm`
-in the Server/Seller system
+- The Buyer/Client registers listeners for notifications related to alarms via
+  the Hub. <br>**_Note1_**: Alarm Notifications are optional and do not impact
+  end-to-end flow
+- When fault or abnormal codition is identified the SOF creates an `Alarm` in
+  the Server/Seller system
 - (optional) The Seller/Server sends the `Alarm` notification to a buyer.
 - The Buyer/Client system retrieves `Alarm` through _Alarm API_
 <div class="page"/>
@@ -399,14 +399,14 @@ in the Server/Seller system
 
 This section presents the API structure and design patterns. It starts with the
 high-level use cases diagram. Then it describes the REST endpoints with use
-case mapping. Next, it explains the design pattern that is used
-to combine alarm-agnostic and alarm-specific parts of API payloads.
-Finally, payload validation and API security aspects are discussed.
+case mapping. Next, it explains the design pattern that is used to combine
+alarm-agnostic and alarm-specific parts of API payloads. Finally, payload
+validation and API security aspects are discussed.
 
 ## 5.1. High-level use cases
 
-Figure 5 presents a high-level use case diagram. It aims to help understand
-the endpoint mapping. Use cases are described extensively in
+Figure 5 presents a high-level use case diagram. It aims to help understand the
+endpoint mapping. Use cases are described extensively in
 [chapter 6](#6-api-interactions-and-flows).
 
 ![Figure 5: Use cases](media/alarmUsecases.png)
@@ -429,31 +429,31 @@ the endpoint mapping. Use cases are described extensively in
 
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/alarmManagement/v2/`
 
-The following API endpoints are implemented by the Seller/Server and
-allow the Buyer/Client to retrieve `Alarm` instances. The endpoints and
-corresponding data model are defined in `serviceApi/alarm/alarmManagement.api.yaml`.
+The following API endpoints are implemented by the Seller/Server and allow the
+Buyer/Client to retrieve `Alarm` instances. The endpoints and corresponding
+data model are defined in `serviceApi/alarm/alarmManagement.api.yaml`.
 
-| API Endpoint                        | Description                                                                                              | MEF W133.1 Use Case Mapping |
-|-------------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------|
-| `GET /alarm`                        | The Buyer/Client requests a list of Alarms based on a set of filter criteria.                            | UC 49: Retrieve Alarm List           |
-| `GET /alarm/{{id}}`                 | The Buyer/Client requests detailed information about a single Alarm                                      | UC 50: Retrieve Alarm by Identifier  |
+| API Endpoint        | Description                                                                   | Mplify 133.1 Use Case Mapping         |
+| ------------------- | ----------------------------------------------------------------------------- | ----------------------------------- |
+| `GET /alarm`        | The Buyer/Client requests a list of Alarms based on a set of filter criteria. | UC 49: Retrieve Alarm List          |
+| `GET /alarm/{{id}}` | The Buyer/Client requests detailed information about a single Alarm           | UC 50: Retrieve Alarm by Identifier |
 
 **Table 4. Seller/Server mandatory API endpoints**
 
-**[R1]** Seller/Server **MUST** support all API endpoints listed in 
-Table 4.
+**[R1]** Seller/Server **MUST** support all API endpoints listed in Table 4.
 
-API endpoints listed in Table 5 are optional and may be exposed by the Seller/Server.
+API endpoints listed in Table 5 are optional and may be exposed by the
+Seller/Server.
 
-| API Endpoint           | Description                                                                                                                   | MEF W133.1 Use Case Mapping      |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `POST /hub`            | The Buyer/Client or Administrator requests to subscribe to the Alarm Notifications.                                           | UC 51: Subscribe to Alarms       |
-| `GET /hub/{{id}}`      | The Buyer/Client or Administrator retrieves a specific `EventSubscription` from the Seller/Server, that matches the _`id`_ value provided as _`path`_ parameter.           |
-| `DELETE /hub/{{id}}`   | The Buyer/Client or Administrator requests to unsubscribe from the Alarm Notifications.                                        | UC 52: Un-Subscribe from Alarms |
+| API Endpoint         | Description                                                                                                                                                      | Mplify 133.1 Use Case Mapping     |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| `POST /hub`          | The Buyer/Client or Administrator requests to subscribe to the Alarm Notifications.                                                                              | UC 51: Subscribe to Alarms      |
+| `GET /hub/{{id}}`    | The Buyer/Client or Administrator retrieves a specific `EventSubscription` from the Seller/Server, that matches the _`id`_ value provided as _`path`_ parameter. |
+| `DELETE /hub/{{id}}` | The Buyer/Client or Administrator requests to unsubscribe from the Alarm Notifications.                                                                          | UC 52: Un-Subscribe from Alarms |
 
 **Table 5. Seller/Server optional API endpoints**
 
-**[R2]** Seller/Server MUST **MUST** support API endpoints listed in Table 5. 
+**[R2]** Seller/Server MUST **MUST** support API endpoints listed in Table 5.
 
 ### 5.2.2. Buyer/Client side API Endpoints
 
@@ -469,16 +469,16 @@ API endpoints listed in Table 5 are optional and may be exposed by the Seller/Se
 
 `https://{{serverBase}}:{{port}}{{?/sof_prefix}}/mefApi/legato/alarmNotification/v2/`
 
-The following API Endpoints are used by Seller/Server to post notifications to registered
-Buyer/Client listeners. The endpoints and corresponding data model are defined in
-`serviceApi/alarm/alarmNotification.api.yal`
+The following API Endpoints are used by Seller/Server to post notifications to
+registered Buyer/Client listeners. The endpoints and corresponding data model
+are defined in `serviceApi/alarm/alarmNotification.api.yal`
 
-| API Endpoint                                       | Description                                                                                                  | MEF W133.1 Use Case Mapping       |
-| ---------------------------------------------------| -------------------------------------------------------------------------------------------------------------| --------------------------------- |
-| `POST /listener/alarmAttributeValueChangeEvent`    | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance attribute value change.  | UC 48: Send Alarm Notification    |
-| `POST /listener/alarmCreateEvent`                  | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance create.                  | UC 48: Send Alarm Notification    |
-| `POST /listener/alarmDeleteEvent`                  | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance delete.                  | UC 48: Send Alarm Notification    |
-| `POST /listener/alarmStateChangeEvent`             | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance state change.            | UC 48: Send Alarm Notification    |
+| API Endpoint                                    | Description                                                                                                 | Mplify 133.1 Use Case Mapping    |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `POST /listener/alarmAttributeValueChangeEvent` | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance attribute value change. | UC 48: Send Alarm Notification |
+| `POST /listener/alarmCreateEvent`               | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance create.                 | UC 48: Send Alarm Notification |
+| `POST /listener/alarmDeleteEvent`               | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance delete.                 | UC 48: Send Alarm Notification |
+| `POST /listener/alarmStateChangeEvent`          | A request initiated by the Seller/Server to notify Buyer/Client on `Alarm` instance state change.           | UC 48: Send Alarm Notification |
 
 **Table 6. Buyer/Client API endpoints**
 
@@ -486,102 +486,106 @@ Buyer/Client listeners. The endpoints and corresponding data model are defined i
 
 **[R4]** The Buyer/Client **MUST** register to receive Alarm Notifications.
 
-**[R5]** The Seller/Server **MUST** support sending notifications to API 
+**[R5]** The Seller/Server **MUST** support sending notifications to API
 endpoints listed in Table 6 to the registered Buyer/Client.
 
 ## 5.3. Integration of Alarm Specification into Threshold Crossing Alerts (Alarms) API
 
-The Threshold Crossing Alerts (Alarms) API data model discussed in this document is a generic envelope
-that enables the management of relevant alarm objects. The API data model itself does not provide explicit
-definitions or prescribe the structure for different types of alarms. However, it offers flexible 
-extensibility to accommodate the configuration of alarm-specific objectives, allowing for customization
-and adaptation to various requirements. The Threshold Crossing Alerts (Alarms) API schema is defined 
-using JSON Schema Draft 7 [JSON Schema draft 7](#8-references) and can be integrated into the `Alarm` 
-using the TMF extension pattern.
+The Threshold Crossing Alerts (Alarms) API data model discussed in this
+document is a generic envelope that enables the management of relevant alarm
+objects. The API data model itself does not provide explicit definitions or
+prescribe the structure for different types of alarms. However, it offers
+flexible extensibility to accommodate the configuration of alarm-specific
+objectives, allowing for customization and adaptation to various requirements.
+The Threshold Crossing Alerts (Alarms) API schema is defined using JSON Schema
+Draft 7 [JSON Schema draft 7](#8-references) and can be integrated into the
+`Alarm` using the TMF extension pattern.
 
 The extension hosting type in the API data model is:
 
-- `AlarmSpecificAttributes` - this type is extended with Alarm
-   Specific attributes that define how a Test is performed for a given Test Specification.  
-  
-The `@type` attribute of those extension hosting types must be set to a value 
-that uniquely identifies the service testing configuration. A unique 
-identifier for MEF standard service schemas is in URN format and is assigned 
-by MEF. This identifier is provided as root schema `$id`.
-Use of non-MEF standard service testing configuration is allowed. In such 
-a case the schema identifier must be agreed upon between the Buyer/Client and
-the Seller/Server.
+- `AlarmSpecificAttributes` - this type is extended with Alarm Specific
+  attributes that define how a Test is performed for a given Test
+  Specification.
 
-The example below shows a header of a schema, which describes the TCA Stateless 
-Alarm Configuration configuration, where `urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all` 
-is the above-mentioned URN:
+The `@type` attribute of those extension hosting types must be set to a value
+that uniquely identifies the service testing configuration. A unique identifier
+for Mplify standard service schemas is in URN format and is assigned by Mplify. This
+identifier is provided as root schema `$id`. Use of non-Mplify standard service
+testing configuration is allowed. In such a case the schema identifier must be
+agreed upon between the Buyer/Client and the Seller/Server.
+
+The example below shows a header of a schema, which describes the TCA Stateless
+Alarm Configuration configuration, where
+`urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all` is the above-mentioned
+URN:
 
 ```yaml
-"$schema": "http://json-schema.org/draft-07/schema#"
-"$id": "urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all"
+'$schema': 'http://json-schema.org/draft-07/schema#'
+'$id': 'urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all'
 title: TCA Stateless Alarm Configuration
 ```
 
-Alarm specific configuration payload is introduced in Threshold Crossing Alerts (Alarms) API entities through
-a `alarmSpecificAttributes` attribute of type 
-`AlarmSpecificAttributes` which is used as an extension point for 
-configuration attributes.
+Alarm specific configuration payload is introduced in Threshold Crossing Alerts
+(Alarms) API entities through a `alarmSpecificAttributes` attribute of type
+`AlarmSpecificAttributes` which is used as an extension point for configuration
+attributes.
 
-Implementations might choose to integrate selected Threshold Crossing Alerts (Alarms) API
-specifications to data model during development e.g. TCA Alarm. In such a case 
-an integrated data model is built, and alarm specifications are in an inheritance 
-relationship with either `AlarmSpecificAttributes` as described in the OAS specification.
-This pattern is called **Static Binding**. The snippets below present an 
-example of a static binding of the envelope API with exemplary MEF TCA Alarm 
-specifications.
+Implementations might choose to integrate selected Threshold Crossing Alerts
+(Alarms) API specifications to data model during development e.g. TCA Alarm. In
+such a case an integrated data model is built, and alarm specifications are in
+an inheritance relationship with either `AlarmSpecificAttributes` as described
+in the OAS specification. This pattern is called **Static Binding**. The
+snippets below present an example of a static binding of the envelope API with
+exemplary Mplify TCA Alarm specifications.
 
 ```yaml
-    AlarmSpecificAttributes:
-      type: object
-      description: AlarmSpecificAttributes is used as an extension for Alarm specific
-        payload.  The @type attribute is used as a discriminator.
-      discriminator:
-        mapping:
-          urn:mef:lso:spec:legato:tca-stateful-set-alarm:v0.0.1:all: '#/components/schemas/TcaStatefulSetAlarm'
-          urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all: '#/components/schemas/TcaStatelessAlarm'
-          urn:mef:lso:spec:legato:tca-stateful-clear-alarm:v0.0.1:all: '#/components/schemas/TcaStatefulClearAlarm'
-        propertyName: '@type'
-      properties:
-        '@type':
-          type: string
-          description: The named type must be a subclass of AlarmSpecificAttributes.
-          enum:
-          - urn:mef:lso:spec:legato:tca-stateful-set-alarm:v0.0.1:all
-          - urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all
-          - urn:mef:lso:spec:legato:tca-stateful-clear-alarm:v0.0.1:all
-      required:
-      - '@type'
+AlarmSpecificAttributes:
+  type: object
+  description:
+    AlarmSpecificAttributes is used as an extension for Alarm specific
+    payload.  The @type attribute is used as a discriminator.
+  discriminator:
+    mapping:
+      urn:mef:lso:spec:legato:tca-stateful-set-alarm:v0.0.1:all: '#/components/schemas/TcaStatefulSetAlarm'
+      urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all: '#/components/schemas/TcaStatelessAlarm'
+      urn:mef:lso:spec:legato:tca-stateful-clear-alarm:v0.0.1:all: '#/components/schemas/TcaStatefulClearAlarm'
+    propertyName: '@type'
+  properties:
+    '@type':
+      type: string
+      description:
+        The named type must be a subclass of AlarmSpecificAttributes.
+      enum:
+        - urn:mef:lso:spec:legato:tca-stateful-set-alarm:v0.0.1:all
+        - urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all
+        - urn:mef:lso:spec:legato:tca-stateful-clear-alarm:v0.0.1:all
+  required:
+    - '@type'
 ```
 
 ```yaml
-    TcaStatelessAlarm:
-      allOf:
-      - $ref: '#/components/schemas/AlarmSpecificAttributes'
-      - type: object
-        description: Threshold Crossing Alert Alarm Schema.
+TcaStatelessAlarm:
+  allOf:
+    - $ref: '#/components/schemas/AlarmSpecificAttributes'
+    - type: object
+      description: Threshold Crossing Alert Alarm Schema.
 ```
-
 
 Alternatively, implementations might choose not to build an integrated model
-and choose a different mechanism allowing runtime validation of
-alarm-specific fragments of the payload. The system can validate a given
-monitoring configuration against a new schema without redeployment. This 
-pattern is called **Dynamic Binding.**
+and choose a different mechanism allowing runtime validation of alarm-specific
+fragments of the payload. The system can validate a given monitoring
+configuration against a new schema without redeployment. This pattern is called
+**Dynamic Binding.**
 
-Regardless of the chosen implementation pattern, the HTTP payload is the same. 
-Both implementation approaches must conform to the requirements specified below.
+Regardless of the chosen implementation pattern, the HTTP payload is the same.
+Both implementation approaches must conform to the requirements specified
+below.
 
-**[R6]** `AlarmSpecificAttributes` type is
-extension points that **MUST** be used to integrate alarm specific 
-properties into a request/response payload.
+**[R6]** `AlarmSpecificAttributes` type is extension points that **MUST** be
+used to integrate alarm specific properties into a request/response payload.
 
-**[R7]** The `@type` property of `AlarmSpecificAttributes` **MUST** 
-be used to specify the type of the extending entity.
+**[R7]** The `@type` property of `AlarmSpecificAttributes` **MUST** be used to
+specify the type of the extending entity.
 
 **[R8]** Attributes specified in the payload must conform to the alarm
 definition specified in the `@type` property.
@@ -590,35 +594,36 @@ definition specified in the `@type` property.
 
 **Figure 6. The Extension Pattern with Sample Alarm-Specific Extension**
 
-Figure 6 presents two MEF Threshold Crossing Alerts (Alarms) API schema that represent 
-alarm configuration for TCA Stateles Alarm. When this schema is used, the `@type` of 
-`AlarmSpecificAttributes` takes`"urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all"` 
-value to indicate which alarm specification should be used to interpret aset of 
+Figure 6 presents two Mplify Threshold Crossing Alerts (Alarms) API schema that
+represent alarm configuration for TCA Stateles Alarm. When this schema is used,
+the `@type` of `AlarmSpecificAttributes`
+takes`"urn:mef:lso:spec:legato:tca-stateless-alarm:v0.0.1:all"` value to
+indicate which alarm specification should be used to interpret aset of
 alarm-specific attributes included in the payload.
 
 ## 5.4. Model structure and validation
 
-The structure of the payloads exchanged via Allegro, Interlude, and Legato 
+The structure of the payloads exchanged via Allegro, Interlude, and Legato
 Threshold Crossing Alerts (Alarms) API endpoints is defined using:
 
 - OpenAPI version 3.0 for the service-agnostic part of the payload
 - JsonSchema (draft 7) for the alarm-specific part of the payload
 
 **[R9]** Implementations **MUST** use payloads that conform to these
-definitions. The Buyer and the Seller **MUST NOT** use any operation, 
-entity or attribute that is not explicitly defined or allowed by this standard.
+definitions. The Buyer and the Seller **MUST NOT** use any operation, entity or
+attribute that is not explicitly defined or allowed by this standard.
 
 ## 5.5. Security Considerations
 
 Although the Legato IRP is internal to a Service Provider/Operator business
 boundary, it is expected that some minimal security mechanisms are in place for
 any communication over this IRP. There must also be authorization mechanisms in
-place to control what a particular Buyer/Client or Seller/Server is allowed to do and 
-what information may be obtained. For Allegro and Interlude IRPs, security 
-should follow rules for external communication.
-The definition of the exact security mechanism and configuration is outside
-the scope of this document. The LSO Security mechanisms are defined by MEF 128.1
-_LSO API Security Profiles_ [[MEF128.1](#8-references)].
+place to control what a particular Buyer/Client or Seller/Server is allowed to
+do and what information may be obtained. For Allegro and Interlude IRPs,
+security should follow rules for external communication. The definition of the
+exact security mechanism and configuration is outside the scope of this
+document. The LSO Security mechanisms are defined by MEF 128.1 _LSO API
+Security Profiles_ [[MEF 128.1](#8-references)].
 
 <div class="page"/>
 
@@ -630,26 +635,25 @@ all business use cases then present the variants of end-to-end interaction
 flows, and in the following subchapters describe the API usage flow and
 examples for each of the use cases.
 
-| Use Case # | Use Case Name                                                  | Use Case Description                                                                                                                    | MEF 133.1 Use Case # |
-| ---------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------|
-| 1          | Retrieve Alarm List                                             | The Buyer/Client requests a list of Alarms based on a set of filter criteria. The Seller/Server returns a summarized list of Alarms.   | 49                   |
-| 2          | Retrieve Alarm by Alarm  Identifier                             | The Buyer/Client requests detailed information about a single Alarm based on the Alarm Identifier.                                     | 50                   |
-| 3          | Subscribe to Alarm  Notifications                               | The Buyer/Client requests to subscribe to Alarm Notifictions.                                                                          | 51                   |
-| 4          | Send Alarm Notification                                         | A Seller/Server sends an Alarm to the Buyer/Client based on an event that has occurred.                                                | 48                   |
-| 4a         | Stateful TCA Alarm                                              | A Stateful TCA Alarm is initiated by the Seller/Server to a subscribed Client.                                                         | 53                   |
-| 4b         | Stateless TCA Alarm                                             | A Stateless TCA lifecycle alarm is initiated by the Seller/Server to a subscribed Client.                                              | 54                   |
-| 5          | Usubscribe for Alarm Notifications                              | The Buyer/Client requests to unsubscribe to Alarm and/or Test Job Notifications.                                                       | 52                   |
-
+| Use Case # | Use Case Name                      | Use Case Description                                                                                                                 | Mplify 133.1 Use Case # |
+| ---------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------- |
+| 1          | Retrieve Alarm List                | The Buyer/Client requests a list of Alarms based on a set of filter criteria. The Seller/Server returns a summarized list of Alarms. | 49                   |
+| 2          | Retrieve Alarm by Alarm Identifier | The Buyer/Client requests detailed information about a single Alarm based on the Alarm Identifier.                                   | 50                   |
+| 3          | Subscribe to Alarm Notifications   | The Buyer/Client requests to subscribe to Alarm Notifictions.                                                                        | 51                   |
+| 4          | Send Alarm Notification            | A Seller/Server sends an Alarm to the Buyer/Client based on an event that has occurred.                                              | 48                   |
+| 4a         | Stateful TCA Alarm                 | A Stateful TCA Alarm is initiated by the Seller/Server to a subscribed Client.                                                       | 53                   |
+| 4b         | Stateless TCA Alarm                | A Stateless TCA lifecycle alarm is initiated by the Seller/Server to a subscribed Client.                                            | 54                   |
+| 5          | Usubscribe for Alarm Notifications | The Buyer/Client requests to unsubscribe to Alarm and/or Test Job Notifications.                                                     | 52                   |
 
 **Table 7. Use cases description**
 
 ## 6.1. Use Case 1: Retrieve List of Alarms
 
-The Buyer/Client can retrieve a list of `Alarm_Find` using the 
-`GET /alarm` operation with the desired filtering criteria.
+The Buyer/Client can retrieve a list of `Alarm_Find` using the `GET /alarm`
+operation with the desired filtering criteria.
 
-**[R10]** The Buyer/Client Retrieve List of Alarms request **MUST**
- contain none or more of the following   attributes as filter criteria: [MEFW133.1 R138]
+**[R10]** The Buyer/Client Retrieve List of Alarms request **MUST** contain
+none or more of the following attributes as filter criteria: [Mplify133.1 R138]
 
 - `id`
 - `alarmDetails`
@@ -669,32 +673,36 @@ The Buyer/Client can retrieve a list of `Alarm_Find` using the
 - `affectedServiceId`
 - `correlatedAlarmId`
 
-
 ```
 https://serverRoot/mefApi/legato/alarmManagement/v2/alarm?alarmChangedTime.gt="2024-08-12T23:20:50.52Z"&limit=10&offset=0
 ```
 
-The example above shows a Buyer/Client's request to get all Alarms
-objects created after `2024-08-12T23:20:50.52Z`. Additionally, the Buyer/Client asks 
-only for a first (`offset=0`) pack of 10 results (`limit=10`) to be returned. 
-The correct response (HTTP code `200`) in the response body contains a list of 
-`Alarm_Find` objects matching the criteria. To get all the details, 
-the Buyer/Client has to query a specific `Alarm` by its `id`. 
-Details related to pagination are described in [section 7.1.2](#712-response-pagination)
+The example above shows a Buyer/Client's request to get all Alarms objects
+created after `2024-08-12T23:20:50.52Z`. Additionally, the Buyer/Client asks
+only for a first (`offset=0`) pack of 10 results (`limit=10`) to be returned.
+The correct response (HTTP code `200`) in the response body contains a list of
+`Alarm_Find` objects matching the criteria. To get all the details, the
+Buyer/Client has to query a specific `Alarm` by its `id`. Details related to
+pagination are described in [section 7.1.2](#712-response-pagination)
 
-If the quantity of the records requested to be returned exceeds a Seller/Server 
+If the quantity of the records requested to be returned exceeds a Seller/Server
 policy, the Seller/Server must choose to respond with either:
+
 - An empty list and message that indicates the result set is too large or
-- A response that indicates the result is too large and includes a subset of the
-matching Alarms.
+- A response that indicates the result is too large and includes a subset of
+  the matching Alarms.
 
-**[R11]** The Seller/Server MUST support the Retrieve Alarm List Use Case. [MEFW133.1 R139]
+**[R11]** The Seller/Server MUST support the Retrieve Alarm List Use Case.
+[Mplify133.1 R139]
 
-**[R12]** The Buyer/Client MUST support the Retrieve Alarm List Use Case. [MEFW133.1 R140]
+**[R12]** The Buyer/Client MUST support the Retrieve Alarm List Use Case.
+[Mplify133.1 R140]
 
-**[R13]** The Seller/Server's response to the Buyer’s/Client’s Retrieve List of Alarms
-**MUST** include all attributes that were provided as filter criteria. In addition, the 
-following attributes **MUST** be also included in the response. [MEFW133.1 R141]
+**[R13]** The Seller/Server's response to the Buyer’s/Client’s Retrieve List of
+Alarms **MUST** include all attributes that were provided as filter criteria.
+In addition, the following attributes **MUST** be also included in the
+response. [Mplify133.1 R141]
+
 - `id`
 - `alarmDetails`
 - `alarmReportingTime`
@@ -702,13 +710,14 @@ following attributes **MUST** be also included in the response. [MEFW133.1 R141]
 - `perceivedSeverity`
 - `state`
 
-**[O1]** The Seller response MAY contain any of the remaining Alarm attributes [MEFW133.1 O25]
+**[O1]** The Seller response MAY contain any of the remaining Alarm attributes
+[Mplify133.1 O25]
 
-**[R14]** In case no items matching the criteria are found, the Seller/Server 
-**MUST** return a valid response with an empty list. 
+**[R14]** In case no items matching the criteria are found, the Seller/Server
+**MUST** return a valid response with an empty list.
 
-**[R15]** If the request is unsuccessful, the Seller/Server MUST return an error with explanation 
-to the Buyer/Client. 
+**[R15]** If the request is unsuccessful, the Seller/Server MUST return an
+error with explanation to the Buyer/Client.
 
 ![Figure 7: Use Case 1](media/useCase51Model.png)
 
@@ -716,28 +725,30 @@ to the Buyer/Client.
 
 ## 6.2. Use Case 2: Retrieve Alarm by Alarm Identifier
 
-The Buyer/Client can get detailed information about the Alarm 
-from the Seller/Server by using a `GET /Alarm/{{id}}` operation. 
-The payload returned in the response is a full representation of the Alarm. 
+The Buyer/Client can get detailed information about the Alarm from the
+Seller/Server by using a `GET /Alarm/{{id}}` operation. The payload returned in
+the response is a full representation of the Alarm.
 
-**[R16]** The Seller/Server MUST support the Retrieve Alarm by Identifier Use Case [MEFW133.1 R142]
+**[R16]** The Seller/Server MUST support the Retrieve Alarm by Identifier Use
+Case [Mplify133.1 R142]
 
-**[R17]** The Buyer/Client MUST support the Retrieve Alarm by Identifier Use Case [MEFW133.1 R143]
+**[R17]** The Buyer/Client MUST support the Retrieve Alarm by Identifier Use
+Case [Mplify133.1 R143]
 
-**[R18]** The Buyer’s Retrieve Alarm by Alarm Identifier **MUST** 
-include the Alarm Identifier. [MEFW133.1 R144]
+**[R18]** The Buyer’s Retrieve Alarm by Alarm Identifier **MUST** include the
+Alarm Identifier. [Mplify133.1 R144]
 
-**[R19]** The Buyer’s Retrieve Alarm by Alarm Identifier **MUST NOT** 
-include other attributes. [MEFW133.1 R145]
+**[R19]** The Buyer’s Retrieve Alarm by Alarm Identifier **MUST NOT** include
+other attributes. [Mplify133.1 R145]
 
-**[R20]** If the request is successful, the Seller’s response to a Retrieve Alarm
-by Alarm Identifier request MUST  include all attributes
+**[R20]** If the request is successful, the Seller’s response to a Retrieve
+Alarm by Alarm Identifier request MUST include all attributes
 
-**[R21]** If the request is unsuccessful, the Seller/Server MUST return an error with
-explanation to the Buyer/Client.
+**[R21]** If the request is unsuccessful, the Seller/Server MUST return an
+error with explanation to the Buyer/Client.
 
-**[R22]** In case `id` does not allow finding a `Alarm` in 
-Seller/Server's system, an error response `Error404` **MUST** be returned. 
+**[R22]** In case `id` does not allow finding a `Alarm` in Seller/Server's
+system, an error response `Error404` **MUST** be returned.
 
 ![Figure 8: Use Case 2](media/useCase52Model.png)
 
@@ -745,23 +756,24 @@ Seller/Server's system, an error response `Error404` **MUST** be returned.
 
 ## 6.3. Use Case 3: Subscribe to Alarms
 
-The Buyer/Client can recive Alarms by subscribing to notifications. 
-An exemplary use case for exchanging alarms is presented in Figure 9. 
+The Buyer/Client can recive Alarms by subscribing to notifications. An
+exemplary use case for exchanging alarms is presented in Figure 9.
 
 ![Figure 9: Alarm Notification Example](media/useCase53Notification.png)
 
 **Figure 9. Alarm Notification Example**
 
-The Seller/Server communicates with the Buyer/Client with Alarm Notifications provided 
-that:
+The Seller/Server communicates with the Buyer/Client with Alarm Notifications
+provided that:
 
 - Buyer/Client supports a notification mechanism
 - Buyer/Client has registered to receive Alarms from the Seller/Server
 
-To register for alarms the Buyer/Client uses the `registerListener` 
-operation from the API: `POST /hub`. The request contains only two attributes:
+To register for alarms the Buyer/Client uses the `registerListener` operation
+from the API: `POST /hub`. The request contains only two attributes:
 
-- `callback` - mandatory, to provide the callback address the alarm notifications will be sent to,
+- `callback` - mandatory, to provide the callback address the alarm
+  notifications will be sent to,
 - `query`- optional, to provide the required types of event.
 
 Figure 10 shows all entities involved in the Notification use cases.
@@ -770,13 +782,14 @@ Figure 10 shows all entities involved in the Notification use cases.
 
 **Figure 10. Threshold Crossing Alerts (Alarms) API Notification Data Model**
 
-By using a request in the following snippet, 
+By using a request in the following snippet,
 
 ```json
 {
   "callback": "https://client.mef.com/listenerEndpoint"
 }
 ```
+
 the Buyer/Client subscribes for alarms of all types of events. Those are:
 
 - `alarmAttributeValueChangeEvent`
@@ -784,16 +797,17 @@ the Buyer/Client subscribes for alarms of all types of events. Those are:
 - `alarmDeleteEvent`
 - `alarmStateChangeEvent`
 
-
 **[R23]** The Seller/Server **MUST** support subscription to Alarms Use Case.
 
-**[R24]** The Seller/Server **MUST** support unsubscribing from Alarms Use Case.
+**[R24]** The Seller/Server **MUST** support unsubscribing from Alarms Use
+Case.
 
-**[R25]** The Buyer/Client’s Subscribe to Alarms request 
-**MUST** include: [MEFW133.1 R146]
+**[R25]** The Buyer/Client’s Subscribe to Alarms request **MUST** include:
+[Mplify133.1 R146]
+
 - Callback address
 
-If the Buyer/Client wishes to receive only notifications of a certain type, a 
+If the Buyer/Client wishes to receive only notifications of a certain type, a
 `query` parameter must be added to the request:
 
 ```json
@@ -802,8 +816,9 @@ If the Buyer/Client wishes to receive only notifications of a certain type, a
   "query": "alarmCreateEvent"
 }
 ```
-The Seller/Server responds to the subscription request by adding the `id` of the
-subscription to the message that must be further used for unsubscribing.
+
+The Seller/Server responds to the subscription request by adding the `id` of
+the subscription to the message that must be further used for unsubscribing.
 
 ```json
 {
@@ -817,114 +832,122 @@ Example of a final address that the Notifications will be sent to:
 
 - `https://client.mef.com/listenerEndpoint/mefApi/legato/alarmNotification/v2/listener/alarmCreateEvent`
 
-**[R26]** If successful, the Seller/Server response **MUST** indicate success and include the 
-Register Notification Identifier and echo back all Buyer/Client provided attributes.
+**[R26]** If successful, the Seller/Server response **MUST** indicate success
+and include the Register Notification Identifier and echo back all Buyer/Client
+provided attributes.
 
-**[R27]** If successful, the Seller/Server **MUST** begin sending the alarms to the Buyer/Client.
+**[R27]** If successful, the Seller/Server **MUST** begin sending the alarms to
+the Buyer/Client.
 
-**[R28]** The Seller/Server **MUST NOT** send alarms if the Buyer/Client has not registered for them.
+**[R28]** The Seller/Server **MUST NOT** send alarms if the Buyer/Client has
+not registered for them.
 
-**[R29]** If unsuccessful, the Seller/Server **MUST NOT** return a Register Notification Identifier.
+**[R29]** If unsuccessful, the Seller/Server **MUST NOT** return a Register
+Notification Identifier.
 
-**[R30]**	If the Seller/Server experiences any errors, they **MUST** return an error indication to the Buyer/Client.
+**[R30]** If the Seller/Server experiences any errors, they **MUST** return an
+error indication to the Buyer/Client.
 
-If the Buyer/Client wishes to subscribe to more than one different types of events, there are two possible
-syntax variants [TMF630]:
+If the Buyer/Client wishes to subscribe to more than one different types of
+events, there are two possible syntax variants [TMF630]:
 
 ```json
 eventType=alarmCreateEvent,alarmStateChangeEvent
 ```
+
 or
+
 ```json
 eventType=alarmCreateEvent&eventType=alarmStateChangeEvent
 ```
 
-
 ## 6.4. Use Case 4: Send Alarm Notification
 
-Alarms are used to asynchronously inform the Buyer/Client about detected faults or 
-abnormal conditions. The Seller/Server can send the following types of alarm notifications to 
-the Buyer/Client:
+Alarms are used to asynchronously inform the Buyer/Client about detected faults
+or abnormal conditions. The Seller/Server can send the following types of alarm
+notifications to the Buyer/Client:
 
 - `alarmAttributeValueChangeEvent`
 - `alarmCreateEvent`
 - `alarmDeleteEvent`
 - `alarmStateChangeEvent`
 
-The Figure below shows all entities involved in the Send Alarm Notification use cases.
+The Figure below shows all entities involved in the Send Alarm Notification use
+cases.
 
 ![Figure 11: Use Case 4](media/useCase52Model.png)
 
 **Figure 11. Use Case 4: Alarm - Model**
 
-The following snippets present an example of an `Alarm` object sent from the Seller/Server to
-Buyer/Client that has subscribed for Alarms.
+The following snippets present an example of an `Alarm` object sent from the
+Seller/Server to Buyer/Client that has subscribed for Alarms.
 
 ```json
 {
-    "id": "alarm-20250601-001",
-    "href": "https://serverRoot/mefApi/legato/alarmManagement/v2/alarm/alarm-20250601-001",
-    "affectedService": [
-      {
-        "href": "https://serverRoot/mefApi/legato/service/service-123",
-        "id": "service-123"
-      }
-    ],
-    "alarmChangedTime": "2025-06-01T14:52:57.382Z",
-    "alarmClearedTime": "2025-06-01T14:52:57.382Z",
-    "alarmDetails": "TCA clear: Latency has dropped below the defined threshold",
-    "alarmedObjectType": "ServiceEndpoint",
-    "alarmRaisedTime": "2025-06-01T14:50:00.000Z",
-    "alarmReportingTime": "2025-06-01T14:52:57.382Z",
-    "correlatedAlarm": [
-      {
-        "id": "alarm-20250601-000",
-        "href": "https://serverRoot/mefApi/legato/alarmManagement/v2/alarm/alarm-20250601-000"
-      }
-    ],
-    "alarmType": "qualityOfServiceAlarm",
-    "perceivedSeverity": "cleared",
-    "plannedOutageIndicator": "inPlannedMaintenance",
-    "reportingSystemId": "monitoring-system-01",
-    "serviceAffecting": false,
-    "state": "acknowledged",
-    "alarmedObject": [
-      {
-        "id": "endpoint-456",
-        "href": "https://serverRoot/objects/endpoint-456",
-        "@referredType": "ServiceEndpoint"
-      }
-    ],
-    "comment": [
-      {
-        "description": "Cleared automatically by system upon recovery",
-        "systemIdentifier": "auto-clear-daemon",
-        "time": "2025-06-01T14:53:00.000Z",
-        "userIdentifier": "system"
-      }
-    ],
-    "externalAlarmId": "ext-789-clear",
-    "isRootCause": true,
-    "parentAlarm": {
+  "id": "alarm-20250601-001",
+  "href": "https://serverRoot/mefApi/legato/alarmManagement/v2/alarm/alarm-20250601-001",
+  "affectedService": [
+    {
+      "href": "https://serverRoot/mefApi/legato/service/service-123",
+      "id": "service-123"
+    }
+  ],
+  "alarmChangedTime": "2025-06-01T14:52:57.382Z",
+  "alarmClearedTime": "2025-06-01T14:52:57.382Z",
+  "alarmDetails": "TCA clear: Latency has dropped below the defined threshold",
+  "alarmedObjectType": "ServiceEndpoint",
+  "alarmRaisedTime": "2025-06-01T14:50:00.000Z",
+  "alarmReportingTime": "2025-06-01T14:52:57.382Z",
+  "correlatedAlarm": [
+    {
       "id": "alarm-20250601-000",
       "href": "https://serverRoot/mefApi/legato/alarmManagement/v2/alarm/alarm-20250601-000"
-    },
-    "probableCause": "adapterError",
-    "alarmSpecificAttributes": {
-      "@type": "urn:mef:lso:spec:service:tca-stateful-clear-alarm:v0.0.1:all",
-      "performanceMetricName": "oneWayFrameDelay",
-      "performanceMetricValue": 7.2,
-      "tcaPerformanceThresholdValue": 10.0,
-      "tcaWindowThresholdValue": 9.0,
-      "tcaWindowSize": 5
-    },
-    "sourceSystemId": "probe-east-01",
-    "specificProblem": "Latency spike resolved below threshold"
-  }
-  
+    }
+  ],
+  "alarmType": "qualityOfServiceAlarm",
+  "perceivedSeverity": "cleared",
+  "plannedOutageIndicator": "inPlannedMaintenance",
+  "reportingSystemId": "monitoring-system-01",
+  "serviceAffecting": false,
+  "state": "acknowledged",
+  "alarmedObject": [
+    {
+      "id": "endpoint-456",
+      "href": "https://serverRoot/objects/endpoint-456",
+      "@referredType": "ServiceEndpoint"
+    }
+  ],
+  "comment": [
+    {
+      "description": "Cleared automatically by system upon recovery",
+      "systemIdentifier": "auto-clear-daemon",
+      "time": "2025-06-01T14:53:00.000Z",
+      "userIdentifier": "system"
+    }
+  ],
+  "externalAlarmId": "ext-789-clear",
+  "isRootCause": true,
+  "parentAlarm": {
+    "id": "alarm-20250601-000",
+    "href": "https://serverRoot/mefApi/legato/alarmManagement/v2/alarm/alarm-20250601-000"
+  },
+  "probableCause": "adapterError",
+  "alarmSpecificAttributes": {
+    "@type": "urn:mef:lso:spec:service:tca-stateful-clear-alarm:v0.0.1:all",
+    "performanceMetricName": "oneWayFrameDelay",
+    "performanceMetricValue": 7.2,
+    "tcaPerformanceThresholdValue": 10.0,
+    "tcaWindowThresholdValue": 9.0,
+    "tcaWindowSize": 5
+  },
+  "sourceSystemId": "probe-east-01",
+  "specificProblem": "Latency spike resolved below threshold"
+}
 ```
 
-**[R31]** The Seller/Server **MUST** include the following Alarm attributes: [MEFW133.1 R137]
+**[R31]** The Seller/Server **MUST** include the following Alarm attributes:
+[Mplify133.1 R137]
+
 - `id`
 - `alarmDetails`
 - `alarmedObject`
@@ -936,12 +959,11 @@ Buyer/Client that has subscribed for Alarms.
 - `state`
 - `ìsRootCause`
 
+**[R32]** The Seller/Server **MUST** send Alarms to the Buyer/Client that has
+registered for them.
 
-**[R32]** The Seller/Server **MUST** send Alarms to the Buyer/Client that 
-has registered for them.
-
-**[R33]** The Seller/Server **MUST NOT** send Alarms to Buyer/Client 
-that has not registered for them.
+**[R33]** The Seller/Server **MUST NOT** send Alarms to Buyer/Client that has
+not registered for them.
 
 ### 6.4.1 Use Case 4a: Stateful TCA Alarm
 
@@ -949,9 +971,11 @@ The Figure 12 shows all entities involved in Stateful TCA Alarm use case
 
 ![Figure 12: Use Case 4a](media/statefullTCAAlarmModel.png)
 
-*Figure 12. Use Case 4a: Stateful TCA Alarm - Model**
+\*Figure 12. Use Case 4a: Stateful TCA Alarm - Model\*\*
 
-**[R34]** When sending an alarm for a TCA Reporting Type of Stateful, the Seller/Server **MUST** include `alarmType=qualityOfServiceAlarm` and the following mandatory attributes: [MEFW133.1 R147]
+**[R34]** When sending an alarm for a TCA Reporting Type of Stateful, the
+Seller/Server **MUST** include `alarmType=qualityOfServiceAlarm` and the
+following mandatory attributes: [Mplify133.1 R147]
 
 - `performanceMetricName`
 - `performanceMetricValue`
@@ -960,21 +984,24 @@ The Figure 12 shows all entities involved in Stateful TCA Alarm use case
 - `tcaWindowSize`
 
 ### 6.4.2 Use Case 4b: Stateless TCA Alarm
+
 The Figure 13 shows all entities involved in Stateless TCA Alarm use case
 
 ![Figure 13: Use Case 4b](media/statelessTCAAlarmModel.png)
 
-*Figure 13. Use Case 4b: Stateless TCA Alarm - Model**
+\*Figure 13. Use Case 4b: Stateless TCA Alarm - Model\*\*
 
-**[R35]** When sending an alarm for a TCA Reporting Type of Stateless, the Seller/Server **MUST** include `alarmType=qualityOfServiceAlarm` and the following mandatory attributes: [MEFW133.1 R150]
+**[R35]** When sending an alarm for a TCA Reporting Type of Stateless, the
+Seller/Server **MUST** include `alarmType=qualityOfServiceAlarm` and the
+following mandatory attributes: [Mplify133.1 R150]
 
 - `performanceMetricName`
 - `performanceMetricValue`
 - `tcaPerformanceThresholdValue`
 - `numberOfPmMetricCalculationIntervals`
 
-**[R36]** If the Damping Factor is included in the TCA Profile, the TCA Alarm MUST include the `dampingFactor` attribute. [MEFW133.1 R151]
-
+**[R36]** If the Damping Factor is included in the TCA Profile, the TCA Alarm
+MUST include the `dampingFactor` attribute. [Mplify133.1 R151]
 
 ## 6.5. Use Case 5: Unregister for Alarm Notifications
 
@@ -984,14 +1011,14 @@ received from the Seller/Server during the listener registration.
 
 **[R37]** If successful, the Seller/Server response **MUST** indicate success
 
-**[R38]** If successful, the Seller/Server **MUST** stop sending the appropriate alarms 
-to the Buyer/Client.
+**[R38]** If successful, the Seller/Server **MUST** stop sending the
+appropriate alarms to the Buyer/Client.
 
-**[R39]**	If unsuccessful, the Seller/Server **MUST NOT** stop sending the appropriate
-alarms to the Buyer/Client.
+**[R39]** If unsuccessful, the Seller/Server **MUST NOT** stop sending the
+appropriate alarms to the Buyer/Client.
 
-**[R40]**	If the Seller/Server experiences any errors, they **MUST** return an error indication
-to the Buyer/Client.
+**[R40]** If the Seller/Server experiences any errors, they **MUST** return an
+error indication to the Buyer/Client.
 
 <div class="page"/>
 
@@ -1016,7 +1043,9 @@ case the error message body structure might be aligned with the `Error`.
 
 #### 7.1.1.1. Type Error
 
-**Description:** Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+**Description:** Standard Class used to describe API response error Not
+intended to be used directly. The `code` in the HTTP header is used as a
+discriminator for the type of error returned in runtime.
 
 <table id="T_Error">
     <thead style="font-weight:bold;">
@@ -1045,9 +1074,11 @@ case the error message body structure might be aligned with the `Error`.
 
 #### 7.1.1.2. Type Error400
 
-**Description:** Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+**Description:** Bad Request.
+(https://tools.ietf.org/html/rfc7231#section-6.5.1)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error400">
@@ -1077,20 +1108,17 @@ parameter value
 #### 7.1.1.3. `enum` Error400Code
 
 **Description:** One of the following error codes:
-- missingQueryParameter: The URI is missing a required query-string
-parameter
-- missingQueryValue: The URI is missing a required query-string
-parameter value
+
+- missingQueryParameter: The URI is missing a required query-string parameter
+- missingQueryValue: The URI is missing a required query-string parameter value
 - invalidQuery: The query section of the URI is invalid.
 - invalidBody: The request has an invalid body
-
-
 
 <table id="T_Error400Code">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1112,9 +1140,11 @@ parameter value
 
 #### 7.1.1.4. Type Error401
 
-**Description:** Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+**Description:** Unauthorized.
+(https://tools.ietf.org/html/rfc7235#section-3.1)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error401">
@@ -1141,16 +1171,15 @@ expired
 #### 7.1.1.5. `enum` Error401Code
 
 **Description:** One of the following error codes:
+
 - missingCredentials: No credentials provided.
 - invalidCredentials: Provided credentials are invalid or expired
-
-
 
 <table id="T_Error401Code">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1166,9 +1195,12 @@ expired
 
 #### 7.1.1.6. Type Error403
 
-**Description:** Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+**Description:** Forbidden. This code indicates that the server understood the
+request but refuses to authorize it.
+(https://tools.ietf.org/html/rfc7231#section-6.5.3)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error403">
@@ -1195,19 +1227,18 @@ of one of the following error codes:
 
 #### 7.1.1.7. `enum` Error403Code
 
-**Description:** This code indicates that the server understood
-the request but refuses to authorize it because
-of one of the following error codes:
+**Description:** This code indicates that the server understood the request but
+refuses to authorize it because of one of the following error codes:
+
 - accessDenied: Access denied
 - forbiddenRequester: Forbidden requester
 - tooManyUsers: Too many users
-
 
 <table id="T_Error403Code">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1226,9 +1257,11 @@ of one of the following error codes:
 
 #### 7.1.1.8. Type Error404
 
-**Description:** Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+**Description:** Resource for the requested path not found.
+(https://tools.ietf.org/html/rfc7231#section-6.5.4)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error404">
@@ -1253,9 +1286,11 @@ not found
 
 #### 7.1.1.9. Type Error409
 
-**Description:** Conflict (https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8)
+**Description:** Conflict
+(https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error409">
@@ -1287,9 +1322,11 @@ erroneous property of the request, so that the Buyer may fix it easier. It is
 highly recommended that this property should be used, yet remains optional
 because it might be hard to implement.
 
-**Description:** Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+**Description:** Unprocessable entity due to a business validation problem.
+(https://tools.ietf.org/html/rfc4918#section-11.2)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error422">
@@ -1326,21 +1363,26 @@ Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/
 #### 7.1.1.11. `enum` Error422Code
 
 **Description:** One of the following error codes:
-  - missingProperty: The property the Seller has expected is not present in the payload
-  - invalidValue: The property has an incorrect value
-  - invalidFormat: The property value does not comply with the expected value format
-  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system
-  - unexpectedProperty: Additional property, not expected by the Seller has been provided
-  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.
-  - otherIssue: Other problem was identified (detailed information provided in a reason)
 
-
+- missingProperty: The property the Seller has expected is not present in the
+  payload
+- invalidValue: The property has an incorrect value
+- invalidFormat: The property value does not comply with the expected value
+  format
+- referenceNotFound: The object referenced by the property cannot be identified
+  in the Seller system
+- unexpectedProperty: Additional property, not expected by the Seller has been
+  provided
+- tooManyRecords: the number of records to be provided in the response exceeds
+  the Seller's threshold.
+- otherIssue: Other problem was identified (detailed information provided in a
+  reason)
 
 <table id="T_Error422Code">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1371,9 +1413,11 @@ Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/
 
 #### 7.1.1.12. Type Error500
 
-**Description:** Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+**Description:** Internal Server Error.
+(https://tools.ietf.org/html/rfc7231#section-6.6.1)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error500">
@@ -1399,9 +1443,11 @@ request.
 
 #### 7.1.1.13. Type Error501
 
-**Description:** Not Implemented. Used in case Seller is not supporting an optional operation (https://tools.ietf.org/html/rfc7231#section-6.6.2)
+**Description:** Not Implemented. Used in case Seller is not supporting an
+optional operation (https://tools.ietf.org/html/rfc7231#section-6.6.2)
 
 Inherits from:
+
 - <a href="#T_Error">Error</a>
 
 <table id="T_Error501">
@@ -1424,13 +1470,13 @@ Inherits from:
 
 ## 7.2. API Data model
 
-Figure 52 presents the whole Alarm data model. The data types, requirements related 
-to them, and mapping to MEF W133.1 specification are discussed later in this section.
+Figure 52 presents the whole Alarm data model. The data types, requirements
+related to them, and mapping to Mplify 133.1 specification are discussed later in
+this section.
 
 ![Figure 52: Alarm Data Model](media/alarmDataModel.png)
 
 **Figure 52. Alarm Data Model**
-
 
 ### 7.2.1 Alarm
 
@@ -1439,8 +1485,8 @@ to them, and mapping to MEF W133.1 specification are discussed later in this sec
 **Description:** A definition of an Alarm.
 
 Inherits from:
-- <a href="#T_Alarm_Common">Alarm_Common</a>
 
+- <a href="#T_Alarm_Common">Alarm_Common</a>
 
 <table id="T_Alarm" style="width:100%">
     <thead style="font-weight:bold">
@@ -1449,7 +1495,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1513,7 +1559,7 @@ Inherits from:
 
 #### 7.2.1.2 Type AlarmedObjectRef
 
-**Description:** 
+**Description:**
 
 <table id="T_AlarmedObjectRef" style="width:100%">
     <thead style="font-weight:bold">
@@ -1522,7 +1568,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1550,7 +1596,7 @@ Inherits from:
 
 #### 7.2.1.3 Type AlarmRef
 
-**Description:** 
+**Description:**
 
 <table id="T_AlarmRef" style="width:100%">
     <thead style="font-weight:bold">
@@ -1559,7 +1605,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1581,7 +1627,8 @@ Inherits from:
 
 #### 7.2.1.4 Type AlarmSpecificAttributes
 
-**Description:** AlarmSpecificAttributes is used as an extension for Alarm specific payload.  The @type attribute is used as a discriminator.
+**Description:** AlarmSpecificAttributes is used as an extension for Alarm
+specific payload. The @type attribute is used as a discriminator.
 
 <table id="T_AlarmSpecificAttributes" style="width:100%">
     <thead style="font-weight:bold">
@@ -1590,7 +1637,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1608,12 +1655,11 @@ Inherits from:
 
 **Description:** Defines the alarm state during its life cycle.
 
-
 <table id="T_AlarmState">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1632,33 +1678,33 @@ Inherits from:
 
 #### 7.2.1.6 `enum` AlarmType
 
-**Description:** Categorize the alarm. Values as defined in X.733 8.1.1 or 3GPP TS 32.111.
+**Description:** Categorize the alarm. Values as defined in X.733 8.1.1 or 3GPP
+TS 32.111.
 
-| state                            | MEF 133 name             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| -------------------------------- | -------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `communicationsAlarm`            | Communications Alarm     |  An alarm of this type is principally associated with the procedures and/or processes required to convey information from one point to another. |
-| `processingErrorAlarm`           | Processing Error Alarm   |  An alarm of this type is principally associated with a software or processing fault. |
-| `environmentalAlarm`             | Environmental Alarm      |  An alarm of this type is principally associated with a condition relating to an enclosure in which the equipment resides.|
-| `qualityOfServiceAlarm`          | Quality of Service Alarm |  An alarm of this type is principally associated with a degradation in the quality of a service. |
-| `equipmentAlarm`                 | Equipment Alarm          |  An alarm of this type is principally associated with an equipment fault. |
-| `communicationsAlarm`            | Communications Alarm     |  An alarm of this type is principally associated with the procedures and/or processes required to convey information from one point to another. |
-| `processingErrorAlarm`           | Processing Error Alarm   |  An alarm of this type is principally associated with a software or processing fault. |
-| `environmentalAlarm`             | Environmental Alarm      |  An alarm of this type is principally associated with a condition relating to an enclosure in which the equipment resides.|
-| `qualityOfServiceAlarm`          | Quality of Service Alarm |  An alarm of this type is principally associated with a degradation in the quality of a service. |
-| `equipmentAlarm`                 | Equipment Alarm          |  An alarm of this type is principally associated with an equipment fault. |
-| `integrityViolation`             | Integrity Violation      |  Information may have been illegally modified, inserted or deleted|
-| `operationalViolation`           | Operational Violation    |  The unavailability, malfunction or incorrect invocation of a service.|
-| `physicalViolation`              | Physical Violation       |  A physical resource has been violated in a way that suggests a security attack.|
-| `securityService`                | Security Service         |  A security attack has been detected by a security service. |
-| `mechanismViolation`             | Mechanism Violation      |  A security attack has been detected by a security mechanism.|
-| `timeDomainViolation`            | Time Domain Violation    |  An event has occurred at an unexpected or prohibited time.|       
-
+| state                   | Mplify 133 name             | Description                                                                                                                                    |
+| ----------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `communicationsAlarm`   | Communications Alarm     | An alarm of this type is principally associated with the procedures and/or processes required to convey information from one point to another. |
+| `processingErrorAlarm`  | Processing Error Alarm   | An alarm of this type is principally associated with a software or processing fault.                                                           |
+| `environmentalAlarm`    | Environmental Alarm      | An alarm of this type is principally associated with a condition relating to an enclosure in which the equipment resides.                      |
+| `qualityOfServiceAlarm` | Quality of Service Alarm | An alarm of this type is principally associated with a degradation in the quality of a service.                                                |
+| `equipmentAlarm`        | Equipment Alarm          | An alarm of this type is principally associated with an equipment fault.                                                                       |
+| `communicationsAlarm`   | Communications Alarm     | An alarm of this type is principally associated with the procedures and/or processes required to convey information from one point to another. |
+| `processingErrorAlarm`  | Processing Error Alarm   | An alarm of this type is principally associated with a software or processing fault.                                                           |
+| `environmentalAlarm`    | Environmental Alarm      | An alarm of this type is principally associated with a condition relating to an enclosure in which the equipment resides.                      |
+| `qualityOfServiceAlarm` | Quality of Service Alarm | An alarm of this type is principally associated with a degradation in the quality of a service.                                                |
+| `equipmentAlarm`        | Equipment Alarm          | An alarm of this type is principally associated with an equipment fault.                                                                       |
+| `integrityViolation`    | Integrity Violation      | Information may have been illegally modified, inserted or deleted                                                                              |
+| `operationalViolation`  | Operational Violation    | The unavailability, malfunction or incorrect invocation of a service.                                                                          |
+| `physicalViolation`     | Physical Violation       | A physical resource has been violated in a way that suggests a security attack.                                                                |
+| `securityService`       | Security Service         | A security attack has been detected by a security service.                                                                                     |
+| `mechanismViolation`    | Mechanism Violation      | A security attack has been detected by a security mechanism.                                                                                   |
+| `timeDomainViolation`   | Time Domain Violation    | An event has occurred at an unexpected or prohibited time.                                                                                     |
 
 <table id="T_AlarmType">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1710,7 +1756,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1825,7 +1871,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1859,27 +1905,25 @@ Inherits from:
 
 #### 7.2.1.9 `enum` PerceivedSeverity
 
-**Description:** List of possible severities that can be allocated to an Alarm. 
-The values are consistent with ITU - T Recommendation X.733. 
-Once an alarm has been cleared, its perceived severity is set to 
-'cleared' and can no longer be set
+**Description:** List of possible severities that can be allocated to an Alarm.
+The values are consistent with ITU - T Recommendation X.733. Once an alarm has
+been cleared, its perceived severity is set to 'cleared' and can no longer be
+set
 
-
-| state           | MEF 133 name    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| --------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cleared`       | Cleared         |  The Cleared severity level indicates the clearing of one or more previously reported alarms. |
-| `critical`      | Critical        |  The Critical severity level indicates that a service affecting condition has occurred and an immediate corrective action is required|
-| `indeterminate` | Indeterminate   |  The Indeterminate severity level indicates that the severity level cannot be determined. |
-| `major`         | Major           |  The Major severity level indicates that a service affecting condition has developed and an urgent corrective action is required|
-| `minor`         | Minor           |  The Minor severity level indicates the existence of a non-service affecting fault condition and that corrective action should be taken in order to prevent a more serious (for example, service affecting) fault|
-| `warning`       | Warning         |  The Warning severity level indicates the detection of a potential or impending service affecting fault, before any significant effects have been felt|
-
+| state           | Mplify 133 name  | Description                                                                                                                                                                                                      |
+| --------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cleared`       | Cleared       | The Cleared severity level indicates the clearing of one or more previously reported alarms.                                                                                                                     |
+| `critical`      | Critical      | The Critical severity level indicates that a service affecting condition has occurred and an immediate corrective action is required                                                                             |
+| `indeterminate` | Indeterminate | The Indeterminate severity level indicates that the severity level cannot be determined.                                                                                                                         |
+| `major`         | Major         | The Major severity level indicates that a service affecting condition has developed and an urgent corrective action is required                                                                                  |
+| `minor`         | Minor         | The Minor severity level indicates the existence of a non-service affecting fault condition and that corrective action should be taken in order to prevent a more serious (for example, service affecting) fault |
+| `warning`       | Warning       | The Warning severity level indicates the detection of a potential or impending service affecting fault, before any significant effects have been felt                                                            |
 
 <table id="T_PerceivedSeverity">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1907,14 +1951,14 @@ Once an alarm has been cleared, its perceived severity is set to
 
 #### 7.2.1.10 `enum` PlannedOutageIndicator
 
-**Description:** Indicates that the Managed Object (related to this alarm) is in in planned maintenance, or out of service.
-
+**Description:** Indicates that the Managed Object (related to this alarm) is
+in in planned maintenance, or out of service.
 
 <table id="T_PlannedOutageIndicator">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -1930,14 +1974,14 @@ Once an alarm has been cleared, its perceived severity is set to
 
 #### 7.2.1.11 `enum` ProbableCause
 
-**Description:** list of alarm probable cause as defined in ITU - T Recommendation X.733 or 3GPP TS 32.111 - 2 Annex B.
-
+**Description:** list of alarm probable cause as defined in ITU - T
+Recommendation X.733 or 3GPP TS 32.111 - 2 Annex B.
 
 <table id="T_ProbableCause">
     <thead style="font-weight:bold;">
         <tr>
             <td>Value</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2127,7 +2171,7 @@ Once an alarm has been cleared, its perceived severity is set to
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2154,8 +2198,8 @@ Once an alarm has been cleared, its perceived severity is set to
 **Description:** Threshold Crossing Alert Alarm Schema.
 
 Inherits from:
-- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
+- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
 <table id="T_TcaStatefulClearAlarm" style="width:100%">
     <thead style="font-weight:bold">
@@ -2164,7 +2208,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2207,8 +2251,8 @@ Inherits from:
 **Description:** Threshold Crossing Alert Alarm Schema.
 
 Inherits from:
-- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
+- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
 <table id="T_TcaStatefulSetAlarm" style="width:100%">
     <thead style="font-weight:bold">
@@ -2217,7 +2261,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2260,8 +2304,8 @@ Inherits from:
 **Description:** Threshold Crossing Alert Alarm Schema.
 
 Inherits from:
-- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
+- <a href="#T_AlarmSpecificAttributes">AlarmSpecificAttributes</a>
 
 <table id="T_TcaStatelessAlarm" style="width:100%">
     <thead style="font-weight:bold">
@@ -2270,7 +2314,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2308,7 +2352,6 @@ Inherits from:
     </tbody>
 </table>
 
-
 ### 7.2.3. Notification registration
 
 Notification registration and management are done through `/hub` API endpoint.
@@ -2316,11 +2359,12 @@ The below sections describe data models related to this endpoint.
 
 #### 7.2.3.2. Type EventSubscription
 
-**Description:** This resource is used to respond to notification subscriptions.
+**Description:** This resource is used to respond to notification
+subscriptions.
 
 Inherits from:
-- <a href="#T_EventSubscriptionInput">EventSubscriptionInput</a>
 
+- <a href="#T_EventSubscriptionInput">EventSubscriptionInput</a>
 
 <table id="T_EventSubscription" style="width:100%">
     <thead style="font-weight:bold">
@@ -2329,7 +2373,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2354,7 +2398,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2374,7 +2418,6 @@ Inherits from:
     </tbody>
 </table>
 
-
 ## 7.3. Notification API Data model
 
 Figure 53 presents the Alarm Notification data model.
@@ -2384,11 +2427,13 @@ Figure 53 presents the Alarm Notification data model.
 **Figure 53. Alarm Notification Data Model**
 
 This data model is used to construct requests and responses of the API
-endpoints described in [5.2.2. Buyer/Client side API Endpoints](#522-buyerclient-side-api-endpoints).
+endpoints described in
+[5.2.2. Buyer/Client side API Endpoints](#522-buyerclient-side-api-endpoints).
 
 ### 7.3.1. Type Event
 
-**Description:** Event class is used to describe information structure used for notification.
+**Description:** Event class is used to describe information structure used for
+notification.
 
 <table id="T_Event" style="width:100%">
     <thead style="font-weight:bold">
@@ -2397,7 +2442,7 @@ endpoints described in [5.2.2. Buyer/Client side API Endpoints](#522-buyerclient
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2431,11 +2476,11 @@ endpoints described in [5.2.2. Buyer/Client side API Endpoints](#522-buyerclient
 
 ### 7.3.2. Type AlarmAttributeValueChangeEvent
 
-**Description:** 
+**Description:**
 
 Inherits from:
-- <a href="#T_Event">Event</a>
 
+- <a href="#T_Event">Event</a>
 
 <table id="T_AlarmAttributeValueChangeEvent" style="width:100%">
     <thead style="font-weight:bold">
@@ -2444,7 +2489,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2468,11 +2513,11 @@ Inherits from:
 
 ### 7.3.3. Type AlarmCreateEvent
 
-**Description:** 
+**Description:**
 
 Inherits from:
-- <a href="#T_Event">Event</a>
 
+- <a href="#T_Event">Event</a>
 
 <table id="T_AlarmCreateEvent" style="width:100%">
     <thead style="font-weight:bold">
@@ -2481,7 +2526,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2505,11 +2550,11 @@ Inherits from:
 
 ### 7.3.4. Type AlarmDeleteEvent
 
-**Description:** 
+**Description:**
 
 Inherits from:
-- <a href="#T_Event">Event</a>
 
+- <a href="#T_Event">Event</a>
 
 <table id="T_AlarmDeleteEvent" style="width:100%">
     <thead style="font-weight:bold">
@@ -2518,7 +2563,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2542,11 +2587,11 @@ Inherits from:
 
 ### 7.3.5. Type AlarmEvent
 
-**Description:** 
+**Description:**
 
 Inherits from:
-- <a href="#T_Event">Event</a>
 
+- <a href="#T_Event">Event</a>
 
 <table id="T_AlarmEvent" style="width:100%">
     <thead style="font-weight:bold">
@@ -2555,7 +2600,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2588,7 +2633,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2604,11 +2649,11 @@ Inherits from:
 
 ### 7.3.7. Type AlarmStateChangeEvent
 
-**Description:** 
+**Description:**
 
 Inherits from:
-- <a href="#T_Event">Event</a>
 
+- <a href="#T_Event">Event</a>
 
 <table id="T_AlarmStateChangeEvent" style="width:100%">
     <thead style="font-weight:bold">
@@ -2617,7 +2662,7 @@ Inherits from:
             <td style="width:15%">Type</td>
             <td>M/O</td>
             <td>Description</td>
-            <td>MEF 133.1</td>
+            <td>Mplify 133.1</td>
         </tr>
     </thead>
     <tbody>
@@ -2638,36 +2683,36 @@ Inherits from:
         </tr>
     </tbody>
 </table>
+
+
 <div class="page"/>
 
 # 8. References
+
 - [JSON Schema draft 7](https://json-schema.org/specification-links.html#draft-7),
   JSON Schema: A Media Type for Describing JSON Documents and associated
   documents, by Austin Wright and Henry Andrews, March 2018. Copyright © 2018
   IETF Trust and the persons identified as the document authors. All rights
   reserved.
-- [MEF128.1] [MEF 128.1](https://www.mef.net/wp-content/uploads/MEF-128.1.pdf), LSO
-  API Security Profile, April 2024
-- [MEFW133.1](https://www.mef.net/wp-content/uploads/MEF-133.1.pdf)
-  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, January 2025
-- [OAS-v3] [Open API 3.0](http://spec.openapis.org/oas/v3.0.3.html), February
-  2020
+- [MEF 128.1](https://www.mef.net/wp-content/uploads/MEF-128.1.pdf), LSO API
+  Security Profile, April 2024
+- [Mplify133.1](https://www.mplify.net/wp-content/uploads/Mplify-133.1-Draft-R2.pdf)
+  Allegro, Interlude and Legato Fault Management and Alarm API BR&UC, July
+  2025, Draft Release 2
+- [OAS-v3](http://spec.openapis.org/oas/v3.0.3.html), February 2020
 - [REST]
   [Chapter 5: Representational State Transfer (REST)](http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
   Fielding, Roy Thomas, Architectural Styles and the Design of Network-based
   Software Architectures (Ph.D.).
-- [RFC2119] [RFC 2119](https://tools.ietf.org/html/rfc2119), Key words for use
-  in RFCs to Indicate Requirement Levels, by S. Bradner, March 1997
-- [RFC3986] [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) Uniform
-  Resource Identifier (URI): Generic Syntax, January 2005
-- [RFC8174] [RFC 8174](https://tools.ietf.org/html/rfc8174), Ambiguity of
-  Uppercase vs Lowercase in RFC 2119 Key Words, by B. Leiba, May 2017,
-  Copyright © 2017 IETF Trust and the persons identified as the document
-  authors. All rights reserved.
-- [TMF630]
-  [TMF 630](https://www.tmforum.org/resources/specification/tmf630-rest-api-design-guidelines-4-2-0/)
+- [RFC 2119](https://tools.ietf.org/html/rfc2119), Key words for use in RFCs to
+  Indicate Requirement Levels, by S. Bradner, March 1997
+- [RFC 3986](https://tools.ietf.org/html/rfc3986#section-3) Uniform Resource
+  Identifier (URI): Generic Syntax, January 2005
+- [RFC 8174](https://tools.ietf.org/html/rfc8174), Ambiguity of Uppercase vs
+  Lowercase in RFC 2119 Key Words, by B. Leiba, May 2017, Copyright © 2017 IETF
+  Trust and the persons identified as the document authors. All rights
+  reserved.
+- [TMF 630](https://www.tmforum.org/resources/specification/tmf630-rest-api-design-guidelines-4-2-0/)
   TMF630 REST API Design Guidelines 4.2.0
-- [TMF642]
-  [TMF 642](https://www.tmforum.org/oda/open-apis/directory/alarm-management-api-TMF642/v5.0),
- TMF642 Alarm User Guide v5.0.0, September 2023
-
+- [TMF 642](https://www.tmforum.org/oda/open-apis/directory/alarm-management-api-TMF642/v5.0),
+  TMF642 Alarm User Guide v5.0.0, September 2023
