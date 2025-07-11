@@ -152,7 +152,7 @@ This SDK contains the following items:
 Issues should be reported with the use of GitHub issues. Questions and feedback
 should be asked either at
 [Allegro SDK Discussions](https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/discussions)
-or directly to community_manager@mef.net.
+or directly to community_manager@mplify.net.
 
 ## Reference Implementations
 
