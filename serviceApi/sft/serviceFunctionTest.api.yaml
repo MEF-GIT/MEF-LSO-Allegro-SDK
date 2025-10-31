@@ -57,7 +57,7 @@ info:
     modified by the Mplify Alliance and its contributors.
   version: 3.0.0
 servers:
-  - url: 'https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/'
+  - url: 'https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/'
     variables:
       serverBase:
         description: The base of SOF's URL.
@@ -2309,7 +2309,7 @@ components:
             notification is sent. E.g. for 'callback':
             "https://buyer.mplify.com/listenerEndpoint", the SFT event
             notification will be sent to:
-            `https://buyer.mplify.com/listenerEndpoint/mefApi/legato/serviceFunctionTestingNotification/v3/`
+            `https://buyer.mplify.com/listenerEndpoint/mefApi/allegro/serviceFunctionTestingNotification/v3/`
           type: string
         query:
           description: >-

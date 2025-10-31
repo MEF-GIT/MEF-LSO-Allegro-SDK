@@ -31,7 +31,7 @@ info:
     modified by the Mplify Alliance and its contributors.
   version: 3.0.0
 servers:
-  - url: 'https://{serverBase}/mefApi/legato/serviceFunctionTestingNotification/v3/'
+  - url: 'https://{serverBase}/mefApi/allegro/serviceFunctionTestingNotification/v3/'
     variables:
       serverBase:
         description: The base of Buyer's URL.
