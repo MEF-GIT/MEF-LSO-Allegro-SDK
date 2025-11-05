@@ -25,7 +25,7 @@ info:
   title: Performance Monitoring Notification
   version: 5.0.0
 servers:
-  - url: 'https://{serverBase}/mefApi/legato/performanceNotification/v5/'
+  - url: 'https://{serverBase}/mefApi/allegro/performanceNotification/v5/'
     variables:
       serverBase:
         default: mplify.net

@@ -68,7 +68,7 @@ info:
   title: Performance Monitoring
   version: 5.0.0
 servers:
-  - url: 'https://{serverBase}/mefApi/legato/performanceMonitoring/v5/'
+  - url: 'https://{serverBase}/mefApi/allegro/performanceMonitoring/v5/'
     variables:
       serverBase:
         default: mplify.com
@@ -2526,7 +2526,7 @@ components:
             notification is sent. E.g. for 'callback':
             "https://bus.mplify.com/listenerEndpoint", the performance job
             state change event notification will be sent to
-            `https://bus.mplify.com/listenerEndpoint/mefApi/legato/performanceMonitoring/v5/listener/performanceJobStateChangeEvent`.
+            `https://bus.mplify.com/listenerEndpoint/mefApi/allegro/performanceMonitoring/v5/listener/performanceJobStateChangeEvent`.
         query:
           type: string
           description: >-
